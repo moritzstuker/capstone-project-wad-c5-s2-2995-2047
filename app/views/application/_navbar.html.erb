@@ -15,12 +15,11 @@
         <div class="tabs is-right">
           <ul>
             <li><a href="">Team</a></li>
-            <li><a href="">Sign up</a></li>
+            <li><%= link_to "Sign up", new_user_path %></li>
+
           </ul>
           <span class="navbar-item">
-            <a class="button is-white is-outlined" href="https://github.com/BulmaTemplates/bulma-templates/blob/master/templates/hero.html">
-              <span class="">Log in</span>
-            </a>
+            <%= link_to "Log in", login_path, class: 'button is-white is-outlined' %>
           </span>
         </div>
       </div>
