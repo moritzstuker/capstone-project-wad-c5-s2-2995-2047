@@ -1,4 +1,4 @@
-<nav class="navbar is-transparent">
+<nav class="navbar <%= defined?(navbar_class) ? navbar_class : 'is-white' %>">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="../">
@@ -12,16 +12,9 @@
     </div>
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-end">
-        <div class="tabs is-right">
-          <ul>
-            <li><a href="">Team</a></li>
-            <li><%= link_to "Sign up", new_user_path %></li>
-
-          </ul>
-          <span class="navbar-item">
-            <%= link_to "Log in", login_path, class: 'button is-white is-outlined' %>
-          </span>
-        </div>
+        <%= link_to "Timesheet", timesheet_index_path, class: 'navbar-item' %>
+        <%= link_to "Sign up", new_user_path, class: 'navbar-item' %>
+        <%= link_to "Log in", login_path, class: 'navbar-item' %>
       </div>
     </div>
   </div>
