@@ -16,15 +16,13 @@ The needs this application is intended to meet are the following:
   - financial overview (including expenses)
   - next deadlines
   - employees working on the case
-  - access to file management
-  - links to case timesheet, files, etc.
+  - links to case timesheet, deadlines, etc.
 - employee overview, including at least:
   - active cases
   - total hours (per day/month/year)
 - client account, including at least:
-  - simple file management
-  - ability to upload documents
   - overview of timesheet
+  - overview of deadlines
 
 ## Application purpose
 
