@@ -2,14 +2,12 @@
 
 one:
   username: MyString
-  password_digest: MyString
   name: MyString
   role: MyString
   avatar: MyString
 
 two:
   username: MyString
-  password_digest: MyString
   name: MyString
   role: MyString
   avatar: MyString
