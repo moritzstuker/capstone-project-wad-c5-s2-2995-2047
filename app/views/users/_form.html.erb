@@ -12,26 +12,50 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, id: :user_username %>
+    <%= form.label :username, 'E-mail', class: 'label' %>
+    <div class="control has-icons-left">
+      <%= form.text_field :username, id: :user_username, class: 'input', placeholder: 'Your e-mail' %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name %>
+    <%= form.label :name, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= form.text_field :name, id: :user_name, class: 'input', placeholder: 'Your full name' %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :role %>
-    <%= form.text_field :role, id: :user_role %>
+    <%= form.label :avatar, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= form.text_field :avatar, id: :user_avatar, class: 'input', placeholder: 'Your avatar', value: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y' %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-portrait"></i>
+      </span>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :avatar %>
-    <%= form.text_field :avatar, id: :user_avatar %>
+    <%= form.label :role, class: 'label' %>
+    <div class="control is-expanded has-icons-left">
+      <div class="select is-fullwidth">
+        <%= form.select :role, %w(admin partner associate client), {}, id: :user_role, class: 'input-group__field' %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-bars"></i>
+        </span>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field mt-5">
+    <div class="control">
+      <%= form.submit 'Sign up', class: 'button is-info is-fullwidth' %>
+    </div>
   </div>
-<% end %>
+  <% end %>

@@ -1,6 +1,29 @@
-<h2>Log in</h2>
+<section class="container">
+  <div class="columns">
+    <div class="column is-4 is-offset-4">
+      <div class="box">
 
-<%= form_tag '/login' do %>
-Username: <%= text_field_tag :username %>
-<%= submit_tag 'Log in' %>
-<% end %>
+        <h1 class="title is-4 has-text-centered">Log in</h1><hr />
+
+        <%= form_tag '/login' do %>
+        <div class="field">
+          <%= label_tag :username, 'E-mail', class: 'label' %>
+          <div class="control has-icons-left">
+            <%= text_field_tag :username, nil, class: 'input', placeholder: 'Your e-mail' %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field mt-5">
+          <div class="control">
+            <%= submit_tag 'Log in', class: 'button is-info is-fullwidth' %>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>

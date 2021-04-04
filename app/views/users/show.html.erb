@@ -1,24 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%= render 'flash' if flash.any? %>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<section class="container">
+  <div class="columns">
+    <div class="column">
+      <div class="content">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+        <h1 class="title is-4 has-text-centered">Your data</h1>
+        <hr>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+        <p>
+          <strong>Username:</strong>
+          <%= @user.username %>
+        </p>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @user.avatar %>
-</p>
+        <p>
+          <strong>Name:</strong>
+          <%= @user.name %>
+        </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        <p>
+          <strong>Role:</strong>
+          <%= @user.role %>
+        </p>
+
+        <p>
+          <strong>Avatar:</strong>
+          <%= @user.avatar %>
+        </p>
+
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+        <%= link_to 'Back', users_path %>
+
+      </div>
+    </div>
+  </div>
+</section>
