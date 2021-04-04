@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     else
       # error message on fail
       message = "Whoops"
-      redirect_to login_path, notice: message
+      redirect_to login_path, info: message
     end
   end
 end
