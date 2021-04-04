@@ -1,8 +1,9 @@
-<nav class="navbar <%= defined?(navbar_class) ? navbar_class : 'is-white' %>">
+<% navbar_class = navbar_class || "is-white" %>
+<nav class="navbar <%= navbar_class %>">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="../">
-        <i class="fa fa-empire fa-3x"></i>
+        <i class="fab fa-empire fa-3x"></i>
       </a>
       <span class="navbar-burger burger" data-target="navbarMenu">
         <span></span>
