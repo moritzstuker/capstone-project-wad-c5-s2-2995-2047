@@ -1,15 +1,26 @@
 class SessionsController < ApplicationController
-  def create
-    @user = User.find_by(username: params[:username])
+  def new
+  end
 
-    if !!@user && @user.authenticate(params[:username])
-      #set session and redirect on success
-      session[:user_id] = @user.id
-      redirect_to user_path
-    else
-      # error message on fail
-      message = "Whoops"
-      redirect_to login_path, info: message
+  def create
+    @user = User.find_by(username: params[:username].downcase)
+
+    respond_to do |format|
+      if @user.present? && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+
+        format.html { redirect_to @user, notice: "Good" }
+      else
+        format.html { redirect_to new_session_url, alert: "Not good" }
+      end
+    end
+  end
+
+  def destroy
+    session.delete(:user_id)
+
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: "Good" }
     end
   end
 end
