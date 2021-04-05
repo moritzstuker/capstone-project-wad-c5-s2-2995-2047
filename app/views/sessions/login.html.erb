@@ -3,13 +3,18 @@
     <div class="column is-4 is-offset-4">
       <div class="box">
 
-        <h1 class="title is-4 has-text-centered">Log in</h1><hr />
+        <div class="tabs is-toggle is-toggle-rounded is-centered is-small">
+          <ul>
+            <li class="is-active"><a>Log in</a></li>
+            <li><%= link_to "Sign up", new_user_path, class: 'navbar-item' %></li>
+          </ul>
+        </div>
 
         <%= form_tag '/login' do %>
         <div class="field">
           <%= label_tag :username, 'E-mail', class: 'label' %>
           <div class="control has-icons-left">
-            <%= text_field_tag :username, nil, class: 'input', placeholder: 'Your e-mail' %>
+            <%= text_field_tag :username, nil, class: 'input', placeholder: 'This will also be your username' %>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>

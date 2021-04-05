@@ -14,7 +14,7 @@
   <div class="field">
     <%= form.label :username, 'E-mail', class: 'label' %>
     <div class="control has-icons-left">
-      <%= form.text_field :username, id: :user_username, class: 'input', placeholder: 'Your e-mail' %>
+      <%= form.text_field :username, id: :user_username, class: 'input', placeholder: 'This will also be your username' %>
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
@@ -22,34 +22,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :name, class: 'label' %>
+    <%= form.label :name, 'Full name', class: 'label' %>
     <div class="control has-icons-left">
-      <%= form.text_field :name, id: :user_name, class: 'input', placeholder: 'Your full name' %>
+      <%= form.text_field :name, id: :user_name, class: 'input', placeholder: 'Please enter your first name and surname' %>
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :avatar, class: 'label' %>
-    <div class="control has-icons-left">
-      <%= form.text_field :avatar, id: :user_avatar, class: 'input', placeholder: 'Your avatar', value: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y' %>
-      <span class="icon is-small is-left">
-        <i class="fas fa-portrait"></i>
-      </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :role, class: 'label' %>
-    <div class="control is-expanded has-icons-left">
-      <div class="select is-fullwidth">
-        <%= form.select :role, %w(admin partner associate client), {}, id: :user_role, class: 'input-group__field' %>
-        <span class="icon is-small is-left">
-          <i class="fas fa-bars"></i>
-        </span>
-      </div>
     </div>
   </div>
 
