@@ -1,9 +1,15 @@
 <%= render "document_head" %>
-<%= render "header" %>
+
+<header>
+  <%= render "navbar" %>
+</header>
 
 <main class="section">
   <%= yield %>
 </main>
 
-<%= render "footer" %>
+<div class="footer">
+  <%= render "footer" %>
+</div>
+
 <%= render "document_foot" %>
