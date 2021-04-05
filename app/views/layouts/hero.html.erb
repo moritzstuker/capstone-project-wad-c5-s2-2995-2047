@@ -1,0 +1,17 @@
+<%= render "document_head" %>
+
+<main class="hero is-info is-bold is-fullheight" id="particles-js">
+  <header class="hero-head">
+    <%= render partial: 'navbar', locals: { navbar_class: "is-transparent" } %>
+  </header>
+
+  <section class="hero-body">
+    <%= yield %>
+  </section>
+
+  <div class="hero-foot">
+    <%= render "footer" %>
+  </div>
+</main>
+
+<%= render "document_foot" %>
