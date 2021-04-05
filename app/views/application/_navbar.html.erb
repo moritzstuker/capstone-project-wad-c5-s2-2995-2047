@@ -1,5 +1,4 @@
-<% navbar_class = navbar_class || "is-white" %>
-<nav class="navbar <%= navbar_class %>">
+<nav class="navbar <%= local_assigns[:hero] ? 'is-transparent' : 'is-white' %>">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="../">
@@ -12,9 +11,15 @@
       </span>
     </div>
     <div id="navbarMenu" class="navbar-menu">
-      <div class="navbar-end">
-        <%= link_to "Connect", login_path, class: 'navbar-item' %>
-      </div>
+      <ul class="navbar-end">
+        <% button_classes = "button " + (local_assigns[:hero] ? "is-light " : "") + "is-outlined is-rounded" %>
+        <% if logged_in? %>
+        <li class="navbar-item"><%= link_to "Dashboard", current_user, class: button_classes %></li>
+        <li class="navbar-item"><%= link_to "Disconnect", logout_path %></li>
+        <% else %>
+        <li class="navbar-item"><%= link_to "Connect", login_path, class: button_classes %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
