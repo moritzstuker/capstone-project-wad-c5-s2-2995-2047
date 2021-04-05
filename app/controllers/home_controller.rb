@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    render layout: 'hero'
+    render layout: 'home'
   end
 end
