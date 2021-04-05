@@ -1,7 +1,7 @@
 <footer class="container">
   <div class="tabs is-small">
     <ul>
-      <li><span class="copyright">&copy;&nbsp;<a href="https://moritzstuker.ch" target="_blank">Moritz Stuker</a>&nbsp;2017</span></li>
+      <li><span class="copyright">&copy;&nbsp;<a href="https://moritzstuker.ch" target="_blank">Moritz Stuker</a>&nbsp;<%= Date.current.year %></span></li>
       <li><a href="https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047" target="_blank">GitHub</a></li>
     </ul>
 
@@ -9,7 +9,7 @@
       <li>
         <div class="dropdown is-up">
           <div class="dropdown-trigger">
-            <button class="button<%= local_assigns[:hero] ? ' is-light' : ' ' %>is-outlined is-rounded is-small" aria-haspopup="true" aria-controls="dropdown-menu">
+            <button class="button<%= local_assigns[:hero] ? " is-light" : " " %>is-outlined is-rounded is-small" aria-haspopup="true" aria-controls="dropdown-menu">
               <span class="icon is-small">
                 <i class="fas fa-globe-africa" aria-hidden="true"></i>
               </span>
