@@ -31,6 +31,16 @@
     </div>
   </div>
 
+  <div class="field">
+    <%= form.label :password, 'Password', class: 'label' %>
+    <div class="control has-icons-left">
+      <%= form.password_field :password, id: :user_password, class: 'input', placeholder: 'Try to be creative' %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+    </div>
+  </div>
+
   <div class="field mt-5">
     <div class="control">
       <%= form.submit 'Sign up', class: 'button is-info is-fullwidth' %>

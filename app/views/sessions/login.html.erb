@@ -14,9 +14,19 @@
         <div class="field">
           <%= label_tag :username, 'E-mail', class: 'label' %>
           <div class="control has-icons-left">
-            <%= text_field_tag :username, nil, class: 'input', placeholder: 'This will also be your username' %>
+            <%= text_field_tag :username, nil, class: 'input' %>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= label_tag :password, 'Password', class: 'label' %>
+          <div class="control has-icons-left">
+            <%= password_field_tag :password, nil, id: :user_password, class: 'input' %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
             </span>
           </div>
         </div>
