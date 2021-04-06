@@ -14,6 +14,4 @@
 //= require turbolinks
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
-  particlesJS.load('particles-js', 'particles.json', function() {});
-})
+//= stub 'particles.load'

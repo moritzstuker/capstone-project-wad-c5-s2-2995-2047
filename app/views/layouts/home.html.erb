@@ -1,4 +1,4 @@
-<%= render "document_head" %>
+<%= render "document_head", locals: { hero: true } %>
 
 <main class="hero is-info is-bold is-fullheight" id="particles-js">
   <header class="hero-head">
@@ -15,3 +15,4 @@
 </main>
 
 <%= render "document_foot" %>
+<%= javascript_include_tag 'particles.load', 'data-turbolinks-track': 'reload' %>
