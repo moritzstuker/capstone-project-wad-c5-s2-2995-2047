@@ -5,9 +5,16 @@ Rails.application.routes.draw do
   resources :cases
   resources :users
 
-  # Session routes
-  get  '/login',  to: 'sessions#login'
+  namespace :dashboard do
+    resources :account
+  end
+
+  get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
   get  '/logout', to: 'sessions#destroy'
   post '/logout', to: 'sessions#destroy'
+
+  get  '/signup', to: 'users#new'
+
+  get  '/dashboard', to: 'dashboard#index'
 end
