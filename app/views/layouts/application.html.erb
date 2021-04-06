@@ -5,7 +5,7 @@
 </header>
 
 <main class="section">
-  <%= yield %>
+  <%= content_for?(:content) ? yield(:content) : yield %>
 </main>
 
 <div class="footer">
