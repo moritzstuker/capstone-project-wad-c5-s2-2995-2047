@@ -1,6 +1,14 @@
+<% content_for :stylesheets do %>
+.dashboard .hero-body {
+  border-bottom: 1px solid #dbdbdb;
+  margin-bottom: 3rem !important;
+  padding: 0 0 2rem !important;
+}
+<% end %>
+
 <% content_for :content do %>
 
-<div class="container">
+<div class="container dashboard">
   <%= render 'flash' if flash.any? %>
   <div class="columns">
     <div class="column is-2">
@@ -8,13 +16,13 @@
     </div>
     <div class="column is-10">
 
-      <section class="hero is-small is-info">
-        <div class="hero-body">
-          <p class="title">
-            Hello <%= current_user.name %>!
-          </p>
+      <header class="hero">
+        <div class="hero-body is-small">
+          <h1 class="title">
+            <%= content_for(:dashboard_title) || "Dashboard" %>
+          </h1>
         </div>
-      </section>
+      </header>
 
       <%= yield %>
     </div>
