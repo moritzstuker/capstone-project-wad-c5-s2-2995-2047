@@ -1,62 +1,51 @@
 html,
 body {
-  align-items: stretch;
-  background: #EFF3F4;
   display: flex;
   flex-direction: column;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  justify-content: flex-start;
   min-height: 100vh;
 }
 
 main.section {
-  flex: 1 0 100%;
+  flex-grow: 1;
 }
 
-.hero {
-  position: relative;
+.homepage {
+  &.hero {
+    position: relative;
 
-  &-head,
-  &-body,
-  &-foot {
-    z-index: 1;
-  }
-
-  &-body {
-    .title {
-      color: hsl(192,17%,99%) !important;
+    .hero-head,
+    .hero-body,
+    .hero-foot {
+      z-index: 1;
     }
 
-    .subtitle {
-      color: hsl(192,17%,99%) !important;
-      line-height: 1.5;
-      padding-top: 2rem;
-    }
-  }
-
-  &-foot {
-    .copyright {
-      color: rgba(255, 255, 255, .65);
-
-      a {
-        color: #fff !important;
+    .hero-body {
+      .subtitle {
+        line-height: 1.5;
+        padding-top: $block-spacing;
       }
     }
 
-    .dropdown {
-      &-trigger > button {
-        background-color: transparent;
-        border-color: white;
-        color: white;
+    .hero-foot {
+      .copyright {
+        color: rgba(255, 255, 255, .65);
+
+        a {
+          color: $white !important;
+        }
       }
     }
+  }
+
+  .particles-js-canvas-el {
+    height: 100%;
+    position: absolute;
+    width: 100%;
   }
 }
 
 .hero-foot,
 .footer {
-  padding: 1em 0;
-
   .dropdown {
     &-content {
       overflow: hidden !important;
@@ -93,12 +82,60 @@ main.section {
       margin-bottom: -1px;
       padding: 0.5em 1em;
     }
+
+    li > a {
+      padding: $block-spacing;
+    }
   }
+}
+
+.footer {
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .tabs.is-toggle li.is-active a {
   background-color: #2793da;
   border-color: #2793da;
+}
+
+.avatar {
+  border: 1px solid #dbdbdb;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.image {
+  position: relative;
+
+  & > .file-upload {
+    height: 100% !important;
+    opacity: 0;
+    padding: 0 !important;
+    position: absolute;
+    transition: opacity .15s;
+    width: 100% !important;
+
+    &:hover,
+    &:active {
+      opacity: .85;
+    }
+  }
+
+  .file-cta {
+    border: none;
+    height: 100% !important;
+    justify-content: center;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .file-label {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+  }
 }
 
 .copyright {
@@ -108,12 +145,6 @@ main.section {
     margin: 0;
     padding: 0;
   }
-}
-
-.particles-js-canvas-el {
-  height: 100%;
-  position: absolute;
-  width: 100%;
 }
 
 input::-webkit-outer-spin-button,
