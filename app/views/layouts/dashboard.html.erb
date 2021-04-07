@@ -21,10 +21,12 @@
           <h1 class="title">
             <%= content_for(:dashboard_title) || "Dashboard" %>
           </h1>
-          <p class="subtitle is-size-6"><span id="clock"></span></p>
-
         </div>
       </header>
+
+      <div class="box time">
+        <span id="clock"></span>
+      </div>
 
       <%= yield %>
     </div>

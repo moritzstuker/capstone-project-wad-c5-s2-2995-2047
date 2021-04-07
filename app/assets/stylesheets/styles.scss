@@ -147,6 +147,16 @@ main.section {
   }
 }
 
+.time {
+  display: inline-block;
+  font-size: 80%;
+  font-weight: 600;
+  padding: .75rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
