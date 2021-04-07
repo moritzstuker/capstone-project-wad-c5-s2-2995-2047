@@ -3,5 +3,5 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
 
-  has_many :cases
+  has_and_belongs_to_many :cases
 end
