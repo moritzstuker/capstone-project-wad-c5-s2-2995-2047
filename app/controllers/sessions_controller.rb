@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if @user.present? && @user.authenticate(params[:password])
         session[:user_id] = @user.id
 
-        format.html { redirect_to dashboard_path }
+        format.html { redirect_to dashboard_index_path }
       else
         format.html { redirect_to new_session_url, alert: "Not good" }
       end

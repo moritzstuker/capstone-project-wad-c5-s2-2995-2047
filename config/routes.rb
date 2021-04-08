@@ -4,10 +4,8 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :users
-
-  namespace :dashboard do
-    resources :account
-  end
+  resources :account
+  resources :dashboard
 
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
@@ -15,6 +13,4 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
 
   get  '/signup', to: 'users#new'
-
-  get  '/dashboard', to: 'dashboard#index'
 end

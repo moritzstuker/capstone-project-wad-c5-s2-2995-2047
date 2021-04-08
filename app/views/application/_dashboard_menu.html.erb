@@ -3,15 +3,15 @@
     General
   </p>
   <ul class="menu-list">
-    <li><%= link_to 'Overview', dashboard_path, class: active_page?(dashboard_path) %></li>
+    <li><%= link_to 'Overview', dashboard_index_path, class: active_page?(dashboard_index_path) %></li>
     <li><a>Deadlines</a></li>
-    <li><%= link_to 'Account', dashboard_account_index_path, class: active_page?(dashboard_account_index_path) %></li>
+    <li><%= link_to 'Account', account_index_path, class: active_page?(account_index_path) %></li>
   </ul>
   <p class="menu-label">
     Cases
   </p>
   <ul class="menu-list">
-    <li><a>Overview</a></li>
+    <li><%= link_to 'Overview', projects_path, class: active_page?(projects_path) %></li>
     <li><a>Cloud Storage</a></li>
     <li><a>Authentication</a></li>
   </ul>
