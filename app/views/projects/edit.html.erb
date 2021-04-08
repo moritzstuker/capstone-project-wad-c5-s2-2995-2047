@@ -1,6 +1,5 @@
-<h1>Editing Case</h1>
+<% content_for :dashboard_title, 'Edit Case' %>
 
-<%= render 'form', project: @project %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<div class="box">
+  <%= render 'form', project: @project %>
+</div>

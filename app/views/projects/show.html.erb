@@ -1,5 +1,8 @@
+<% content_for :dashboard_title, 'Case' %>
+
 <p id="notice"><%= notice %></p>
 
+<div class="box">
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
@@ -10,5 +13,8 @@
   <%= @project.description %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="buttons">
+  <%= link_to 'Back', projects_path, class: 'button is-info is-light' %>
+  <%= link_to 'Edit', edit_project_path(@project), class: 'button is-info' %>
+</div>
+</div>
