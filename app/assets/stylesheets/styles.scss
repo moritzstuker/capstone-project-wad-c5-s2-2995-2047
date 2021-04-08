@@ -89,6 +89,10 @@ main.section {
   }
 }
 
+.notification {
+  z-index: 100;
+}
+
 .footer {
   padding-bottom: 0;
   padding-top: 0;
@@ -100,12 +104,8 @@ main.section {
 }
 
 .avatar {
-  border: 1px solid #dbdbdb;
   border-radius: 1rem;
   overflow: hidden;
-}
-
-.image {
   position: relative;
 
   & > .file-upload {
@@ -123,7 +123,8 @@ main.section {
   }
 
   .file-cta {
-    border: none;
+    border: 1px solid #dbdbdb;
+    border-radius: 1rem;
     height: 100% !important;
     justify-content: center;
     padding: 0 !important;
