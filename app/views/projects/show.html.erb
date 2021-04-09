@@ -1,20 +1,42 @@
 <% content_for :dashboard_title, 'Case' %>
 
-<p id="notice"><%= notice %></p>
-
-<div class="box">
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+<div class="tile is-ancestor">
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child box">
+      <p class="title"><%= @project.name %></p>
+      <p class="subtitle">Client</p>
+    </div>
+    <div class="tile is-child box">
+      <p><%= @project.description || "Please add a description." %></p>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <p class="title">Parties</p>
+      <p><strong>Opposing party:</strong>&nbsp;Favrod-Coune</p>
+      <p><strong>Other parties:</strong>&nbsp;Junod</p>
+      <p><strong>Tribunal/Authority:</strong>&nbsp;Tribunal d'arrondissement de l'Est vaudois</p>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <p class="title">Members</p>
+      <p><strong>Project owner:</strong>&nbsp;<%= link_to @project.owner.name, user_path(@project.owner) %></p>
+      <p><strong>Project members:</strong></p>
+      <ul class=" content">
+        <% @project.project_users.each do |p_user| %>
+        <li><%= link_to p_user.user.name, user_path(p_user.user) %> — <%= number_to_currency(p_user.fee, unit: "CHF ", separator: ".", delimiter: " ") %>/h</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="buttons">
   <%= link_to 'Back', projects_path, class: 'button is-info is-light' %>
   <%= link_to 'Edit', edit_project_path(@project), class: 'button is-info' %>
 </div>
+
+<div class="box">
+  <%= render partial: 'timesheet', locals: { timesheet: @project.time_entries } %>
 </div>
