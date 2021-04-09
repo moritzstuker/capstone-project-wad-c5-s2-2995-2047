@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  has_many :project_roles
-  has_many :projects, through: :project_roles
+  has_many   :project_users
+  has_many   :projects, through: :project_users
+  has_many   :projects, inverse_of: 'owner'
+  has_many   :time_entries
+  belongs_to :contact
 
   has_secure_password
 
@@ -11,7 +14,11 @@ class User < ApplicationRecord
   validates_uniqueness_of :login, :case_sensitive => false
 
   before_validation :downcase_login
-  after_initialize  :defaults
+  after_initialize  :default_values
+
+  def name
+    "#{firstname} #{lastname}"
+  end
 
   private
 
@@ -19,7 +26,7 @@ class User < ApplicationRecord
     self.login = login.downcase
   end
 
-  def defaults
+  def default_values
     self.role ||= 'client'
     self.avatar ||= 'jean-beller-8ndbKLm3wCM-unsplash.jpg'
   end

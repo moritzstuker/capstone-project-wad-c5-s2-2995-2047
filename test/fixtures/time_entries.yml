@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: MyString
+  type: 
+  date: 2021-04-09
+  time: 2021-04-09 14:42:55
+  project: one
+  user: one
+
+two:
+  label: MyString
+  type: 
+  date: 2021-04-09
+  time: 2021-04-09 14:42:55
+  project: two
+  user: two

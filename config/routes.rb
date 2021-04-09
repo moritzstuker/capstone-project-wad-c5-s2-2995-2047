@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :users
   resources :account
+  resources :contacts
   resources :dashboard
 
   get  '/login',  to: 'sessions#new'

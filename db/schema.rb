@@ -10,16 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210409045010) do
+ActiveRecord::Schema.define(version: 20210409175950) do
 
-  create_table "project_roles", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "email"
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "project_id"
     t.string "role"
-    t.index ["project_id"], name: "index_project_roles_on_project_id"
-    t.index ["user_id"], name: "index_project_roles_on_user_id"
+    t.decimal "fee", precision: 10, scale: 2
+    t.index ["project_id"], name: "index_project_users_on_project_id"
+    t.index ["user_id"], name: "index_project_users_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -27,6 +38,21 @@ ActiveRecord::Schema.define(version: 20210409045010) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "time_entries", force: :cascade do |t|
+    t.string "label"
+    t.string "type"
+    t.date "date"
+    t.decimal "time", precision: 10, scale: 2
+    t.integer "project_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_time_entries_on_project_id"
+    t.index ["user_id"], name: "index_time_entries_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
