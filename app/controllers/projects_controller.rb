@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @my_projects = current_user.project_users
   end
 
   def show
@@ -22,7 +23,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: "Case was successfully created." }
+        format.html { redirect_to @project, success: "Case was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -32,7 +33,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: "Case was successfully updated." }
+        format.html { redirect_to @project, success: "Case was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -42,7 +43,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Case was successfully destroyed." }
+      format.html { redirect_to projects_url, success: "Case was successfully destroyed." }
     end
   end
 
