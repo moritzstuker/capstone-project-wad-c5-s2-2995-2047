@@ -17,9 +17,9 @@
   <div class="columns">
     <div class="column">
       <div class="field">
-        <%= form.label :name, 'Full name', class: 'label' %>
+        <%= form.label :firstname, 'First name', class: 'label' %>
         <div class="control has-icons-left">
-          <%= form.text_field :name, id: :user_name, class: 'input', placeholder: 'Please enter your first name and surname' %>
+          <%= form.text_field :firstname, id: :user_firstname, class: 'input', placeholder: 'Please enter your first name' %>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
@@ -27,9 +27,19 @@
       </div>
 
       <div class="field">
-        <%= form.label :username, 'E-mail', class: 'label' %>
+        <%= form.label :lastname, 'Last name', class: 'label' %>
         <div class="control has-icons-left">
-          <%= form.text_field :username, id: :user_username, class: 'input', placeholder: 'This will also be your username' %>
+          <%= form.text_field :lastname, id: :user_lastname, class: 'input', placeholder: 'Please enter your surname' %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :login, 'E-mail', class: 'label' %>
+        <div class="control has-icons-left">
+          <%= form.text_field :login, id: :user_login, class: 'input', placeholder: 'This will also be your login' %>
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -63,18 +73,18 @@
             </span>
           </label>
         </div>
-        <%= image_tag current_user.avatar, size: "128x128", alt: "Avatar for #{current_user.name}" %>
+        <%= image_tag current_user.avatar, size: "128x128", alt: "Avatar for #{current_user.login}" %>
       </figure>
     </div>
   </div>
   <div class="columns">
-          <div class="column">
-            <div class="field mt-5">
-              <div class="control">
-                <%= form.submit 'Update', class: 'button is-info' %>
-              </div>
-            </div>
-          </div>
+    <div class="column">
+      <div class="field mt-5">
+        <div class="control">
+          <%= form.submit 'Update', class: 'button is-info' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <% end %>

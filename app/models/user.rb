@@ -1,18 +1,22 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :projects
+  has_many :project_roles
+  has_many :projects, through: :project_roles
 
   has_secure_password
 
-  validates :username, uniqueness: true
-  validates :role,  inclusion: { in: %w(client associate partner admin) }
+  validates_format_of     :login, :with => /\A[a-z0-9_\-@\.]*\z/i
+  validates_length_of     :login, :maximum => 60
+  validates_length_of     :firstname, :lastname, :maximum => 30
+  validates_presence_of   :login, :firstname, :lastname
+  validates_uniqueness_of :login, :case_sensitive => false
 
+  before_validation :downcase_login
   after_initialize  :defaults
-  before_validation :downcase_email
 
   private
 
-  def downcase_email
-    self.email = email.downcase
+  def downcase_login
+    self.login = login.downcase
   end
 
   def defaults

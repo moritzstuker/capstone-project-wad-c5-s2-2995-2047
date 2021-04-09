@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username].downcase)
+    @user = User.find_by(login: params[:login].downcase)
 
     respond_to do |format|
       if @user.present? && @user.authenticate(params[:password])
