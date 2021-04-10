@@ -89,18 +89,15 @@ main.section {
   }
 }
 
-#notice {
-  left: 1em;
+.notice {
+  color: hsl(0, 0%, 29%);
   max-width: 100%;
-  position: fixed;
-  top: 1em;
-  width: calc(100% - 2em);
-  z-index: 100;
-
-  & > .delete {
-    right: 1rem;
-    top: 1rem;
-  }
+  padding-right: 3rem;
+  position: absolute;
+  right: 0;
+  top: 4em;
+  width: auto;
+  z-index: 1000;
 }
 
 .footer {
@@ -203,6 +200,10 @@ main.section {
       white-space: nowrap;
     }
   }
+}
+
+.field_with_errors input {
+  border-color: hsl(348, 86%, 61%) !important;
 }
 
 input::-webkit-outer-spin-button,

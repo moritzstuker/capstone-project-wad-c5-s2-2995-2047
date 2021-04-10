@@ -1,6 +1,8 @@
-<% flash.each do |type, message| %>
-  <div id="notice" class="notification is-<%= type || "info" %>">
-    <button class="delete"></button>
-    <%= message %>
-  </div>
-<% end %>
+<div class="notice container">
+  <% flash.each do |type, message| %>
+    <div id="notice" class="notification<%= " is-#{type}" if ['info', 'success', 'danger'].include? type %>">
+      <button class="delete"></button>
+      <%= message %>
+    </div>
+  <% end %>
+</div>
