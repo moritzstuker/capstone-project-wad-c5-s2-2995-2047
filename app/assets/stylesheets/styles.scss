@@ -89,8 +89,18 @@ main.section {
   }
 }
 
-.notification {
+#notice {
+  left: 1em;
+  max-width: 100%;
+  position: fixed;
+  top: 1em;
+  width: calc(100% - 2em);
   z-index: 100;
+
+  & > .delete {
+    right: 1rem;
+    top: 1rem;
+  }
 }
 
 .footer {

@@ -1,5 +1,5 @@
 <% flash.each do |type, message| %>
-  <div id="notice" class="notification is-<%= type %>">
+  <div id="notice" class="notification is-<%= type || "info" %>">
     <button class="delete"></button>
     <%= message %>
   </div>
