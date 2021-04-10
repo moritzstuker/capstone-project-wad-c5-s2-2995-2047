@@ -4,15 +4,21 @@
   </p>
   <ul class="menu-list">
     <li><%= link_to 'Overview', dashboard_index_path, class: active_page?(dashboard_index_path) %></li>
-    <li><a>Deadlines</a></li>
     <li><%= link_to 'Account', account_index_path, class: active_page?(account_index_path) %></li>
   </ul>
   <p class="menu-label">
     Cases
   </p>
   <ul class="menu-list">
-    <li><%= link_to 'Overview', projects_path, class: active_page?(projects_path) %></li>
-    <li><%= link_to 'New case', new_project_path, class: active_page?(new_project_path) %></li>
+    <li>
+      <%= link_to 'Overview', projects_path, class: active_page?(projects_path) %>
+      <ul>
+        <li><a>All cases</a></li>
+        <li><a>Your cases</a></li>
+        <li><%= link_to 'New case', new_project_path, class: active_page?(new_project_path) %></li>
+      </ul>
+    </li>
+    <li><a>Deadlines</a></li>
   </ul>
   <p class="menu-label">
     Time management
