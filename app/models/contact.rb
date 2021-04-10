@@ -1,17 +1,15 @@
 class Contact < ApplicationRecord
   has_one :user
 
-  validates_format_of     :email, :with => URI::MailTo::EMAIL_REGEXP
-  validates_length_of     :email, :maximum => 60
-  validates_length_of     :firstname, :lastname, :maximum => 30
-  validates_presence_of   :email, :lastname
-  validates_uniqueness_of :email, :case_sensitive => false
+  validates :email, presence: true, length: { minimum: 6, maximum: 60 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }
+  validates :firstname, length: { maximum: 30 }
+  validates :lastname, presence: true, length: { maximum: 30 }
 
   def name
-    if firstname.present? && lastname.present?
+    if firstname.present?
       "#{firstname} #{lastname}"
     else
-      firstname.to_s || lastname.to_s
+      "#{lastname}"
     end
   end
 end

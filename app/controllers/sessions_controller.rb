@@ -3,24 +3,18 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(login: params[:login].downcase)
+    user = User.find_by(login: params[:session][:login].downcase)
 
-    respond_to do |format|
-      if @user.present? && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-
-        format.html { redirect_to dashboard_index_path }
-      else
-        format.html { redirect_to new_session_url, alert: "Not good" }
-      end
+    if user.present? && user.authenticate(params[:session][:password])
+      log_in user
+      redirect_to dashboard_index_path
+    else
+      render 'new', danger: 'Invalid email/password combination'
     end
   end
 
   def destroy
-    session.delete(:user_id)
-
-    respond_to do |format|
-      format.html { redirect_to root_url, success: "Logged out successfully." }
-    end
+    log_out
+    redirect_to root_url, notice: "Logged out successfully."
   end
 end

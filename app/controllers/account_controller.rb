@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-  before_action :authenticated?, :current_user
+  before_action :logged_in?
   layout "dashboard"
 
   def index
