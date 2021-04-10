@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
 
     respond_to do |format|
-      format.html { redirect_to root_url, info: "Session destroyed." }
+      format.html { redirect_to root_url, success: "Logged out successfully." }
     end
   end
 end

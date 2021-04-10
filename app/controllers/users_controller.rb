@@ -18,30 +18,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to dashboard_path, success: "User was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to dashboard_path, success: "User was successfully created."
+    else
+      render "new"
     end
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to dashboard_path, success: "User was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      redirect_to account_path, success: "User was successfully updated."
+    else
+      render "edit"
     end
   end
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, success: "User was successfully destroyed." }
-    end
+    redirect_to root_url, success: "User was successfully destroyed."
   end
 
   private
@@ -51,6 +45,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:login, :firstname, :lastname, :role, :avatar)
+      params.require(:user).permit(:login, :password)
     end
 end
