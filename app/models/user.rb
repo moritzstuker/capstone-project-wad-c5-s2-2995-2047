@@ -17,7 +17,6 @@ class User < ApplicationRecord
   end
 
   def default_values
-    self.role ||= 'associate'
     self.avatar ||= 'jean-beller-8ndbKLm3wCM-unsplash.jpg'
   end
 end
