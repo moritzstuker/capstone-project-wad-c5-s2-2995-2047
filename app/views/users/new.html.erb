@@ -2,15 +2,13 @@
   <div class="columns">
     <div class="column is-4 is-offset-4">
       <div class="box">
-
         <div class="tabs is-toggle is-toggle-rounded is-centered is-small">
           <ul>
             <li><%= link_to "Log in", login_path, class: 'navbar-item' %></li>
             <li class="is-active"><a>Sign up</a></li>
           </ul>
         </div>
-
-        <%= render 'form', user: @user %>
+        <%= render 'form' %>
       </div>
     </div>
   </div>

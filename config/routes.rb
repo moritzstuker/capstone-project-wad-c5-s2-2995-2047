@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   resources :contacts
   resources :dashboard
 
-  get  '/login',  to: 'sessions#new'
-  post '/login',  to: 'sessions#create'
-  get  '/logout', to: 'sessions#destroy'
-  post '/logout', to: 'sessions#destroy'
+  get    '/signup', to: 'users#new'
 
-  get  '/signup', to: 'users#new'
+  get    '/login',  to: 'sessions#new'
+  post   '/login',  to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
 end

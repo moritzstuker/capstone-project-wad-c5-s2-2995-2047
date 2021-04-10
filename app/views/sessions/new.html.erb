@@ -2,42 +2,13 @@
   <div class="columns">
     <div class="column is-4 is-offset-4">
       <div class="box">
-
         <div class="tabs is-toggle is-toggle-rounded is-centered is-small">
           <ul>
             <li class="is-active"><a>Log in</a></li>
             <li><%= link_to "Sign up", signup_path, class: 'navbar-item' %></li>
           </ul>
         </div>
-
-        <%= form_tag '/login' do %>
-        <div class="field">
-          <%= label_tag :login, 'E-mail', class: 'label' %>
-          <div class="control has-icons-left">
-            <%= text_field_tag :login, nil, class: 'input' %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= label_tag :password, 'Password', class: 'label' %>
-          <div class="control has-icons-left">
-            <%= password_field_tag :password, nil, id: :user_password, class: 'input' %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </div>
-        </div>
-
-        <div class="field mt-5">
-          <div class="control">
-            <%= submit_tag 'Log in', class: 'button is-info is-fullwidth' %>
-          </div>
-        </div>
-        <% end %>
-
+        <%= render 'form' %>
       </div>
     </div>
   </div>

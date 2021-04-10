@@ -1,49 +1,35 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_with(model: @user, local: true) do |f| %>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render partial: 'error', locals: { model: @user } %>
 
-  <div class="field">
-    <%= form.label :login, 'E-mail', class: 'label' %>
-    <div class="control has-icons-left">
-      <%= form.text_field :login, id: :user_login, class: 'input', placeholder: 'This will also be your login' %>
-      <span class="icon is-small is-left">
-        <i class="fas fa-envelope"></i>
-      </span>
-    </div>
+<div class="field">
+  <%= f.label :login, 'E-mail', class: 'label' %>
+  <div class="control has-icons-left">
+    <%= f.text_field :login, id: :user_login, class: 'input', placeholder: 'This will also be your login' %>
+    <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :name, 'Full name', class: 'label' %>
-    <div class="control has-icons-left">
-      <%= form.text_field :name, id: :user_name, class: 'input', placeholder: 'Please enter your first name and surname' %>
-      <span class="icon is-small is-left">
-        <i class="fas fa-user"></i>
-      </span>
-    </div>
+<div class="field">
+  <%= f.label :password, 'Password', class: 'label' %>
+  <div class="control has-icons-left">
+    <%= f.password_field :password, id: :user_password, class: 'input', placeholder: 'Try to be creative' %>
+    <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :password, 'Password', class: 'label' %>
-    <div class="control has-icons-left">
-      <%= form.password_field :password, id: :user_password, class: 'input', placeholder: 'Try to be creative' %>
-      <span class="icon is-small is-left">
-        <i class="fas fa-lock"></i>
-      </span>
-    </div>
+<div class="field">
+  <%= f.label :password_confirmation, 'Confirm password', class: 'label' %>
+  <div class="control has-icons-left">
+    <%= f.password_field :password_confirmation, id: :user_password_confirmation, class: 'input', placeholder: 'Please confirm your password' %>
+    <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
   </div>
+</div>
 
-  <div class="field mt-5">
-    <div class="control">
-      <%= form.submit 'Sign up', class: 'button is-info is-fullwidth' %>
-    </div>
+<div class="field">
+  <div class="control">
+    <%= f.submit 'Sign up', class: 'button is-info is-fullwidth' %>
   </div>
-  <% end %>
+</div>
+
+<% end %>
