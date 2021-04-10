@@ -5,8 +5,9 @@
     <%= render partial: "navbar", locals: { hero: true } %>
   </header>
 
+  <%= render 'flash' if flash.any? %>
+
   <section class="hero-body">
-    <%= render 'flash' if flash.any? %>
     <%= yield %>
   </section>
 

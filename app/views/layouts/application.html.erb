@@ -5,7 +5,6 @@
 </header>
 
 <main class="section">
-  <%= render 'flash' if flash.any? %>
   <%= content_for?(:content) ? yield(:content) : yield %>
 </main>
 

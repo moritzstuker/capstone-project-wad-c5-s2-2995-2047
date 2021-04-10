@@ -1,17 +1,8 @@
 <% content_for :dashboard_title, 'Account' %>
 
 <%= form_with(model: current_user, local: true) do |form| %>
-<% if current_user.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-  <ul>
-    <% current_user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+<%= render partial: 'error', locals: { model: current_user } %>
 
 <div class="box">
   <div class="columns">
