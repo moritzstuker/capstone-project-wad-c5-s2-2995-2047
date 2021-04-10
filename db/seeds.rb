@@ -17,11 +17,11 @@ contact8  = Contact.create!(firstname: "Pete",   lastname: "Howard",   phone: "+
 contact9  = Contact.create!(firstname: "Nick",   lastname: "Sheppard", phone: "+41 79 789 01 23", email: "nick.sheppard@test.dev", address: "Rue du Centre 22, 1800 Vevey")
 contact10 = Contact.create!(firstname: "Vince",  lastname: "White",    phone: "+41 79 456 78 90", email: "vince.white@test.dev",   address: "Rue du vingt-trois Juin 52, 2800 Delémont")
 
-user1 = User.create!(login: contact1.email, password: "password", avatar: "", role: "admin",     contact: contact1)
-user2 = User.create!(login: contact2.email, password: "password", avatar: "", role: "partner",   contact: contact2)
-user3 = User.create!(login: contact3.email, password: "password", avatar: "", role: "associate", contact: contact3)
-user4 = User.create!(login: contact4.email, password: "password", avatar: "", role: "associate", contact: contact4)
-user5 = User.create!(login: contact5.email, password: "password", avatar: "", role: "associate", contact: contact5)
+user1 = User.create!(login: contact1.email, password: "password", avatar: "", permissions: "admin",     contact: contact1)
+user2 = User.create!(login: contact2.email, password: "password", avatar: "", permissions: "partner",   contact: contact2)
+user3 = User.create!(login: contact3.email, password: "password", avatar: "", permissions: "associate", contact: contact3)
+user4 = User.create!(login: contact4.email, password: "password", avatar: "", permissions: "associate", contact: contact4)
+user5 = User.create!(login: contact5.email, password: "password", avatar: "", permissions: "associate", contact: contact5)
 
 project1 = Project.create!(name: "London calling",                owner: user2, users: [user1, user2, user3], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 project2 = Project.create!(name: "Rock the casbah",               owner: user2, users: [user2, user3, user4], description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
