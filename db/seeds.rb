@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User::ROLES.each do |role|
+  username = "#{role}@test.dev"
+  User.create!(login: username, password: 'password', role: role)
+  puts "Created user '#{username}'"
+end
+
+puts "✓ Created #{User.all.count} users."
+puts "✓ Done, good to go!"

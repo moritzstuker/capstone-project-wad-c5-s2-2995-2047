@@ -206,6 +206,17 @@ main.section {
   border-color: hsl(348, 86%, 61%) !important;
 }
 
+label[required]:after {
+  content: " *";
+  font-size: 65%;
+  vertical-align: top;
+}
+
+.asterisk,
+label[required]:after {
+  color: $danger;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
