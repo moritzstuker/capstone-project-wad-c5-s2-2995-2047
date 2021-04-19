@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
+ruby '2.6.6'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
@@ -39,6 +40,10 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  # Generate Entity-Relationship Diagrams for Rails applications
+  gem 'rails-erd'
+  # A library for generating fake data such as names, addresses, and phone numbers.
+  gem 'faker'
 end
 
 group :development do
