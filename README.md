@@ -1,6 +1,6 @@
 # Capstone project proposal outline
 
-Working as a lawyer, we are constantly questioning our software and looking for the unicorn CRM which is both simple enough and complex enough. There are many options on the market, though none that satisfied us. So I decided to build my own.
+Working as a lawyer, we are constantly questioning our software and looking for the unicorn CRM which is both simple enough yet complete enough. There are many options on the market, though none that satisfied me. So I decided to build my own.
 
 ## Project overview
 
@@ -23,12 +23,14 @@ The needs this application is intended to meet are the following:
 - client account, including at least:
   - overview of timesheet
   - overview of deadlines
+- some sort of conflict-check verification
+- ideally, query for addresses and commercial registry via API.
 
 ## Application purpose
 
-The application is intended to serve as a CRM for lawyers and provide an interface with their clients. Special care will be given to the intuitiveness of the application, both for lawyers and their clients.
+The application is intended to serve as a CRM for lawyers. Special care will be given to the intuitiveness of the application, both for lawyers.
 
-Currently, software solutions for lawyers are solely coded by IT-professionals who don't always entirely understand the specific needs of this target audience and provide overly complex or overwhelming software. Thus, these software become hugely complex tools which the users rarely use fully. This project here tackles the problem by starting from the client's perspective, which I know, and tries to achieve high quality standards in terms of software development practices based on this.
+Currently, software solutions for lawyers are solely coded by IT-professionals who don't always entirely understand the specific needs of this target audience and provide overly complex or overwhelming software (think SAP). Thus, these software become hugely complex tools which the users rarely use fully. This project here tackles the problem by starting from the user's perspective, which I know, and tries to achieve high quality standards in terms of software development practices based on this.
 
 ## Front end
 
@@ -36,7 +38,7 @@ The project will include numerous databases (timesheets, clients, employees, etc
 
 Two examples are:
 - the ability to easily add/remove/shift timesheet entries
-- the ability to interact with a per-case folder structure
+- the ability to have overviews of different needs
 
 ## Data structures and models
 
@@ -49,7 +51,7 @@ Two examples are:
 
 ## Third party services
 
-Include a list of all third party services that you envisage using in your project.  For each one, indicate what they will be used for.  These include:
+Include a list of all third party services that you envisage using in your project. For each one, indicate what they will be used for. These include:
 
 * Ruby gems or JavaScript libraries outside of those bundled with Ruby on Rails by default.
   - Pixelpress (or equivalent) to generate PDFs (for invoices)
@@ -59,6 +61,6 @@ Include a list of all third party services that you envisage using in your proje
   - I like working with [Bulma](https://bulma.io), so I will most likely use this. But this may be adapted later on
 * Third party APIs
   - [Zefix](https://www.e-service.admin.ch/wiki/display/openegovdoc/Zefix+Webservice), in order to get company informations
-  - [SBB](https://data.sbb.ch/api/v1/console?flg=fr), in order to get expenses for transportation
+  - [tel.search](https://tel.search.ch/api/help.fr.html)
 * Deployment services
   - Most likely Heroku, at least for the proof-of-concept. Later on, probably a company based in Switzerland for data protection reasons.
