@@ -15,7 +15,7 @@
         <% button_classes = "button " + (local_assigns[:hero] ? "is-light " : "") + "is-outlined is-rounded" %>
         <% anchor_classes = (local_assigns[:hero] ? "" : "has-text-dark") %>
         <% if logged_in? %>
-        <li class="navbar-item"><%= link_to "Dashboard", dashboard_index_path, class: button_classes %></li>
+        <li class="navbar-item"><%= link_to "Dashboard", dashboard_path, class: button_classes %></li>
         <li class="navbar-item"><%= link_to "Disconnect", logout_path, class: anchor_classes, method: :delete %></li>
         <% else %>
         <li class="navbar-item"><%= link_to "Connect", login_path, class: button_classes %></li>

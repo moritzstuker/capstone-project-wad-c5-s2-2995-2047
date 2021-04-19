@@ -206,6 +206,12 @@ main.section {
   border-color: hsl(348, 86%, 61%) !important;
 }
 
+.page-header {
+  border-bottom: 1px solid $border;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 label[required]:after {
   content: " *";
   font-size: 65%;
