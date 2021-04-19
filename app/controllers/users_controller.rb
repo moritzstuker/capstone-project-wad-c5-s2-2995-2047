@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_url, success: "User was successfully created."
+      redirect_to dashboard_path, success: "User was successfully created."
     else
       render "new"
     end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to root_url, success: "User was successfully updated."
+      redirect_to dashboard_path, success: "User was successfully updated."
     else
       render "edit"
     end
