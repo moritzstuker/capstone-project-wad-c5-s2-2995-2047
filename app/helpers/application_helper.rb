@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def active_page?(path)
-    " is-active" if request.path == path
+    request.path == path
   end
 
   def sortable(column, title = nil)
