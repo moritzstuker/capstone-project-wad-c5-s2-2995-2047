@@ -80,7 +80,7 @@ main.section {
       display: flex;
       justify-content: center;
       margin-bottom: -1px;
-      padding: 0.5em 1em;
+      padding: 0.75rem 1em;
     }
 
     li > a {
@@ -159,57 +159,59 @@ main.section {
   position: relative;
 }
 
-.view_table {
-  border-collapse: collapse;
+.pseudotable {
+  border-collapse: separate;
   display: table;
   width:100%;
+  table-layout: fixed;
+  border-spacing: 0;
+}
 
-  &-row {
-    display: table-row;
-    padding: 0.5em 0;
+.thead {
+  display: table-header-group;
+  position: sticky;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 0;
+  font-weight: 600 !important;
+  border-bottom: 2px solid $border;
+}
 
-    & + .view_table-row {
-      border-top: 1px solid $menu-item-hover-background-color;
-    }
+.tr {
+  display: table-row;
+  padding: 0.75rem 0;
+}
+
+a.tr {
+  color: inherit;
+
+  &:hover {
+    background-color: $border;
+    color: #4a4a4a;
   }
 
-  a.view_table-row {
-    color: inherit;
-
-    &:hover {
-      background-color: $menu-item-hover-background-color;
-      color: #4a4a4a;
+  &:last-child {
+    .td {
+      border-bottom: none;
     }
   }
+}
 
-  &-cell {
-    display: table-cell;
-    padding: 0.5em 0.75em;
+.td {
+  display: table-cell;
+  padding: 0.75rem 0.75rem;
+  border-bottom: 1px solid $border;
+}
 
-    &:first-child {
-      -moz-border-radius: 2px 0 0 2px;
-      border-radius: 2px 0 0 2px;
-    }
+.tbody {
+  display: table-row-group;
 
-    &:last-child {
-      -moz-border-radius: 0 2px 2px 0;
-      border-radius: 0 2px 2px 0;
-    }
-
-    &:not(.project_description) {
-      white-space: nowrap;
-    }
+  .td {
+    font-size: 90%;
   }
 }
 
 .field_with_errors input {
   border-color: hsl(348, 86%, 61%) !important;
-}
-
-.page-header {
-  border-bottom: 1px solid $border;
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 label[required]:after {
@@ -221,6 +223,41 @@ label[required]:after {
 .asterisk,
 label[required]:after {
   color: $danger;
+}
+
+.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  height: calc(100vh - 1.5rem);
+  overflow-y: scroll;
+}
+
+.ffa {
+  &::after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    color: currentColor;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    margin-left: .25em;
+  }
+
+  &.caret::after {
+    content: "\f0da";
+    margin-left: .4em;
+  }
+
+  &.caret-asc::after {
+    content: "\f0d7";
+  }
+
+  &.caret-desc::after {
+    content: "\f0d8";
+  }
 }
 
 input::-webkit-outer-spin-button,

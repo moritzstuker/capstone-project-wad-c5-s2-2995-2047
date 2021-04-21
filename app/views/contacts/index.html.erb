@@ -1,0 +1,26 @@
+<% content_for :dashboard_title, 'All contacts' %>
+
+<p id="notice"><%= notice %></p>
+
+<nav class="level">
+  <div class="level-left">
+    <div class="level-item">
+      <%= render 'search' %>
+    </div>
+  </div>
+
+  <div class="level-right">
+    <div class="level-item">
+      <p class="subtitle is-6">
+        <strong><%= @contacts.count %></strong>/<%= Contact.all.count %> <%= 'contact'.pluralize(@contacts.count) %>
+      </p>
+    </div>
+    <div class="level-item">
+      <%= link_to 'New Contact', new_contact_path, class: 'button is-success' %>
+    </div>
+  </div>
+</nav>
+
+<div class="box pt-2">
+  <%= render 'pseudotable' %>
+</div>

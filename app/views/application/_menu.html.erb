@@ -1,28 +1,37 @@
-<aside class="menu">
-  <p class="menu-label">General</p>
-  <ul class="menu-list">
-    <li><%= link_to 'Dashboard', dashboard_path, class: active_page?(dashboard_path) %></li>
-    <li><%= link_to 'Account', account_path, class: active_page?(account_path) %></li>
-  </ul>
-  <p class="menu-label">Projects</p>
-  <ul class="menu-list">
-    <li><a>All projects</a></li>
-    <li>
-      <a>Manage Your Team</a>
-      <ul>
-        <li><a>Members</a></li>
-        <li><a>Plugins</a></li>
-        <li><a>Add a member</a></li>
-      </ul>
-    </li>
-    <li><a>Invitations</a></li>
-    <li><a>Cloud Storage Environment Settings</a></li>
-    <li><a>Authentication</a></li>
-  </ul>
-  <p class="menu-label">Contacts</p>
-  <ul class="menu-list">
-    <li><a>All contacts</a></li>
-    <li><a>Transfers</a></li>
-    <li><a>Balance</a></li>
-  </ul>
-</aside>
+<div class="sticky-top">
+  <aside class="menu">
+    <p class="menu-label">General</p>
+    <ul class="menu-list">
+      <li><%= link_to 'Dashboard', dashboard_path, class: active_page?(dashboard_path) %></li>
+      <li><%= link_to 'Account', account_path, class: active_page?(account_path) %></li>
+    </ul>
+    <p class="menu-label">Projects</p>
+    <ul class="menu-list">
+      <li><a>All projects</a></li>
+      <li>
+        <a>Manage Your Team</a>
+        <ul>
+          <li><a>Members</a></li>
+          <li><a>Plugins</a></li>
+          <li><a>Add a member</a></li>
+        </ul>
+      </li>
+      <li><a>Invitations</a></li>
+      <li><a>Cloud Storage Environment Settings</a></li>
+      <li><a>Authentication</a></li>
+    </ul>
+    <p class="menu-label">Contacts</p>
+    <ul class="menu-list">
+      <li>
+        <%= link_to 'All contacts', contacts_path, class: (" is-active" if params[:role] == nil) %>
+        <ul>
+          <% Contact::ROLES.each do |role| %>
+          <li><%= link_to "#{role.titleize.pluralize}", contacts_path(role: role), class: (" is-active" if params[:role] == role) %></li>
+          <% end %>
+        </ul>
+      </li>
+      <li><a>Adversaries</a></li>
+      <li><a>Other</a></li>
+    </ul>
+  </aside>
+</div>
