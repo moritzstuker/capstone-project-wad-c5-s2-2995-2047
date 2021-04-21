@@ -7,19 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Create one user per role
-puts "   Creating users..."
-User::ROLES.each do |role|
-  username = "#{role}@test.dev"
-  User.create!(login: username, password: 'password', role: role)
-  puts "   Created user '#{username}'"
-end
-puts "✓  Created #{User.all.count} users."
-
-
 # Create 100 contacts
 puts "   Creating contacts..."
-rand(250...350).times do
+rand(456...789).times do
   personality = Contact::PERSONALITIES.sample
   Contact.create!(
     prefix: personality == "natural" ? ["M.", "Mme"].sample : nil,
@@ -39,8 +29,34 @@ rand(250...350).times do
     role: %w(client adversary other).sample,
     personality: personality == "natural" ? "natural" : "legal",
     profession: personality == "natural" ? Faker::Company.profession : Faker::Company.industry,
-    notes: [Faker::Company.buzzword, nil].sample
+    notes: [Faker::Hipster.sentence, Faker::Company.buzzword, nil].sample
   )
 end
 puts "✓  Created #{Contact.all.count} contacts"
+
+
+# Create one user per role
+puts "   Creating users..."
+User::ROLES.each do |role|
+  username = "#{role}@test.dev"
+  User.create!(login: username, password: 'password', role: role)
+  puts "   Created user '#{username}'"
+end
+puts "✓  Created #{User.all.count} users."
+
+
+
+contacts_ids = Contact.where(personality: 'natural').sample(User.all.count)
+
+User.all.each_with_index do |user, i|
+  user.contact = contacts_ids[i]
+  user.save
+  contacts_ids[i].role = "employee"
+  contacts_ids[i].save
+  puts "   Linked user '#{user.login}' with '#{contacts_ids[i].combine(:name)}' (ID: #{contacts_ids[i].id})"
+end
+
+
+
+
 puts "✓  Done, good to go!"
