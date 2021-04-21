@@ -26,7 +26,7 @@
         <%= link_to 'All contacts', contacts_path, class: (" is-active" if params[:role] == nil) %>
         <ul>
           <% Contact::ROLES.each do |role| %>
-          <li><%= link_to "#{role.titleize.pluralize}", contacts_path(role: role), class: (" is-active" if params[:role] == role) %></li>
+          <li><%= link_to "#{role.titleize.pluralize}", contacts_path(role: role), class: ("is-active" if params[:role] == role) %></li>
           <% end %>
         </ul>
       </li>
