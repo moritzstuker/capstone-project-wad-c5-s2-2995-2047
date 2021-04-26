@@ -2,12 +2,13 @@
 
 The intuitive toolkit for lawyers.
 
-## Table of content
+## Table of contents
 
 - [Project overview](#project-overview)
 - [Application purpose](#application-purpose)
 - [Front end](#front-end)
 - [Data structures and models](#data-structures-and-models)
+- [User access levels](#user-access-levels)
 - [Third party services](#third-party-services)
 
 ## Project overview
@@ -39,6 +40,7 @@ These overview pages are to include the following:
   - employees working on the case
   - links to case timesheet, deadlines, etc.
   - whether the case is active or archived
+  - the project category
 - **User** (i.e. "Employee") overview, including at least:
   - active cases
   - total hours (per day/month/year)
@@ -81,8 +83,7 @@ The project will be based on the following models:
   - Minimal associations:
     - Contact (_i.e._ user's own contact information, one-to-one),
     - Project (many-to-many),
-    - TimeEntry (one-to-many),
-    - Deadline (many-to-many).
+    - TimeEntry (one-to-many).
 - **Contact** (_i.e._ a client or an adversary)
   - Minimal attributes:
     - `prefix:string`,
@@ -105,11 +106,19 @@ The project will be based on the following models:
     - `label:string`,
     - `description:text`,
     - `fee:decimal{10,2}` (_i.e._ default fee),
+    - `category:string`,
     - `status:string` (active or archived).
   - Minimal associations:
     - User (many-to-many),
     - Contact (_i.e._ parties involved, many-to-many),
-    - TimeEntry (one-to-many).
+    - TimeEntry (one-to-many),
+    - Deadline.
+- **ProjectCategory**
+  - Minimal attributes:
+    - `label:string`,
+    - `color:text`.
+  - Minimal associations:
+    - Project (one-to-many)
 - **TimeEntry** (_i.e._ the unit for timesheets)
   - Minimal attributes:
     - `label:string`,
@@ -125,7 +134,80 @@ The project will be based on the following models:
     - `category:string`,
     - `date:date`.
   - Minimal associations:
-    - User (many-to-many).
+    - Project (many-to-many).
+
+## User access levels
+
+The following roles will be available:
+- Admin
+- Partner
+- Associate
+- Intern
+- Assistant
+
+### Users
+
+| Action  | Admin | Partner | Associate | Intern | Assistant |
+|---------|-------|---------|-----------|--------|-----------|
+| index   | x     | x       | x         |        | x         |
+| show    | x     | x       | x         | (1)    | x         |
+| new     | x     | x       |           |        | x         |
+| edit    | x     | x       | (1)       | (1)    | x         |
+| create  | x     |         |           |        | x         |
+| update  | x     | x       | (1)       | (1)    | x         |
+| destroy | x     |         |           |        |           |
+
+(1) restricted to self
+
+### Contacts
+
+| Action  | Admin | Partner | Associate | Intern | Assistant |
+|---------|-------|---------|-----------|--------|-----------|
+| index   | x     | x       | x         | x      | x         |
+| show    | x     | x       | x         | x      | x         |
+| new     | x     | x       | x         | x      | x         |
+| edit    | x     | x       | x         | x      | x         |
+| create  | x     | x       | x         | x      | x         |
+| update  | x     | x       |           |        | x         |
+| destroy | x     | x       |           |        | x         |
+
+### Projects
+
+| Action  | Admin | Partner | Associate | Intern | Assistant |
+|---------|-------|---------|-----------|--------|-----------|
+| index   | x     | x       | x         | x      | x         |
+| show    | x     | x       | x         | x      | x         |
+| new     | x     | x       | x         |        | x         |
+| edit    | x     | x       | x         |        | x         |
+| create  | x     | x       | x         |        | x         |
+| update  | x     | x       | x         |        | x         |
+| destroy | x     | x       |           |        | x         |
+
+### Activities
+
+| Action  | Admin | Partner | Associate | Intern | Assistant |
+|---------|-------|---------|-----------|--------|-----------|
+| index   | x     | x       | x         | x      | x         |
+| show    | n/a   | n/a     | n/a       | n/a    | n/a       |
+| new     | x     | x       | x         | x      | x         |
+| edit    | n/a   | n/a     | n/a       | n/a    | n/a       |
+| create  | x     | x       | x         | x      | x         |
+| update  | x     | x       | x         | (1)    | x         |
+| destroy | x     | x       | x         | (1)    | x         |
+
+(1) restricted to own entries
+
+### Deadlines
+
+| Action  | Admin | Partner | Associate | Intern | Assistant |
+|---------|-------|---------|-----------|--------|-----------|
+| index   | x     | x       | x         | x      | x         |
+| show    | n/a   | n/a     | n/a       | n/a    | n/a       |
+| new     | x     | x       | x         | x      | x         |
+| edit    | n/a   | n/a     | n/a       | n/a    | n/a       |
+| create  | x     | x       | x         | x      | x         |
+| update  | x     | x       | x         |        | x         |
+| destroy | x     | x       | x         |        | x         |
 
 ## Third party services
 
