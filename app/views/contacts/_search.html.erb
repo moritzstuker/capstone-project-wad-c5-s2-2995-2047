@@ -1,8 +1,0 @@
-<%= form_tag contacts_path, method: :get, class: 'field has-addons' do %>
-<div class="control">
-  <%= text_field_tag :search, params[:search], class: 'input', placeholder: "Find a contact" %>
-</div>
-<div class="control">
-  <%= submit_tag 'Search', class: 'button' %>
-</div>
-<% end %>
