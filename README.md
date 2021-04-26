@@ -88,7 +88,7 @@ Projects#index
 Project#show
 
 ![project#show_with_account](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/project%23show_with_account.png)
-Project#show with account
+Project#show (with account overlay)
 
 ![contacts#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/contacts%23index.png)
 Contacts#index
