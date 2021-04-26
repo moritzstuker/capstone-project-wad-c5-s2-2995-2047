@@ -1,5 +1,9 @@
 # Codex
 
+The intuitive toolkit for lawyers.
+
+## Table of content
+
 - [Project overview](#project-overview)
 - [Application purpose](#application-purpose)
 - [Front end](#front-end)
