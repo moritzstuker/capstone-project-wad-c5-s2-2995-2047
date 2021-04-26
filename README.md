@@ -65,7 +65,7 @@ Examples include:
 
 I intend to use the [Tailwind CSS 2.1.0](https://tailwindcss.com) framework for all my front-end needs, backed up by [AlpineJS](https://github.com/alpinejs/alpine).
 
-In order to [use Tailwind fully](https://tailwindcss.com/docs/installation), it needs to be loaded as a [PostCSS](https://postcss.org) plugin, which is included in [Webpack](https://webpack.js.org), [which does not come activated by default in rails 5.1.7](https://samuelmullen.com/articles/embracing-change-rails51-adopts-yarn-webpack-and-the-js-ecosystem/). So this will have to be implemented first.
+In order to [use Tailwind fully](https://tailwindcss.com/docs/installation#installing-tailwind-css-as-a-post-css-plugin), it needs to be loaded as a [PostCSS](https://postcss.org) plugin, which is included in [Webpack](https://webpack.js.org), [which does not come activated by default in rails 5.1.7](https://samuelmullen.com/articles/embracing-change-rails51-adopts-yarn-webpack-and-the-js-ecosystem/). So this will have to be implemented first.
 
 If, for some unforeseen reason, Tailwind CSS does not satisfy the needs, I will resort to the more traditional CSS Framework [Bulma](https://bulma.io), which does not need any additional tool such as Webpack. One of these reasons is the fact that I own an Apple Silicon-based MacBook Air, on which [Webpack is having issues](https://github.com/rails/webpacker/issues/2992#issuecomment-827002178).
 
