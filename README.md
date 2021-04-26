@@ -1,6 +1,10 @@
 # Codex
 
 - [Project overview](#project-overview)
+- [Application purpose](#application-purpose)
+- [Front end](#front-end)
+- [Data structures and models](#data-structures-and-models)
+- [Third party services](#third-party-services)
 
 ## Project overview
 
