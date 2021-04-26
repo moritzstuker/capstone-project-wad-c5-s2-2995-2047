@@ -45,7 +45,6 @@ These overview pages are to include the following:
   - active cases
   - total hours (per day/month/year)
   - the ability to edit their infos within their respective access level
-  - the ability to print an invoice
 - **Contact** (i.e. "Client/Adversary"), including at least:
   - overview of linked timesheet
   - overview of linked cases
@@ -214,7 +213,6 @@ The following roles will be available:
 Include a list of all third party services that you envisage using in your project. For each one, indicate what they will be used for. These include:
 
 * Ruby gems or JavaScript libraries outside of those bundled with Ruby on Rails by default.
-  - [Pixelpress](https://github.com/nerdgeschoss/pixelpress) (or equivalent) to generate PDFs (for invoices);
   - [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) for user avatars;
   - [Kaminari](https://github.com/kaminari/kaminari) for pagination;
   - [Faker](https://github.com/faker-ruby/faker) to generate realistic seed data;
