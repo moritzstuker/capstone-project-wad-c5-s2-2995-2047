@@ -70,6 +70,19 @@ In order to [use Tailwind fully](https://tailwindcss.com/docs/installation#insta
 
 If, for some unforeseen reason, Tailwind CSS does not satisfy the needs, I will resort to the more traditional CSS Framework [Bulma](https://bulma.io), which does not need any additional tool such as Webpack. One of these reasons is the fact that I own an Apple Silicon-based MacBook Air, on which [Webpack is having issues](https://github.com/rails/webpacker/issues/2992#issuecomment-827002178).
 
+### Mock ups
+
+![projects#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/projects%23index.png)
+![account#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/account%23show.png)
+![contacts#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/contacts%23index.png)
+![dashboard#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/dashboard%23show.png)
+![deadlines#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/deadlines%23index.png)
+![home#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/home%23index.png)
+![project#show_with_account](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/project%23show_with_account.png)
+![project#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/project%23show.png)
+
+![alt text](http://url/to/img.png)
+
 ## Data structures and models
 
 The project will be based on the following models:
