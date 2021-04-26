@@ -43,6 +43,7 @@ These overview pages are to include the following:
   - active cases
   - total hours (per day/month/year)
   - the ability to edit their infos within their respective access level
+  - the ability to print an invoice
 - **Contact** (i.e. "Client/Adversary"), including at least:
   - overview of linked timesheet
   - overview of linked cases
