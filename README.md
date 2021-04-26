@@ -30,7 +30,7 @@ The project's main features include:
 - a personal overview page with total billed hours
 
 These overview pages are to include the following:
-- Project (i.e. "Case") overview, including at least:
+- **Project** (i.e. "Case") overview, including at least:
   - parties' addresses and roles
   - case description
   - total number of hours spent
@@ -39,11 +39,11 @@ These overview pages are to include the following:
   - employees working on the case
   - links to case timesheet, deadlines, etc.
   - whether the case is active or archived
-- User (i.e. "Employee") overview, including at least:
+- **User** (i.e. "Employee") overview, including at least:
   - active cases
   - total hours (per day/month/year)
   - the ability to edit their infos within their respective access level
-- Contact (i.e. "Client/Adversary"), including at least:
+- **Contact** (i.e. "Client/Adversary"), including at least:
   - overview of linked timesheet
   - overview of linked cases
 
@@ -72,20 +72,59 @@ If, for some unforeseen reason, Tailwind CSS does not satisfy the needs, I will 
 
 The project will be based on the following models:
 - **User** (_i.e._ an employee of the firm)
-  - Minimal attributes: `login:string`, `password:string`, `avatar:string`, `role:string`
-  - Minimal associations: Contact (_i.e._ user's own contact information, one-to-one), Project (many-to-many), TimeEntry (one-to-many), Deadline (many-to-many).
+  - Minimal attributes:
+    - `login:string`,
+    - `password:string`,
+    - `avatar:string`,
+    - `role:string`
+  - Minimal associations:
+    - Contact (_i.e._ user's own contact information, one-to-one),
+    - Project (many-to-many),
+    - TimeEntry (one-to-many),
+    - Deadline (many-to-many).
 - **Contact** (_i.e._ a client or an adversary)
-  - Minimal attributes: `prefix:string`, `first_name:string`, `last_name:string`, `suffix:string`, `address:text` (serialized hash), `phone:string`, `email:string`, `birthday:date`, `profession:string`, `role:string` (client, adversary, employee, other), `personality:string` (legal, natural), `notes:text`.
-  - Minimal associations: User (_i.e._ user's own contact information, one-to-one), Project (many-to-many).
+  - Minimal attributes:
+    - `prefix:string`,
+    - `first_name:string`,
+    - `last_name:string`,
+    - `suffix:string`,
+    - `address:text` (serialized hash),
+    - `phone:string`,
+    - `email:string`,
+    - `birthday:date`,
+    - `profession:string`,
+    - `role:string` (client, adversary, employee, other),
+    - `personality:string` (legal, natural),
+    - `notes:text`.
+  - Minimal associations:
+    - User (_i.e._ user's own contact information, one-to-one),
+    - Project (many-to-many).
 - **Project** (_i.e._ a case)
-  - Minimal attributes: `label:string`, `description:text`, `fee:decimal{10,2}` (_i.e._ default fee), `status:string` (active or archived).
-  - Minimal associations: User (many-to-many), Contact (_i.e._ parties involved, many-to-many), TimeEntry (one-to-many).
+  - Minimal attributes:
+    - `label:string`,
+    - `description:text`,
+    - `fee:decimal{10,2}` (_i.e._ default fee),
+    - `status:string` (active or archived).
+  - Minimal associations:
+    - User (many-to-many),
+    - Contact (_i.e._ parties involved, many-to-many),
+    - TimeEntry (one-to-many).
 - **TimeEntry** (_i.e._ the unit for timesheets)
-  - Minimal attributes: `label:string`, `category:string`, `time:decimal{10,2}` (NOT time/DateTime/..., I just want it to be "0.20", "1.45", etc.), `date:date`.
-  - Minimal associations: User (many-to-one), Project (many-to-one).
+  - Minimal attributes:
+    - `label:string`,
+    - `category:string`,
+    - `time:decimal{10,2}` (NOT time/DateTime/..., I just want it to be "0.20", "1.45", etc.),
+    - `date:date`.
+  - Minimal associations:
+    - User (many-to-one),
+    - Project (many-to-one).
 - **Deadline** (_i.e._ similar to a to-do list)
-  - Minimal attributes: `label:string`, `category:string`, `date:date`.
-  - Minimal associations: User (many-to-many).
+  - Minimal attributes:
+    - `label:string`,
+    - `category:string`,
+    - `date:date`.
+  - Minimal associations:
+    - User (many-to-many).
 
 ## Third party services
 
