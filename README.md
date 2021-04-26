@@ -88,7 +88,7 @@ The project will be based on the following models:
     - `first_name:string`,
     - `last_name:string`,
     - `suffix:string`,
-    - `address:text` (serialized hash),
+    - `address:text` ([serialized hash](https://api.rubyonrails.org/classes/ActiveRecord/AttributeMethods/Serialization/ClassMethods.html#method-i-serialize)),
     - `phone:string`,
     - `email:string`,
     - `birthday:date`,
@@ -135,10 +135,10 @@ Include a list of all third party services that you envisage using in your proje
   - [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) for user avatars;
   - [Kaminari](https://github.com/kaminari/kaminari) for pagination;
   - [Faker](https://github.com/faker-ruby/faker) to generate realistic seed data;
-  - [figaro](https://rubygems.org/gems/figaro), Heroku-friendly Rails app configuration;
-  - [fog-aws](https://rubygems.org/gems/fog-aws), module for fog or as standalone provider to use the Amazon S3;
-  - [pg](https://rubygems.org/gems/pg), ruby interface for PostgreSQL;
-  - [redcarpet](https://rubygems.org/gems/redcarpet), for richer texts (parses markdown to html).
+  - [Figaro](https://rubygems.org/gems/figaro), Heroku-friendly Rails app configuration;
+  - [Fog-aws](https://rubygems.org/gems/fog-aws), module for fog or as standalone provider to use the Amazon S3;
+  - [PG](https://rubygems.org/gems/pg), ruby interface for PostgreSQL;
+  - [Redcarpet](https://rubygems.org/gems/redcarpet), for richer texts (parses markdown to html).
 * CSS frameworks
   - [Tailwind CSS](https://tailwindcss.com) for all my front-end needs.
 * Third party APIs
