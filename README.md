@@ -141,7 +141,7 @@ The project will be based on the following models:
 - **ProjectCategory**
   - Minimal attributes:
     - `label:string`,
-    - `color:text`.
+    - `color:string`.
   - Minimal associations:
     - Project (one-to-many)
 - **TimeEntry** (_i.e._ the unit for timesheets)
