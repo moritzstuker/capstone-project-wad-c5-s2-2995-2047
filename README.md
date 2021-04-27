@@ -72,28 +72,28 @@ If, for some unforeseen reason, Tailwind CSS does not satisfy the needs, I will 
 
 ### Mock ups
 
-![home#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/home%23index.png)
+![home#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/home%23index.png)
 Home#index
 
-![dashboard#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/dashboard%23show.png)
+![dashboard#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/dashboard%23show.png)
 Dashboard#show
 
-![account#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/account%23show.png)
+![account#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/account%23show.png)
 Account#show
 
-![projects#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/projects%23index.png)
+![projects#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/projects%23index.png)
 Projects#index
 
-![project#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/project%23show.png)
+![project#show](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/project%23show.png)
 Project#show
 
-![project#show_with_account](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/project%23show_with_account.png)
+![project#show_with_account](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/project%23show_with_account.png)
 Project#show (with account overlay)
 
-![contacts#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/contacts%23index.png)
+![contacts#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/contacts%23index.png)
 Contacts#index
 
-![deadlines#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/deadlines%23index.png)
+![deadlines#index](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/raw/master/mockup/deadlines%23index.png)
 Deadlines#index
 
 ## Data structures and models
