@@ -6,6 +6,11 @@
 $text-color-primary: #adbac7;
 $text-color-link: #539bf5;
 $bg-color-primary: #22272e;
+$bg-color-secondary: #2d333b;
+$button-color-base: #373e47;
+$button-color-hover: #444c56;
+$button-color-border-hover: #768390;
+
 
 // –– Font ––––––––––––––––––––––––––––––––––––––––––
 
@@ -19,9 +24,11 @@ $base-font: $base-font-style $base-font-variant $base-font-weight #{$base-font-s
 
 $bold-font-weight: 600;
 
+$small-font-size: 1.2rem;
+
 // –– Borders –––––––––––––––––––––––––––––––––––––––
 
-$border-color: #444c56;
+$border-color: $button-color-hover;
 $border-width: .1rem;
 $border-radius: .6rem;
 $border-base: $border-width solid $border-color;
@@ -37,8 +44,8 @@ $block-width-l: 992px;
 
 // –– Transitions –––––––––––––––––––––––––––––––––––
 
-$transition-delay: .125s;
-$transition: ease $transition-delay;
+$transition-duration: .1s;
+$transition: ease $transition-duration;
 
 // –– Mixins ––––––––––––––––––––––––––––––––––––––––
 

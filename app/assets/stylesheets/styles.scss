@@ -31,36 +31,31 @@ body {
   letter-spacing: .0125em;
   margin: 0;
   text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
-dd,
-dt,
-figcaption,
-li {
-  margin: 0;
+ul[class],
+ol[class] {
+  padding: 0;
+  list-style: none;
 }
 
-h1 {
-  margin: 0 0 $vr;
-}
-
-p,
+body,
+h1,
 h2,
 h3,
 h4,
-h5,
-h6,
-dl,
-ol,
-ul, // purposely not sorted alphebetically: I prefer the clarity of sorting list types together.
-blockquote,
+p,
+ul[class],
+ol[class],
+li,
 figure,
-table {
-  margin: $vr 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
 }
 
 h1,
@@ -82,11 +77,14 @@ a {
   color: $text-color-link;
   border-bottom: $border-width solid transparent; // 'transparent' so that there's always a border, even when not hovered, which prevents nudgeing.
   text-decoration: none;
-  text-decoration-skip-ink: auto;
 
   &:active,
   &:hover {
     border-bottom-color: $text-color-link;
+  }
+
+  &:not([class]) {
+    text-decoration-skip-ink: auto;
   }
 }
 
@@ -94,12 +92,6 @@ b,
 strong,
 th {
   font-weight: $bold-font-weight;
-}
-
-ol,
-ul {
-  list-style: none;
-  padding-left: 0;
 }
 
 hr {
@@ -115,9 +107,8 @@ picture {
 }
 
 svg {
-  fill: currentColor;
   display: inline-block;
-  height: 1em;
+  height: 1.6em;
   width: auto;
 }
 
@@ -133,21 +124,106 @@ select {
 
 // –– Individual styles –––––––––––––––––––––––––––––
 
+.site-logo {
+  height: 3em;
+  transition: $transition-duration cubic-bezier(.3,0,.5,1);
+  transition-property: transform, color;
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    transform: rotate(60deg);
+    color: #5889d6;
+  }
+}
+
+.navbar {
+  background-color: $bg-color-secondary;
+  padding: $gutter;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dot-label {
+  display: inline-block;
+  font-size: $small-font-size;
+  color: $button-color-border-hover;
+
+  & > .dot {
+    position: relative;
+    top: .15em;
+    display: inline-block;
+    margin-right: .25em;
+    width: 1em;
+    height: 1em;
+    border: $border-width solid rgba(205, 217, 229, 0.2);
+    border-radius: 50%;
+  }
+}
+
+.button {
+  background-color: $button-color-base;
+  display: inline-block;
+  padding: ($gutter / 4) $gutter;
+  font-weight: $bold-font-weight;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $border-width solid $button-color-hover;
+  border-radius: $border-radius;
+  appearance: none;
+  transition: $transition-duration cubic-bezier(.3,0,.5,1);
+  transition-property: background-color,border-color;
+
+  &:hover,
+  &:active {
+    background-color: $button-color-hover;
+    border-color: $button-color-border-hover;
+  }
+}
+
+.icon {
+
+}
+
 .box {
   border-radius: $border-radius;
   border: $border-base;
+  margin: $gutter 0;
 
   *:last-child {
     margin-bottom: 0;
   }
 
-  &-header,
-  &-content {
+  &-header {
     padding: $gutter;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  &-header {
-    border-bottom: $border-base;
+  &-content {
+    border-top: $border-base;
+    padding: ($gutter / 2) $gutter;
+  }
+
+  ul.box-content {
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+
+    li {
+      padding: ($gutter / 2) $gutter;
+      border-top: $border-base;
+      transition: background-color $transition;
+
+      &:active,
+      &:hover {
+        background-color: $bg-color-secondary;
+      }
+    }
   }
 }
 
