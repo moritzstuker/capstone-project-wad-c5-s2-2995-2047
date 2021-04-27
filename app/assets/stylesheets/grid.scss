@@ -1,0 +1,11 @@
+// –– Grid ––––––––––––––––––––––––––––––––––––––––––
+
+.container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $gutter;
+  max-width: $block-width-l;
+  padding: 0 $gutter;
+  width: 100%;
+}

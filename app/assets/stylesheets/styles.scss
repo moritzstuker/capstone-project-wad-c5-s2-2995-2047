@@ -1,0 +1,167 @@
+// –– Generic styles ––––––––––––––––––––––––––––––––
+// i.e. styles applied to generic tags
+// see https://dev.to/hankchizljaw/a-modern-css-reset-6p3 for normalization inspiration
+
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-kerning: normal;
+  -ms-font-feature-settings: "lnum" 1, "kern" 1, "liga" 1;
+  -o-font-feature-settings: "lnum" 1, "kern" 1, "liga" 1;
+  background-color: $bg-color-primary;
+  color: $text-color-primary;
+  font: $base-font;
+  font-feature-settings: "lnum" 1, "kern" 1, "liga" 1;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  letter-spacing: .0125em;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+
+dd,
+dt,
+figcaption,
+li {
+  margin: 0;
+}
+
+h1 {
+  margin: 0 0 $vr;
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+ol,
+ul, // purposely not sorted alphebetically: I prefer the clarity of sorting list types together.
+blockquote,
+figure,
+table {
+  margin: $vr 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dt {
+  font-size: inherit;
+  font-weight: $bold-font-weight;
+  letter-spacing: .045em;
+  line-height: inherit;
+  text-transform: uppercase;
+}
+
+a {
+  background-color: transparent;
+  color: $text-color-link;
+  border-bottom: $border-width solid transparent; // 'transparent' so that there's always a border, even when not hovered, which prevents nudgeing.
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+
+  &:active,
+  &:hover {
+    border-bottom-color: $text-color-link;
+  }
+}
+
+b,
+strong,
+th {
+  font-weight: $bold-font-weight;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible
+}
+
+img,
+picture {
+  display: block;
+  width: 100%;
+}
+
+svg {
+  fill: currentColor;
+  display: inline-block;
+  height: 1em;
+  width: auto;
+}
+
+address,
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@import 'grid';
+
+// –– Individual styles –––––––––––––––––––––––––––––
+
+.box {
+  border-radius: $border-radius;
+  border: $border-base;
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+
+  &-header,
+  &-content {
+    padding: $gutter;
+  }
+
+  &-header {
+    border-bottom: $border-base;
+  }
+}
+
+// –– Finals ––––––––––––––––––––––––––––––––––––––––
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
