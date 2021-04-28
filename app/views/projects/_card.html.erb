@@ -1,15 +1,18 @@
 <div class="card">
   <div class="card-header">
     <a href="#"><%= project.label %></a>
+    <% if project.status == 'inactive' %>
+      <span class="label">inactive</span>
+    <% end %>
   </div>
   <div class="card-content">
+    <p><%= project.parties.where(role: 'client').first.combine(:name) %><%= (project.parties.where(role: 'adversary').count > 0) ? " v. #{project.parties.where(role: 'adversary').first.combine(:name)}" : "" %></p>
     <p><%= project.description %></p>
   </div>
   <div class="card-footer">
     <span class="dot-label">
-      <span class="dot"></span>
-      <span></span>
+      <span class="dot" style="background-color: <%= project.category.color %>"></span>
+      <span><%= project.category.label %></span>
     </span>
-    <span class="keys">Party in two cases.</span>
   </div>
 </div>

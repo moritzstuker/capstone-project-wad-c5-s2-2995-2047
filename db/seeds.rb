@@ -9,7 +9,7 @@
 
 # Create contacts
 puts "   Creating contacts..."
-rand(456...789).times do
+rand(350...500).times do
   personality = Contact::PERSONALITIES.sample
   Contact.create!(
     prefix: personality == "natural" ? ["M.", "Mme"].sample : nil,
@@ -57,6 +57,33 @@ User.all.each_with_index do |user, i|
 end
 
 
+project_categories = {
+  'Bankruptcy law'        => '#22272e', # dark grey
+  'Civil law'             => '#4184e4', # light blue
+  'Corporate law'         => '#143d79', # dark blue
+  'Criminal law'          => '#922323', # red
+  'Data protection'       => '#545d68', # light grey
+  'Immigration law'       => '#1b4721', # green
+  'Intellectual property' => '#ae7c14', # yellow
+  'Labor law'             => '#ae5622'  # orange
+}.each do |label, color|
+  ProjectCategory.create!(
+    label: label,
+    color: color
+  )
+end
 
+
+rand(501...750).times do
+  Project.create!(
+    label: Faker::Hipster.unique.sentence(word_count: 3),
+    description: [Faker::Hipster.paragraph, nil].sample,
+    fee: [180, 250, 300, 330, 350, 400].sample,
+    status: ["active", "inactive"].sample,
+    category: ProjectCategory.all.sample,
+    parties: Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3))
+  )
+end
+puts "✓  Created #{Project.all.count} cases."
 
 puts "✓  Done, good to go!"

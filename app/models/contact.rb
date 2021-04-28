@@ -22,6 +22,7 @@ class Contact < ApplicationRecord
   }
 
   has_one :user
+  has_and_belongs_to_many :projects
 
   scope :first_name_contains, -> (str) { where('first_name LIKE ?', "%#{str}%") }
   scope :last_name_contains,  -> (str) { where('last_name LIKE ?', "%#{str}%") }
