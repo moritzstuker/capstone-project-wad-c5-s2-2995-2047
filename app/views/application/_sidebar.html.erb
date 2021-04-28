@@ -1,0 +1,11 @@
+<nav class="sidebar">
+  <ul>
+    <% ApplicationController::SIDEBAR_PAGES.each do |key, label| %>
+      <% if current_page?(eval("#{key}_path")) %>
+        <li class="is-active"><span><%= label %><span><%= page_items(key).count %></span></span></li>
+      <% else %>
+        <li><%= link_to label, eval("#{key}_path") %><span><%= page_items(key).count %></span></li>
+      <% end %>
+    <% end %>
+  </ul>
+</nav>
