@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   include SessionHelper
 
+  SIDEBAR_PAGES = {
+    projects: 'Cases',
+    contacts: 'Contacts',
+    deadlines: 'Deadlines',
+    activities: 'Timesheets'
+  }
+
   protect_from_forgery with: :exception
   add_flash_types :info, :success, :danger
   helper_method :current_user, :logged_in?
