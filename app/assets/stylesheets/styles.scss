@@ -108,8 +108,10 @@ picture {
 
 svg {
   display: inline-block;
-  height: 1.6em;
+  height: 1em;
   width: auto;
+  fill: none;
+  stroke: currentColor;
 }
 
 address,
@@ -145,10 +147,14 @@ select {
   align-items: center;
 }
 
+.icon {
+  height: 1.4em;
+}
+
 .dot-label {
   display: inline-block;
   font-size: $small-font-size;
-  color: $button-color-border-hover;
+  color: $grey-lightest;
 
   & > .dot {
     position: relative;
@@ -162,8 +168,28 @@ select {
   }
 }
 
+.keys {
+  display: inline-block;
+  font-size: $small-font-size;
+  color: $grey-lightest;
+}
+
+.card {
+  &-header {
+
+  }
+
+  &-footer {
+    margin-top: ($gutter / 2);
+
+    & > * + * {
+      margin-left: $vr;
+    }
+  }
+}
+
 .button {
-  background-color: $button-color-base;
+  background-color: $grey;
   display: inline-block;
   padding: ($gutter / 4) $gutter;
   font-weight: $bold-font-weight;
@@ -171,7 +197,7 @@ select {
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  border: $border-width solid $button-color-hover;
+  border: $border-width solid $grey-light;
   border-radius: $border-radius;
   appearance: none;
   transition: $transition-duration cubic-bezier(.3,0,.5,1);
@@ -179,8 +205,8 @@ select {
 
   &:hover,
   &:active {
-    background-color: $button-color-hover;
-    border-color: $button-color-border-hover;
+    background-color: $grey-light;
+    border-color: $grey-lightest;
   }
 }
 
@@ -189,9 +215,9 @@ select {
 }
 
 .box {
+  margin: $gutter 0;
   border-radius: $border-radius;
   border: $border-base;
-  margin: $gutter 0;
 
   *:last-child {
     margin-bottom: 0;
@@ -199,13 +225,19 @@ select {
 
   &-header {
     padding: $gutter;
+    margin-bottom: ($border-width * -1); // this is to compensate the border-bottom of 1px
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: $bg-color-primary;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    border-bottom: $border-base;
   }
 
   &-content {
-    border-top: $border-base;
     padding: ($gutter / 2) $gutter;
   }
 
@@ -223,6 +255,10 @@ select {
       &:hover {
         background-color: $bg-color-secondary;
       }
+    }
+
+    *:first-child {
+      border-top: 0;
     }
   }
 }
