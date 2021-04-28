@@ -22,6 +22,8 @@ body {
   -webkit-font-kerning: normal;
   -ms-font-feature-settings: "lnum" 1, "kern" 1, "liga" 1;
   -o-font-feature-settings: "lnum" 1, "kern" 1, "liga" 1;
+  min-height: 100vh;
+  margin: 0;
   background-color: $bg-color-primary;
   color: $text-color-primary;
   font: $base-font;
@@ -29,9 +31,7 @@ body {
   font-kerning: normal;
   font-variant-ligatures: common-ligatures;
   letter-spacing: .0125em;
-  margin: 0;
   text-rendering: optimizeLegibility;
-  min-height: 100vh;
 }
 
 @supports (font-variation-settings: normal) {
@@ -78,16 +78,12 @@ dt {
 a {
   background-color: transparent;
   color: $text-color-link;
-  border-bottom: $border-width solid transparent; // 'transparent' so that there's always a border, even when not hovered, which prevents nudgeing.
   text-decoration: none;
+  text-decoration-skip-ink: auto;
 
   &:active,
   &:hover {
-    border-bottom-color: $text-color-link;
-  }
-
-  &:not([class]) {
-    text-decoration-skip-ink: auto;
+    text-decoration: underline;
   }
 }
 
@@ -110,11 +106,11 @@ picture {
 }
 
 svg {
-  display: inline-block;
-  height: 1em;
-  width: auto;
   fill: none;
   stroke: currentColor;
+  display: inline-block;
+  width: auto;
+  height: 1em;
 }
 
 address,
@@ -131,9 +127,9 @@ select {
 
 .site-logo {
   height: 3em;
+  cursor: pointer;
   transition: $transition-duration cubic-bezier(.3,0,.5,1);
   transition-property: transform, color;
-  cursor: pointer;
 
   &:active,
   &:hover {
@@ -143,11 +139,11 @@ select {
 }
 
 .navbar {
-  background-color: $bg-color-secondary;
-  padding: $gutter;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: $gutter;
+  background-color: $bg-color-secondary;
 }
 
 .icon {
@@ -156,16 +152,17 @@ select {
 
 .dot-label {
   display: inline-block;
-  font-size: $small-font-size;
   color: $text-color-secondary;
+  font-size: $small-font-size;
 
   & > .dot {
+    display: inline-block;
+    z-index: 1;
     position: relative;
     top: .15em;
-    display: inline-block;
-    margin-right: .25em;
     width: 1em;
     height: 1em;
+    margin-right: .25em;
     border: $border-width solid rgba(205, 217, 229, 0.2);
     border-radius: 50%;
   }
@@ -173,8 +170,8 @@ select {
 
 .keys {
   display: inline-block;
-  font-size: $small-font-size;
   color: $text-color-secondary;
+  font-size: $small-font-size;
 }
 
 .card {
@@ -196,52 +193,51 @@ select {
 }
 
 .button {
-  background-color: $button-bg-primary;
+  appearance: none;
   display: inline-block;
   padding: ($gutter / 4) $gutter;
-  font-weight: $bold-font-weight;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
   border: $border-width solid $grey-600;
   border-radius: $border-radius;
-  appearance: none;
+  background-color: $button-bg-primary;
+  font-weight: $bold-font-weight;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
   transition: $transition-duration cubic-bezier(.3,0,.5,1);
   transition-property: background-color,border-color;
+  user-select: none;
 
   &:hover,
   &:active {
-    background-color: $grey-600;
     border-color: $grey-300;
+    background-color: $grey-600;
   }
 }
 
-.icon {
-
-}
-
 .box {
+  -webkit-mask:linear-gradient(#fff 0 0);
   margin: $gutter 0;
-  border-radius: $border-radius;
+  overflow: clip;
   border: $border-base;
+  border-radius: $border-radius;
+  mask:linear-gradient(#fff 0 0);
 
   & > *:last-child {
     margin-bottom: 0;
   }
 
   &-header {
-    padding: $gutter;
-    margin-bottom: ($border-width * -1); // this is to compensate the border-bottom of 1px
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: sticky;
     top: 0;
-    background-color: $bg-color-secondary;
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: ($border-width * -1); // this is to compensate the border-bottom of 1px
+    padding: $gutter;
     border-bottom: $border-base;
+    border-top-right-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+    background-color: $bg-color-secondary;
 
     & > * {
       margin-right: $gutter;
@@ -267,7 +263,6 @@ select {
 
     li {
       padding: ($gutter / 2) $gutter;
-      border-top: $border-base;
       transition: background-color $transition;
 
       &:active,
@@ -276,8 +271,8 @@ select {
       }
     }
 
-    & > *:first-child {
-      border-top: 0;
+    li + li {
+      border-top: $border-base;
     }
   }
 }
@@ -298,6 +293,54 @@ select {
   &-other {
     background-color: $yellow;
   }
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  flex: 0 0 25%;
+  margin: $gutter 0;
+  overflow: hidden;
+  border: $border-base;
+  border-radius: $border-radius;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li:not(.is-active) {
+    display: flex;
+    justify-content: space-between;
+    padding: ($gutter / 2) $gutter;
+    transition: background-color $transition;
+
+    &:active,
+    &:hover {
+      background-color: $bg-color-secondary;
+    }
+  }
+
+  li + li {
+    border-top: $border-base;
+  }
+
+  .is-active {
+    background-color: $bg-color-secondary;
+
+    & > span {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: ($gutter / 2) $gutter ($gutter / 2) calc(#{$gutter} - 2px);
+      border-left: 2px solid currentColor;
+    }
+  }
+}
+
+.main {
+  flex: 1 0 auto;
 }
 
 // –– Finals ––––––––––––––––––––––––––––––––––––––––
