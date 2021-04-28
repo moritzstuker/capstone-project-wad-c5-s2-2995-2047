@@ -32,7 +32,10 @@ body {
   margin: 0;
   text-rendering: optimizeLegibility;
   min-height: 100vh;
-  scroll-behavior: smooth;
+}
+
+@supports (font-variation-settings: normal) {
+  body { font-family: 'Inter var', $base-font-family; }
 }
 
 ul[class],
@@ -154,7 +157,7 @@ select {
 .dot-label {
   display: inline-block;
   font-size: $small-font-size;
-  color: $grey-lightest;
+  color: $text-color-secondary;
 
   & > .dot {
     position: relative;
@@ -171,17 +174,21 @@ select {
 .keys {
   display: inline-block;
   font-size: $small-font-size;
-  color: $grey-lightest;
+  color: $text-color-secondary;
 }
 
 .card {
-  &-header {
+  margin: ($gutter / 2) 0;
 
+  &-header {
+    font-weight: 500;
+  }
+
+  &-content {
+    margin: ($gutter / 2) 0;
   }
 
   &-footer {
-    margin-top: ($gutter / 2);
-
     & > * + * {
       margin-left: $vr;
     }
@@ -189,7 +196,7 @@ select {
 }
 
 .button {
-  background-color: $grey;
+  background-color: $button-bg-primary;
   display: inline-block;
   padding: ($gutter / 4) $gutter;
   font-weight: $bold-font-weight;
@@ -197,7 +204,7 @@ select {
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  border: $border-width solid $grey-light;
+  border: $border-width solid $grey-600;
   border-radius: $border-radius;
   appearance: none;
   transition: $transition-duration cubic-bezier(.3,0,.5,1);
@@ -205,8 +212,8 @@ select {
 
   &:hover,
   &:active {
-    background-color: $grey-light;
-    border-color: $grey-lightest;
+    background-color: $grey-600;
+    border-color: $grey-300;
   }
 }
 
@@ -219,7 +226,7 @@ select {
   border-radius: $border-radius;
   border: $border-base;
 
-  *:last-child {
+  & > *:last-child {
     margin-bottom: 0;
   }
 
@@ -231,7 +238,7 @@ select {
     align-items: center;
     position: sticky;
     top: 0;
-    background-color: $bg-color-primary;
+    background-color: $bg-color-secondary;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     border-bottom: $border-base;
@@ -257,9 +264,27 @@ select {
       }
     }
 
-    *:first-child {
+    & > *:first-child {
       border-top: 0;
     }
+  }
+}
+
+.role {
+  &-client {
+    background-color: $green;
+  }
+
+  &-adversary {
+    background-color: $red;
+  }
+
+  &-employee {
+    background-color: $blue;
+  }
+
+  &-other {
+    background-color: $yellow;
   }
 }
 
