@@ -42,10 +42,6 @@ class Contact < ApplicationRecord
     eval('"' + FORMATS[:string][format] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
   end
 
-  def arrange(format = :name)
-    eval('"' + FORMATS[:order][format] + '"')
-  end
-
   private
 
   def default_values!
