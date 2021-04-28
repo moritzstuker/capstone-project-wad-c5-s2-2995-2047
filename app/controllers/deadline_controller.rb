@@ -1,2 +1,0 @@
-class DeadlineController < ApplicationController
-end
