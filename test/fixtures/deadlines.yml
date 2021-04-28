@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: MyString
+  category: MyString
+  date: 2021-04-28
+  project: one
+
+two:
+  label: MyString
+  category: MyString
+  date: 2021-04-28
+  project: two
