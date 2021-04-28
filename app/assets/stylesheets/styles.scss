@@ -214,6 +214,22 @@ select {
   }
 }
 
+.label {
+  appearance: none;
+  display: inline-block;
+  margin-left: 1em;
+  padding: 0 7px;
+  border: $border-width solid currentColor;
+  border-radius: 1em;
+  background-color: initial!important;
+  color: $text-color-secondary;
+  font-size: $small-font-size;
+  vertical-align: middle;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
 .box {
   -webkit-mask:linear-gradient(#fff 0 0);
   margin: $gutter 0;
@@ -340,7 +356,7 @@ select {
 }
 
 .main {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
 
 // –– Finals ––––––––––––––––––––––––––––––––––––––––
