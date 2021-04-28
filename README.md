@@ -108,7 +108,7 @@ The project will be based on the following models:
   - Minimal associations:
     - Contact (_i.e._ user's own contact information, one-to-one),
     - Project (many-to-many),
-    - TimeEntry (one-to-many).
+    - Activity (one-to-many).
 - **Contact** (_i.e._ a client or an adversary)
   - Minimal attributes:
     - `prefix:string`,
@@ -136,7 +136,7 @@ The project will be based on the following models:
   - Minimal associations:
     - User (many-to-many),
     - Contact (_i.e._ parties involved, many-to-many),
-    - TimeEntry (one-to-many),
+    - Activity (one-to-many),
     - Deadline.
 - **ProjectCategory**
   - Minimal attributes:
@@ -144,7 +144,7 @@ The project will be based on the following models:
     - `color:string`.
   - Minimal associations:
     - Project (one-to-many)
-- **TimeEntry** (_i.e._ the unit for timesheets)
+- **Activity** (_i.e._ the unit for timesheets)
   - Minimal attributes:
     - `label:string`,
     - `category:string`,
