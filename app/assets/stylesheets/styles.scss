@@ -242,6 +242,18 @@ select {
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     border-bottom: $border-base;
+
+    & > * {
+      margin-right: $gutter;
+
+      &:first-child {
+        margin-right: auto;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   &-content {
