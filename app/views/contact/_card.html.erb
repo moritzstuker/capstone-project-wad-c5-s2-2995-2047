@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <a href="#"><%= contact.combine(:long_name) %></a>
+  </div>
+  <div class="card-content">
+    <p><%= contact.combine(:address) %></p>
+  </div>
+  <div class="card-footer">
+    <span class="dot-label">
+      <span class="dot <%= "role-#{contact.role}" %>"></span>
+      <span><%= contact.role.titleize %></span>
+    </span>
+    <span class="keys">Party in two cases.</span>
+  </div>
+</div>
