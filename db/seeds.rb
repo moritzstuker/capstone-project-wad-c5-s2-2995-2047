@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "   Generating seed data... this will take some time."
 
 # Create contacts
-puts "   Creating contacts..."
 rand(350...500).times do
   personality = Contact::PERSONALITIES.sample
   Contact.create!(
@@ -75,13 +75,15 @@ end
 
 
 rand(501...750).times do
+  ref_no = ('A'..'Z').to_a.sample(2).join + (12..21).to_a.sample.to_s + "." + (000000..999999).to_a.sample.to_s + "-" + ('A'..'Z').to_a.sample(3).join
   Project.create!(
     label: Faker::Hipster.unique.sentence(word_count: 3),
     description: [Faker::Hipster.paragraph, nil].sample,
     fee: [180, 250, 300, 330, 350, 400].sample,
     status: ["active", "inactive"].sample,
     category: ProjectCategory.all.sample,
-    parties: Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3))
+    parties: Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3)),
+    reference: [ref_no.to_s, nil].sample
   )
 end
 puts "✓  Created #{Project.all.count} cases."

@@ -10,6 +10,8 @@
       <span class="dot <%= "role-#{contact.role}" %>"></span>
       <span><%= contact.role.titleize %></span>
     </span>
-    <span class="keys">Party in <%= pluralize(contact.projects.count, 'case') %>.</span>
+    <% if contact.projects.count > 0 %>
+      <span class="keys">Party in <%= pluralize(contact.projects.count, 'case') %>.</span>
+    <% end %>
   </div>
 </div>
