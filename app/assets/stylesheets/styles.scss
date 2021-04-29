@@ -134,7 +134,7 @@ select {
   &:active,
   &:hover {
     transform: rotate(60deg);
-    color: #5889d6;
+    color: $text-color-link;
   }
 }
 
@@ -172,6 +172,12 @@ select {
   display: inline-block;
   color: $text-color-secondary;
   font-size: $small-font-size;
+}
+
+.disambuguate {
+  -moz-font-feature-settings: 'ss01', 'ss02';
+  -webkit-font-feature-settings: 'ss01', 'ss02';
+  font-feature-settings: 'ss01' on, 'ss02' on;
 }
 
 .card {
