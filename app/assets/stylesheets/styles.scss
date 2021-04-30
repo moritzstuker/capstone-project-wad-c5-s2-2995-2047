@@ -184,7 +184,7 @@ select {
   margin: ($gutter / 2) 0;
 
   &-header {
-    font-weight: 500;
+    font-weight: $medium-font-weight;
   }
 
   &-content {
@@ -238,6 +238,7 @@ select {
 
 .box {
   -webkit-mask:linear-gradient(#fff 0 0);
+  flex: 1 0 auto;
   margin: $gutter 0;
   overflow: clip;
   border: $border-base;
@@ -363,6 +364,20 @@ select {
 
 .main {
   flex: 1 1 auto;
+}
+
+.counter {
+  display: inline-block;
+  min-width: $vr;
+  margin-left: .5em;
+  padding: 0 .6rem;
+  border-radius: 1em;
+  background-color: rgba($grey-300, 0.2);
+  color: $grey-200;
+  font-size: $small-font-size;
+  font-weight: $medium-font-weight;
+  line-height: $vr;
+  text-align: center;
 }
 
 // –– Finals ––––––––––––––––––––––––––––––––––––––––
