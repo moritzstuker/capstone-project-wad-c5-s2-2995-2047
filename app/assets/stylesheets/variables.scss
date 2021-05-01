@@ -40,11 +40,10 @@ $border-base: $border-width solid $border-color;
 // –– Spacing –––––––––––––––––––––––––––––––––––––––
 
 $vr: ($base-font-size * $base-line-height);
-$gutter: 1.6rem;
 
-$block-width-s: 520px;
-$block-width-m: 768px;
-$block-width-l: 992px;
+$block-width-s: 51.2rem;
+$block-width-m: 76.8rem;
+$block-width-l: 102.4rem;
 
 // –– Transitions –––––––––––––––––––––––––––––––––––
 
@@ -55,7 +54,7 @@ $transition: ease $transition-duration;
 
 @mixin media ($media) {
   @if $media == 's' {
-    @media (max-width: $block-width-s) {
+    @media (min-width: $block-width-s) {
       @content;
     }
   } @else if $media == 'm' {
