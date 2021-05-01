@@ -121,28 +121,46 @@ select {
   font: inherit;
 }
 
+::-moz-selection {
+  background: rgba($blue-400, .6);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgba($blue-400, .6);
+  text-shadow: none;
+}
+
 @import 'grid';
 
 // –– Individual styles –––––––––––––––––––––––––––––
 
 .site-logo {
-  height: 3em;
-  cursor: pointer;
-  transition: $transition-duration cubic-bezier(.3,0,.5,1);
-  transition-property: transform, color;
+  color: inherit;
 
   &:active,
   &:hover {
-    transform: rotate(60deg);
     color: $text-color-link;
+  }
+
+  svg {
+    display: block;
+    height: 3em;
+    transition: $transition-duration cubic-bezier(.3,0,.5,1);
+    transition-property: transform, color;
+
+    &:active,
+    &:hover {
+      transform: rotate(60deg);
+    }
   }
 }
 
-.navbar {
+.site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $gutter;
+  padding: ($vr / 2) $vr;
   background-color: $bg-color-secondary;
 }
 
@@ -181,14 +199,14 @@ select {
 }
 
 .card {
-  margin: ($gutter / 2) 0;
+  margin: ($vr / 2) 0;
 
   &-header {
     font-weight: $medium-font-weight;
   }
 
   &-content {
-    margin: ($gutter / 2) 0;
+    margin: ($vr / 2) 0;
   }
 
   &-footer {
@@ -201,7 +219,7 @@ select {
 .button {
   appearance: none;
   display: inline-block;
-  padding: ($gutter / 4) $gutter;
+  padding: ($vr / 4) $vr;
   border: $border-width solid $grey-600;
   border-radius: $border-radius;
   background-color: $button-bg-primary;
@@ -239,7 +257,7 @@ select {
 .box {
   -webkit-mask:linear-gradient(#fff 0 0);
   flex: 1 0 auto;
-  margin: $gutter 0;
+  margin: $vr 0;
   overflow: clip;
   border: $border-base;
   border-radius: $border-radius;
@@ -256,14 +274,14 @@ select {
     align-items: center;
     justify-content: space-between;
     margin-bottom: ($border-width * -1); // this is to compensate the border-bottom of 1px
-    padding: $gutter;
+    padding: $vr;
     border-bottom: $border-base;
     border-top-right-radius: $border-radius;
     border-top-left-radius: $border-radius;
     background-color: $bg-color-secondary;
 
     & > * {
-      margin-right: $gutter;
+      margin-right: $vr;
 
       &:first-child {
         margin-right: auto;
@@ -276,7 +294,7 @@ select {
   }
 
   &-content {
-    padding: ($gutter / 2) $gutter;
+    padding: ($vr / 2) $vr;
   }
 
   ul.box-content {
@@ -285,7 +303,7 @@ select {
     border: 0;
 
     li {
-      padding: ($gutter / 2) $gutter;
+      padding: ($vr / 2) $vr;
       transition: background-color $transition;
 
       &:active,
@@ -322,7 +340,7 @@ select {
   position: sticky;
   top: 0;
   flex: 0 0 25%;
-  margin: $gutter 0;
+  margin: $vr 0;
   overflow: hidden;
   border: $border-base;
   border-radius: $border-radius;
@@ -336,7 +354,7 @@ select {
   li:not(.is-active) {
     display: flex;
     justify-content: space-between;
-    padding: ($gutter / 2) $gutter;
+    padding: ($vr / 2) $vr;
     transition: background-color $transition;
 
     &:active,
@@ -356,7 +374,7 @@ select {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      padding: ($gutter / 2) $gutter ($gutter / 2) calc(#{$gutter} - 2px);
+      padding: ($vr / 2) $vr ($vr / 2) calc(#{$vr} - 2px);
       border-left: 2px solid currentColor;
     }
   }
