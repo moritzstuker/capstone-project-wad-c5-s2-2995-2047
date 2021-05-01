@@ -1,16 +1,39 @@
 // –– Grid ––––––––––––––––––––––––––––––––––––––––––
 
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: $gutter;
-  max-width: $block-width-l;
-  padding: 0 $gutter;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
+.g {
+  &-block {
+    display: flex;
+    flex-direction: column;
+    max-width: $block-width-l;
+    margin: 0 auto;
+    padding: 0 $vr;
+  }
 
-  & > * + * {
-    margin-left: $gutter;
+  &-fixed-width,
+  &-fluid-width {
+    margin-top: $vr;
+  }
+
+  @include media (m) {
+    &-block {
+      flex-direction: row;
+
+      & > * + * {
+       margin-left: $vr;
+     }
+    }
+
+    &-fixed-width,
+    &-fluid-width {
+      margin-top: $vr;
+    }
+
+    &-fixed-width {
+      flex: 0 0 24rem;
+    }
+
+    &-fluid-width {
+      flex: 1;
+    }
   }
 }
