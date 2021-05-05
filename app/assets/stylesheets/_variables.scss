@@ -31,7 +31,7 @@ $border-base:   $border-width solid $grey-600;
 
 $gutter: ($base-font-size * $base-line-height);
 
-$box-padding: ($gutter / 2) $gutter;
+$box-padding: ($gutter / 2) ($gutter / 1.5);
 
 $block-width-xs:  38.4rem;
 $block-width-s:   51.2rem;

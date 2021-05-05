@@ -20,7 +20,7 @@
     background-color: $background-color-secondary;
 
     & > * {
-      margin-left: $gutter;
+      margin-left: ($gutter / 2);
 
       &:first-child {
         margin-right: auto;
