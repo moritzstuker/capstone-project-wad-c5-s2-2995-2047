@@ -1,0 +1,130 @@
+// Inline elements
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+a {
+  background-color: transparent;
+  color: $text-color-highlight;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+b,
+strong {
+  font-weight: $bold-font-weight;
+}
+
+small {
+  font-size: $small-font-size;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: $small-font-size;
+  line-height: 0;
+  vertical-align: baseline
+}
+
+sub {
+  bottom: -.25em
+}
+
+sup {
+  top: -.5em
+}
+
+abbr[title] {
+  text-decoration: underline;
+  text-decoration: underline dotted
+}
+
+::-moz-selection {
+  background: rgba($blue-400, .6);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgba($blue-400, .6);
+  text-shadow: none;
+}
+
+.counter {
+  display: inline-block;
+  min-width: $gutter;
+  margin-left: 1em;
+  padding-right: .5em;
+  padding-left: .5em;
+  border-radius: 1em;
+  background-color: rgba($grey-300, 0.2);
+  color: $grey-200;
+  font-size: $small-font-size;
+  font-weight: $medium-font-weight;
+  line-height: $gutter;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.dot-label {
+  display: inline-block;
+  color: $text-color-secondary;
+  font-size: $small-font-size;
+
+  & > .dot {
+    display: inline-block;
+    z-index: 1;
+    position: relative;
+    top: .15em;
+    width: 1em;
+    height: 1em;
+    margin-right: .25em;
+    border: $border-width solid rgba(205, 217, 229, 0.2);
+    border-radius: 50%;
+  }
+}
+
+.keys {
+  display: inline-block;
+  color: $text-color-secondary;
+  font-size: $small-font-size;
+}
+
+.label {
+  display: inline-block;
+  margin-left: 1em;
+  padding-right: .5em;
+  padding-left: .5em;
+  border: $border-base;
+  border-radius: 1em;
+  color: $text-color-secondary;
+  font-size: $small-font-size;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.site-logo-link {
+  color: inherit;
+
+  &:active,
+  &:hover {
+    color: $text-color-highlight;
+  }
+
+  svg {
+    display: block;
+    height: 3em;
+    transition: $transition-duration cubic-bezier(.3,0,.5,1);
+    transition-property: transform, color;
+
+    &:active,
+    &:hover {
+      transform: rotate(60deg);
+    }
+  }
+}

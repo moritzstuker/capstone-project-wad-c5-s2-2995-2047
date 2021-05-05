@@ -1,0 +1,114 @@
+// Forms
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+input[type='color'],
+input[type='date'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='email'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+input[type='week'],
+input:not([type]),
+textarea,
+select {
+  @extend %button;
+  display: flex;
+  width: 100%;
+
+  &:focus {
+    border-color: $blue-500;
+  }
+}
+
+select {
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+textarea {
+  min-height: 6.5rem;
+  padding: .5em 1em;
+  overflow: auto;
+}
+
+label,
+legend {
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+  color: inherit;
+  white-space: normal
+}
+
+progress {
+  vertical-align: baseline
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  display: inline;
+}
+
+input[type='number'] {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    height: auto
+  }
+}
+
+input[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+
+  &::-webkit-search-decoration {
+    -webkit-appearance: none
+  }
+}
+
+::placeholder {
+  color: $grey-400;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit
+}
+
+.input-group {
+  position: relative;
+  margin-top: ($gutter / 2);
+  margin-bottom: ($gutter / 2);
+
+  .icon {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: ($gutter * 1.8);
+    height: 100%;
+    color: $grey-300;
+    pointer-events: none;
+
+    svg {
+      height: 50%;
+    }
+  }
+
+  input {
+    position: relative;
+    padding-left: ($gutter * 1.8);
+  }
+
+  & + & {
+    margin-top: $gutter;
+  }
+}

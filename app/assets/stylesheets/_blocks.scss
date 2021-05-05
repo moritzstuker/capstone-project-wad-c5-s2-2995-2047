@@ -1,0 +1,152 @@
+// Block elements
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.box {
+  width: 100%;
+  overflow: hidden;
+  border: $border-base;
+  border-radius: $border-radius;
+  background-color: $background-color-primary;
+
+  &-header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: ($border-width * -1); // this is to compensate the border-bottom of 1px
+    padding: $box-padding;
+    border-bottom: $border-base;
+    background-color: $background-color-secondary;
+
+    & > * {
+      margin-left: $gutter;
+
+      &:first-child {
+        margin-right: auto;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &-content {
+    padding: $box-padding;
+
+    &-list {
+      li {
+        padding: $box-padding;
+        transition: background-color $transition;
+
+        &:active,
+        &:hover {
+          background-color: $background-color-secondary;
+        }
+
+        & + li {
+          border-top: $border-base;
+        }
+      }
+    }
+  }
+}
+
+.card {
+  &-header {
+    font-weight: $medium-font-weight;
+  }
+
+  &-content {
+    margin-top: ($gutter / 2);
+    margin-bottom: ($gutter / 2);
+  }
+
+  &-footer {
+    & > * + * {
+      margin-left: $gutter;
+    }
+  }
+}
+
+.contact-role {
+  &-client {
+    background-color: $green;
+  }
+
+  &-adversary {
+    background-color: $red;
+  }
+
+  &-employee {
+    background-color: $blue;
+  }
+
+  &-other {
+    background-color: $yellow;
+  }
+}
+
+.site {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: ($gutter / 2) $gutter;
+    background-color: $background-color-secondary;
+  }
+
+  &-logo {
+    display: inline-block;
+    width: auto;
+    height: 3rem;
+    transition: $transition;
+    transition-property: transform;
+
+    &:active,
+    &:hover {
+      transform: rotate(60deg);
+    }
+
+    &-link {
+      display: inline-block;
+      text-decoration: none !important;
+    }
+  }
+}
+
+.sidenav {
+  a,
+  .is-active {
+    display: flex;
+    justify-content: space-between;
+    padding: $box-padding;
+  }
+
+  a {
+    transition: background-color $transition;
+
+    &:active,
+    &:hover {
+      background-color: $background-color-secondary;
+      text-decoration: none;
+
+      .menu-link {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .is-active {
+    border-left: 2px solid $grey-200;
+    background-color: $background-color-secondary;
+
+    .menu-link {
+      margin-left: -2px;
+    }
+  }
+
+  li {
+
+    & + li {
+      border-top: $border-base;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+// Tables
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+table {
+  display: block;
+  width: 100%;
+  margin-bottom: $gutter;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: left;
+
+  @include media (m) {
+    display: table;
+    overflow-x: initial;
+  }
+}
+
+td,
+th {
+  padding: $gutter;
+  border-bottom: $border-width solid $grey-100;
+}
+
+th {
+  font-weight: $bold-font-weight;
+}

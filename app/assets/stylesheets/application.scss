@@ -1,4 +1,17 @@
-@import 'variables';
-@import 'styles';
+// Application
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-// Note: the 'grid' file is imported at a specific place in styles in order to allow it to be overwritten without fighting too hard CSS precedence.
+@import 'colors';
+@import 'variables';
+@import 'base';
+@import 'grid';
+@import 'typography';
+@import 'inline';
+@import 'graphics';
+@import 'lists';
+@import 'buttons';
+@import 'forms';
+@import 'dividers';
+@import 'tables';
+@import 'blocks';
+@import 'utilities';
