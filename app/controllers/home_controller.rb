@@ -7,4 +7,8 @@ class HomeController < ApplicationController
 
   def styleguide
   end
+
+  def forms
+
+  end
 end
