@@ -1,0 +1,19 @@
+<section class="box">
+  <header class="box-header">
+    <h2>Properties</h2>
+  </header>
+  <div class="box-content">
+    <p><strong>Status:</strong>&nbsp;<%= @project.status.capitalize %></p>
+    <p><strong>Category:</strong>&nbsp;<span class="dot" style="background-color: <%= @project.category.color %>"></span><%= @project.category.label %></p>
+    <% if @project.reference.present? %>
+    <p><strong>Court reference:</strong>&nbsp;<span class="disambuguate"><%= @project.reference %></span></p>
+    <% end %>
+    <p><strong>Default hourly rate:</strong>&nbsp;<%= fee(@project.fee) %></p>
+    <p><strong>Created at:</strong>&nbsp;<%= @project.created_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
+    <p><strong>Last updated at:</strong>&nbsp;<%= @project.updated_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
+    <p><strong>Assigned to:</strong>&nbsp;TODO</p>
+    <hr />
+    <p><strong>Your hours:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %> (<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %>&nbsp;overall)</p>
+    <p><strong>Your fees:</strong>&nbsp;<%= fee(@project.activities.sum(&:duration) * @project.fee) %> (<%= fee(@project.activities.sum(&:duration) * @project.fee) %>&nbsp;overall)</p>
+  </div>
+</section>

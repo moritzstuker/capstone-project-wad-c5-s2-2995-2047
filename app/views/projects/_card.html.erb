@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <%= link_to project.name_based_on_parties, project_path(project) %>
+    <%= link_to project.combine(:name), project_path(project) %>
     <% if project.status == 'inactive' %>
       <span class="label">inactive</span>
     <% end %>

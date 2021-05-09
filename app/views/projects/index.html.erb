@@ -1,21 +1,18 @@
-<main class="block">
-  <aside class="fixed-width">
+<div class="row">
+  <aside class="col-2">
     <%= render 'sidebar' %>
   </aside>
-  <section class="fluid-width">
+  <section class="col-6">
     <div class="box">
       <div class="box-header">
         <h1>Cases</h1>
-          <span><strong>All (<%= @projects.count %>)</strong></span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+        <span><strong>All (<%= @projects.count %>)</strong></span>
       </div>
       <ul class="box-content-list">
         <% @projects.each do |project| %>
-          <li><%= render 'card', project: project %></li>
+        <li><%= render 'card', project: project %></li>
         <% end %>
       </ul>
     </div>
   </section>
-</main>
+</div>
