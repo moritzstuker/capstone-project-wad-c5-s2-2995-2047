@@ -7,7 +7,8 @@
   appearance: none;
   align-items: center;
   justify-content: center;
-  padding: .5em 1em;
+  height: auto;
+  padding: .4em 1em;
   overflow: visible;
   border: $border-width solid $grey-500;
   border-radius: $border-radius;
@@ -26,7 +27,7 @@ input[type='button'],
 input[type='reset'],
 input[type='submit'] {
   display: inline-flex;
-  @extend %bold;
+  @extend %heading;
   @extend %button;
   text-align: center;
   text-decoration: none;

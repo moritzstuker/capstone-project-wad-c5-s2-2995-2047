@@ -1,6 +1,10 @@
 // Forms
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
+form {
+  width: 100%;
+}
+
 input[type='color'],
 input[type='date'],
 input[type='datetime'],
@@ -18,7 +22,7 @@ input:not([type]),
 textarea,
 select {
   @extend %button;
-  display: flex;
+  display: block;
   width: 100%;
 
   &:focus {
@@ -110,5 +114,39 @@ input[type='search'] {
 
   & + & {
     margin-top: $gutter;
+  }
+}
+
+.inline-form {
+  display: flex;
+
+  input {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:active,
+    &:focus {
+      & + button {
+        border-color: $blue-500;
+      }
+    }
+  }
+
+  button {
+    position: relative;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: $grey-400;
+    transition: color $transition;
+
+    &:active,
+    &:focus,
+    &:hover {
+      border-color: $grey-500;
+      background-color: $grey-700;
+      color: inherit;
+    }
   }
 }

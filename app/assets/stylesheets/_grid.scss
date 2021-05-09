@@ -1,101 +1,48 @@
 // Grid
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-.block {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: $block-width-l;
-  padding-right: $gutter;
-  padding-left: $gutter;
-
-  &.narrow {
-    max-width: $block-width-s;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  &.wide {
-    max-width: 100%;
-  }
-}
-
-.fixed-width,
-.fluid-width {
-  margin-top: $gutter;
-}
-
-@include media (m) {
-  .block {
-    flex-direction: row;
-  }
-
-  .fixed-width,
-  .fluid-width {
-    & ~ & {
-      margin-left: $gutter;
-    }
-  }
-
-  .fixed-width {
-    flex: 0 0 20rem;
-  }
-
-  .fluid-width {
-    flex: 1;
-  }
-}
-
-%column {
-  display: block;
-  width: 100%;
-}
-
-.block {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  max-width: $block-width-l;
+.container {
+  max-width: $block-width-xl;
   margin-right: auto;
   margin-left: auto;
   padding-right: $gutter;
   padding-left: $gutter;
-
-  @include media (l) {
-    flex-direction: row;
-
-    & > * + * {
-      margin-left: $gutter;
-    }
-
-    .column {
-      padding-right: ($gutter / 2);
-      padding-left: ($gutter / 2);
-    }
-  }
 }
 
-.column {
-  @extend %column;
-  flex: 1 1 auto;
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: ($gutter / -2);
+  margin-left: ($gutter / -2);
+}
+
+%col {
+  flex: 0 0 auto;
+  padding-right: ($gutter / 2);
+  padding-left: ($gutter / 2);
+}
+
+.col {
+  @extend %col;
+  flex-basis: 0;
+  flex-grow: 1;
   max-width: 100%;
+}
 
-  @include media (l) {
-
+@for $i from 1 through $columns {
+  $percentage: (100 / $columns * $i * 1%);
+  .col-#{$i} {
+    @extend %col;
+    flex-basis: $percentage;
+    max-width: $percentage;
   }
 
-  @for $i from 1 through ($columns - 1) {
-    $fraction: (100 / ($columns / $i) ) * 1%;
-
-    &-#{$i} {
-      @extend %column;
-      flex: 0 0 $fraction;
-      max-width: $fraction;
-    }
-
-    &-offset-#{$i} {
-      margin-left: $fraction;
+  @if $i != $columns {
+    .col-offset-#{$i} {
+      @extend %col;
+      margin-left: $percentage;
     }
   }
 }

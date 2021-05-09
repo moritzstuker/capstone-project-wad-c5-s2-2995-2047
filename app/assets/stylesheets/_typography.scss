@@ -1,20 +1,31 @@
 // Typography
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-%bold {
+%heading {
   font-weight: $bold-font-weight;
   letter-spacing: .025em;
+  line-height: inherit;
   text-transform: uppercase;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @extend %bold;
-  line-height: inherit;
+.heading {
+  @extend %heading;
+  margin-bottom: ($gutter / 2);
+
+  &:not(:first-child) {
+    margin-top: ($gutter / 2);
+  }
+}
+
+.title {
+  margin-top: $gutter;
+  font-size: $big-font-size;
+  font-weight: $medium-font-weight;
+}
+
+.mute {
+  color: $grey-400;
+  text-decoration-color: inherit;
 }
 
 .disambuguate {

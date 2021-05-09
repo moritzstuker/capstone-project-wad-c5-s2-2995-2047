@@ -70,21 +70,21 @@ abbr[title] {
   user-select: none;
 }
 
-.dot-label {
+.dot {
   display: inline-block;
-  color: $text-color-secondary;
-  font-size: $small-font-size;
+  z-index: 1;
+  position: relative;
+  top: .15em;
+  width: .9em;
+  height: .9em;
+  margin-right: .25em;
+  border: $border-width solid rgba(205, 217, 229, 0.2);
+  border-radius: 50%;
 
-  & > .dot {
+  &-label {
     display: inline-block;
-    z-index: 1;
-    position: relative;
-    top: .15em;
-    width: 1em;
-    height: 1em;
-    margin-right: .25em;
-    border: $border-width solid rgba(205, 217, 229, 0.2);
-    border-radius: 50%;
+    color: $text-color-secondary;
+    font-size: $small-font-size;
   }
 }
 
@@ -106,25 +106,4 @@ abbr[title] {
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
-}
-
-.site-logo-link {
-  color: inherit;
-
-  &:active,
-  &:hover {
-    color: $text-color-highlight;
-  }
-
-  svg {
-    display: block;
-    height: 3em;
-    transition: $transition-duration cubic-bezier(.3,0,.5,1);
-    transition-property: transform, color;
-
-    &:active,
-    &:hover {
-      transform: rotate(60deg);
-    }
-  }
 }

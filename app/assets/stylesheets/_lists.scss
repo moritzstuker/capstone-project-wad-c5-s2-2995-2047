@@ -6,3 +6,16 @@ ol,
 ul {
   list-style: none;
 }
+
+.list {
+  li {
+    position: relative;
+    padding-left: 1.2em;
+
+    &::before {
+      position: absolute;
+      left: 1px;
+      content: '–';
+    }
+  }
+}

@@ -14,14 +14,27 @@ table {
     display: table;
     overflow-x: initial;
   }
+
+  &.box {
+    overflow-x: scroll;
+    border-collapse: separate;
+
+    td,
+    th {
+      padding: $box-padding;
+    }
+
+    td {
+      border-top: $border-base;
+    }
+  }
 }
 
-td,
-th {
-  padding: $gutter;
-  border-bottom: $border-width solid $grey-100;
+thead.box-header {
+  display: table-header-group;
 }
 
+tfoot.box-footer,
 th {
   font-weight: $bold-font-weight;
 }
