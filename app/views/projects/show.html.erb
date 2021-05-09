@@ -1,29 +1,46 @@
-<div class="box">
-  <div class="box-header" style="background-color: <%= @project.category.color %>">
-    <h1><%= @project.name_based_on_parties %></h1>
+<header class="row">
+  <div class="col">
+    <h1 class="title">
+      <%= link_to "Cases", projects_path %>
+      <span class="mute">&nbsp;&sol;&nbsp;</span>
+      <%= @project.combine(:name) %>
+    </h1>
   </div>
-  <div class="box-content">
-    <%= debug(@project) %>
-
-    <p>Clients</p>
-    <ul>
-      <% @project.parties.where(role: 'client').each do |party| %>
-        <li><%= party.combine(:name) %></li>
-      <% end %>
-    </ul>
-
-    <p>Adversaries</p>
-    <ul>
-      <% @project.parties.where(role: 'adversary').each do |party| %>
-        <li><%= party.combine(:name) %></li>
-      <% end %>
-    </ul>
-
-
-    <ul>
-      <% Contact.all.where(role: 'client').each do |contact| %>
-        <li><%= contact.combine(:name) %></li>
-      <% end %>
-    </ul>
+</header>
+<div class="row">
+  <div class="col-5">
+    <section class="box">
+      <header class="box-header">
+        <h2>Overview</h2>
+      </header>
+      <div class="box-content">
+        <p><strong>Label:</strong>&nbsp;<%= @project.label %></p>
+        <p><strong>Description:</strong>&nbsp;<%= @project.description %></p>
+        </div>
+    </section>
+    <section class="box">
+      <header class="box-header">
+        <h2>Parties</h2>
+      </header>
+      <div class="box-content">
+        <div class="row">
+          <% if @project.parties.count > 0 %>
+            <%= render 'parties' %>
+          <% else %>
+            <div class="col">
+              <p>No party yet...</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-3">
+    <%= render 'properties' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <%= render 'timesheet' %>
   </div>
 </div>
