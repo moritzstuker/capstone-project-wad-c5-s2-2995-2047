@@ -1,12 +1,46 @@
-<main class="block">
-  <div class="fluid-width">
-    <div class="box">
-      <div class="box-header">
-        <h1><%= @contact.combine(:name) %></h1>
-      </div>
-      <div class="box-content">
-        <%= debug(@contact) %>
-      </div>
-    </div>
+<header class="row">
+  <div class="col">
+    <h1 class="title">
+      <%= link_to "Contacts", contacts_path %>
+      <span class="mute">&nbsp;&sol;&nbsp;</span>
+      <%= @contact.combine(:name) %>
+      <span class="label"><%= @contact.category.titleize %></span>
+    </h1>
   </div>
-</main>
+</header>
+<div class="row">
+  <div class="col-5">
+    <section class="box">
+      <header class="box-header contact-role-<%= @contact.role %>">
+        <h2>Overview</h2>
+      </header>
+      <div class="box-content">
+
+        <p><%= @contact.combine(:address) %></p>
+        <span class="dot-label">
+          <span class="dot <%= "contact-role-#{@contact.role}" %>"></span>
+          <span><%= @contact.combine(:category) %></span>
+        </span>
+      </div>
+    </section>
+  </div>
+  <div class="col-3">
+    <section class="box">
+      <header class="box-header">
+        <h2>Cases</h2>
+      </header>
+      <div class="box-content">
+        <% if @contact.projects.count > 0 %>
+          Party in the following <%= pluralize(@contact.projects.count, 'case') %>:
+          <ul class="list">
+            <% @contact.projects.each do |project| %>
+              <li><%= link_to project.combine(:long_name), project %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No case yet...</p>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>
