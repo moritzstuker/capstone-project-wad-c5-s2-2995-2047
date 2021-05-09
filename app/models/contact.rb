@@ -1,18 +1,19 @@
 class Contact < ApplicationRecord
 
   ROLES = %w(client adversary employee other).freeze
-  PERSONALITIES = %w(natural legal).freeze
+  PERSONALITIES = ["natural person", "legal person"].freeze
   FORMATS = {
     string: {
-      name:        '#{first_name} #{last_name}',
-      short_name:  '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name}',
-      long_name:   '#{prefix} #{first_name} #{last_name} #{suffix}',
-      initials:    '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name.to_s.chars.first}.',
-      address:     '#{address[:pobox]}<br>#{address[:street]}&nbsp;#{address[:streetno]}<br>#{address[:zip]}&nbsp;#{address[:city]}<br>#{address[:country]}',
-      city:        '#{address[:zip]} #{address[:city]} (#{address[:country]})',
-      street:      '#{address[:street]} #{address[:streetno]}',
-      personality: '#{personality == \'natural\' ? \'Private person\' : \'Company\'}',
-      role:        '#{role.titleize}'
+      name:       '#{first_name} #{last_name}',
+      short_name: '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name}',
+      long_name:  '#{prefix} #{first_name} #{last_name} #{suffix}',
+      full_name:  '#{prefix} #{first_name} #{last_name} #{suffix}<span class=\"mute\"> (#{combine(:category)})</span>',
+      initials:   '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name.to_s.chars.first}.',
+      address:    '#{address[:pobox]}<br>#{address[:street]}&nbsp;#{address[:streetno]}<br>#{address[:zip]}&nbsp;#{address[:city]}<br>#{address[:country]}',
+      city:       '#{address[:zip]} #{address[:city]} (#{address[:country]})',
+      street:     '#{address[:street]} #{address[:streetno]}',
+      category:   '#{category == \'natural person\' ? \'Private person\' : \'Company\'}',
+      role:       '#{role.titleize}'
     },
     order: {
       name: %w(last_name first_name id),

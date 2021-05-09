@@ -1,6 +1,15 @@
 class Project < ApplicationRecord
+
+  FORMATS = {
+    string: {
+      name:      '#{name_based_on_parties}',
+      long_name: '#{name_based_on_parties}<span class=\"mute\"> (#{label})</span>',
+    }
+  }
+
   belongs_to :category, class_name: "ProjectCategory", foreign_key: "project_category_id", optional: true
   has_and_belongs_to_many :parties, class_name: "Contact"
+  has_many :activities
 
   def render_project_parties(str)
     arr = parties.where(role: str)
@@ -8,6 +17,14 @@ class Project < ApplicationRecord
   end
 
   def name_based_on_parties
-    "#{render_project_parties('client')}#{' v ' + render_project_parties('adversary') if parties.where(role: 'adversary').count > 1}"
+    str = "#{render_project_parties('client')}"
+    if parties.where(role: 'adversary').count > 1
+      str += "<span class=\"mute\">&nbsp;v.&nbsp;</span>#{render_project_parties('adversary')}"
+    end
+    str
+  end
+
+  def combine(format = :name)
+    eval('"' + FORMATS[:string][format] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
   end
 end
