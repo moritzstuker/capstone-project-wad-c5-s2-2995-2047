@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210429074306) do
+ActiveRecord::Schema.define(version: 20210506113613) do
 
   create_table "activities", force: :cascade do |t|
     t.string "label"
     t.string "category"
-    t.decimal "time", precision: 10, scale: 2
+    t.decimal "duration", precision: 10, scale: 2
     t.date "date"
     t.integer "project_id"
     t.integer "user_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20210429074306) do
     t.date "birthday"
     t.string "profession"
     t.string "role"
-    t.string "personality"
+    t.string "category"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
