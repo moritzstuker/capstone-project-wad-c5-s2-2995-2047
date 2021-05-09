@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   SIDEBAR_PAGES = {
     projects: 'Cases',
     contacts: 'Contacts',
-    deadlines: 'Deadlines',
-    activities: 'Timesheets'
+    deadlines: 'Deadlines'
   }
 
   protect_from_forgery with: :exception
