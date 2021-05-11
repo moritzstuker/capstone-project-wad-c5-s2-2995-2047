@@ -50,6 +50,13 @@
       }
     }
   }
+
+  &-item {
+    display: list-item;
+    padding: $box-padding;
+    white-space: nowrap;
+    transition: background-color $transition;
+  }
 }
 
 .card {
@@ -97,17 +104,6 @@
     padding-bottom: ($gutter / 2);
     background-color: $background-color-secondary;
 
-    a {
-      display: inline-block;
-      color: inherit;
-      text-decoration: none !important;
-
-      &:active,
-      &:hover {
-        color: $text-color-highlight;
-      }
-    }
-
     &-right {
       display: flex;
       align-items: center;
@@ -117,11 +113,21 @@
         margin-left: $gutter;
       }
     }
+
+    a {
+      color: inherit;
+
+      &:active,
+      &:hover {
+        color: $text-color-highlight;
+      }
+    }
   }
 
   &-logo {
     &:active,
     &:hover {
+
       svg {
         transform: rotate(60deg);
       }
