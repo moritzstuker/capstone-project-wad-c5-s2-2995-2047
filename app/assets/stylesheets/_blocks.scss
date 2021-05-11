@@ -76,28 +76,6 @@
   }
 }
 
-.contact-role {
-  &-client {
-    background-color: $green;
-  }
-
-  &-adversary {
-    background-color: $red;
-  }
-
-  &-employee {
-    background-color: $blue;
-  }
-
-  &-other {
-    background-color: $yellow;
-  }
-}
-
-.heading {
-
-}
-
 .site {
   &-header {
     padding-top: ($gutter / 2);

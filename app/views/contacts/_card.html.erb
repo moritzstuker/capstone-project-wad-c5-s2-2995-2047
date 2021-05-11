@@ -1,13 +1,14 @@
 <div class="card">
   <div class="card-header">
     <%= link_to contact.combine(:long_name), contact %>
+    <span class="label"><%= contact.combine(:category) %></span>
   </div>
   <div class="card-content">
     <p><%= contact.combine(:address) %></p>
   </div>
   <div class="card-footer">
     <span class="dot-label">
-      <span class="dot <%= "contact-role-#{contact.role}" %>"></span>
+      <span class="dot <%= bg_color(contact.role) %>"></span>
       <span><%= contact.role.titleize %></span>
     </span>
     <% if contact.projects.count > 0 %>
