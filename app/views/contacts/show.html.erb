@@ -4,7 +4,7 @@
       <%= link_to "Contacts", contacts_path %>
       <span class="mute">&nbsp;&sol;&nbsp;</span>
       <%= @contact.combine(:name) %>
-      <span class="label"><%= @contact.category.titleize %></span>
+      <span class="label"><%= @contact.combine(:category) %></span>
     </h1>
   </div>
 </header>
@@ -19,7 +19,7 @@
         <p><%= @contact.combine(:address) %></p>
         <span class="dot-label">
           <span class="dot <%= "contact-role-#{@contact.role}" %>"></span>
-          <span><%= @contact.combine(:category) %></span>
+          <span><%= @contact.role.titleize %></span>
         </span>
       </div>
     </section>

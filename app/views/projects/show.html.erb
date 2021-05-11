@@ -16,8 +16,35 @@
       <div class="box-content">
         <p><strong>Label:</strong>&nbsp;<%= @project.label %></p>
         <p><strong>Description:</strong>&nbsp;<%= @project.description %></p>
-        </div>
+      </div>
     </section>
+    <section class="box">
+      <header class="box-header">
+        <h2>Deadlines</h2>
+      </header>
+      <div class="box-content">
+        <% if @project.deadlines.count > 0 %>
+        <ul>
+          <% @project.deadlines.each do |deadline| %>
+          <li>
+            <%= deadline.date %>:&nbsp;<%= deadline.label %> (assigned to <a href="#">Johnny Walker</a>)<span class="label"><%= deadline.category %></span>
+          </li>
+          <% end %>
+        </ul>
+        <% else %>
+        <div class="col">
+          <p>No deadline set...</p>
+        </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+  <div class="col-3">
+    <%= render 'properties' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-5">
     <section class="box">
       <header class="box-header">
         <h2>Parties</h2>
@@ -25,18 +52,27 @@
       <div class="box-content">
         <div class="row">
           <% if @project.parties.count > 0 %>
-            <%= render 'parties' %>
+          <%= render 'parties' %>
           <% else %>
-            <div class="col">
-              <p>No party yet...</p>
-            </div>
+          <div class="col">
+            <p>No party yet...</p>
+          </div>
           <% end %>
         </div>
       </div>
     </section>
   </div>
   <div class="col-3">
-    <%= render 'properties' %>
+    <section class="box">
+      <header class="box-header">
+        <h2>Assignments</h2>
+      </header>
+      <div class="box-content">
+        <div class="row">
+          Johnny Walker
+        </div>
+      </div>
+    </section>
   </div>
 </div>
 <div class="row">
