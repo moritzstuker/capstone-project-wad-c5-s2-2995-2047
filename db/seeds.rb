@@ -27,7 +27,7 @@ rand(35..50).times do
       country:    ["Switzerland", Faker::Address.country].sample
     },
     role:       %w(client adversary other).sample,
-    category:   category == "natural person" ? "natural person" : "legal person",
+    category:   category,
     profession: category == "natural person" ? Faker::Company.profession : Faker::Company.industry,
     notes:      [Faker::Hipster.sentence, Faker::Company.buzzword, nil].sample
   )
@@ -86,7 +86,7 @@ rand(50..75).times do
     label:       Faker::Hipster.words(number: 2).join(' ').capitalize,
     description: [Faker::Hipster.paragraph, nil].sample,
     fee:         [180, 250, 300, 330, 350, 400].sample,
-    status:      %w(active inactive).sample,
+    status:      Project::STATUS.sample,
     category:    ProjectCategory.all.sample,
     parties:     Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3)),
     reference:   [ref_no.to_s, nil].sample
@@ -98,13 +98,25 @@ puts "✓  Created #{Project.all.count} cases."
 rand(1500..2000).times do
   Activity.create!(
     label:    Faker::Company.bs.capitalize,
-    category: ["Email/Letter", "Meeting", "Phone call", "Court hearing"].sample,
+    category: Activity::CATEGORIES.sample,
     duration: rand(0.1..8.0).round(1),
-    date:     Date.new(rand(2018..2021),rand(1..12),rand(1..28)),
+    date:     rand(Date.today.prev_year...Date.today),
     project:  Project.all.sample,
     user:     User.all.sample
   )
 end
 puts "✓  Created #{Activity.all.count} activities."
+
+
+rand(50..75).times do
+  Deadline.create!(
+    label:    Faker::Company.bs.capitalize,
+    category: Deadline::CATEGORIES.sample,
+    date:     rand(Date.today..Date.today.next_year),
+    project:  Project.all.sample
+    ## ADD PROJECT USER
+  )
+end
+puts "✓  Created #{Deadline.all.count} deadlines."
 
 puts "✓  Done, good to go!"
