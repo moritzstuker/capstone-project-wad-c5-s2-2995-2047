@@ -16,3 +16,71 @@
 @import 'blocks';
 @import 'pages';
 @import 'utilities';
+
+
+.dropdown {
+  position: relative;
+
+  & > *:first-child {
+    cursor: pointer;
+  }
+
+  &::after {
+    position: absolute;
+    right: calc(50% - .75rem);
+    bottom: -1.2rem;
+    border: .8rem solid transparent;
+    border-bottom: .8rem solid $grey-600;
+    content: "";
+    pointer-events: none;
+  }
+
+  li {
+    background-color: $background-color-secondary;
+
+    &:active,
+    &:hover {
+      background-color: $background-color-tertiary;
+    }
+
+    & + li {
+      border-top: $border-base;
+    }
+
+    & *:not(a) {
+      cursor: default;
+
+      &:active,
+      &:hover {
+        background-color: inherit;
+      }
+    }
+  }
+
+  .menu {
+    display: block;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    height: auto;
+    margin-top: ($gutter / 2);
+    opacity: 1;
+    transition: height $transition, opacity $transition;
+
+    .box {
+      margin-top: 0;
+      background-color: $background-color-secondary;
+    }
+  }
+
+  &.is-closed {
+    .menu {
+      display: none;
+      opacity: 0;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}

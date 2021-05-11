@@ -14,3 +14,14 @@
 //= require turbolinks
 //= require particles
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function() {
+  let dropdowns = document.querySelectorAll('.dropdown')
+  dropdowns.forEach(function(item){
+    item.addEventListener('click', () => {
+      let isClosed = item.classList.contains('is-closed');
+      dropdowns.forEach((el) => el.classList.add('is-closed'));
+      if (isClosed) { item.classList.remove('is-closed') };
+    })
+  });
+})
