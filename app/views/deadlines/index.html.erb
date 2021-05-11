@@ -1,0 +1,18 @@
+<div class="row">
+  <aside class="col-2">
+    <%= render 'sidebar' %>
+  </aside>
+  <section class="col-6">
+    <div class="box">
+      <div class="box-header">
+        <h1>Deadlines</h1>
+        <span><strong>All (<%= @deadlines.count %>)</strong></span>
+      </div>
+      <ul class="box-content-list">
+        <% @deadlines_dates.each do |date| %>
+        <li><%= render 'card', date: date %></li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</div>

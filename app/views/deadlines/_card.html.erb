@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <%= date.strftime("%d.%m.%Y") %>
+    (<%= @deadlines.where(date: date).count %>)
+  </div>
+  <div class="card-content">
+    <ul>
+      <% @deadlines.where(date: date).each do |deadline| %>
+      <li>
+        Assigned to Johnny Walker:<br />
+        <%= deadline.label %> (<%= link_to deadline.project.combine(:name), deadline.project %>)<span class="label"><%= deadline.category %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
