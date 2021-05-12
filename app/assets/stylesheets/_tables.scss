@@ -2,39 +2,35 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 table {
-  display: block;
-  width: 100%;
-  margin-bottom: $gutter;
-  overflow-x: auto;
+  width: calc(100% + #{$box-padding-y});
+  margin-left: ($box-padding-y * -.5);
   border-collapse: collapse;
-  border-spacing: 0;
-  text-align: left;
+  empty-cells: show;
+}
 
-  @include media (m) {
-    display: table;
-    overflow-x: initial;
-  }
+thead {
+  border-bottom: $border-base;
+}
 
-  &.box {
-    overflow-x: scroll;
-    border-collapse: separate;
-
-    td,
-    th {
-      padding: $box-padding;
-    }
-
-    td {
-      border-top: $border-base;
-    }
+tr {
+  &:nth-child(even) {
+    background-color: $grey-800
   }
 }
 
-thead.box-header {
-  display: table-header-group;
+th, td {
+  padding-right: ($box-padding-y / 2);
+  padding-bottom: ($box-padding-y / 4);
+  padding-left: ($box-padding-y / 2);
+  vertical-align: middle;
 }
 
-tfoot.box-footer,
 th {
   font-weight: $bold-font-weight;
+  text-align: left;
+}
+
+td {
+  position: relative;
+    padding-top: ($box-padding-y / 4);
 }
