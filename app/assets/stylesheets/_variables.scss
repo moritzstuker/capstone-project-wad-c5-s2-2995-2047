@@ -26,14 +26,17 @@ $bold-font-weight:   600;
 // –– Borders –––––––––––––––––––––––––––––––––––––––
 
 $border-width:  .1rem;
+$border-color:  $grey-600;
+$border-base:   $border-width solid $border-color;
 $border-radius: .6rem;
-$border-base:   $border-width solid $grey-600;
 
 // –– Spacing –––––––––––––––––––––––––––––––––––––––
 
 $gutter: ($base-font-size * $base-line-height);
 
-$box-padding: ($gutter / 2) ($gutter / 1.5);
+$box-padding-x: ($gutter / 1.5);
+$box-padding-y: ($gutter / 2);
+$box-padding: $box-padding-y $box-padding-x;
 
 $block-width-xs:  38.4rem;
 $block-width-s:   51.2rem;
