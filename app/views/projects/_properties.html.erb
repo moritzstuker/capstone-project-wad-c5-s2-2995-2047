@@ -6,7 +6,7 @@
     <p><strong>Status:</strong>&nbsp;<%= @project.status.capitalize %></p>
     <p><strong>Category:</strong>&nbsp;<span class="dot" style="background-color: <%= @project.category.color %>"></span><%= @project.category.label %></p>
     <% if @project.reference.present? %>
-    <p><strong>Court reference:</strong>&nbsp;<span class="disambuguate"><%= @project.reference %></span></p>
+    <p><strong>Court reference:</strong>&nbsp;<span class="disambiguate"><%= @project.reference %></span></p>
     <% end %>
     <p><strong>Default hourly rate:</strong>&nbsp;<%= fee(@project.fee) %></p>
     <p><strong>Created at:</strong>&nbsp;<%= @project.created_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>

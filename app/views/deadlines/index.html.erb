@@ -8,7 +8,7 @@
         <h1>Deadlines</h1>
         <span><strong>All (<%= @deadlines.count %>)</strong></span>
       </div>
-      <ul class="box-content-list">
+      <ul class="box-content">
         <% @deadlines_dates.each do |date| %>
         <li><%= render 'card', date: date %></li>
         <% end %>

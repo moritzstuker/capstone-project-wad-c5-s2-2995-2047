@@ -32,7 +32,7 @@
       <div class="box-content">
         <% if @contact.projects.count > 0 %>
           Party in the following <%= pluralize(@contact.projects.count, 'case') %>:
-          <ul class="list">
+          <ul>
             <% @contact.projects.each do |project| %>
               <li><%= link_to project.combine(:long_name), project %></li>
             <% end %>

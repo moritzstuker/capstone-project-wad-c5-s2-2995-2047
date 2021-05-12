@@ -8,7 +8,7 @@
         <h1>Contacts</h1>
         <span><strong>All (<%= @contacts.count %>)</strong></span>
       </div>
-      <ul class="box-content-list">
+      <ul class="box-content">
         <% @contacts.each do |contact| %>
         <li><%= render 'card', contact: contact %></li>
         <% end %>
