@@ -11,6 +11,10 @@ a {
   &:focus,
   &:hover {
     text-decoration: underline;
+
+    .mute {
+      color: $text-color-highlight;
+    }
   }
 }
 
@@ -107,4 +111,27 @@ abbr[title] {
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
+}
+
+.mute {
+  color: $grey-400;
+  text-decoration-color: inherit;
+  white-space: nowrap;
+}
+
+:not(tr).strikethrough {
+  display: inline-block;
+  position: relative;
+}
+
+:not(tr).strikethrough,
+tr.strikethrough td {
+  &::before {
+      position: absolute;
+      top: 47%;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid currentColor;
+      content: '';
+  }
 }

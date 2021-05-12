@@ -23,12 +23,7 @@
   font-weight: $medium-font-weight;
 }
 
-.mute {
-  color: $grey-400;
-  text-decoration-color: inherit;
-}
-
-.disambuguate {
+.disambiguate {
   -moz-font-feature-settings: 'ss01', 'ss02';
   -webkit-font-feature-settings: 'ss01', 'ss02';
   font-feature-settings: 'ss01' on, 'ss02' on;
