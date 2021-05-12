@@ -3,8 +3,9 @@ class Project < ApplicationRecord
   STATUS = %w(active inactive).freeze
   FORMATS = {
     string: {
-      name:      '#{name_based_on_parties}',
-      long_name: '#{name_based_on_parties}<span class=\"mute\"> (#{label})</span>',
+      name:                '#{name_based_on_parties}',
+      long_name:           '#{name_based_on_parties}<span class=\"mute\"> (#{label})</span>',
+      long_name_two_lines: '#{name_based_on_parties}<br /><span class=\"mute\">(#{label})</span>',
     }
   }
 
