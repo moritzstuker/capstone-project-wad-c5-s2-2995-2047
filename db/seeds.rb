@@ -18,6 +18,7 @@ rand(35..50).times do
     suffix:     category == "natural person" ? Faker::Name.last_name : Faker::Company.suffix,
     phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,
+    birthday:   Faker::Date.birthday(min_age: 18, max_age: 100),
     address: {
       pobox:      [nil, Faker::Address.mail_box].sample,
       street:     Faker::Address.street_address,
@@ -100,7 +101,7 @@ rand(1500..2000).times do
     label:    Faker::Company.bs.capitalize,
     category: Activity::CATEGORIES.sample,
     duration: rand(0.1..8.0).round(1),
-    date:     rand(Date.today.prev_year...Date.today),
+    date:     Faker::Date.backward(days: 1000),
     project:  Project.all.sample,
     user:     User.all.sample
   )
@@ -112,7 +113,7 @@ rand(50..75).times do
   Deadline.create!(
     label:    Faker::Company.bs.capitalize,
     category: Deadline::CATEGORIES.sample,
-    date:     rand(Date.today..Date.today.next_year),
+    date:     Faker::Date.forward(days: 300),
     project:  Project.all.sample
     ## ADD PROJECT USER
   )
