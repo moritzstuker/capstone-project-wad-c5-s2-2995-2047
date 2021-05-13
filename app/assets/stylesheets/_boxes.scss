@@ -22,7 +22,7 @@
     background-color: $background-color-secondary;
 
     & > * {
-      margin-left: ($gutter / 2);
+      margin-left: $box-padding-y;
 
       &:first-child {
         margin-right: auto;

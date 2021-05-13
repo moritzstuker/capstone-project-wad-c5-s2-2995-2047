@@ -20,8 +20,8 @@
 
 %col {
   flex: 0 0 auto;
-  padding-right: ($gutter / 2);
-  padding-left: ($gutter / 2);
+  padding-right: $box-padding-y;
+  padding-left: $box-padding-y;
 }
 
 .col {

@@ -10,10 +10,10 @@
 
 .heading {
   @extend %heading;
-  margin-bottom: ($gutter / 2);
+  margin-bottom: $box-padding-y;
 
   &:not(:first-child) {
-    margin-top: ($gutter / 2);
+    margin-top: $box-padding-y;
   }
 }
 

@@ -7,8 +7,8 @@
   }
 
   &-content {
-    margin-top: ($gutter / 2);
-    margin-bottom: ($gutter / 2);
+    margin-top: $box-padding-y;
+    margin-bottom: $box-padding-y;
   }
 
   &-footer {
