@@ -13,9 +13,10 @@
     <section class="box">
       <header class="box-header contact-role-<%= @contact.role %>">
         <h2>Overview</h2>
+        <%= icon_tag('pencil') %>
+        <%= icon_tag('trash') %>
       </header>
       <div class="box-content">
-
         <p><%= @contact.combine(:address) %></p>
         <span class="dot-label">
           <span class="dot <%= "contact-role-#{@contact.role}" %>"></span>
@@ -31,14 +32,14 @@
       </header>
       <div class="box-content">
         <% if @contact.projects.count > 0 %>
-          Party in the following <%= pluralize(@contact.projects.count, 'case') %>:
-          <ul>
-            <% @contact.projects.each do |project| %>
-              <li><%= link_to project.combine(:long_name), project %></li>
-            <% end %>
-          </ul>
+        Party in the following <%= pluralize(@contact.projects.count, 'case') %>:
+        <ul>
+          <% @contact.projects.each do |project| %>
+          <li><%= link_to project.combine(:long_name), project %></li>
+          <% end %>
+        </ul>
         <% else %>
-          <p>No case yet...</p>
+        <p>No case yet...</p>
         <% end %>
       </div>
     </section>
