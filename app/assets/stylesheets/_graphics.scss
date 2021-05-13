@@ -13,14 +13,16 @@ video {
 }
 
 svg {
-  fill: none;
-  stroke: currentColor;
+  fill: currentColor;
+  stroke: none;
   height: 1.3em;
 }
 
 .icon {
-  display: block;
+  fill-rule: evenodd;
+  display: inline-block;
   width: auto;
+  vertical-align: text-bottom;
 
   &.avatar {
     height: 3rem;
