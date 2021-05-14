@@ -30,6 +30,12 @@ $border-color:  $grey-600;
 $border-base:   $border-width solid $border-color;
 $border-radius: .6rem;
 
+// –– Icons –––––––––––––––––––––––––––––––––––––––––
+
+$small-icon:  1.6rem;
+$medium-icon: 3.2rem;
+$big-icon:    4.8rem;
+
 // –– Spacing –––––––––––––––––––––––––––––––––––––––
 
 $gutter: ($base-font-size * $base-line-height);
