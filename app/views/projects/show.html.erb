@@ -8,8 +8,8 @@
       </h1>
     </div>
     <div class="col-1">
-      <%= icon_tag('pencil') %>
-      <%= icon_tag('trash') %>
+      <%= link_to icon_tag('pencil'), edit_project_path(@project) %>
+      <%= link_to icon_tag('trash'), @project, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   </div>
 </header>

@@ -13,8 +13,8 @@
     <section class="box">
       <header class="box-header contact-role-<%= @contact.role %>">
         <h2>Overview</h2>
-        <%= icon_tag('pencil') %>
-        <%= icon_tag('trash') %>
+        <%= link_to icon_tag('pencil'), edit_contact_path(@contact) %>
+        <%= link_to icon_tag('trash'), @contact, method: :delete, data: { confirm: 'Are you sure?' } %>
       </header>
       <div class="box-content">
         <p><%= @contact.combine(:address) %></p>
