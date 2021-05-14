@@ -8,15 +8,6 @@
   &-trigger {
     cursor: pointer;
     transition: $transition;
-
-    &:active,
-    &:hover {
-      color: $text-color-highlight;
-
-      .avatar {
-        border-color: $text-color-highlight;
-      }
-    }
   }
 
   &-menu {
@@ -64,58 +55,3 @@
     }
   }
 }
-
-/*
-.dropdown {
-  vertical-align: baseline;
-
-  & > *:first-child {
-    color: inherit;
-    transition: $transition-duration;
-
-    &:active,
-    &:hover {
-      border-color: $text-color-highlight;
-      color: $text-color-highlight;
-    }
-  }
-
-  &::after {
-
-  }
-
-  li {
-    background-color: $background-color-secondary;
-
-    &:active,
-    &:hover {
-      background-color: $background-color-tertiary;
-    }
-
-    & + li {
-      border-top: $border-base;
-    }
-
-    & *:not(a) {
-      cursor: default;
-
-      &:active,
-      &:hover {
-        background-color: inherit;
-      }
-    }
-  }
-
-
-  &.is-closed {
-    .menu {
-      display: none;
-      opacity: 0;
-    }
-
-    &::after {
-      display: none;
-    }
-  }
-}
-*/
