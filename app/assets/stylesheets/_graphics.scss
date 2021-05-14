@@ -20,14 +20,50 @@ svg {
 
 .icon {
   fill-rule: evenodd;
+  fill: $text-color-primary;
   display: inline-block;
   width: auto;
   vertical-align: text-bottom;
+  transition: fill $transition;
 
   &.avatar {
-    height: 3rem;
+    height: $medium-icon;
     border: $border-base;
     border-radius: 50%;
     transition: border-color $transition;
+  }
+}
+
+* {
+  &:active,
+  &:hover,
+  &:focus {
+    & > .icon {
+      fill: $text-color-highlight;
+      border-color: $text-color-highlight;
+
+      &.trash {
+        fill: $red;
+      }
+    }
+  }
+}
+
+.site-logo {
+  width: $big-icon;
+  height: $big-icon;
+
+  .icon {
+    height: 100%;
+    pointer-events: none;
+    transition: ($transition-duration * 2) cubic-bezier(.3,0,.5,1);
+    transition-property: transform, color;
+  }
+
+  &:active,
+  &:hover {
+    .icon {
+      transform: rotate(60deg);
+    }
   }
 }
