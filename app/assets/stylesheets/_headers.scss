@@ -1,4 +1,4 @@
-// Site header
+// Headers
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .site-header {
@@ -19,35 +19,25 @@
     }
   }
 
-  .icon {
-    &.add-item {
-      height: 2rem;
-    }
-
-    &.avatar {
-      height: 4.8rem;
-      border-width: 2px;
-    }
+  .avatar {
+    height: $big-icon;
+    border-width: 2px;
   }
 }
 
-.site-logo {
-  color: inherit;
+.page-header {
+  margin-top: $gutter;
 
-  &:active,
-  &:hover {
-    color: $text-color-highlight;
+  div[class^="col"] {
+    display: flex;
+    align-items: center;
 
-    svg {
-      transform: rotate(60deg);
+    &:last-of-type {
+      justify-content: flex-end;
     }
-  }
 
-  svg {
-    height: 4.8rem;
-    pointer-events: none;
-    transition: ($transition-duration * 2) cubic-bezier(.3,0,.5,1);
-    transition-property: transform, color;
-    user-select: none;
+    & > *:not(:first-child) {
+      margin-left: $box-padding-y;
+    }
   }
 }
