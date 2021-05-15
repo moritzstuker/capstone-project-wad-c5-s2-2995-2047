@@ -3,6 +3,7 @@ class User < ApplicationRecord
   ROLES = %w(admin partner associate intern).freeze
 
   belongs_to :contact
+  has_many :activities
 
   has_secure_password
 
