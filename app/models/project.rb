@@ -10,21 +10,26 @@ class Project < ApplicationRecord
   }
 
   belongs_to :category, class_name: "ProjectCategory", foreign_key: "project_category_id", optional: true
+  has_many   :activities
+  has_many   :deadlines
   has_and_belongs_to_many :parties, class_name: "Contact"
-  has_many :activities
-  has_many :deadlines
-
-  def render_project_parties(str)
-    arr = parties.where(role: str)
-    "#{arr.first.combine(:name)}#{' et al.' if arr.count > 1}"
-  end
 
   def name_based_on_parties
-    str = "#{render_project_parties('client')}"
-    if parties.where(role: 'adversary').count > 1
-      str += "<span class=\"mute\">&nbsp;v.&nbsp;</span>#{render_project_parties('adversary')}"
+    str = ""
+
+    if parties.clients.exists?
+      str += parties.clients.first.combine(:name)
+      str += " et al." if parties.clients.count > 1
     end
-    str
+
+    str += "<span class=\"mute\">&nbsp;v.&nbsp;</span>" if parties.clients.exists? && parties.adversaries.exists?
+
+    if parties.adversaries.exists?
+      str += parties.adversaries.first.combine(:name)
+      str += " et al." if parties.adversaries.count > 1
+    end
+
+    return str.html_safe
   end
 
   def combine(format = :name)
