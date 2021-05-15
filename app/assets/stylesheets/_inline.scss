@@ -18,9 +18,22 @@ a {
   }
 }
 
+abbr[title] {
+  text-decoration: underline;
+  text-decoration: underline dotted
+}
+
 b,
 strong {
   font-weight: $bold-font-weight;
+}
+
+mark {
+  padding: 0;
+  border: 1px solid $orange-300;
+  border-radius: 3px;
+  background-color: $yellow-100;
+  color: black;
 }
 
 small {
@@ -41,11 +54,6 @@ sub {
 
 sup {
   top: -.5em
-}
-
-abbr[title] {
-  text-decoration: underline;
-  text-decoration: underline dotted
 }
 
 ::-moz-selection {
