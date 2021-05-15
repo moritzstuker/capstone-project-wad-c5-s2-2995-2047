@@ -14,6 +14,8 @@ class Project < ApplicationRecord
   has_many   :deadlines
   has_and_belongs_to_many :parties, class_name: "Contact"
 
+  scope :search, -> (str) { joins(:parties).where("label LIKE :query OR reference LIKE :query OR contacts.first_name LIKE :query OR contacts.last_name LIKE :query", query: "%#{str}%").uniq }
+
   def name_based_on_parties
     str = ""
 
