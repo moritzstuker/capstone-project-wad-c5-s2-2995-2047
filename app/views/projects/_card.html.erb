@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card-header">
-    <%= link_to project.combine(:name), project_path(project) %>
+    <%= link_to highlight(project.combine(:name), params[:q]), project_path(project) %>
     <% if project.status == 'inactive' %>
       <span class="label">inactive</span>
     <% end %>
   </div>
   <div class="card-content">
-    <p><%= project.label %></p>
+    <p><%= highlight(project.label, params[:q]) %></p>
   </div>
   <div class="card-footer">
     <span class="dot-label">
@@ -15,7 +15,7 @@
     </span>
     <% if project.reference.present? %>
     <span class="keys disambiguate">
-      <%= project.reference %>
+      <%= highlight(project.reference, params[:q]) %>
     </span>
     <% end %>
   </div>
