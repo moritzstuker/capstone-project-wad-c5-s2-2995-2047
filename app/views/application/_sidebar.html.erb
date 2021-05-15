@@ -2,7 +2,7 @@
   <nav class="box-content">
     <% ApplicationController::SIDEBAR_PAGES.each do |key, label| %>
       <% tag = "<span class=\"box-item\">#{label}</span><span class=\"counter\">#{page_items(key).count}</span>".html_safe %>
-      <%= link_to_unless_current tag, eval("#{key}_path") do %>
+      <%= link_to_unless_current tag, controller: key, q: params[:q] do %>
       <span class="is-active"><%= tag %></span>
       <% end %>
     <% end %>
