@@ -29,7 +29,7 @@ rand(35..50).times do
     prefix:     category == "natural person" ? ["M.", "Mme"].sample : nil,
     first_name: category == "natural person" ? Faker::Name.first_name : nil,
     last_name:  category == "natural person" ? Faker::Name.last_name : Faker::Company.name,
-    suffix:     category == "natural person" ? Faker::Name.last_name : Faker::Company.suffix,
+    suffix:     category == "natural person" ? nil : Faker::Company.suffix,
     phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,
     birthday:   Faker::Date.birthday(min_age: 18, max_age: 100),
@@ -88,7 +88,7 @@ end
 puts "✓  Generated project categories."
 
 
-rand(2..3).times do
+rand(20..30).times do
   ref_no = ('A'..'Z').to_a.sample(2).join + (12..21).to_a.sample.to_s + "." + (000000..999999).to_a.sample.to_s + "-" + ('A'..'Z').to_a.sample(3).join
   Project.create!(
     label:       Faker::Hipster.words(number: 2).join(' ').capitalize,
@@ -104,7 +104,7 @@ end
 puts "✓  Created #{Project.all.count} cases."
 
 
-rand(1500..2000).times do
+rand(150..200).times do
   Activity.create!(
     label:    Faker::Company.bs.capitalize,
     category: Activity::CATEGORIES.sample,
