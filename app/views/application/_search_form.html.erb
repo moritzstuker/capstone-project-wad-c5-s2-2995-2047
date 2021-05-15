@@ -1,7 +1,7 @@
-<%= form_tag root_path, method: 'GET' do %>
+<%= form_tag projects_path, method: :get do %>
 <div class="inline-form">
-  <%= text_field_tag 'q', nil, placeholder: 'Search...' %>
-  <%= button_tag 'Search' do %>
+  <%= text_field_tag :q, params[:q], placeholder: 'Search...' %>
+  <%= button_tag 'Search', name: nil do %>
   <%= icon_tag('search') %>
   <% end %>
 </div>
