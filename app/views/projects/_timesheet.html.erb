@@ -2,7 +2,7 @@
   <header class="box-header">
     <h2>Timesheet</h2>
   </header>
-  <% if @project.activities.count > 0 %>
+  <% if @activities.exists? %>
   <table class="box-content">
     <thead>
       <tr>
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @project.activities.order('date DESC').each do |activity| %>
+      <% @activities.each do |activity| %>
       <tr>
         <td><%= activity.date.strftime("%d.%m.%Y") %></td>
         <td><%= activity.category %></td>
