@@ -11,7 +11,7 @@
   <div class="card-footer">
     <span class="dot-label">
       <span class="dot" style="background-color: <%= project.category.color %>"></span>
-      <span><%= project.category.label %></span>
+      <span><%= project.category.label.titleize %></span>
     </span>
     <% if project.reference.present? %>
     <span class="keys disambiguate">
