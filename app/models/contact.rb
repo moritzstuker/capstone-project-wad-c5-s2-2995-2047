@@ -1,6 +1,5 @@
 class Contact < ApplicationRecord
 
-  ROLES = %w(client adversary employee other).freeze
   PERSONALITIES = ["natural person", "legal person"].freeze
   FORMATS = {
     string: {
@@ -23,6 +22,7 @@ class Contact < ApplicationRecord
   }
 
   has_one :user
+  belongs_to :role, class_name: "ContactRole", foreign_key: "contact_role_id"
   has_and_belongs_to_many :projects
 
   scope :first_name_contains, -> (str) { where('first_name LIKE ?', "%#{str}%") }
@@ -30,13 +30,20 @@ class Contact < ApplicationRecord
   scope :address_contains,    -> (str) { where('address LIKE ?', "%#{str}%") }
   scope :search,              -> (str) { first_name_contains(str).or(last_name_contains(str)).or(address_contains(str)) }
 
+  scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles) }
+  scope :clients,     ->       { get_role('client') }
+  scope :adversaries, ->       { get_role('adversary') }
+  scope :employees,   ->       { get_role('employee') }
+  scope :other,       ->       { get_role('other') }
+
+
   after_initialize  :default_values!
   before_validation { self.email = email.downcase }
 
   validates :first_name, length: { maximum: 60 }
   validates :last_name,  presence: true, length: { maximum: 60 }
   validates :email,      presence: true, length: { minimum: 6, maximum: 60 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
-  validates :role,       inclusion: { in: ROLES }
+  #validates :role,       presence: true
 
   serialize :address, Hash
 
@@ -47,6 +54,6 @@ class Contact < ApplicationRecord
   private
 
   def default_values!
-    self.role ||= "other"
+    # nothing for the time being...
   end
 end

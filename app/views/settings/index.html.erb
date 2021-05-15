@@ -22,7 +22,7 @@
           <tbody>
             <% @case_categories.each do |category| %>
             <tr>
-              <td><%= category.label %> (<%= @cases.all.where(category: category).count %>)</td>
+              <td><%= category.label %> (<%= @cases.where(category: category).count %>)</td>
               <td>
                 <span class="dot" style="background-color: <%= category.color %>"></span>
                 <span class="disambiguate"><%= category.color %></span>
@@ -37,7 +37,7 @@
   <div class="col-4">
     <section class="box">
       <header class="box-header">
-        <h2>Contact categories</h2>
+        <h2>Contact roles</h2>
       </header>
       <div class="box-content">
         <table>
@@ -48,12 +48,12 @@
             </tr>
           </thead>
           <tbody>
-            <% @case_categories.each do |category| %>
+            <% @contact_roles.each do |role| %>
             <tr>
-              <td><%= category.label %> (<%= @cases.all.where(category: category).count %>)</td>
+              <td><%= role.label %> (<%= @contacts.where(role: role).count %>)</td>
               <td>
-                <span class="dot" style="background-color: <%= category.color %>"></span>
-                <span class="disambiguate"><%= category.color %></span>
+                <span class="dot" style="background-color: <%= role.color %>"></span>
+                <span class="disambiguate"><%= role.color %></span>
               </td>
             </tr>
             <% end %>
@@ -75,7 +75,7 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Role</th>
+              <th>Access level</th>
               <th>Username</th>
               <th>Email</th>
               <th>Avatar</th>
@@ -85,7 +85,7 @@
             <% @users.each do |user| %>
             <tr>
               <td><%= link_to user.contact.combine(:name), user.contact %> (You)</td>
-              <td><%= user.role.titleize %></td>
+              <td><%= user.access_level.titleize %></td>
               <td><span class="disambiguate"><%= user.login %></span></td>
               <td><%= user.contact.email %></td>
               <td><%= image_tag('150.jpg', alt: 'Avatar', class: 'icon avatar') %></td>

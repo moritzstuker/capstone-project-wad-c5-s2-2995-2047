@@ -6,6 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+{
+  'client'    => '#2b6a30', # $green-600
+  'adversary' => '#ad2e2c', # $red-600
+  'employee'  => '#255ab2', # $blue-600
+  'other'     => '#94471b'  # $orange-600
+}.each do |label, color|
+  ContactRole.create!(
+    label: label,
+    color: color
+  )
+end
+puts "✓  Generated contact roles."
+
+
 puts "   Generating seed data... this will take some time."
 
 # Create contacts
@@ -27,7 +41,7 @@ rand(35..50).times do
       city:       Faker::Address.city,
       country:    ["Switzerland", Faker::Address.country].sample
     },
-    role:       %w(client adversary other).sample,
+    role:       ContactRole.all.except(:employee).sample,
     category:   category,
     profession: category == "natural person" ? Faker::Company.profession : Faker::Company.industry,
     notes:      [Faker::Hipster.sentence, Faker::Company.buzzword, nil].sample
@@ -36,42 +50,35 @@ end
 puts "✓  Created #{Contact.all.count} contacts"
 
 
-# Create one user per role
+# Create one user per access_level
 puts "   Creating users..."
-User::ROLES.each do |role|
-  username = "#{role}@test.dev"
+target_contacts = Contact.where(category: 'natural person').sample(User::ROLES.count)
+
+User::ROLES.each_with_index do |access_level, i|
+  username = "#{access_level}@test.dev"
+
   User.create!(
-    login:    username,
-    password: 'password',
-    role:     role
+    login:        username,
+    password:     'password',
+    access_level: access_level,
+    contact:      target_contacts[i]
   )
-  puts "   Created user '#{username}'"
+  target_contacts[i].role = ContactRole.find_by_label('employee')
+  target_contacts[i].save!
+  puts "   Created user '#{username}' and added link with '#{target_contacts[i].combine(:name)}' (ID: #{target_contacts[i].id})"
 end
 puts "✓  Created #{User.all.count} users."
 
 
-
-contacts_ids = Contact.where(category: 'natural person').sample(User.all.count)
-
-User.all.each_with_index do |user, i|
-  user.contact = contacts_ids[i]
-  user.save!
-  contacts_ids[i].role = "employee"
-  contacts_ids[i].save!
-  puts "   Linked user '#{user.login}' with '#{contacts_ids[i].combine(:name)}' (ID: #{contacts_ids[i].id})"
-end
-puts "✓  Linked users with contacts."
-
-
-project_categories = {
-  'Bankruptcy law'        => '#22272e', # dark grey
-  'Civil law'             => '#4184e4', # light blue
-  'Corporate law'         => '#143d79', # dark blue
-  'Criminal law'          => '#922323', # red
-  'Data protection'       => '#545d68', # light grey
-  'Immigration law'       => '#1b4721', # green
-  'Intellectual property' => '#ae7c14', # yellow
-  'Labor law'             => '#ae5622'  # orange
+{
+  'bankruptcy law'        => '#22272e', # dark grey
+  'civil law'             => '#4184e4', # light blue
+  'corporate law'         => '#143d79', # dark blue
+  'criminal law'          => '#922323', # red
+  'data protection'       => '#545d68', # light grey
+  'immigration law'       => '#1b4721', # green
+  'intellectual property' => '#ae7c14', # yellow
+  'labor law'             => '#ae5622'  # orange
 }.each do |label, color|
   ProjectCategory.create!(
     label: label,
@@ -81,7 +88,7 @@ end
 puts "✓  Generated project categories."
 
 
-rand(50..75).times do
+rand(2..3).times do
   ref_no = ('A'..'Z').to_a.sample(2).join + (12..21).to_a.sample.to_s + "." + (000000..999999).to_a.sample.to_s + "-" + ('A'..'Z').to_a.sample(3).join
   Project.create!(
     label:       Faker::Hipster.words(number: 2).join(' ').capitalize,
@@ -89,7 +96,8 @@ rand(50..75).times do
     fee:         [180, 250, 300, 330, 350, 400].sample,
     status:      Project::STATUS.sample,
     category:    ProjectCategory.all.sample,
-    parties:     Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3)),
+    parties:     Contact.all.sample(5),
+    #parties:     Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3)),
     reference:   [ref_no.to_s, nil].sample
   )
 end
