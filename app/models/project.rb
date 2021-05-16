@@ -20,16 +20,16 @@ class Project < ApplicationRecord
   def name_based_on_parties
     str = ""
 
-    if parties.clients.exists?
-      str += parties.clients.first.combine(:name)
-      str += " et al." if parties.clients.count > 1
+    if contacts.clients.exists?
+      str += contacts.clients.first.combine(:name)
+      str += " et al." if contacts.clients.count > 1
     end
 
-    str += "<span class=\"mute\">&nbsp;v.&nbsp;</span>" if parties.clients.exists? && parties.adversaries.exists?
+    str += "<span class=\"mute\">&nbsp;v.&nbsp;</span>" if contacts.clients.exists? && contacts.adversaries.exists?
 
-    if parties.adversaries.exists?
-      str += parties.adversaries.first.combine(:name)
-      str += " et al." if parties.adversaries.count > 1
+    if contacts.adversaries.exists?
+      str += contacts.adversaries.first.combine(:name)
+      str += " et al." if contacts.adversaries.count > 1
     end
 
     return str.html_safe

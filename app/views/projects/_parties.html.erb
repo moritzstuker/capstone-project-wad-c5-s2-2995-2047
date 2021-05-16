@@ -1,19 +1,19 @@
-<% if @project.parties.clients.exists? %>
+<% if @project.contacts.clients.exists? %>
 <div class="col">
   <h3 class="heading">Clients</h3>
   <ul>
-    <% @project.parties.clients.each do |party| %>
+    <% @project.contacts.clients.each do |party| %>
     <li><%= link_to party.combine(:full_name), party %></li>
     <% end %>
   </ul>
 </div>
 <% end %>
 
-<% if @project.parties.adversaries.exists? %>
+<% if @project.contacts.adversaries.exists? %>
 <div class="col">
   <h3 class="heading">Adversaries</h3>
   <ul>
-    <% @project.parties.adversaries.each do |party| %>
+    <% @project.contacts.adversaries.each do |party| %>
     <li><%= link_to party.combine(:full_name), party %></li>
     <% end %>
   </ul>
