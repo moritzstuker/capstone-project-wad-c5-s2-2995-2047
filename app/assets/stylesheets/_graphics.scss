@@ -32,6 +32,10 @@ svg {
     border-radius: 50%;
     transition: border-color $transition;
   }
+
+  &.star-fill {
+    fill: $yellow;
+  }
 }
 
 * {
@@ -45,6 +49,14 @@ svg {
       &.trash {
         fill: $red;
       }
+
+      &.star {
+        fill: $yellow;
+      }
+
+      &.star-fill {
+        fill: currentColor;
+      }
     }
   }
 }
@@ -52,6 +64,7 @@ svg {
 .site-logo {
   width: $big-icon;
   height: $big-icon;
+  color: inherit;
 
   .icon {
     height: 100%;
@@ -62,6 +75,8 @@ svg {
 
   &:active,
   &:hover {
+    color: $text-color-highlight;
+
     .icon {
       transform: rotate(60deg);
     }

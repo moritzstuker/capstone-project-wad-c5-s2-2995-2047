@@ -4,6 +4,7 @@
     <% if project.status == 'inactive' %>
       <span class="label">inactive</span>
     <% end %>
+    <span class="favorites-tag"><span class="favorites-tag-text">add to your cases</span><%= icon_tag('star') %></span>
   </div>
   <div class="card-content">
     <p><%= highlight(project.label, params[:q]) %></p>

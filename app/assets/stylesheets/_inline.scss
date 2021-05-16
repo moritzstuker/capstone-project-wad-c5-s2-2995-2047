@@ -30,10 +30,9 @@ strong {
 
 mark {
   padding: 0;
-  border: 1px solid $orange-300;
-  border-radius: 3px;
+  border-radius: 2px;
   background-color: $yellow-100;
-  color: black;
+  color: $black;
 }
 
 small {
@@ -135,11 +134,45 @@ sup {
 :not(tr).strikethrough,
 tr.strikethrough td {
   &::before {
-      position: absolute;
-      top: 47%;
-      left: 0;
-      width: 100%;
-      border-bottom: 1px solid currentColor;
-      content: '';
+    position: absolute;
+    top: 47%;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid currentColor;
+    content: '';
+  }
+}
+
+.favorites-tag {
+  display: inline-block;
+  position: relative;
+  margin-left: auto;
+  padding-right: .5em;
+  font-size: $small-font-size;
+  white-space: nowrap;
+
+  &-text {
+    display: none;
+    position: absolute;
+    right: 0;
+    padding-right: 2em;
+    padding-left: .5em;
+    border: $border-base;
+    border-radius: 1em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition;
+    user-select: none;
+  }
+
+  &:hover {
+    .favorites-tag-text {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  .icon {
+    vertical-align: middle;
   }
 }
