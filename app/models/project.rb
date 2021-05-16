@@ -12,7 +12,8 @@ class Project < ApplicationRecord
   belongs_to :category, class_name: "ProjectCategory", foreign_key: "project_category_id", optional: true
   has_many   :activities
   has_many   :deadlines
-  has_and_belongs_to_many :parties, class_name: "Contact"
+  has_many   :parties
+  has_many   :contacts, through: "Parties"
 
   scope :search, -> (str) { joins(:parties).where("label LIKE :query OR reference LIKE :query OR contacts.first_name LIKE :query OR contacts.last_name LIKE :query", query: "%#{str}%").uniq }
 

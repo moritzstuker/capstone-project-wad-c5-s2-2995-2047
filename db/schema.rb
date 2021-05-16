@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210514144302) do
+ActiveRecord::Schema.define(version: 20210515210522) do
 
   create_table "activities", force: :cascade do |t|
     t.string "label"
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20210514144302) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_deadlines_on_project_id"
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.integer "contact_id"
+    t.integer "project_id"
+    t.boolean "main"
+    t.index ["contact_id"], name: "index_parties_on_contact_id"
+    t.index ["project_id"], name: "index_parties_on_project_id"
   end
 
   create_table "project_categories", force: :cascade do |t|
