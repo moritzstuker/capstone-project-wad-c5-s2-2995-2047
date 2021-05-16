@@ -21,10 +21,10 @@ class Contact < ApplicationRecord
     }
   }
 
-  has_one :user
+  has_one    :user
   belongs_to :role, class_name: "ContactRole", foreign_key: "contact_role_id"
-  has_many :parties
-  has_many :projects, through: "Parties"
+  has_many   :parties
+  has_many   :projects, through: "parties"
 
   scope :first_name_contains, -> (str) { where('first_name LIKE ?', "%#{str}%") }
   scope :last_name_contains,  -> (str) { where('last_name LIKE ?', "%#{str}%") }

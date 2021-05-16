@@ -13,7 +13,7 @@ class Project < ApplicationRecord
   has_many   :activities
   has_many   :deadlines
   has_many   :parties
-  has_many   :contacts, through: "Parties"
+  has_many   :contacts, through: "parties"
 
   scope :search, -> (str) { joins(:parties).where("label LIKE :query OR reference LIKE :query OR contacts.first_name LIKE :query OR contacts.last_name LIKE :query", query: "%#{str}%").uniq }
 

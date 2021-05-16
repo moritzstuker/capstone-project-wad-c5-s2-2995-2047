@@ -96,7 +96,7 @@ rand(20..30).times do
     fee:         [180, 250, 300, 330, 350, 400].sample,
     status:      Project::STATUS.sample,
     category:    ProjectCategory.all.sample,
-    parties:     Contact.all.sample(5),
+    contacts:    Contact.all.sample(2),
     #parties:     Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3)),
     reference:   [ref_no.to_s, nil].sample
   )

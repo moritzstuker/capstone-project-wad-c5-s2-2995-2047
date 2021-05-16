@@ -1,4 +1,4 @@
 class Party < ApplicationRecord
-  belongs_to :contacts
-  belongs_to :projects
+  belongs_to :contact
+  belongs_to :project
 end
