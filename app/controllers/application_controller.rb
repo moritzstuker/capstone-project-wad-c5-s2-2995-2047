@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionHelper
+  helper_method :dynamic_search_path
 
   SIDEBAR_PAGES = {
     projects: 'Cases',
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   def error_message_for(record, field)
     record.full_messages_for(field).join(",")
+  end
+
+  def dynamic_search_path
+    eval("#{SIDEBAR_PAGES.key?(controller_name.to_sym) ? controller_name : SIDEBAR_PAGES.keys[0]}_path")
   end
 
   private
