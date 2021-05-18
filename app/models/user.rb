@@ -15,6 +15,10 @@ class User < ApplicationRecord
   # validates :access_level,    presence: true
   # validates :contact HAS TO BE UNIQUE
 
+  def combine(format = :name)
+    contact.combine(format)
+  end
+
   private
 
   def default_values!
