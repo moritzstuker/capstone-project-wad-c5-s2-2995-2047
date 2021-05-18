@@ -1,6 +1,10 @@
 class Contact < ApplicationRecord
 
-  PERSONALITIES = ["natural person", "legal person"].freeze
+  CATEGORIES = [
+    'natural person',
+    'legal person'
+  ].freeze
+
   FORMATS = {
     string: {
       name:       '#{first_name} #{last_name}',
@@ -21,22 +25,20 @@ class Contact < ApplicationRecord
     }
   }
 
-  has_one    :user
   belongs_to :role, class_name: "ContactRole", foreign_key: "contact_role_id"
-  has_many   :parties
-  has_many   :projects, through: "parties"
+  has_one    :user
+  has_and_belongs_to_many :projects
 
   scope :first_name_contains, -> (str) { where('first_name LIKE ?', "%#{str}%") }
   scope :last_name_contains,  -> (str) { where('last_name LIKE ?', "%#{str}%") }
   scope :address_contains,    -> (str) { where('address LIKE ?', "%#{str}%") }
   scope :search,              -> (str) { first_name_contains(str).or(last_name_contains(str)).or(address_contains(str)) }
 
-  scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles) }
+  scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles).order('last_name') }
   scope :clients,     ->       { get_role('client') }
   scope :adversaries, ->       { get_role('adversary') }
   scope :employees,   ->       { get_role('employee') }
   scope :other,       ->       { get_role('other') }
-
 
   after_initialize  :default_values!
   before_validation { self.email = email.downcase }
@@ -55,6 +57,6 @@ class Contact < ApplicationRecord
   private
 
   def default_values!
-    # nothing for the time being...
+    # nothing for now...
   end
 end
