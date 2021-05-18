@@ -125,7 +125,6 @@ def build_contact_role(arr)
     label: arr[0],
     color: arr[1]
   )
-  puts arr[0]
 end
 
 def build_project_category(arr)
