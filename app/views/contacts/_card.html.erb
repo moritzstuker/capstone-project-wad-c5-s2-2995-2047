@@ -9,7 +9,7 @@
   <div class="card-footer">
     <span class="dot-label">
       <span class="dot" style="background-color: <%= contact.role.color %>"></span>
-      <span><%= contact.role.label.titleize %></span>
+      <span><%= contact.role.label.capitalize %></span>
     </span>
     <% if contact.projects.count > 0 %>
       <span class="keys">Party in <%= pluralize(contact.projects.count, 'case') %>.</span>

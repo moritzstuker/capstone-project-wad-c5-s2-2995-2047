@@ -7,12 +7,14 @@
     <span class="favorites-tag"><span class="favorites-tag-text">add to your cases</span><%= icon_tag('star') %></span>
   </div>
   <div class="card-content">
+  <% if project.label %>
     <p><%= highlight(project.label, params[:q]) %></p>
+    <% end %>
   </div>
   <div class="card-footer">
     <span class="dot-label">
       <span class="dot" style="background-color: <%= project.category.color %>"></span>
-      <span><%= project.category.label.titleize %></span>
+      <span><%= project.category.label.capitalize %></span>
     </span>
     <% if project.reference.present? %>
     <span class="keys disambiguate">

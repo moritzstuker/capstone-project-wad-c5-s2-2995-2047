@@ -20,7 +20,7 @@
         <p><%= @contact.combine(:address) %></p>
         <span class="dot-label">
           <span class="dot" style="background-color: <%= @contact.role.color %>"></span>
-          <span><%= @contact.role.label.titleize %></span>
+          <span><%= @contact.role.label.capitalize %></span>
         </span>
       </div>
     </section>
