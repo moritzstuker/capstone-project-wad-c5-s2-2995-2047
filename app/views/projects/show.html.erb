@@ -4,7 +4,7 @@
       <h1 class="title">
         <%= link_to "Cases", projects_path %>
         <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <%= @project.combine(:name) %>
+        <%= @project.combine(:name) %><% if @project.label %><span class="mute">&nbsp;&colon;&nbsp;</span><%= @project.label %><% end %>
       </h1>
     </div>
     <div class="col-1">
@@ -17,13 +17,33 @@
   <div class="col-5">
     <section class="box">
       <header class="box-header">
-        <h2>Overview</h2>
+        <h2>Description</h2>
+      </header>
+      <% if @project.description %>
+      <div class="box-content">
+        <p><%= @project.description %></p>
+      </div>
+      <% else %>
+      <%= image_tag('undraw/void.svg', class: 'void') %>
+      <% end %>
+    </section>
+    <section class="box">
+      <header class="box-header">
+        <h2>Parties</h2>
       </header>
       <div class="box-content">
-        <p><strong>Label:</strong>&nbsp;<%= @project.label %></p>
-        <p><strong>Description:</strong>&nbsp;<%= @project.description %></p>
+        <div class="row">
+          <%= render 'parties' %>
+        </div>
       </div>
     </section>
+  </div>
+  <div class="col-3">
+    <%= render 'properties' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
     <section class="box">
       <header class="box-header">
         <h2>Deadlines</h2>
@@ -38,45 +58,8 @@
           <% end %>
         </ul>
         <% else %>
-        <div class="col">
-          <p>No deadline set...</p>
-        </div>
+        <%= image_tag('undraw/void.svg', class: 'void') %>
         <% end %>
-      </div>
-    </section>
-  </div>
-  <div class="col-3">
-    <%= render 'properties' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-5">
-    <section class="box">
-      <header class="box-header">
-        <h2>Parties</h2>
-      </header>
-      <div class="box-content">
-        <div class="row">
-          <% if @project.parties.count > 0 %>
-          <%= render 'parties' %>
-          <% else %>
-          <div class="col">
-            <p>No party yet...</p>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </section>
-  </div>
-  <div class="col-3">
-    <section class="box">
-      <header class="box-header">
-        <h2>Assigned to</h2>
-      </header>
-      <div class="box-content">
-        <div class="row">
-          Johnny Walker
-        </div>
       </div>
     </section>
   </div>
