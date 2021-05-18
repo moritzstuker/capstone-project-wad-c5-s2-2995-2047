@@ -38,7 +38,8 @@ svg {
   }
 }
 
-* {
+a,
+.anchor-like {
   &:active,
   &:hover,
   &:focus {
@@ -81,4 +82,11 @@ svg {
       transform: rotate(60deg);
     }
   }
+}
+
+.void {
+  width: 100%;
+  max-width: 10rem;
+  margin: 1em auto;
+  opacity: .5;
 }
