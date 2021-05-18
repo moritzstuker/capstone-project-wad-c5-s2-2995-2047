@@ -6,126 +6,187 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-{
-  'client'    => '#2b6a30', # $green-600
-  'adversary' => '#ad2e2c', # $red-600
-  'employee'  => '#255ab2', # $blue-600
-  'other'     => '#94471b'  # $orange-600
-}.each do |label, color|
-  ContactRole.create!(
-    label: label,
-    color: color
+LEGALESE = [
+  "Action de droit administratif",
+  "Action en constatation",
+  "Affection psychique",
+  "Affermage par parcelles",
+  "Arbitrage international",
+  "Assistant social",
+  "Assurance pour perte de patrimoine",
+  "Autorité universitaire",
+  "Banque confirmatrice",
+  "Bulletin de vote",
+  "Casier judiciaire",
+  "Catalogue des animaux",
+  "Catalogue des données chronologiques",
+  "Connaissement",
+  "Constitutionnalité",
+  "Contrat d'épargne-logement",
+  "Contrat de rente viagère",
+  "Convention de l'oit",
+  "Convention sur les armes à sous-munitions",
+  "Courtier en annonces",
+  "Coxarthrose",
+  "Décompte final",
+  "Déduction des versements d'utilité publique",
+  "Défiguration",
+  "Détention injustifiée",
+  "Divorce",
+  "Dispositions pénales de la ltbc",
+  "Droit à l'antenne",
+  "Droit d'auteur et droits voisins",
+  "Droit d'être arrêté",
+  "Erreur de déclaration",
+  "Établissement de crédit",
+  "État fédéral",
+  "Fonction de la forêt",
+  "Force distinctive",
+  "Gage immobilier",
+  "Guerre maritime",
+  "Impôt cantonal et communal",
+  "Indemnité en cas d'insolvabilité",
+  "Insaisissabilité",
+  "Interprétation uniforme",
+  "Jura novit curia",
+  "Lacune d'assurance",
+  "Médecin conventionné",
+  "Mesure diagnostique",
+  "Mise en liberté provisoire",
+  "Nouvelle construction",
+  "Organe d'appel de l'omc",
+  "Orientation de la production",
+  "Politique foncière",
+  "Procès de nuremberg",
+  "Procès équitable",
+  "Propres actions",
+  "Propriété exclusive",
+  "Réduction du traitement",
+  "Renonciation au brevet",
+  "République démocratique allemande",
+  "Réquisition de continuer la poursuite",
+  "Saisie provisoire",
+  "Salaire en nature",
+  "Science de l'information",
+  "Sécurité militaire",
+  "Société en commandite par actions",
+  "Sous-licence",
+  "Supplément de salaire",
+  "Tableau d'affichage",
+  "Tâche de droit public",
+  "Trafic illicite de stupéfiants",
+  "Transplantation du foie",
+  "Travaux accessoires",
+  "Usage commun"
+]
+
+def build_case
+  # Ref number format is canonical in Canton de Vaud
+  ref_no = ('A'..'Z').to_a.sample(2).join + (12..21).to_a.sample.to_s + "." + (000000..999999).to_a.sample.to_s + "-" + ('A'..'Z').to_a.sample(3).join
+  Project.create!(
+    label:       [LEGALESE.sample, nil].sample,
+    description: [Faker::Hipster.paragraph, nil][weighted_random(0.5)],
+    status:      Project::STATUS.sample,
+    category:    ProjectCategory.all.sample,
+    clients:     Contact.clients.sample(rand(1...3)),
+    adversaries: Contact.adversaries.sample(rand(0...5)),
+    reference:   [ref_no.to_s, nil].sample,
+    assignees:   User.all.sample(2) # needs to be fine-tuned
   )
 end
-puts "✓  Generated contact roles."
 
-
-puts "   Generating seed data... this will take some time."
-
-# Create contacts
-rand(35..50).times do
-  category = Contact::PERSONALITIES.sample
+def build_contact(str = "client")
+  category = (str == "employee") ? Contact::CATEGORIES[0] : Contact::CATEGORIES[weighted_random()];
   Contact.create!(
     prefix:     category == "natural person" ? ["M.", "Mme"].sample : nil,
     first_name: category == "natural person" ? Faker::Name.first_name : nil,
     last_name:  category == "natural person" ? Faker::Name.last_name : Faker::Company.name,
     suffix:     category == "natural person" ? nil : Faker::Company.suffix,
+    address: {
+      pobox:      [nil, Faker::Address.mail_box][weighted_random()],
+      street:     Faker::Address.street_address,
+      streetno:   [nil, Faker::Address.building_number][weighted_random()],
+      zip:        Faker::Address.zip_code,
+      city:       Faker::Address.city,
+      country:    ["Switzerland", Faker::Address.country][weighted_random()]
+    },
     phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,
     birthday:   Faker::Date.birthday(min_age: 18, max_age: 100),
-    address: {
-      pobox:      [nil, Faker::Address.mail_box].sample,
-      street:     Faker::Address.street_address,
-      streetno:   [nil, Faker::Address.building_number].sample,
-      zip:        Faker::Address.zip_code,
-      city:       Faker::Address.city,
-      country:    ["Switzerland", Faker::Address.country].sample
-    },
-    role:       ContactRole.all.except(:employee).sample,
-    category:   category,
     profession: category == "natural person" ? Faker::Company.profession : Faker::Company.industry,
-    notes:      [Faker::Hipster.sentence, Faker::Company.buzzword, nil].sample
+    category:   category,
+    notes:      [nil, Faker::Hipster.sentence][weighted_random()],
+    role:       ContactRole.find_by_label(str)
   )
 end
-puts "✓  Created #{Contact.all.count} contacts"
 
-
-# Create one user per access_level
-puts "   Creating users..."
-target_contacts = Contact.where(category: 'natural person').sample(User::ROLES.count)
-
-User::ROLES.each_with_index do |access_level, i|
-  username = "#{access_level}@test.dev"
-
-  User.create!(
-    login:        username,
-    password:     'password',
-    access_level: access_level,
-    contact:      target_contacts[i]
+def build_contact_role(arr)
+  ContactRole.create!(
+    label: arr[0],
+    color: arr[1]
   )
-  target_contacts[i].role = ContactRole.find_by_label('employee')
-  target_contacts[i].save!
-  puts "   Created user '#{username}' and added link with '#{target_contacts[i].combine(:name)}' (ID: #{target_contacts[i].id})"
+  puts arr[0]
 end
-puts "✓  Created #{User.all.count} users."
 
-
-{
-  'bankruptcy law'        => '#22272e', # dark grey
-  'civil law'             => '#4184e4', # light blue
-  'corporate law'         => '#143d79', # dark blue
-  'criminal law'          => '#922323', # red
-  'data protection'       => '#545d68', # light grey
-  'immigration law'       => '#1b4721', # green
-  'intellectual property' => '#ae7c14', # yellow
-  'labor law'             => '#ae5622'  # orange
-}.each do |label, color|
+def build_project_category(arr)
   ProjectCategory.create!(
-    label: label,
-    color: color
+    label: arr[0],
+    color: arr[1]
   )
 end
-puts "✓  Generated project categories."
 
+def build_user(obj)
+  User.create!(
+    login:    "#{obj.label}@test.dev",
+    password: "password",
+    role:     obj,
+    contact:  build_contact("employee")
+  )
+  puts "   Generated user '#{obj.label}@test.dev'."
+end
 
-rand(20..30).times do
-  ref_no = ('A'..'Z').to_a.sample(2).join + (12..21).to_a.sample.to_s + "." + (000000..999999).to_a.sample.to_s + "-" + ('A'..'Z').to_a.sample(3).join
-  Project.create!(
-    label:       Faker::Hipster.words(number: 2).join(' ').capitalize,
-    description: [Faker::Hipster.paragraph, nil].sample,
-    fee:         [180, 250, 300, 330, 350, 400].sample,
-    status:      Project::STATUS.sample,
-    category:    ProjectCategory.all.sample,
-    contacts:    Contact.all.sample(2),
-    #parties:     Contact.where(role: 'client').sample(rand(1..3)) + Contact.where(role: 'adversary').sample(rand(0..3)),
-    reference:   [ref_no.to_s, nil].sample
+def build_user_role(hash)
+  UserRole.create!(
+    label:        hash[0].to_s,
+    access_level: hash[1][:access_level].to_i,
+    default_fee:  hash[1][:fee].to_f
   )
 end
-puts "✓  Created #{Project.all.count} cases."
 
-
-rand(150..200).times do
-  Activity.create!(
-    label:    Faker::Company.bs.capitalize,
-    category: Activity::CATEGORIES.sample,
-    duration: rand(0.1..8.0).round(1),
-    date:     Faker::Date.backward(days: 1000),
-    project:  Project.all.sample,
-    user:     User.all.sample
-  )
+def weighted_random(float = 0.8)
+  float <= rand(0.0..1.0) ? 0 : 1
 end
-puts "✓  Created #{Activity.all.count} activities."
 
-
-rand(50..75).times do
-  Deadline.create!(
-    label:    Faker::Company.bs.capitalize,
-    category: Deadline::CATEGORIES.sample,
-    date:     Faker::Date.forward(days: 300),
-    project:  Project.all.sample
-    ## ADD PROJECT USER
-  )
+puts "   Generating contact roles..."
+ContactRole::DEFAULTS.each do |e|
+  build_contact_role(e)
 end
-puts "✓  Created #{Deadline.all.count} deadlines."
+puts "✓  Successfully generated #{ContactRole.all.count} contact roles."
 
-puts "✓  Done, good to go!"
+puts "   Generating one user per role..."
+UserRole::DEFAULTS.each do |e|
+  role = build_user_role(e)
+  build_user(role)
+end
+puts "✓  Successfully generated #{User.all.count} users."
+
+puts "   Generating project categories..."
+ProjectCategory::DEFAULTS.each do |e|
+  build_project_category(e)
+end
+puts "✓  Successfully generated #{ProjectCategory.all.count} project categories."
+
+puts "   Generating contacts..."
+rand(10...12).times do |i|
+  role = ContactRole::DEFAULTS.except(:employee).map { |k,v| [k] }.sample
+  build_contact(role)
+  puts "   already generated #{i} contacts, still more to go..." if i % 100 == 0 && i > 0
+end
+puts "✓  Successfully generated #{Contact.all.count} contacts."
+
+puts "   Generating cases..."
+rand(10...12).times do |i|
+  build_case()
+  puts "   already generated #{i} cases, still more to go..." if i % 100 == 0 && i > 0
+end
+puts "✓  Successfully generated #{Project.all.count} cases."
