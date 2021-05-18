@@ -10,12 +10,10 @@
     <% end %>
     <p><strong>Created at:</strong>&nbsp;<%= @project.created_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
     <p><strong>Last updated at:</strong>&nbsp;<%= @project.updated_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
-    <p><strong>Owner:</strong>&nbsp;<%= @project.owner.user.contact.combine(:name) %></p>
     <p><strong>Assigned to:</strong></p>
     <ul>
-      <% @project.assignees.each do |assignee| %>
-      <li>Johnny Walker (owner)</li>
-      <li><%= assignee.contact.combine(:name) %><%= assignee.assignments.inspect %></li>
+      <% @project.assignments.ordered.each do |assignment| %>
+      <li><%= link_to assignment.user.combine(:name), assignment.user %><%= "&nbsp;(owner)".html_safe if assignment.case_owner %></li>
       <% end %>
     </ul>
     <hr />
