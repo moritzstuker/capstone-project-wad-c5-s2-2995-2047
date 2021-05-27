@@ -10,7 +10,8 @@
         <th>Category</th>
         <th>Label</th>
         <th>Duration</th>
-        <th>Employee</th>
+        <th>Fee</th>
+        <th>Assignee</th>
       </tr>
     </thead>
     <tbody>
@@ -19,8 +20,9 @@
         <td><%= activity.date.strftime("%d.%m.%Y") %></td>
         <td><%= activity.category %></td>
         <td><%= activity.label %></td>
-        <td><%= activity.duration %></td>
-        <td><%= activity.user.contact.combine(:name) %></td>
+        <td><%= number_with_precision(activity.duration, precision: 2) %></td>
+        <td><%= fee(activity.fee) %></td>
+        <td><%= link_to activity.user.combine(:name), activity.user %> (<%= activity.user.role.label %>)</td>
       </tr>
       <% end %>
     </tbody>
