@@ -7,20 +7,25 @@ class Project < ApplicationRecord
 
   FORMATS = {
     string: {
-      name:                '#{build_project_name}',
+      heading:             'cases<span class=\"mute\">&nbsp;&sol;&nbsp;</span>#{build_project_name}',
       long_name:           '#{build_project_name}<span class=\"mute\"> (#{label})</span>',
       long_name_two_lines: '#{build_project_name}<br /><span class=\"mute\">(#{label})</span>',
+      name:                '#{build_project_name}',
     }
   }
 
-  belongs_to :category, class_name: "ProjectCategory", foreign_key: "project_category_id", optional: true
-  has_many   :activities
-  has_many   :deadlines
-  has_many   :assignments
-  has_many   :assignees, through: :assignments, source: :user
-  has_one    :owner, -> { owners }, class_name: "Assignment"
+  has_many                :activities
   has_and_belongs_to_many :adversaries, -> { adversaries }, class_name: "Contact"
-  has_and_belongs_to_many :clients,     -> { clients },     class_name: "Contact"
+  has_many                :assignments
+  has_many                :assignees, -> { lawyers }, through: :assignments, source: :user
+  belongs_to              :category, class_name: "ProjectCategory", foreign_key: "project_category_id", optional: true
+  has_and_belongs_to_many :clients, -> { clients }, class_name: "Contact"
+  has_many                :deadlines
+  belongs_to              :owner, class_name: "User"
+
+  scope :label_contains, -> (str) { where('label LIKE ?', "%#{str}%") }
+  scope :reference_contains, -> (str) { where('reference LIKE ?', "%#{str}%") }
+  scope :search,              -> (str) { label_contains(str).or(reference_contains(str)) }
 
   def combine(format = :name)
     if label.nil?
