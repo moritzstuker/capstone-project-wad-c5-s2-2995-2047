@@ -12,12 +12,13 @@
     <p><strong>Last updated at:</strong>&nbsp;<%= @project.updated_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
     <p><strong>Assigned to:</strong></p>
     <ul>
-      <% @project.assignments.ordered.each do |assignment| %>
-      <li><%= link_to assignment.user.combine(:name), assignment.user %><%= "&nbsp;(owner)".html_safe if assignment.case_owner %></li>
+      <li><%= link_to @project.owner.combine(:name), @project.owner %><span class="mute">&nbsp;(owner)</span></li>
+      <% @project.assignees.each do |assignee| %>
+      <li><%= link_to assignee.combine(:name), assignee %></li>
       <% end %>
     </ul>
     <hr />
-    <p><strong>Your hours:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %> (<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %>&nbsp;overall)</p>
-    <p><strong>Your fees:</strong>&nbsp;<%= fee(@project.activities.sum(&:duration)) %> (<%= fee(@project.activities.sum(&:duration)) %>&nbsp;overall)</p>
+    <p><strong>Your hours:</strong>&nbsp;<%= number_with_precision(@project.activities.where(user: @project.owner).sum(&:duration), precision: 2) %> (<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %>&nbsp;overall)</p>
+    <p><strong>Your fees:</strong>&nbsp;<%= fee(@project.activities.where(user: @project.owner).sum(&:duration) * @project.activities.where(user: @project.owner).sum(&:duration)) %> (<%= fee(@project.activities.sum(&:duration) * @project.activities.where(user: @project.owner).sum(&:duration)) %>&nbsp;overall)</p>
   </div>
 </section>
