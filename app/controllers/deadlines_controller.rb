@@ -1,7 +1,7 @@
 class DeadlinesController < ApplicationController
   def index
-    @deadlines = Deadline.all
-    @deadlines_dates = Deadline.distinct.pluck(:date).sort
+    @deadlines = Deadline.search(params[:q]).order('date ASC')
+    @deadline_dates = Deadline.order('date ASC').distinct.pluck(:date)
   end
 
   def show
