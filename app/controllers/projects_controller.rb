@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @activities = Activity.order('date DESC').includes(:user)
+    @activities = @project.activities.order('date DESC')
   end
 end
+#client.project_contacts.find_by(project: @project).main
