@@ -6,23 +6,16 @@ class Contact < ApplicationRecord
   ].freeze
 
   FORMATS = {
-    string: {
-      name:       '#{first_name} #{last_name}',
-      short_name: '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name}',
-      long_name:  '#{prefix} #{first_name} #{last_name} #{suffix}',
-      full_name:  '#{prefix} #{first_name} #{last_name} #{suffix}<span class=\"mute\"> (#{combine(:category)})</span>',
-      initials:   '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name.to_s.chars.first}.',
-      address:    '#{address[:pobox]}<br>#{address[:street]}&nbsp;#{address[:streetno]}<br>#{address[:zip]}&nbsp;#{address[:city]}<br>#{address[:country]}',
-      city:       '#{address[:zip]} #{address[:city]} (#{address[:country]})',
-      street:     '#{address[:street]} #{address[:streetno]}',
-      category:   '#{category == \'natural person\' ? \'Private person\' : \'Company\'}',
-      role:       '#{role.titleize}'
-    },
-    order: {
-      name: %w(last_name first_name id),
-      city: %w(address[:city] address[:zip] address[:country] id),
-      role: %w(role created_at)
-    }
+    name:       '#{first_name} #{last_name}',
+    short_name: '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name}',
+    long_name:  '#{prefix} #{first_name} #{last_name} #{suffix}',
+    full_name:  '#{prefix} #{first_name} #{last_name} #{suffix}<span class=\"mute\"> (#{combine(:category)})</span>',
+    initials:   '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name.to_s.chars.first}.',
+    address:    '#{address[:pobox]}<br>#{address[:street]}&nbsp;#{address[:streetno]}<br>#{address[:zip]}&nbsp;#{address[:city]}<br>#{address[:country]}',
+    city:       '#{address[:zip]} #{address[:city]} (#{address[:country]})',
+    street:     '#{address[:street]} #{address[:streetno]}',
+    category:   '#{category == \'natural person\' ? \'Private person\' : \'Company\'}',
+    role:       '#{role.titleize}'
   }
 
   belongs_to :role, class_name: "ContactRole", foreign_key: "contact_role_id"
@@ -51,7 +44,7 @@ class Contact < ApplicationRecord
   serialize :address, Hash
 
   def combine(format = :name)
-    eval('"' + FORMATS[:string][format] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
+    eval('"' + FORMATS[format.to_sym] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
   end
 
   private
