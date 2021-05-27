@@ -89,12 +89,12 @@ sup {
   top: .15em;
   width: .9em;
   height: .9em;
-  margin-right: .25em;
+  margin-right: .2em;
+  margin-left: .05em;
   border: $border-width solid rgba(205, 217, 229, 0.2);
   border-radius: 50%;
 
   &-label {
-    display: inline-block;
     color: $text-color-secondary;
     font-size: $small-font-size;
   }
@@ -108,7 +108,8 @@ sup {
 
 .label {
   display: inline-block;
-  margin-left: 1em;
+  margin-right: .5em;
+  margin-left: .5em;
   padding-right: .5em;
   padding-left: .5em;
   border: $border-base;
@@ -116,14 +117,11 @@ sup {
   color: $text-color-secondary;
   font-size: $small-font-size;
   white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
 }
 
 .mute {
   color: $grey-300;
   text-decoration-color: inherit;
-  white-space: nowrap;
 }
 
 :not(tr).strikethrough {
@@ -177,7 +175,4 @@ tr.strikethrough td {
   }
 }
 
-
-.no-margins {
-  margin: 0;
 }
