@@ -1,7 +1,7 @@
 module Layouts
   module ApplicationLayoutHelper
-    def page_items(key)
-      eval(key.to_s.classify)
+    def page_items(class_name)
+      eval("#{class_name}.search(params[:q])").count
     end
 
     def icon_tag(str)
