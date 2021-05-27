@@ -15,7 +15,7 @@ video {
 svg {
   fill: currentColor;
   stroke: none;
-  height: 1.3em;
+  height: 2em;
 }
 
 .icon {
@@ -23,8 +23,14 @@ svg {
   fill: $text-color-primary;
   display: inline-block;
   width: auto;
-  vertical-align: text-bottom;
+  vertical-align: middle;
   transition: fill $transition;
+
+  &.inline {
+    width: 1.2em;
+    height: 100%;
+    padding-right: .3em;
+  }
 
   &.avatar {
     height: $medium-icon;
@@ -33,8 +39,8 @@ svg {
     transition: border-color $transition;
   }
 
-  &.star-fill {
-    fill: $yellow;
+  &.issue-closed {
+    fill: $green-200;
   }
 }
 
