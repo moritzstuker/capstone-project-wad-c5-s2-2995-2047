@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210518052609) do
+ActiveRecord::Schema.define(version: 20210519055606) do
 
   create_table "activities", force: :cascade do |t|
     t.string "label"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20210518052609) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "fee", precision: 10, scale: 2
     t.index ["project_id"], name: "index_activities_on_project_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
@@ -28,8 +29,7 @@ ActiveRecord::Schema.define(version: 20210518052609) do
   create_table "assignments", force: :cascade do |t|
     t.integer "project_id"
     t.integer "user_id"
-    t.decimal "fee", precision: 8, scale: 2
-    t.boolean "case_owner"
+    t.decimal "default_fee", precision: 10, scale: 2
     t.index ["project_id"], name: "index_assignments_on_project_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 20210518052609) do
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "assignee_id"
+    t.datetime "completed_at"
+    t.index ["assignee_id"], name: "index_deadlines_on_assignee_id"
     t.index ["project_id"], name: "index_deadlines_on_project_id"
   end
 
@@ -89,13 +92,15 @@ ActiveRecord::Schema.define(version: 20210518052609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reference"
+    t.integer "owner_id"
+    t.index ["owner_id"], name: "index_projects_on_owner_id"
     t.index ["project_category_id"], name: "index_projects_on_project_category_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
     t.string "label"
     t.integer "access_level"
-    t.decimal "default_fee", precision: 6, scale: 2
+    t.decimal "default_fee", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
