@@ -1,4 +1,5 @@
 class Deadline < ApplicationRecord
+  include Filtering
 
   CATEGORIES = ["internal", "external", "court-ordered", "legal"].freeze
 
@@ -8,4 +9,5 @@ class Deadline < ApplicationRecord
   scope :label_contains, -> (str) { where('label LIKE ?', "%#{str}%") }
   scope :search,              -> (str) { label_contains(str) }
 
+  scope :filter_by_assignee, -> (str) { where( assignee_id: str ) }
 end

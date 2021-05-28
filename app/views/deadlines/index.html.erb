@@ -1,16 +1,17 @@
 <div class="row">
-  <aside class="col-2">
+  <div class="col-2">
     <%= render 'sidebar' %>
-  </aside>
+  </div>
   <section class="col-6">
     <div class="box">
       <div class="box-header">
         <h1>Deadlines</h1>
-        <span><strong>All (<%= @deadlines.count %>)</strong></span>
+        <%= link_to "Assigned to", deadlines_path(assignee: "2") %>
+        <%= link_to "All (#{@deadlines.count})", deadlines_path %>
       </div>
       <ul class="box-content">
-        <% @deadlines_dates.each do |date| %>
-        <li><%= render 'card', date: date %></li>
+        <% @deadlines.each do |deadline| %>
+        <li><%= render 'card', deadline: deadline %></li>
         <% end %>
       </ul>
     </div>
