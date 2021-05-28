@@ -6,12 +6,10 @@ class Project < ApplicationRecord
   ].freeze
 
   FORMATS = {
-    string: {
-      heading:             'cases<span class=\"mute\">&nbsp;&sol;&nbsp;</span>#{build_project_name}',
-      long_name:           '#{build_project_name}<span class=\"mute\"> (#{label})</span>',
-      long_name_two_lines: '#{build_project_name}<br /><span class=\"mute\">(#{label})</span>',
-      name:                '#{build_project_name}',
-    }
+    heading:             'cases<span class=\"mute\">&nbsp;&sol;&nbsp;</span>#{build_project_name}',
+    long_name:           '#{build_project_name}<span class=\"mute\"> (#{label})</span>',
+    long_name_two_lines: '#{build_project_name}<br /><span class=\"mute\">(#{label})</span>',
+    name:                '#{build_project_name}',
   }
 
   has_many                :activities
@@ -31,7 +29,7 @@ class Project < ApplicationRecord
     if label.nil?
       build_project_name
     else
-      eval('"' + FORMATS[:string][format] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
+      eval('"' + FORMATS[format.to_sym] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
     end
   end
 
