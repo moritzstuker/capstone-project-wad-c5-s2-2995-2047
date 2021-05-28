@@ -15,14 +15,13 @@ video {
 svg {
   fill: currentColor;
   stroke: none;
-  height: 2em;
 }
 
 .icon {
   fill-rule: evenodd;
   fill: $text-color-primary;
   display: inline-block;
-  width: auto;
+  height: $big-font-size;
   vertical-align: middle;
   transition: fill $transition;
 

@@ -19,12 +19,13 @@ $grey-800: #2d333b;
 $grey-900: #22272e;
 $grey: $grey-500;
 
-.grey-bg {
+.grey {
   background-color: $grey;
 }
 
 .grey-color {
-  color: $grey;
+  fill: $grey !important;
+  color: $grey !important;
 }
 
 // –– Blue ––––––––––––––––––––––––––––––––––––––––––
@@ -40,12 +41,13 @@ $blue-800: #143d79;
 $blue-900: #0f2d5c;
 $blue: $blue-500;
 
-.blue-bg {
+.blue {
   background-color: $blue;
 }
 
 .blue-color {
-  color: $blue;
+  fill: $blue !important;
+  color: $blue !important;
 }
 
 // –– Green –––––––––––––––––––––––––––––––––––––––––
@@ -61,12 +63,13 @@ $green-800: #1b4721;
 $green-900: #113417;
 $green: $green-500;
 
-.green-bg {
+.green {
   background-color: $green;
 }
 
 .green-color {
-  color: $green;
+  fill: $green !important;
+  color: $green !important;
 }
 
 // –– Yellow ––––––––––––––––––––––––––––––––––––––––
@@ -82,12 +85,13 @@ $yellow-800: #593600;
 $yellow-900: #452700;
 $yellow: $yellow-500;
 
-.yellow-bg {
+.yellow {
   background-color: $yellow;
 }
 
 .yellow-color {
-  color: $yellow;
+  fill: $yellow !important;
+  color: $yellow !important;
 }
 
 // –– Orange ––––––––––––––––––––––––––––––––––––––––
@@ -103,12 +107,13 @@ $orange-800: #682d0f;
 $orange-900: #4d210c;
 $orange: $orange-200;
 
-.orange-bg {
+.orange {
   background-color: $orange;
 }
 
 .orange-color {
-  color: $orange;
+  fill: $orange !important;
+  color: $orange !important;
 }
 
 // –– Red –––––––––––––––––––––––––––––––––––––––––––
@@ -124,10 +129,11 @@ $red-800: #78191b;
 $red-900: #78191b;
 $red: $red-500;
 
-.red-bg {
+.red {
   background-color: $red;
 }
 
 .red-color {
-  color: $red;
+  fill: $red-300 !important;
+  color: $red-300 !important;
 }
