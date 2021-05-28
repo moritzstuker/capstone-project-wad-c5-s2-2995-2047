@@ -1,16 +1,14 @@
 <div class="card">
   <div class="card-header">
-    <%= date.strftime("%d.%m.%Y") %>
-    (<%= @deadlines.where(date: date).count %>)
+    <%= link_to deadline.label, project_path(deadline.project, anchor: 'deadlines') %><span class="label"><%= deadline.category %></span>
   </div>
   <div class="card-content">
-    <ul>
-      <% @deadlines.where(date: date).each do |deadline| %>
-      <li>
-        Assigned to Johnny Walker:<br />
-        <%= deadline.label %> (<%= link_to deadline.project.combine(:name), deadline.project %>)<span class="label"><%= deadline.category %></span>
-      </li>
-      <% end %>
-    </ul>
+    <%= icon_tag('repo', class: 'inline') %><%= link_to deadline.project.combine(:name), deadline.project, class: 'invisible-link' %>
+  </div>
+  <div class="card-footer">
+    <span class="dot-label">
+      <span class="dot<%= urgency_by_date(deadline.date, true) %>"></span>
+      <span><%= deadline.date.strftime("%d.%m.%Y") %></span>
+    </span>
   </div>
 </div>
