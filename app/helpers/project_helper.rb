@@ -3,13 +3,13 @@ module ProjectHelper
     "#{number_to_currency(int, unit: "fr.", separator: ".", delimiter: "'", format: "%n %u")}".html_safe
   end
 
-  def urgency_by_date(date)
+  def urgency_by_date(date, bool = false)
     if date.to_date == Date.today
-      ' red-bg'
+      ' red'
     elsif date.to_date == Date.tomorrow
-      ' orange-bg'
-    elsif date.to_date > Date.today
-      ' green-bg'
+      ' orange'
+    elsif date.to_date > Date.tomorrow && bool
+      ' green'
     end
   end
 end
