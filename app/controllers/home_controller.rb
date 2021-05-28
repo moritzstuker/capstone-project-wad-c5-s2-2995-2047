@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   end
 
   def index
+    @particles_js = true
   end
 
   def styleguide
