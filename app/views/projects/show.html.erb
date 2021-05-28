@@ -44,24 +44,7 @@
 </div>
 <div class="row">
   <div class="col">
-    <section class="box">
-      <header class="box-header">
-        <h2>Deadlines</h2>
-      </header>
-      <div class="box-content">
-        <% if @project.deadlines.count > 0 %>
-        <ul>
-          <% @project.deadlines.each do |deadline| %>
-          <li>
-            <%= deadline.date %>:&nbsp;<%= deadline.label %> (assigned to <a href="#">Johnny Walker</a>)<span class="label"><%= deadline.category %></span>
-          </li>
-          <% end %>
-        </ul>
-        <% else %>
-        <%= image_tag('undraw/void.svg', class: 'void') %>
-        <% end %>
-      </div>
-    </section>
+  <%= render 'deadlines' %>
   </div>
 </div>
 <div class="row">

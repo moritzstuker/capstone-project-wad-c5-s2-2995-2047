@@ -1,0 +1,46 @@
+<section class="box" id="deadlines">
+  <header class="box-header">
+    <h2>Deadlines</h2>
+  </header>
+  <% if @project.deadlines %>
+  <table class="box-content deadlines">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Label</th>
+        <th>Category</th>
+        <th>Assignee</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.deadlines.order(:date).each do |deadline| %>
+      <% if deadline.completed_at %>
+      <tr class="disabled">
+        <td><%= icon_tag('issue-closed') %></td>
+        <td><%= deadline.date.strftime("%d.%m.%Y") %></td>
+        <td><%= deadline.label %></td>
+        <td><span class="label"><%= deadline.category %></span></td>
+        <td><%= link_to deadline.assignee.combine(:name), deadline.assignee %></td>
+        <td><button type="button" name="button" class="button small">Reopen</button></td>
+      </tr>
+      <% else %>
+      <tr<%= " class=#{urgency_by_date(deadline.date)}-color" if urgency_by_date(deadline.date) %>>
+        <td><%= icon_tag('issue-opened', class: "#{urgency_by_date(deadline.date)}-color") %></td>
+        <td><%= deadline.date.strftime("%d.%m.%Y") %></td>
+        <td><%= deadline.label %></td>
+        <td><span class="label"><%= deadline.category %></span></td>
+        <td><%= link_to deadline.assignee.combine(:name), deadline.assignee %></td>
+        <td><button type="button" name="button" class="button small green">Done</button></td>
+      </tr>
+      <% end %>
+      <% end %>
+  </tbody>
+</table>
+<% else %>
+<div class="box-content">
+  <%= image_tag('undraw/void.svg', class: 'void') %>
+</div>
+<% end %>
+</section>
