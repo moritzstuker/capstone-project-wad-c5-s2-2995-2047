@@ -16,12 +16,20 @@
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
-  let dropdowns = document.querySelectorAll('.dropdown')
-  dropdowns.forEach(function(item){
-    item.addEventListener('click', () => {
-      let isClosed = item.classList.contains('is-closed');
-      dropdowns.forEach((el) => el.classList.add('is-closed'));
-      if (isClosed) { item.classList.remove('is-closed') };
+
+  // header dropdown
+  let dropdowns = document.querySelectorAll(".dropdown");
+  dropdowns.forEach(function(e) {
+    e.addEventListener("click", () => {
+      let s = e.classList.contains("is-closed");
+      dropdowns.forEach(e => e.classList.add("is-closed")), s && e.classList.remove("is-closed")
     })
   });
-})
+
+  // deadline buttons
+  document.querySelectorAll(".deadlines td .button").forEach(function(e) {
+    e.addEventListener("click", () => {
+      e.closest("tr").classList.toggle("disabled")
+    })
+  });
+});
