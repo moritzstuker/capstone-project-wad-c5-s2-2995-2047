@@ -4,7 +4,11 @@
       <h1 class="title">
         <%= link_to "Cases", projects_path %>
         <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <%= @project.combine(:name) %><% if @project.label %><span class="mute">&nbsp;&colon;&nbsp;</span><%= @project.label %><% end %>
+        <% if @project.label %>
+          <%= @project.combine(:long_name) %>
+        <% else %>
+          <%= @project.combine(:name) %>
+        <% end %>
       </h1>
     </div>
     <div class="col-1">
