@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user.present? && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to dashboard_path
+      redirect_back_or projects_path
     else
       render 'new', danger: 'Invalid email/password combination'
     end
