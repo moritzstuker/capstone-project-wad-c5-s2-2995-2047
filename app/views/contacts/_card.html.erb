@@ -1,18 +1,18 @@
-<div class="card">
-  <div class="card-header">
+<div class="box">
+  <div class="box-header">
     <%= link_to highlight(contact.combine(:long_name), params[:q]), contact %>
-    <span class="label"><%= contact.combine(:category) %></span>
+    <span class="tag"><%= contact.combine(:category) %></span>
   </div>
-  <div class="card-content">
+  <div class="box-content">
     <p><%= highlight(contact.combine(:address), params[:q]) %></p>
   </div>
-  <div class="card-footer">
-    <span class="dot-label">
-      <span class="dot" style="background-color: <%= contact.role.color %>"></span>
-      <span><%= contact.role.label.capitalize %></span>
+  <div class="box-footer">
+    <span class="dot-label small">
+      <span class="dot-icon" style="background-color: <%= contact.role.color %>"></span>
+      <%= contact.role.label.capitalize %>
     </span>
     <% if contact.projects.count > 0 %>
-      <span class="keys">Party in <%= pluralize(contact.projects.count, 'case') %>.</span>
+      <span class="keys">Party in <%= pluralize(contact.projects.count, 'case') %></span>
     <% end %>
   </div>
 </div>

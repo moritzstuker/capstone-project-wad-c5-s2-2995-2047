@@ -1,25 +1,33 @@
-<div class="card">
-  <div class="card-header">
-    <%= link_to highlight(project.combine(:name), params[:q]), project_path(project) %>
+<article class="box">
+  <header class="box-header">
+    <% if project.label %>
+      <%= link_to highlight(project.combine(:long_name), params[:q]), project_path(project) %>
+    <% else %>
+      <%= link_to highlight(project.combine(:name), params[:q]), project_path(project) %>
+    <% end %>
     <% if project.status == 'inactive' %>
-      <span class="label">inactive</span>
+      <span class="tag">inactive</span>
     <% end %>
-    <span class="favorites-tag"><span class="favorites-tag-text">add to your cases</span><%= icon_tag('star') %></span>
+  </header>
+  <% if project.description %>
+  <div class="box-content">
+    <p><%= project.description %></p>
   </div>
-  <div class="card-content">
-  <% if project.label %>
-    <p><%= highlight(project.label, params[:q]) %></p>
-    <% end %>
-  </div>
-  <div class="card-footer">
-    <span class="dot-label">
-      <span class="dot" style="background-color: <%= project.category.color %>"></span>
-      <span><%= project.category.label.capitalize %></span>
+  <% end %>
+  <footer class="box-footer">
+    <span class="dot-label small">
+      <span class="dot-icon" style="background-color: <%= project.category.color %>"></span>
+      <%= project.category.label.capitalize %>
     </span>
-    <% if project.reference.present? %>
+    <% if project.reference %>
     <span class="keys disambiguate">
       <%= highlight(project.reference, params[:q]) %>
     </span>
     <% end %>
-  </div>
-</div>
+    <% if project.activities && project.status == 'active' %>
+    <span class="keys disambiguate">
+      Last activity <%= time_ago_in_words(project.activities.last.date) %> ago.
+    </span>
+    <% end %>
+  </footer>
+</article>
