@@ -18,7 +18,7 @@
       <% end %>
     </ul>
     <hr />
-    <p><strong>Your hours:</strong>&nbsp;<%= number_with_precision(@project.activities.where(user: @project.owner).sum(&:duration), precision: 2) %> (<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %>&nbsp;overall)</p>
-    <p><strong>Your fees:</strong>&nbsp;<%= fee(@project.activities.where(user: @project.owner).sum(&:duration) * @project.activities.where(user: @project.owner).sum(&:duration)) %> (<%= fee(@project.activities.sum(&:duration) * @project.activities.where(user: @project.owner).sum(&:duration)) %>&nbsp;overall)</p>
+    <p><strong>Your hours:</strong>&nbsp;<%= number_with_precision(@project.activities.where(user: current_user).sum(&:duration), precision: 2) %> (<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %>&nbsp;overall)</p>
+    <p><strong>Your fees:</strong>&nbsp;<%= fee(@project.activities.where(user: current_user).sum(&:duration) * @project.activities.where(user: current_user).sum(&:duration)) %> (<%= fee(@project.activities.sum(&:duration) * @project.activities.where(user: current_user).sum(&:duration)) %>&nbsp;overall)</p>
   </div>
 </section>
