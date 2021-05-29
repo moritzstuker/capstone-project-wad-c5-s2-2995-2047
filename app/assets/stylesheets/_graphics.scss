@@ -17,6 +17,10 @@ svg {
   stroke: none;
 }
 
+figure {
+  margin-bottom: $gutter;
+}
+
 .icon {
   fill-rule: evenodd;
   fill: $text-color-primary;
