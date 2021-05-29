@@ -1,10 +1,11 @@
-<aside class="box">
-  <nav class="box-content">
+<nav class="box">
     <% ApplicationController::SIDEBAR_PAGES.each do |key, label| %>
-      <% tag = "<span class=\"box-item\">#{label}</span><span class=\"counter\">#{page_items(key.to_s.classify)}</span>".html_safe %>
-      <%= link_to_unless_current tag, controller: key, q: params[:q] do %>
-      <span class="is-active"><%= tag %></span>
-      <% end %>
+
+    <% if current_page?(key) %>
+      <span class="box-row is-active"><%= sidebar_text(label, key) %></span>
+    <% else %>
+    <%= link_to sidebar_text(label, key), key, q: params[:q], class: 'box-row' %>
+    <% end %>
+
     <% end %>
   </nav>
-</aside>
