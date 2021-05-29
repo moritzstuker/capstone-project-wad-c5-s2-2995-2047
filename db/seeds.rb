@@ -83,6 +83,8 @@ LEGALESE = [
   "Usage commun"
 ]
 
+AVATARS = Dir.glob("#{Rails.root}/app/assets/images/fallback_avatars/*.jpg").shuffle
+
 def build_activity
   project = Project.all.sample
   activity_user = (project.assignees.to_a ||= []) << project.owner
@@ -168,11 +170,12 @@ def build_project_category(arr)
   )
 end
 
-def build_user(obj)
+def build_user(obj, int)
   User.create!(
     login:    "#{obj.label}@test.dev",
     password: "password",
     role:     obj,
+    avatar:   "fallback_avatars/#{AVATARS[int].split('/').last}",
     contact:  build_contact("employee")
   )
   puts "   Generated user '#{obj.label}@test.dev'."
@@ -197,9 +200,9 @@ end
 puts "✓  Successfully generated #{ContactRole.all.count} contact roles."
 
 puts "   Generating one user per role..."
-UserRole::DEFAULTS.each do |e|
+UserRole::DEFAULTS.each_with_index do |e, i|
   role = build_user_role(e)
-  build_user(role)
+  build_user(role, i)
 end
 puts "✓  Successfully generated #{User.all.count} users."
 
