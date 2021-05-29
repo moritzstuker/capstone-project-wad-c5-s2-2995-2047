@@ -100,7 +100,7 @@ input[type='search'] {
     pointer-events: none;
   }
 
-  input {
+  input:not(.button) {
     position: relative;
     padding-left: ($gutter * 1.8);
   }
