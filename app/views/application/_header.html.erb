@@ -13,7 +13,9 @@
         <%= render 'search_form' %>
       </div>
 
+
       <div class="col-2">
+        <% if logged_in? %>
         <div class="dropdown is-closed">
           <div class="dropdown-trigger anchor-like">
             <%= icon_tag('plus-circle') %>
@@ -32,20 +34,23 @@
 
         <div class="dropdown is-closed">
           <div class="dropdown-trigger anchor-like">
-            <%= image_tag('150.jpg', alt: 'Avatar', class: 'icon avatar') %>
+            <%= image_tag(current_user.avatar, alt: 'Avatar', class: 'icon avatar') %>
           </div>
           <div class="dropdown-menu">
             <div class="box">
               <ul class="box-content">
-                <li><span class="box-item">Signed in as<br /><strong>Johnny Walker</strong></span></li>
+                <li><span class="box-item">Signed in as<br /><strong><%= current_user.contact.combine(:name) %></strong></span></li>
                 <li><a href="#" class="box-item">Account</a></li>
+                <% if current_user.role.access_level <= 1 %>
                 <li><%= link_to "Settings", settings_path, class: 'box-item' %></li>
-                <li><a href="#" class="box-item">Sign out</a></li>
+                <% end %>
                 <li><a href="#" class="box-item">Français</a></li>
+                <li><%= link_to "Log out", logout_path, class: "box-item", method: :delete %></li>
               </ul>
             </div>
           </div>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
