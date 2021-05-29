@@ -36,20 +36,16 @@ small {
   font-size: $small-font-size;
 }
 
-sub,
-sup {
-  position: relative;
-  font-size: $small-font-size;
-  line-height: 0;
-  vertical-align: baseline
-}
-
 sub {
-  bottom: -.25em
+  -ms-font-feature-settings: "subs" 1, $default-font-features;
+  -o-font-feature-settings: "subs" 1, $default-font-features;
+  font-feature-settings: "subs" 1, $default-font-features;
 }
 
 sup {
-  top: -.5em
+  -ms-font-feature-settings: "sups" 1, $default-font-features;
+  -o-font-feature-settings: "sups" 1, $default-font-features;
+  font-feature-settings: "sups" 1, $default-font-features;
 }
 
 ::-moz-selection {
