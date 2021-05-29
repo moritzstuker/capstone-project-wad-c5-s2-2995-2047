@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.search(params[:q])
+    @projects = params[:q].present? ? Project.search(params[:q]) : Project.all
+    @assignments = Assignment.all
   end
 
   def show
