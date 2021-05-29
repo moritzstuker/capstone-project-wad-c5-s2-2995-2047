@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  get '/grid', to: 'home#grid'
-  get '/forms', to: 'home#forms'
-  get '/styleguide', to: 'home#styleguide'
+  get    '/login',  to: 'sessions#new'
+  post   '/login',  to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+  get  '/signup', to: 'users#new'
 
   resources :activities
   resources :contacts
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   resources :home
   resources :projects
   resources :settings
+  resources :sessions, only: [:new, :create, :destroy]
   resources :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
