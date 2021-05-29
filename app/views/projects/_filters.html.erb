@@ -1,0 +1,13 @@
+<details>
+  <summary aria-haspopup="true">
+    <span class="button small">Assigned to <%= icon_tag('triangle-down') %></span>
+  </summary>
+  <ul class="box dropdown">
+    <% User.all.each do |user| %>
+    <li role="menuitem">
+      <%= link_to "#{user.contact.combine(:name)} (#{@assignments.where(user: user).count})", nil, class: 'box-row small' %>
+    </li>
+    <% end %>
+  </ul>
+</details>
+<button type="button" name="button" class="button small">All (<%= @projects.count %>)</button>

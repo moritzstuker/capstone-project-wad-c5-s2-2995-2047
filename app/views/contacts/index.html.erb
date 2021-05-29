@@ -1,18 +1,16 @@
 <div class="row">
-  <aside class="col-2">
+  <div class="col-2">
     <%= render 'sidebar' %>
-  </aside>
+  </div>
   <section class="col-6">
-    <div class="box">
-      <div class="box-header">
-        <h1>Contacts</h1>
-        <span><strong>All (<%= @contacts.count %>)</strong></span>
-      </div>
-      <ul class="box-content">
-        <% @contacts.each do |contact| %>
-        <li><%= render 'card', contact: contact %></li>
-        <% end %>
-      </ul>
-    </div>
+    <header>
+      <h1>Contacts</h1>
+      <%= render 'filters' %>
+    </header>
+    <ul class="row">
+      <% @contacts.each do |contact| %>
+      <li class="col-4"><%= render 'card', contact: contact %></li>
+      <% end %>
+    </ul>
   </section>
 </div>

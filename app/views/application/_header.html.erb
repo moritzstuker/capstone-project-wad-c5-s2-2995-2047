@@ -13,43 +13,37 @@
         <%= render 'search_form' %>
       </div>
 
-
       <div class="col-2">
         <% if logged_in? %>
-        <div class="dropdown is-closed">
-          <div class="dropdown-trigger anchor-like">
-            <%= icon_tag('plus-circle') %>
-          </div>
-          <div class="dropdown-menu">
-            <div class="box">
-              <ul class="box-content">
-                <li><a href="#" class="box-item">Add case</a></li>
-                <li><a href="#" class="box-item">Add contact</a></li>
-                <li><a href="#" class="box-item">Add deadline</a></li>
-                <li><a href="#" class="box-item">Add user</a></li>
-              </ul>
+        <details>
+          <summary aria-haspopup="true">
+            <div class="a">
+              <%= icon_tag('plus-circle', class: 'big') %>
             </div>
-          </div>
-        </div>
-
-        <div class="dropdown is-closed">
-          <div class="dropdown-trigger anchor-like">
-            <%= image_tag(current_user.avatar, alt: 'Avatar', class: 'icon avatar') %>
-          </div>
-          <div class="dropdown-menu">
-            <div class="box">
-              <ul class="box-content">
-                <li><span class="box-item">Signed in as<br /><strong><%= current_user.contact.combine(:name) %></strong></span></li>
-                <li><a href="#" class="box-item">Account</a></li>
-                <% if current_user.role.access_level <= 1 %>
-                <li><%= link_to "Settings", settings_path, class: 'box-item' %></li>
-                <% end %>
-                <li><a href="#" class="box-item">Français</a></li>
-                <li><%= link_to "Log out", logout_path, class: "box-item", method: :delete %></li>
-              </ul>
+          </summary>
+          <ul class="box dropdown">
+            <li role="menuitem"><a href="#" class="box-row small">Add case</a></li>
+            <li role="menuitem"><a href="#" class="box-row small">Add contact</a></li>
+            <li role="menuitem"><a href="#" class="box-row small">Add deadline</a></li>
+            <li role="menuitem"><a href="#" class="box-row small">Add user</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary aria-haspopup="true">
+            <div class="a">
+              <%= image_tag(current_user.avatar, alt: 'Avatar', class: 'icon avatar') %>
             </div>
-          </div>
-        </div>
+          </summary>
+          <ul class="box dropdown">
+            <li role="menuitem"><span class="box-row small"><span>Signed in as<br /><strong><%= current_user.contact.combine(:name) %></strong></span></span></li>
+            <li role="menuitem"><a href="#" class="box-row small">Account</a></li>
+            <% if current_user.role.access_level <= 1 %>
+            <li role="menuitem"><%= link_to "Settings", settings_path, class: 'box-row small' %></li>
+            <% end %>
+            <li role="menuitem"><a href="#" class="box-row small">Français</a></li>
+            <li role="menuitem"><%= link_to "Log out", logout_path, class: "box-row small", method: :delete %></li>
+          </ul>
+        </details>
         <% end %>
       </div>
     </div>
