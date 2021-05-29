@@ -41,6 +41,10 @@ svg {
   &.issue-closed {
     fill: $green-200;
   }
+
+  &.x-circle {
+    fill: currentColor;
+  }
 }
 
 a,
