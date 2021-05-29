@@ -106,7 +106,7 @@ def build_case
   case_owner = User.partners.sample()
   case_assignees = User.lawyers.sample(rand(1...3)).to_a.reject { |user| user == case_owner}
   Project.create!(
-    label:       [LEGALESE.sample, nil].sample,
+    label:       LEGALESE.sample,
     description: [Faker::Hipster.paragraph, nil][weighted_random(0.5)],
     status:      Project::STATUS.sample,
     category:    ProjectCategory.all.sample,

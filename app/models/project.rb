@@ -6,10 +6,9 @@ class Project < ApplicationRecord
   ].freeze
 
   FORMATS = {
-    heading:             'cases<span class=\"mute\">&nbsp;&sol;&nbsp;</span>#{build_project_name}',
-    long_name:           '#{build_project_name}<span class=\"mute\"> (#{label})</span>',
-    long_name_two_lines: '#{build_project_name}<br /><span class=\"mute\">(#{label})</span>',
-    name:                '#{build_project_name}',
+    heading:   'cases<span class=\"mute\">&nbsp;&sol;&nbsp;</span>#{build_project_name}',
+    name:      '#{build_project_name}',
+    long_name: '#{build_project_name}<span class=\"mute\"><span class=\"no-calt\">:</span>&nbsp;</span>#{label}',
   }
 
   has_many                :activities
@@ -24,6 +23,8 @@ class Project < ApplicationRecord
   scope :label_contains,     -> (str) { where('label LIKE ?', "%#{str}%") }
   scope :reference_contains, -> (str) { where('reference LIKE ?', "%#{str}%") }
   scope :search,             -> (str) { label_contains(str).or(reference_contains(str)) }
+
+  validates :label,    presence: true
 
   def combine(format = :name)
     if label.nil?
