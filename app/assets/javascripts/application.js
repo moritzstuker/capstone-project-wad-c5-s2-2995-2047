@@ -32,4 +32,11 @@ document.addEventListener("turbolinks:load", function() {
       e.closest("tr").classList.toggle("disabled")
     })
   });
+
+  // flash notification
+  document.querySelectorAll(".flash-close").forEach(function(e) {
+    e.addEventListener("click", () => {
+      e.parentNode.remove();
+    })
+  });
 });

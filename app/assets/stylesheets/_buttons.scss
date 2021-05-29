@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   height: auto;
-  padding: .4em .8em;
+  padding: .4em 1em;
   overflow: visible;
   border: $border-width solid $grey-500;
   border-radius: $border-radius;
@@ -22,7 +22,7 @@
 }
 
 .button,
-button,
+button:not(.ghost),
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {
@@ -37,6 +37,7 @@ input[type='submit'] {
   &:hover {
     border-color: $grey-300;
     background-color: $grey-600;
+    text-decoration: none !important;
   }
 
   &[disabled] {
@@ -119,5 +120,27 @@ input[type='submit'] {
 
   &:-moz-focusring {
     outline: 1px dotted ButtonText
+  }
+}
+
+button.ghost {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  height: auto;
+  padding: .25em;
+  overflow: visible;
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color $transition;
+
+  &:active,
+  &:hover {
+    color: $grey-100;
   }
 }

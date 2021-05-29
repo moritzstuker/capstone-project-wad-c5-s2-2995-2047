@@ -1,0 +1,8 @@
+<% flash.each do |message_class, message| %>
+  <div class="flash <%= message_class %>">
+    <%= message %>
+    <button type="button" class="ghost flash-close">
+      <%= icon_tag('x-circle') %>
+    </button>
+  </div>
+<% end %>

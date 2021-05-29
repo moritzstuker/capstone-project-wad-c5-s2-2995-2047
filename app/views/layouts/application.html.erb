@@ -13,8 +13,9 @@
 <body>
   <%= render 'header' %>
   <main class="container">
+    <%= render 'flash', flash: flash %>
     <%= yield %>
   </main>
-  <%= render 'scripts' %>
+  <%= render 'footer' %>
 </body>
 </html>
