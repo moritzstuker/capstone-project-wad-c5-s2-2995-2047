@@ -2,9 +2,12 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 table {
+  -ms-font-feature-settings: "tnum" 1, $default-font-features;
+  -o-font-feature-settings: "tnum" 1, $default-font-features;
   width: calc(100% + #{$box-padding-y});
   margin-left: ($box-padding-y * -.5);
   border-collapse: collapse;
+  font-feature-settings: "tnum" 1, $default-font-features;
   empty-cells: show;
 }
 
