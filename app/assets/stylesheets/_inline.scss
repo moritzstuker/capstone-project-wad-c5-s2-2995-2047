@@ -2,7 +2,7 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 a,
-.anchor-like {
+.a {
   display: inline-block;
   background-color: transparent;
   color: $text-color-highlight;
@@ -21,7 +21,8 @@ abbr[title] {
 }
 
 b,
-strong {
+strong,
+.strong {
   font-weight: $bold-font-weight;
 }
 
@@ -32,17 +33,20 @@ mark {
   color: $black;
 }
 
-small {
+small,
+.small {
   font-size: $small-font-size;
 }
 
-sub {
+sub,
+.sub {
   -ms-font-feature-settings: "subs" 1, $default-font-features;
   -o-font-feature-settings: "subs" 1, $default-font-features;
   font-feature-settings: "subs" 1, $default-font-features;
 }
 
-sup {
+sup,
+.sup {
   -ms-font-feature-settings: "sups" 1, $default-font-features;
   -o-font-feature-settings: "sups" 1, $default-font-features;
   font-feature-settings: "sups" 1, $default-font-features;
@@ -120,27 +124,6 @@ sup {
 .mute {
   color: $grey-300;
   text-decoration-color: inherit;
-}
-
-.disabled {
-  color: $grey-300 !important;
-}
-
-:not(tr).strikethrough {
-  display: inline-block;
-  position: relative;
-}
-
-:not(tr).strikethrough,
-tr.strikethrough td {
-  &::before {
-    position: absolute;
-    top: 47%;
-    left: 0;
-    width: 100%;
-    border-bottom: 1px solid currentColor;
-    content: '';
-  }
 }
 
 .favorites-tag {

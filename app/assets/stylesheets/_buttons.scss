@@ -21,8 +21,21 @@
   transition-property: background-color, border-color;
 }
 
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: auto;
+  overflow: visible;
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
 .button,
-button:not(.ghost),
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {
@@ -47,7 +60,6 @@ input[type='submit'] {
 
   &.small {
     padding: .2em .8em;
-    font-size: $small-font-size;
     text-transform: none;
   }
 
@@ -120,27 +132,5 @@ input[type='submit'] {
 
   &:-moz-focusring {
     outline: 1px dotted ButtonText
-  }
-}
-
-button.ghost {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-flex;
-  height: auto;
-  padding: .25em;
-  overflow: visible;
-  border: 0;
-  background-color: transparent;
-  box-shadow: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color $transition;
-
-  &:active,
-  &:hover {
-    color: $grey-100;
   }
 }

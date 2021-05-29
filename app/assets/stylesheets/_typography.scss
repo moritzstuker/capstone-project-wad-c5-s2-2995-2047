@@ -23,7 +23,7 @@
 }
 
 .disambiguate {
-  -moz-font-feature-settings: 'ss01', 'ss02';
-  -webkit-font-feature-settings: 'ss01', 'ss02';
-  font-feature-settings: 'ss01' on, 'ss02' on;
+  -moz-font-feature-settings: 'ss02' 1, $default-font-features;
+  -webkit-font-feature-settings: 'ss02' 1, $default-font-features;
+  font-feature-settings: 'ss02' 1, $default-font-features;
 }
