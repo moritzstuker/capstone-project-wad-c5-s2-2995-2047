@@ -59,9 +59,18 @@
     }
 
     &.is-active {
-      padding-left: ($box-padding-x - .3rem);
-      border-left: .3rem solid $orange-300;
+      position: relative;
       background-color: $background-color-secondary;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: .3rem;
+        background-color: currentColor;
+        content: '';
+      }
     }
   }
 }
