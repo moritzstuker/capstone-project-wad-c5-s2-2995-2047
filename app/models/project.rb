@@ -21,9 +21,9 @@ class Project < ApplicationRecord
   has_many                :deadlines
   belongs_to              :owner, class_name: "User"
 
-  scope :label_contains, -> (str) { where('label LIKE ?', "%#{str}%") }
+  scope :label_contains,     -> (str) { where('label LIKE ?', "%#{str}%") }
   scope :reference_contains, -> (str) { where('reference LIKE ?', "%#{str}%") }
-  scope :search,              -> (str) { label_contains(str).or(reference_contains(str)) }
+  scope :search,             -> (str) { label_contains(str).or(reference_contains(str)) }
 
   def combine(format = :name)
     if label.nil?
