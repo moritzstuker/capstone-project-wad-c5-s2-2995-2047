@@ -9,23 +9,21 @@
   border-radius: $border-radius;
   background-color: $background-color-primary;
 
-  &-header {
-    @extend %heading;
+  &-header,
+  &-footer,
+  &-row {
     display: flex;
-    position: sticky;
-    top: 0;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: ($border-width * -1); // this is to compensate the border-bottom of 1px
+    align-items: flex-start;
+    justify-content: flex-start;
     padding: $box-padding;
-    border-bottom: $border-base;
-    background-color: $background-color-secondary;
+  }
 
+  &-header,
+  &-footer {
     & > * {
-      margin-left: $box-padding-y;
+      margin-left: $box-padding-x;
 
       &:first-child {
-        margin-right: auto;
         margin-left: 0;
       }
     }
@@ -35,72 +33,51 @@
     padding: $box-padding;
   }
 
-  &-item {
-    display: list-item;
-    padding: $box-padding;
-    white-space: nowrap;
-    transition: background-color $transition;
-  }
-}
-
-nav.box-content {
-  padding: 0;
-
-  a,
-  .is-active {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: $box-padding-y;
-    transition: background-color $transition;
-
-    &:not(:first-child) {
-      border-top: $border-base;
-    }
-  }
-
-  a {
-    &:hover,
-    &:active {
-      background-color: $background-color-secondary;
-      text-decoration: none;
-
-      .box-item {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .is-active {
+  &-header {
+    border-bottom: $border-base;
     background-color: $background-color-secondary;
-
-    .box-item {
-      padding-left: ($box-padding-x - .3rem);
-      border-left: .3rem solid $grey-200;
-    }
+    font-weight: $medium-font-weight;
   }
-}
 
-table.box-content {
-  width: 100%;
-  margin-left: 0;
-  padding: 0;
+  &-footer {
+    @extend .mute;
 
-  &.box-content {
-    th, td {
-      padding: $box-padding;
-    }
-  }
-}
-
-ul.box-content {
-  padding: 0;
-
-  li {
-    padding: $box-padding;
-
-    &:not(:first-child) {
+    .box-content + & {
       border-top: $border-base;
     }
+  }
+
+  &-row {
+    & + .box-row {
+      border-top: $border-base;
+    }
+
+    &.small {
+      padding-top: ($box-padding-y / 2);
+      padding-bottom: ($box-padding-y / 2);
+      font-weight: $medium-font-weight;
+    }
+
+    &.is-active {
+      padding-left: ($box-padding-x - .3rem);
+      border-left: .3rem solid $orange-300;
+      background-color: $background-color-secondary;
+    }
+  }
+}
+
+ul.box {
+  & > li + li {
+    border-top: $border-base;
+  }
+}
+
+a.box-row {
+  color: inherit;
+  text-decoration: none;
+
+  &:active,
+  &:hover {
+    background-color: $background-color-secondary;
   }
 }
