@@ -8,6 +8,7 @@ a,
   color: $text-color-highlight;
   text-decoration: none;
   text-decoration-skip-ink: auto;
+  cursor: pointer;
 
   &:focus,
   &:hover {
@@ -40,16 +41,22 @@ small,
 
 sub,
 .sub {
-  -ms-font-feature-settings: "subs" 1, $default-font-features;
-  -o-font-feature-settings: "subs" 1, $default-font-features;
-  font-feature-settings: "subs" 1, $default-font-features;
+  -ms-font-feature-settings: 'subs' 1, $default-font-features;
+  -o-font-feature-settings: 'subs' 1, $default-font-features;
+  font-feature-settings: 'subs' 1, $default-font-features;
 }
 
 sup,
 .sup {
-  -ms-font-feature-settings: "sups" 1, $default-font-features;
-  -o-font-feature-settings: "sups" 1, $default-font-features;
-  font-feature-settings: "sups" 1, $default-font-features;
+  -ms-font-feature-settings: 'sups' 1, $default-font-features;
+  -o-font-feature-settings: 'sups' 1, $default-font-features;
+  font-feature-settings: 'sups' 1, $default-font-features;
+}
+
+.no-calt {
+  -ms-font-feature-settings: 'calt' 0, 'frac' 1, 'kern' 1, 'liga' 1, 'ss01' 1, 'ss03' 1;
+  -o-font-feature-settings: 'calt' 0, 'frac' 1, 'kern' 1, 'liga' 1, 'ss01' 1, 'ss03' 1;
+  font-feature-settings: 'calt' 0, 'frac' 1, 'kern' 1, 'liga' 1, 'ss01' 1, 'ss03' 1;
 }
 
 ::-moz-selection {
@@ -63,16 +70,19 @@ sup,
 }
 
 .counter {
+  -ms-font-feature-settings: 'tnum' 1, $default-font-features;
+  -o-font-feature-settings: 'tnum' 1, $default-font-features;
   display: inline-block;
   min-width: $gutter;
-  margin-left: 1em;
+  margin-left: auto;
   padding-right: .5em;
   padding-left: .5em;
   border-radius: 1em;
   background-color: rgba($grey-300, 0.2);
   color: $grey-200;
+  font-feature-settings: 'tnum' 1, $default-font-features;
   font-size: $small-font-size;
-  font-weight: $medium-font-weight;
+  font-weight: $bold-font-weight;
   line-height: $gutter;
   text-align: center;
   pointer-events: none;
@@ -80,20 +90,17 @@ sup,
 }
 
 .dot {
-  display: inline-block;
-  z-index: 1;
-  position: relative;
-  top: .15em;
-  width: .9em;
-  height: .9em;
-  margin-right: .2em;
-  margin-left: .05em;
-  border: $border-width solid rgba(205, 217, 229, 0.2);
-  border-radius: 50%;
-
-  &-label {
-    color: $text-color-secondary;
-    font-size: $small-font-size;
+  &-icon {
+    display: inline-block;
+    z-index: 1;
+    position: relative;
+    top: .1em;
+    width: .9em;
+    height: .9em;
+    margin-right: .2em;
+    margin-left: .05em;
+    border: $border-width solid rgba(205, 217, 229, 0.2);
+    border-radius: 50%;
   }
 }
 
@@ -108,10 +115,8 @@ sup,
   font-size: $small-font-size;
 }
 
-.label {
-  display: inline-block;
-  margin-right: .5em;
-  margin-left: .5em;
+.tag {
+  display: inline;
   padding-right: .5em;
   padding-left: .5em;
   border: $border-base;
