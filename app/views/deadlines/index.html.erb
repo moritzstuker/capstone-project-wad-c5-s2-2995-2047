@@ -3,17 +3,14 @@
     <%= render 'sidebar' %>
   </div>
   <section class="col-6">
-    <div class="box">
-      <div class="box-header">
-        <h1>Deadlines</h1>
-        <%= link_to "Assigned to", deadlines_path(assignee: "2") %>
-        <%= link_to "All (#{@deadlines.count})", deadlines_path %>
-      </div>
-      <ul class="box-content">
-        <% @deadlines.each do |deadline| %>
-        <li><%= render 'card', deadline: deadline %></li>
-        <% end %>
-      </ul>
-    </div>
+    <header class="section-header">
+      <h1 class="section-title">Deadlines</h1>
+      <%= render 'filters' %>
+    </header>
+    <ul class="box">
+      <% @deadlines.distinct.pluck(:date).each do |date| %>
+      <li><%= render 'card', date: date %></li>
+      <% end %>
+    </ul>
   </section>
 </div>

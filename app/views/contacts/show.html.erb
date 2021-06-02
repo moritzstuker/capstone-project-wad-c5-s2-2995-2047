@@ -1,5 +1,6 @@
-<header class="row">
-  <div class="col">
+<header class="page-header">
+<div class="row">
+  <div class="col-7">
     <h1 class="title">
       <%= link_to "Contacts", contacts_path %>
       <span class="mute">&nbsp;&sol;&nbsp;</span>
@@ -7,20 +8,23 @@
       <span class="label"><%= @contact.combine(:category) %></span>
     </h1>
   </div>
+  <div class="col-1 u-align-right icons">
+    <%= link_to icon_tag('pencil'), edit_contact_path(@contact) %>
+    <%= link_to icon_tag('trash'), @contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
 </header>
 <div class="row">
   <div class="col-5">
     <section class="box">
       <header class="box-header">
-        <h2>Overview</h2>
-        <%= link_to icon_tag('pencil'), edit_contact_path(@contact) %>
-        <%= link_to icon_tag('trash'), @contact, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </header>
+        <h2 class="heading">Overview</h2>
+        </header>
       <div class="box-content">
         <p><%= @contact.combine(:address) %></p>
         <span class="dot-label">
-          <span class="dot" style="background-color: <%= @contact.role.color %>"></span>
-          <span><%= @contact.role.label.capitalize %></span>
+          <span class="dot-icon" style="background-color: <%= @contact.role.color %>"></span>
+          <%= @contact.role.label.capitalize %>
         </span>
       </div>
     </section>
@@ -28,7 +32,7 @@
   <div class="col-3">
     <section class="box">
       <header class="box-header">
-        <h2>Cases</h2>
+        <h2 class="heading">Cases</h2>
       </header>
       <div class="box-content">
         <% if @contact.projects.count > 0 %>

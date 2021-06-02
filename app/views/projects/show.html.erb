@@ -11,7 +11,7 @@
         <% end %>
       </h1>
     </div>
-    <div class="col-1">
+    <div class="col-1 u-align-right icons">
       <%= link_to icon_tag('pencil'), edit_project_path(@project) %>
       <%= link_to icon_tag('trash'), @project, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
@@ -21,7 +21,7 @@
   <div class="col-5">
     <section class="box">
       <header class="box-header">
-        <h2>Description</h2>
+        <h2 class="heading">Description</h2>
       </header>
       <% if @project.description %>
       <div class="box-content">
@@ -33,7 +33,7 @@
     </section>
     <section class="box">
       <header class="box-header">
-        <h2>Parties</h2>
+        <h2 class="heading">Parties</h2>
       </header>
       <div class="box-content">
         <div class="row">

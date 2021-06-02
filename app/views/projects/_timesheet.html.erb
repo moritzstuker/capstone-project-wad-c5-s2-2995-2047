@@ -1,6 +1,6 @@
 <section class="box">
   <header class="box-header">
-    <h2>Timesheet</h2>
+    <h2 class="heading">Timesheet</h2>
   </header>
   <% if @activities.exists? %>
   <table class="box-content">
@@ -21,7 +21,7 @@
         <td><%= activity.category %></td>
         <td><%= activity.label %></td>
         <td><%= number_with_precision(activity.duration, precision: 2) %></td>
-        <td><%= fee(activity.fee) %></td>
+        <td class="no-wrap"><%= fee(activity.fee) %></td>
         <td><%= link_to activity.user.combine(:name), activity.user %></td>
       </tr>
       <% end %>

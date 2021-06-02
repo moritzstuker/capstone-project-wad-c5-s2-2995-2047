@@ -1,8 +1,10 @@
-<header class="row">
-  <div class="col">
-    <h1 class="title">
-      Site settings
-    </h1>
+<header class="page-header">
+  <div class="row">
+    <div class="col">
+      <h1 class="title">
+        Site settings
+      </h1>
+    </div>
   </div>
 </header>
 <div class="row">
@@ -11,8 +13,7 @@
       <header class="box-header">
         <h2>Case categories</h2>
       </header>
-      <div class="box-content">
-        <table>
+        <table class="box-content">
           <thead>
             <tr>
               <th>Label</th>
@@ -24,14 +25,15 @@
             <tr>
               <td><%= category.label.capitalize %> (<%= @cases.where(category: category).count %>)</td>
               <td>
-                <span class="dot" style="background-color: <%= category.color %>"></span>
-                <span class="disambiguate"><%= category.color %></span>
+                <span class="dot-label">
+                  <span class="dot-icon" style="background-color: <%= category.color %>"></span>
+                  <span class="disambiguate"><%= category.color %></span>
+                </span>
               </td>
             </tr>
             <% end %>
           </tbody>
         </table>
-      </div>
     </section>
   </div>
   <div class="col-4">
@@ -39,8 +41,7 @@
       <header class="box-header">
         <h2>Contact roles</h2>
       </header>
-      <div class="box-content">
-        <table>
+        <table class="box-content">
           <thead>
             <tr>
               <th>Label</th>
@@ -52,14 +53,15 @@
             <tr>
               <td><%= role.label.capitalize %> (<%= @contacts.where(role: role).count %>)</td>
               <td>
-                <span class="dot" style="background-color: <%= role.color %>"></span>
-                <span class="disambiguate"><%= role.color %></span>
+                <span class="dot-label">
+                  <span class="dot-icon" style="background-color: <%= role.color %>"></span>
+                  <span class="disambiguate"><%= role.color %></span>
+                </span>
               </td>
             </tr>
             <% end %>
           </tbody>
         </table>
-      </div>
     </section>
   </div>
 </div>
@@ -70,8 +72,7 @@
       <header class="box-header">
         <h2>Users</h2>
       </header>
-      <div class="box-content">
-        <table>
+        <table class="box-content">
           <thead>
             <tr>
               <th>Name</th>
@@ -93,7 +94,6 @@
             <% end %>
           </tbody>
         </table>
-      </div>
     </section>
   </div>
 </div>
