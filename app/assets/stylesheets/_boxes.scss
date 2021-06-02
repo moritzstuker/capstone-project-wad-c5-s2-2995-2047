@@ -13,7 +13,7 @@
   &-footer,
   &-row {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     justify-content: flex-start;
     padding: $box-padding;
   }
@@ -48,6 +48,7 @@
   }
 
   &-row {
+
     & + .box-row {
       border-top: $border-base;
     }

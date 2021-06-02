@@ -2,21 +2,20 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .card {
+  width: 100%;
+  padding: $box-padding;
+
+
   &-header {
-    display: flex;
-    align-items: baseline;
     font-weight: $medium-font-weight;
   }
 
-  &-content {
-    margin-top: $box-padding-y;
-    margin-bottom: $box-padding-y;
+  &-footer {
+    @extend .small;
   }
 
-  &-footer {
-    & > * + * {
-      margin-left: $gutter;
-    }
+  & + & {
+    border-top: $border-base;
   }
 }
 

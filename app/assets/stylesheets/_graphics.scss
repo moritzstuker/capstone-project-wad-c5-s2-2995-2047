@@ -51,6 +51,14 @@ figure {
   }
 }
 
+.icons {
+  white-space: nowrap;
+
+  & > * + * {
+    margin-left: .5em;
+  }
+}
+
 a,
 .a {
   &:active,

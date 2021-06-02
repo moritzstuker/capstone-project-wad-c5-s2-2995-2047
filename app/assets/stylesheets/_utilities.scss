@@ -1,8 +1,19 @@
 // Utilities & Misc
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
+.u {
+  &-align-right {
+    text-align: right;
+  }
+}
 [hidden] {
   display: none
+}
+
+[disabled] {
+  cursor: default !important;
+  opacity: 0.5;
+  pointer-events: none !important;
 }
 
 #particles-js {

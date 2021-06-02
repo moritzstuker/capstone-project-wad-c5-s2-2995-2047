@@ -33,19 +33,22 @@
   }
 }
 
-.page-header {
+.page-header,
+.section-header {
   margin-top: $gutter;
+}
 
-  div[class^="col"] {
-    display: flex;
-    align-items: center;
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
 
-    &:last-of-type {
-      justify-content: flex-end;
-    }
+  & > * {
+    margin-left: $box-padding-x;
 
-    & > *:not(:first-child) {
-      margin-left: $box-padding-y;
+    &:first-child {
+      margin-right: auto;
+      margin-left: 0;
     }
   }
 }

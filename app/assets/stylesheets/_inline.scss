@@ -23,8 +23,12 @@ abbr[title] {
 
 b,
 strong,
-.strong {
+.bold {
   font-weight: $bold-font-weight;
+}
+
+.medium-bold {
+  font-weight: $medium-font-weight;
 }
 
 mark {
@@ -90,15 +94,18 @@ sup,
 }
 
 .dot {
+  &-label {
+    display: inline-flex;
+    align-items: center;
+  }
+
   &-icon {
-    display: inline-block;
     z-index: 1;
     position: relative;
-    top: .1em;
-    width: .9em;
-    height: .9em;
-    margin-right: .2em;
-    margin-left: .05em;
+    flex: 0 0 auto;
+    width: .8em;
+    height: .8em;
+    margin-right: .5em;
     border: $border-width solid rgba(205, 217, 229, 0.2);
     border-radius: 50%;
   }
@@ -117,6 +124,7 @@ sup,
 
 .tag {
   display: inline;
+  margin-left: .5em;
   padding-right: .5em;
   padding-left: .5em;
   border: $border-base;
@@ -163,4 +171,13 @@ sup,
   .icon {
     vertical-align: middle;
   }
+}
+
+.section-title {
+  display: inline-block;
+  @extend %heading;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
