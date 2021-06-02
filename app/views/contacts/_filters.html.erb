@@ -1,0 +1,14 @@
+<details>
+  <summary aria-haspopup="true">
+    <span class="button small">Category <%= icon_tag('triangle-down') %></span>
+  </summary>
+  <ul class="box dropdown">
+    <% @contacts.distinct.pluck(:contact_role_id).sort.each do |role| %>
+    <li role="menuitem">
+      <%= link_to "#{role} (X)", root_path, class: 'box-row small' %>
+    </li>
+    <% end %>
+  </ul>
+</details>
+
+<button type="button" name="button" class="button small">All (X)</button>

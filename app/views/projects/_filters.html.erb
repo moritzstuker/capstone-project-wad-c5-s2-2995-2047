@@ -10,4 +10,35 @@
     <% end %>
   </ul>
 </details>
+
+<details>
+  <summary aria-haspopup="true">
+    <span class="button small">Category <%= icon_tag('triangle-down') %></span>
+  </summary>
+  <ul class="box dropdown">
+    <% ProjectCategory.all.order(:label).each do |category| %>
+    <li role="menuitem">
+      <%= link_to root_path, class: 'box-row small' do %>
+      <span class="dot-label">
+        <span class="dot-icon" style="background-color: <%= category.color %>"></span>
+        <%= category.label.capitalize %> (X)
+      </span>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</details>
+
+<details>
+  <summary aria-haspopup="true">
+    <span class="button small">Status <%= icon_tag('triangle-down') %></span>
+  </summary>
+  <ul class="box dropdown">
+    <% @projects.distinct.pluck(:status).each do |status| %>
+    <li role="menuitem">
+      <%= link_to "#{status.capitalize} (X)", root_path, class: 'box-row small' %>
+    </li>
+    <% end %>
+  </ul>
+</details>
 <button type="button" name="button" class="button small">All (<%= @projects.count %>)</button>

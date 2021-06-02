@@ -1,0 +1,43 @@
+<details>
+  <summary aria-haspopup="true">
+    <span class="button small">Assigned to <%= icon_tag('triangle-down') %></span>
+  </summary>
+  <ul class="box dropdown">
+    <% @deadlines.distinct.pluck(:assignee_id).each do |assignee| %>
+    <li role="menuitem">
+      <%= link_to "#{User.find(assignee).combine(:name)} (X)", root_path, class: 'box-row small' %>
+    </li>
+    <% end %>
+  </ul>
+</details>
+
+<details>
+  <summary aria-haspopup="true">
+    <span class="button small">Category <%= icon_tag('triangle-down') %></span>
+  </summary>
+  <ul class="box dropdown">
+    <% @deadlines.distinct.pluck(:category).sort.each do |category| %>
+    <li role="menuitem">
+      <%= link_to "#{category.capitalize} (X)", root_path, class: 'box-row small' %>
+    </li>
+    <% end %>
+  </ul>
+</details>
+
+<details>
+  <summary aria-haspopup="true">
+    <span class="button small">Status <%= icon_tag('triangle-down') %></span>
+  </summary>
+  <ul class="box dropdown">
+    <li role="menuitem">
+      <span class="box-row small">Closed (X)</span>
+    </li>
+      <li role="menuitem">
+        <span class="box-row small">Open (X)</span>
+      </li>
+  </ul>
+</details>
+
+
+
+<button type="button" name="button" class="button small">All (X)</button>
