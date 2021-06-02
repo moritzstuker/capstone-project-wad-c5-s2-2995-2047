@@ -50,3 +50,5 @@ end
 This gave me a sanitized version of every single octicon, which I then simply stored in here.
 
 Since these files are MIT Licensed and that they may end up somewhere on the internet, an appropriate license notice is also included.
+
+EDIT: some icons have meanwhile been added that not part of the octicon gallery.
