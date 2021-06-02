@@ -22,18 +22,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def restricted_access (int)
-    unless logged_in?
-      keep_path
-      flash[:orange] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
   def restrict_access (int)
-    unless current_user.role.access_level <= int
+    unless logged_in? && current_user.role.access_level <= int
+      store_location
       flash[:red] = "Access denied."
-      redirect_to projects_path
+      redirect_to login_path
     end
   end
 end
