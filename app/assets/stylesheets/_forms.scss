@@ -25,6 +25,7 @@ select {
   display: block;
   width: 100%;
 
+  &:active,
   &:focus {
     border-color: $blue-500;
   }
@@ -120,6 +121,8 @@ input[type='search'] {
 
     &:active,
     &:focus {
+      border-color: $blue-500;
+
       & + button {
         border-color: $blue-500;
       }
@@ -127,19 +130,24 @@ input[type='search'] {
   }
 
   button {
-    position: relative;
+    padding-right: $box-padding-y;
+    padding-left: $box-padding-y;
     border-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    color: $grey-400;
-    transition: color $transition;
 
     &:active,
-    &:focus,
     &:hover {
       border-color: $grey-500;
       background-color: $grey-700;
-      color: inherit;
+
+      .icon {
+        fill: $blue-500;
+      }
+    }
+
+    .icon {
+      width: $big-font-size;
     }
   }
 }
