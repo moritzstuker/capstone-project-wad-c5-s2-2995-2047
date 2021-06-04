@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @particles_js = true
   end
 
   def create
