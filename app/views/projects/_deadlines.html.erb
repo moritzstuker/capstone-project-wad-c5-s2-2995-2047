@@ -2,7 +2,7 @@
   <header class="box-header">
     <h2 class="heading">Deadlines</h2>
   </header>
-  <% if @project.deadlines %>
+  <% if @project.deadlines.count > 0 %>
   <table class="box-content deadlines">
     <thead>
       <tr>

@@ -4,7 +4,12 @@
   </header>
   <div class="box-content">
     <p><strong>Status:</strong>&nbsp;<%= @project.status.capitalize %></p>
-    <p><strong>Category:</strong>&nbsp;<span class="dot" style="background-color: <%= @project.category.color %>"></span><%= @project.category.label.capitalize %></p>
+    <p><strong>Category:</strong>&nbsp;
+      <span class="dot-label small">
+        <span class="dot-icon" style="background-color: <%= @project.category.color %>"></span>
+        <%= @project.category.label.capitalize %>
+      </span>
+    </p>
     <% if @project.reference.present? %>
     <p><strong>Court reference:</strong>&nbsp;<span class="disambiguate"><%= @project.reference %></span></p>
     <% end %>

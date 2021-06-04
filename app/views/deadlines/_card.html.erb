@@ -12,7 +12,7 @@
         <%= link_to deadline.label, project_path(deadline.project, anchor: 'deadlines') %><span class="tag"><%= deadline.category %></span>
       </div>
       <div class="card-content">
-        <span class="small mute"><%= icon_tag('repo', class: 'inline') %><%= link_to deadline.project.combine(:name), deadline.project, class: 'invisible-link' %>
+        <span class="small mute"><%= icon_tag('repo', class: 'inline') %><%= link_to deadline.project.combine(:long_name), deadline.project, class: 'invisible-link' %>
         </span>
       </div>
       <div class="card-footer">
