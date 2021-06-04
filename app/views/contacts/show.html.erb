@@ -1,35 +1,64 @@
 <header class="page-header">
-<div class="row">
-  <div class="col-7">
-    <h1 class="title">
-      <%= link_to "Contacts", contacts_path %>
-      <span class="mute">&nbsp;&sol;&nbsp;</span>
-      <%= @contact.combine(:name) %>
-      <span class="label"><%= @contact.combine(:category) %></span>
-    </h1>
+  <div class="row">
+    <div class="col-5 col-offset-1">
+      <h1 class="title">
+        <%= link_to "Contacts", contacts_path %>
+        <span class="mute">&nbsp;&sol;&nbsp;</span>
+        <%= @contact.combine(:long_name) %>
+      </h1>
+    </div>
+    <div class="col-1 u-align-right icons">
+      <%= link_to icon_tag('pencil'), edit_contact_path(@contact) %>
+      <%= link_to icon_tag('trash'), @contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
   </div>
-  <div class="col-1 u-align-right icons">
-    <%= link_to icon_tag('pencil'), edit_contact_path(@contact) %>
-    <%= link_to icon_tag('trash'), @contact, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
-</div>
 </header>
 <div class="row">
-  <div class="col-5">
+  <div class="col-3 col-offset-1">
     <section class="box">
       <header class="box-header">
-        <h2 class="heading">Overview</h2>
-        </header>
+        <h2 class="heading">Address</h2>
+      </header>
       <div class="box-content">
+        <p><strong><%= @contact.combine(:long_name) %></strong></p>
         <p><%= @contact.combine(:address) %></p>
-        <span class="dot-label">
-          <span class="dot-icon" style="background-color: <%= @contact.role.color %>"></span>
-          <%= @contact.role.label.capitalize %>
-        </span>
       </div>
     </section>
   </div>
   <div class="col-3">
+    <section class="box">
+      <header class="box-header">
+        <h2 class="heading">Properties</h2>
+      </header>
+      <div class="box-content">
+        <p><strong>Category:</strong>&nbsp;<%= @contact.combine(:category) %></p>
+        <p><strong>Role:</strong>&nbsp;
+          <span class="dot-label">
+            <span class="dot-icon" style="background-color: <%= @contact.role.color %>"></span>
+            <%= @contact.role.label.capitalize %>
+            <%= "(#{@contact.user.role.label})" if @contact.role.label == 'employee' %>
+          </span>
+        </p>
+        <p><strong>Phone:</strong>&nbsp;<span class="disambiguate"><%= @contact.phone %></span></p>
+        <p><strong>Email:</strong>&nbsp;<%= mail_to @contact.email %></p>
+        <% if @contact.category == 'natural person' %>
+        <p><strong>Birthday:</strong>&nbsp;<%= @contact.birthday %></p>
+        <p><strong>Profession:</strong>&nbsp;<%= @contact.activity.capitalize %></p>
+        <% elsif @contact.category == 'legal person' %>
+        <p><strong>Activity:</strong>&nbsp;<%= @contact.activity.capitalize %></p>
+        <p><strong>Company ID:</strong>&nbsp;<%= @contact.company_id %></p>
+        <p><strong>Incorporated in:</strong>&nbsp;<%= @contact.address[:country].capitalize %></p>
+        <% end %>
+        <hr>
+        <p><strong>Notes:</strong></p>
+        <p><%= @contact.notes %></p>
+      </div>
+    </section>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-6 col-offset-1">
     <section class="box">
       <header class="box-header">
         <h2 class="heading">Cases</h2>
@@ -43,7 +72,7 @@
           <% end %>
         </ul>
         <% else %>
-        <p>No case yet...</p>
+        <%= image_tag('undraw/void.svg', class: 'void') %>
         <% end %>
       </div>
     </section>
