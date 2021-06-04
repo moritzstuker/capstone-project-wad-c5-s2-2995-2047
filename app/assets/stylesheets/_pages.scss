@@ -2,7 +2,31 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .homepage {
-  .login-form {
-    margin-top: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%; // fallback for browsers that don't support vh
+  height: 80vh;
+
+  .header {
+    text-align: center;
   }
+
+  .title {
+    font-size: 10rem;
+    @extend %heading;
+    margin-right: -.4em; // to counter letter-spacing of last letter
+    font-weight: 600;
+    letter-spacing: .4em;
+    line-height: 1.25;
+    opacity: .8;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+}
+
+.login-form {
+  margin-top: 20%;
 }
