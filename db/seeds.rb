@@ -136,7 +136,8 @@ def build_contact(str = "client")
     phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,
     birthday:   Faker::Date.birthday(min_age: 18, max_age: 100),
-    profession: category == "natural person" ? Faker::Company.profession : Faker::Company.industry,
+    activity:   category == "natural person" ? (str == "employee" ? 'lawyer' : Faker::Company.profession) : Faker::Company.industry,
+    company_id: category == "natural person" ? nil : Faker::IDNumber.valid,
     category:   category,
     notes:      [nil, Faker::Hipster.sentence][weighted_random()],
     role:       ContactRole.find_by_label(str)

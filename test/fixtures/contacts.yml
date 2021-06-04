@@ -9,7 +9,7 @@ one:
   phone: MyString
   email: MyString
   birthday: 2021-04-28
-  profession: MyString
+  activity: MyString
   role: MyString
   personality: MyString
   notes: MyText
@@ -23,7 +23,7 @@ two:
   phone: MyString
   email: MyString
   birthday: 2021-04-28
-  profession: MyString
+  activity: MyString
   role: MyString
   personality: MyString
   notes: MyText
