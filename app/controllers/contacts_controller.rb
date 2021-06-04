@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   def index
-    @contacts = Contact.search(params[:q])
+    @contacts = Contact.filter(params.slice(:role)).order(:last_name, :first_name) # filters
+    @contacts = @contacts.search(params[:q]) if params[:q].present? # searches
   end
 
   def show

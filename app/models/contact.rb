@@ -1,4 +1,5 @@
 class Contact < ApplicationRecord
+  include Filtering
 
   CATEGORIES = [
     'natural person',
@@ -32,6 +33,8 @@ class Contact < ApplicationRecord
   scope :adversaries, ->       { get_role('adversary') }
   scope :employees,   ->       { get_role('employee') }
   scope :other,       ->       { get_role('other') }
+
+  scope :filter_by_role, -> (str) { where(role: str) }
 
   after_initialize  :default_values!
   before_validation { self.email = email.downcase }

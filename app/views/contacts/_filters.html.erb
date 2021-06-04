@@ -1,14 +1,19 @@
 <details>
   <summary aria-haspopup="true">
-    <span class="button small">Category <%= icon_tag('triangle-down') %></span>
+    <span class="button small">Roles <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
-    <% @contacts.distinct.pluck(:contact_role_id).sort.each do |role| %>
+    <% ContactRole.all.each do |role| %>
     <li role="menuitem">
-      <%= link_to "#{role} (X)", root_path, class: 'box-row small' %>
+      <%= link_to url_for(role: role), class: 'box-row small' do %>
+      <span class="dot-label">
+        <span class="dot-icon" style="background-color: <%= role.color %>"></span>
+        <%= role.label.pluralize.capitalize %> (<%= Contact.where(role: role).count %>)
+      </span>
+      <% end %>
     </li>
     <% end %>
   </ul>
 </details>
 
-<button type="button" name="button" class="button small">All (X)</button>
+<%= link_to "All (#{page_items(Contact)})", url_for, class: 'button small' %>
