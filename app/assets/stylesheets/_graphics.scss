@@ -66,7 +66,7 @@ a,
   &:hover,
   &:focus {
     & > .icon {
-      fill: $text-color-highlight;
+      fill: currentColor;
       border-color: $text-color-highlight;
 
       &.trash {
@@ -98,7 +98,7 @@ a,
 
   &:active,
   &:hover {
-    color: $text-color-highlight;
+    color: $orange;
 
     .icon {
       transform: rotate(60deg);
