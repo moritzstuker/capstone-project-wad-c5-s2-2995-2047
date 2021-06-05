@@ -121,8 +121,55 @@ input[type='submit'] {
     }
   }
 
+  &.light {
+    &.blue {
+      background-color: rgba($blue-500, $light-opacity-factor);
+
+      &:active,
+      &:hover {
+        background-color: rgba($blue-400, $light-opacity-factor);
+      }
+    }
+
+    &.green {
+      background-color: rgba($green-500, $light-opacity-factor);
+
+      &:active,
+      &:hover {
+        background-color: rgba($green-400, $light-opacity-factor);
+      }
+    }
+
+    &.orange {
+      background-color: rgba($orange-400, $light-opacity-factor);
+
+      &:active,
+      &:hover {
+        background-color: rgba($orange-300, $light-opacity-factor);
+      }
+    }
+
+    &.red {
+      background-color: rgba($red-400, $light-opacity-factor);
+
+      &:active,
+      &:hover {
+        background-color: rgba($red-300, $light-opacity-factor);
+      }
+    }
+
+    &.yellow {
+      background-color: rgba($yellow-300, $light-opacity-factor);
+
+      &:active,
+      &:hover {
+        background-color: rgba($yellow-200, $light-opacity-factor);
+      }
+    }
+  }
+
   &.outline {
-    background-color: transparent;
+    background-color: transparent !important;
   }
 
   &:-moz-focusring {
