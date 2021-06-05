@@ -1,53 +1,56 @@
-<%= link_to "Your active cases", url_for(user: current_user, status: 'active'), class: "button small light green" %>
+<div class="button-group">
+  <details>
+    <summary aria-haspopup="true">
+      <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
+    </summary>
+    <ul class="box dropdown">
+      <% User.all.each do |user| %>
+      <li role="menuitem">
+        <%= link_to "#{user.contact.combine(:name)} (#{Project.filter_by_user(user).count})",
+        url_for(user: user),
+        class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
+      </li>
+      <% end %>
+    </ul>
+  </details>
 
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-    <% User.all.each do |user| %>
-    <li role="menuitem">
-      <%= link_to "#{user.contact.combine(:name)} (#{Project.filter_by_user(user).count})",
-      url_for(user: user),
-      class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
-    </li>
-    <% end %>
-  </ul>
-</details>
-
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-    <% ProjectCategory.all.order(:label).each do |category| %>
-      <% if Project.where(category: category).count > 0 %>
+  <details>
+    <summary aria-haspopup="true">
+      <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
+    </summary>
+    <ul class="box dropdown">
+      <% ProjectCategory.all.order(:label).each do |category| %>
+        <% if Project.where(category: category).count > 0 %>
         <li role="menuitem">
           <%= link_to url_for(category: category), class: "box-row small#{ ' orange-color' if params[:category] == category.id.to_s }" do %>
-            <span class="dot-label">
-                <span class="dot-icon" style="background-color: <%= category.color %>"></span>
-                <%= "#{category.label.pluralize.capitalize} (#{Project.where(category: category).count})" %>
-              </span>
+          <span class="dot-label">
+            <span class="dot-icon" style="background-color: <%= category.color %>"></span>
+            <%= "#{category.label.pluralize.capitalize} (#{Project.where(category: category).count})" %>
+          </span>
           <% end %>
         </li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-</details>
+    </ul>
+  </details>
 
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small light<%= ' orange' if params[:status].present? %>">Status <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-    <% Project.distinct.pluck(:status).sort.each do |status| %>
-    <li role="menuitem">
-      <%= link_to "#{status.capitalize} (#{Project.where(status: status).count})",
-      url_for(status: status),
-      class: "box-row small#{ ' orange-color' if params[:status] == status }" %>
-    </li>
-    <% end %>
-  </ul>
-</details>
+  <details>
+    <summary aria-haspopup="true">
+      <span class="button small light<%= ' orange' if params[:status].present? %>">Status <%= icon_tag('triangle-down') %></span>
+    </summary>
+    <ul class="box dropdown">
+      <% Project.distinct.pluck(:status).sort.each do |status| %>
+      <li role="menuitem">
+        <%= link_to "#{status.capitalize} (#{Project.where(status: status).count})",
+        url_for(status: status),
+        class: "box-row small#{ ' orange-color' if params[:status] == status }" %>
+      </li>
+      <% end %>
+    </ul>
+  </details>
+</div>
 
-<%= link_to "All (#{page_items(Project)})", url_for, class: 'button small light blue' %>
+<div class="button-group">
+  <%= link_to "Your active cases", url_for(user: current_user, status: 'active'), class: "button small light green" %>
+  <%= link_to "All", url_for, class: 'button small light blue' %>
+</div>
