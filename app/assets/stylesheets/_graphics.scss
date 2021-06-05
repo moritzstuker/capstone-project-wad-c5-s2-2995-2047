@@ -46,7 +46,8 @@ figure {
     fill: $green-200;
   }
 
-  &.x-circle {
+  &.x-circle,
+  &.triangle-down {
     fill: currentColor;
   }
 }
