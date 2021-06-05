@@ -2,11 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-2">
-        <%=
-        link_to_if(logged_in?, icon_tag('empire', class: 'site-logo'), projects_path) do |name|
-        link_to(name, root_path)
-        end
-        %>
+        <%= link_to_if logged_in?, icon_tag('empire'), projects_path, class: 'site-logo' do |name| %>
+          <%= link_to name, root_path, class: 'site-logo' %>
+        <% end %>
       </div>
 
       <div class="col-4">
