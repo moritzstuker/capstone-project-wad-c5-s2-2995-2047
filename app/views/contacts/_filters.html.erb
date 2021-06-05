@@ -3,7 +3,7 @@
     <span class="button small">Roles <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
-    <% ContactRole.all.each do |role| %>
+    <% ContactRole.all.order(:label).each do |role| %>
     <li role="menuitem">
       <%= link_to url_for(role: role), class: 'box-row small' do %>
       <span class="dot-label">
