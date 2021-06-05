@@ -113,6 +113,10 @@ sup,
 .invisible-link {
   display: inline;
   color: inherit !important;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .keys {
