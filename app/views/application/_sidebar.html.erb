@@ -1,9 +1,5 @@
-<nav class="box">
-    <% ApplicationController::SIDEBAR_PAGES.each do |key, label| %>
-      <% if current_page?(key) %>
-        <span class="box-row is-active"><%= sidebar_text(label, key) %></span>
-      <% else %>
-      <%= link_to sidebar_text(label, key), key, q: params[:q], class: 'box-row' %>
-      <% end %>
-    <% end %>
-  </nav>
+<nav class="box sidebar">
+  <% ApplicationController::SIDEBAR_PAGES.each do |key, label| %>
+    <%= link_to sidebar_text(label, key), key, q: params[:q], class: "box-row#{ ' is-active' if current_page?(key) }" %>
+  <% end %>
+</nav>
