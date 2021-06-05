@@ -1,11 +1,15 @@
+<%= link_to "Your active cases", url_for(user: current_user, status: 'active'), class: "button small light green" %>
+
 <details>
   <summary aria-haspopup="true">
-    <span class="button small">Assigned to <%= icon_tag('triangle-down') %></span>
+    <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
     <% User.all.each do |user| %>
     <li role="menuitem">
-      <%= link_to "#{user.contact.combine(:name)} (#{@assignments.where(user: user).count})", nil, class: 'box-row small' %>
+      <%= link_to "#{user.contact.combine(:name)} (#{Project.filter_by_user(user).count})",
+      url_for(user: user),
+      class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
     </li>
     <% end %>
   </ul>
@@ -13,32 +17,37 @@
 
 <details>
   <summary aria-haspopup="true">
-    <span class="button small">Category <%= icon_tag('triangle-down') %></span>
+    <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
     <% ProjectCategory.all.order(:label).each do |category| %>
-    <li role="menuitem">
-      <%= link_to root_path, class: 'box-row small' do %>
-      <span class="dot-label">
-        <span class="dot-icon" style="background-color: <%= category.color %>"></span>
-        <%= category.label.capitalize %> (X)
-      </span>
+      <% if Project.where(category: category).count > 0 %>
+        <li role="menuitem">
+          <%= link_to url_for(category: category), class: "box-row small#{ ' orange-color' if params[:category] == category.id.to_s }" do %>
+            <span class="dot-label">
+                <span class="dot-icon" style="background-color: <%= category.color %>"></span>
+                <%= "#{category.label.pluralize.capitalize} (#{Project.where(category: category).count})" %>
+              </span>
+          <% end %>
+        </li>
       <% end %>
-    </li>
     <% end %>
   </ul>
 </details>
 
 <details>
   <summary aria-haspopup="true">
-    <span class="button small">Status <%= icon_tag('triangle-down') %></span>
+    <span class="button small light<%= ' orange' if params[:status].present? %>">Status <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
-    <% @projects.distinct.pluck(:status).each do |status| %>
+    <% Project.distinct.pluck(:status).sort.each do |status| %>
     <li role="menuitem">
-      <%= link_to "#{status.capitalize} (X)", root_path, class: 'box-row small' %>
+      <%= link_to "#{status.capitalize} (#{Project.where(status: status).count})",
+      url_for(status: status),
+      class: "box-row small#{ ' orange-color' if params[:status] == status }" %>
     </li>
     <% end %>
   </ul>
 </details>
-<button type="button" name="button" class="button small">All (<%= page_items(Project) %>)</button>
+
+<%= link_to "All (#{page_items(Project)})", url_for, class: 'button small light blue' %>

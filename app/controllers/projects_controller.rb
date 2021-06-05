@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   before_action -> { restrict_access(3) }
 
   def index
-    @projects = params[:q].present? ? Project.search(params[:q]) : Project.all
+    @projects = Project.filter(params.slice(:category, :status, :user)).order(:label) # filters
+    @projects = @projects.search(params[:q]) if params[:q].present? # searches
     @assignments = Assignment.all
   end
 
