@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 rand_min = 10
-rand_max = 12
+rand_max = (rand_min * 1.5).round
 
 LEGALESE = [
   "Action de droit administratif",
