@@ -7,10 +7,17 @@
       <h1 class="section-title">Cases</h1>
       <%= render 'filters' %>
     </header>
+
+    <% if @projects.count > 0 %>
     <ul>
       <% @projects.each do |project| %>
       <li><%= render 'card', project: project %></li>
       <% end %>
     </ul>
+    <% else %>
+    <div class="box">
+      <%= image_tag('undraw/void.svg', class: 'void') %>
+    </div>
+    <% end %>
   </section>
 </div>

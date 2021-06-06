@@ -7,10 +7,16 @@
       <h1 class="section-title">Contacts</h1>
       <%= render 'filters' %>
     </header>
+    <% if @contacts.count > 0 %>
     <ul class="row">
       <% @contacts.each do |contact| %>
       <li class="col-4"><%= render 'card', contact: contact %></li>
       <% end %>
     </ul>
+    <% else %>
+    <div class="box">
+      <%= image_tag('undraw/void.svg', class: 'void') %>
+    </div>
+    <% end %>
   </section>
 </div>

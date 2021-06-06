@@ -7,10 +7,16 @@
       <h1 class="section-title">Deadlines</h1>
       <%= render 'filters' %>
     </header>
+    <% if @deadlines.count > 0 %>
     <ul class="box">
       <% @deadlines.distinct.pluck(:date).each do |date| %>
       <li><%= render 'card', date: date %></li>
       <% end %>
     </ul>
+    <% else %>
+    <div class="box">
+      <%= image_tag('undraw/void.svg', class: 'void') %>
+    </div>
+    <% end %>
   </section>
 </div>
