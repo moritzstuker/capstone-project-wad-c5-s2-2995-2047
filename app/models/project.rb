@@ -32,11 +32,7 @@ class Project < ApplicationRecord
   validates :label,    presence: true
 
   def combine(format = :name)
-    if label.nil?
-      build_project_name
-    else
-      eval('"' + FORMATS[format.to_sym] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
-    end
+    eval('"' + FORMATS[format.to_sym] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
   end
 
   private
