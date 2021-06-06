@@ -1,7 +1,7 @@
 <article>
   <header class="box-header">
     <span class="dot-label">
-      <span class="dot-icon <%= urgency_by_date(date, true) %>"></span>
+      <span class="dot-icon <%= urgency_by_date(date) %>"></span>
       <%= date.strftime("%d.%m.%Y") %>
     </span>
   </header>
@@ -9,7 +9,7 @@
     <% Deadline.where(date: date).each do |deadline| %>
     <li role="menuitem" class="card"<%= ' disabled' if deadline.completed_at %>>
       <div class="card-header">
-        <%= link_to deadline.label, project_path(deadline.project, anchor: 'deadlines') %><span class="tag"><%= deadline.category %></span>
+        <%= link_to highlight(deadline.label, params[:q]), project_path(deadline.project, anchor: 'deadlines') %><span class="tag"><%= deadline.category %></span>
       </div>
       <div class="card-content">
         <span class="small mute"><%= icon_tag('repo', class: 'inline') %><%= link_to deadline.project.combine(:long_name), deadline.project, class: 'invisible-link' %>
