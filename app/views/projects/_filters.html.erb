@@ -16,24 +16,6 @@
 
   <details>
     <summary aria-haspopup="true">
-      <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
-    </summary>
-    <ul class="box dropdown">
-      <% ProjectCategory.all.order(:label).each do |category| %>
-        <li role="menuitem">
-          <%= link_to url_for(category: category), class: "box-row small#{ ' orange-color' if params[:category] == category.id.to_s }" do %>
-          <span class="dot-label">
-            <span class="dot-icon" style="background-color: <%= category.color %>"></span>
-            <%= "#{category.label.pluralize.capitalize} (#{Project.where(category: category).count})" %>
-          </span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </details>
-
-  <details>
-    <summary aria-haspopup="true">
       <span class="button small light<%= ' orange' if params[:status].present? %>">Status <%= icon_tag('triangle-down') %></span>
     </summary>
     <ul class="box dropdown">
