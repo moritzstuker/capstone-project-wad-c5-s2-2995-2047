@@ -1,5 +1,63 @@
-<nav class="box sidebar">
-  <% ApplicationController::SIDEBAR_PAGES.each do |key, label| %>
-    <%= link_to sidebar_text(label, key), key, q: params[:q], class: "box-row#{ ' is-active' if current_page?(key) }" %>
-  <% end %>
+<nav aria-label="Sidebar" class="box sidebar">
+  <ul role="menubar" aria-label="Sidebar">
+    <li class="sidebar-category">
+      <%= link_to sidebar_text('Cases', 'projects'), projects_path(q: params[:q]), role: 'menuitem', class: "box-row#{ ' is-active' if current_page?(projects_path) }"  %>
+      <ul role="menu" aria-label="Cases">
+        <% ProjectCategory.all.order(:label).each do |category| %>
+        <li>
+          <%= link_to projects_path(category: category), role: 'menuitem', class: "box-row small#{ ' orange-color' if params[:category] == category.id.to_s }" do %>
+          <span class="dot-label">
+            <span class="dot-icon" style="background-color: <%= category.color %>"></span>
+            <%= "#{category.label.capitalize} (#{Project.where(category: category).count})" %>
+          </span>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+    <li class="sidebar-category">
+      <%= link_to sidebar_text('Contacts', 'contacts'), contacts_path(q: params[:q]), role: 'menuitem', class: "box-row#{ ' is-active' if current_page?(contacts_path) }"  %>
+      <ul role="menu" aria-label="Contacts">
+        <% ContactRole.all.order(:label).each do |role| %>
+          <li>
+            <%= link_to contacts_path(role: role), role: 'menuitem', class: "box-row small#{ ' orange-color' if params[:role] == role.id.to_s }" do %>
+            <span class="dot-label">
+              <span class="dot-icon" style="background-color: <%= role.color %>"></span>
+              <%= role.label.pluralize.capitalize %> (<%= Contact.where(role: role).count %>)
+            </span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+    <li class="sidebar-category">
+      <%= link_to sidebar_text('Deadlines', 'deadlines'), deadlines_path(q: params[:q]), role: 'menuitem', class: "box-row#{ ' is-active' if current_page?(deadlines_path) }"  %>
+      <ul role="menu" aria-label="Deadlines">
+        <li>
+          <%= link_to deadlines_path(urgency: '0'), role: 'menuitem', class: "box-row small#{ ' orange-color' if params[:urgency] == '0' }" do %>
+            <span class="dot-label">
+              <span class="dot-icon red"></span>
+              Due shortly (<%= Deadline.filter_by_urgency('0').count %>)
+            </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to deadlines_path(urgency: '1'), role: 'menuitem', class: "box-row small#{ ' orange-color' if params[:urgency] == '1' }" do %>
+            <span class="dot-label">
+              <span class="dot-icon orange"></span>
+              Due soon (<%= Deadline.filter_by_urgency('1').count %>)
+            </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to deadlines_path(urgency: '2'), role: 'menuitem', class: "box-row small#{ ' orange-color' if params[:urgency] == '2' }" do %>
+            <span class="dot-label">
+              <span class="dot-icon green"></span>
+              Due later (<%= Deadline.filter_by_urgency('2').count %>)
+            </span>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </nav>
