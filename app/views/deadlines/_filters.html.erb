@@ -1,43 +1,54 @@
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small">Assigned to <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-    <% @deadlines.distinct.pluck(:assignee_id).each do |assignee| %>
-    <li role="menuitem">
-      <%= link_to "#{User.find(assignee).combine(:name)} (X)", root_path, class: 'box-row small' %>
-    </li>
-    <% end %>
-  </ul>
-</details>
+<div class="button-group">
+  <details>
+    <summary aria-haspopup="true">
+      <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
+    </summary>
+    <ul class="box dropdown">
+      <% User.all.each do |user| %>
+        <li role="menuitem">
+          <%= link_to "#{user.contact.combine(:name)} (#{Deadline.filter_by_user(user).count})",
+          url_for(user: user),
+          class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
+        </li>
+      <% end %>
+    </ul>
+  </details>
 
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small">Category <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-    <% @deadlines.distinct.pluck(:category).sort.each do |category| %>
-    <li role="menuitem">
-      <%= link_to "#{category.capitalize} (X)", root_path, class: 'box-row small' %>
-    </li>
-    <% end %>
-  </ul>
-</details>
-
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small">Status <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-    <li role="menuitem">
-      <span class="box-row small">Closed (X)</span>
-    </li>
+  <details>
+    <summary aria-haspopup="true">
+      <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
+    </summary>
+    <ul class="box dropdown">
+      <% Deadline.distinct.pluck(:category).sort.each do |category| %>
       <li role="menuitem">
-        <span class="box-row small">Open (X)</span>
+        <%= link_to "#{category.capitalize} (#{Deadline.filter_by_category(category).count})",
+        url_for(category: category),
+        class: "box-row small#{ ' orange-color' if params[:category] == category }" %>
       </li>
-  </ul>
-</details>
+      <% end %>
+    </ul>
+  </details>
 
+  <details>
+    <summary aria-haspopup="true">
+      <span class="button small light<%= ' orange' if params[:show].present? %>">Status <%= icon_tag('triangle-down') %></span>
+    </summary>
+    <ul class="box dropdown">
+      <li role="menuitem">
+        <%= link_to "Active (#{Deadline.filter_by_show('active').count})",
+        url_for(show: 'active'),
+        class: "box-row small#{ ' orange-color' if params[:show].present? && params[:show] == 'active' }" %>
+      </li>
+      <li role="menuitem">
+        <%= link_to "Inactive (#{Deadline.filter_by_show('inactive').count})",
+        url_for(show: 'inactive'),
+        class: "box-row small#{ ' orange-color' if params[:show].present? && params[:show] == 'inactive' }" %>
+      </li>
+    </ul>
+  </details>
+</div>
 
-
-<button type="button" name="button" class="button small">All (<%= page_items(Deadline) %>)</button>
+<div class="button-group">
+  <%= link_to "Your open deadlines", url_for(user: current_user, show: 'active'), class: "button small light green" %>
+  <%= link_to "Show all", url_for(show: 'all'), class: 'button small light blue' %>
+</div>
