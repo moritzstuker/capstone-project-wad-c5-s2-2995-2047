@@ -1,17 +1,14 @@
 <details>
   <summary aria-haspopup="true">
-    <span class="button small light<%= ' orange' if params[:role].present? %>">Roles <%= icon_tag('triangle-down') %></span>
+    <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
-    <% ContactRole.all.order(:label).each do |role| %>
-    <li role="menuitem">
-      <%= link_to url_for(role: role), class: "box-row small#{ ' orange-color' if params[:role] == role.id.to_s }" do %>
-      <span class="dot-label">
-        <span class="dot-icon" style="background-color: <%= role.color %>"></span>
-        <%= role.label.pluralize.capitalize %> (<%= Contact.where(role: role).count %>)
-      </span>
-      <% end %>
-    </li>
+    <% Contact.distinct.pluck(:category).sort.each do |category| %>
+      <li role="menuitem">
+        <%= link_to url_for(category: category), class: "box-row small#{ ' orange-color' if params[:category] == category }" do %>
+          <%= "#{category == 'natural person' ? 'Private person' : 'Company'}" %> (<%= Contact.where(category: category).count %>)
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </details>
