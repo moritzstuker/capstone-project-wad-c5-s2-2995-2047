@@ -23,10 +23,7 @@ class Contact < ApplicationRecord
   has_one    :user
   has_and_belongs_to_many :projects
 
-  scope :first_name_contains, -> (str) { where('first_name LIKE ?', "%#{str}%") }
-  scope :last_name_contains,  -> (str) { where('last_name LIKE ?', "%#{str}%") }
-  scope :address_contains,    -> (str) { where('address LIKE ?', "%#{str}%") }
-  scope :search,              -> (str) { first_name_contains(str).or(last_name_contains(str)).or(address_contains(str)) }
+  scope :search,              -> (str) { where('first_name LIKE ? OR last_name LIKE ? OR suffix LIKE ? OR address LIKE ?', "%#{str}%", "%#{str}%", "%#{str}%", "%#{str}%") }
 
   scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles).order('last_name') }
   scope :clients,     ->       { get_role('client') }
@@ -35,6 +32,7 @@ class Contact < ApplicationRecord
   scope :other,       ->       { get_role('other') }
 
   scope :filter_by_role, -> (str) { where(role: str) }
+  scope :filter_by_category, -> (str) { where(category: str) }
 
   after_initialize  :default_values!
   before_validation { self.email = email.downcase }
