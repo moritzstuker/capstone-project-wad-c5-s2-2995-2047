@@ -181,6 +181,8 @@ input[type='submit'] {
   display: flex;
 
   & > .button {
+    margin-left: -1px;
+
     &:not(:first-child) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
@@ -190,9 +192,16 @@ input[type='submit'] {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+
+    &:hover,
+    &:active {
+      z-index: 10;
+    }
   }
 
   & > details {
+    margin-left: -1px;
+
     &:not(:first-child) {
       .button {
         border-top-left-radius: 0;
@@ -206,5 +215,15 @@ input[type='submit'] {
         border-bottom-right-radius: 0;
       }
     }
+
+    &:hover,
+    &:active {
+      z-index: 10;
+    }
+  }
+
+  .button.orange {
+    z-index: 11;
+    position: relative;
   }
 }

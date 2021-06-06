@@ -63,4 +63,10 @@
 
 .sidebar {
   font-weight: 500;
+
+  &-category {
+    & + .sidebar-category {
+      border-top: $border-base;
+    }
+  }
 }
