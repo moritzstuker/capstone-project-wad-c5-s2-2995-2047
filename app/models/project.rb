@@ -6,12 +6,6 @@ class Project < ApplicationRecord
     'inactive'
   ].freeze
 
-  FORMATS = {
-    heading:   'cases<span class=\"mute\">&nbsp;&sol;&nbsp;</span>#{build_project_name}',
-    name:      '#{build_project_name}',
-    long_name: '#{build_project_name}<span class=\"mute\"><span class=\"no-calt\">:</span>&nbsp;</span>#{label}',
-  }
-
   has_many                :activities
   has_and_belongs_to_many :adversaries, -> { adversaries }, class_name: "Contact"
   has_many                :assignments
@@ -30,20 +24,4 @@ class Project < ApplicationRecord
   scope :filter_by_user,     -> (str) { joins(:assignments).where("projects.owner_id = ? OR assignments.user_id = ?", str, str) } # Went for SQL because: https://stackoverflow.com/questions/40742078/relation-passed-to-or-must-be-structurally-compatible-incompatible-values-r/40742611#comment-68712244
 
   validates :label,    presence: true
-
-  def combine(format = :name)
-    eval('"' + FORMATS[format.to_sym] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
-  end
-
-  private
-
-  def build_project_name
-    str  = ""
-    str += clients.first.combine(:name) if clients.exists?
-    str += "&nbsp;<span class=\"mute\">et al.</span>" if clients.count > 1
-    str += "<span class=\"mute\">&nbsp;v.&nbsp;</span>" if clients.exists? && adversaries.exists?
-    str += adversaries.first.combine(:name) if adversaries.exists?
-    str += "&nbsp;<span class=\"mute\">et al.</span>" if adversaries.count > 1
-    str.html_safe
-  end
 end

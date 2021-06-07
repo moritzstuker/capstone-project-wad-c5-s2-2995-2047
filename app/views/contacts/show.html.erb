@@ -68,7 +68,7 @@
         Party in the following <%= pluralize(@contact.projects.count, 'case') %>:
         <ul>
           <% @contact.projects.each do |project| %>
-          <li><%= link_to project.combine(:long_name), project %></li>
+          <li><%= link_to("#{project.label}&nbsp;<span class=\"mute\">(</span>#{main_parties(project, false)}<span class=\"mute\">)</span>".html_safe, project) %></li>
           <% end %>
         </ul>
         <% else %>

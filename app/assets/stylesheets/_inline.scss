@@ -56,12 +56,6 @@ sup,
   font-feature-settings: 'sups' 1, $default-font-features;
 }
 
-.no-calt {
-  -ms-font-feature-settings: 'calt' 0, 'frac' 1, 'kern' 1, 'liga' 1, 'ss01' 1, 'ss03' 1;
-  -o-font-feature-settings: 'calt' 0, 'frac' 1, 'kern' 1, 'liga' 1, 'ss01' 1, 'ss03' 1;
-  font-feature-settings: 'calt' 0, 'frac' 1, 'kern' 1, 'liga' 1, 'ss01' 1, 'ss03' 1;
-}
-
 ::-moz-selection {
   background: rgba($blue-400, .6);
   text-shadow: none;
@@ -113,10 +107,6 @@ sup,
 .invisible-link {
   display: inline;
   color: inherit !important;
-
-  &:hover {
-    text-decoration: none;
-  }
 }
 
 .keys {

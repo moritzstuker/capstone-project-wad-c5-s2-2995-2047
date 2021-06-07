@@ -7,7 +7,7 @@ class Contact < ApplicationRecord
   ].freeze
 
   FORMATS = {
-    name:       '#{first_name} #{last_name}',
+    name:       '#{first_name} #{last_name} #{suffix}',
     short_name: '#{first_name.to_s.gsub(/(([[:alpha:]])[[:alpha:]]*\.?)/, \'\2.\')} #{last_name}',
     long_name:  '#{prefix} #{first_name} #{last_name} #{suffix}',
     full_name:  '#{prefix} #{first_name} #{last_name} #{suffix}<span class=\"mute\"> (#{combine(:category)})</span>',

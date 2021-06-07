@@ -4,11 +4,7 @@
       <h1 class="title">
         <%= link_to "Cases", projects_path %>
         <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <% if @project.label %>
-          <%= @project.combine(:long_name) %>
-        <% else %>
-          <%= @project.combine(:name) %>
-        <% end %>
+        <%= @project.label %>&nbsp;<span class="mute">(</span><%= main_parties(@project, false) %><span class="mute">)</span>
       </h1>
     </div>
     <div class="col-1 u-align-right icons">

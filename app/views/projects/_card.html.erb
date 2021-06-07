@@ -1,19 +1,13 @@
 <article class="box">
   <header class="box-header">
-    <% if project.label %>
-      <%= link_to highlight(project.combine(:long_name), params[:q]), project_path(project) %>
-    <% else %>
-      <%= link_to highlight(project.combine(:name), params[:q]), project_path(project) %>
-    <% end %>
+    <%= link_to highlight(project.label, params[:q]), project_path(project) %>
     <% if project.status == 'inactive' %>
       <span class="tag">inactive</span>
     <% end %>
   </header>
-  <% if project.description %>
   <div class="box-content">
-    <p><%= project.description %></p>
+    <%= icon_tag('people', class: 'inline') %><%= main_parties(project) %>
   </div>
-  <% end %>
   <footer class="box-footer">
     <span class="dot-label small">
       <span class="dot-icon" style="background-color: <%= project.category.color %>"></span>
