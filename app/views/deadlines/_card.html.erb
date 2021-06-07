@@ -21,7 +21,7 @@
         </span>
       </div>
       <div class="card-footer">
-        Assigned to <%= link_to deadline.assignee.combine(:name), deadline.assignee %>
+        Assigned to <%= deadline.assignee == current_user ? '<span class="bold">you</span>'.html_safe : link_to(deadline.assignee.combine(:name), deadline.assignee) %>
       </div>
     </li>
     <% end %>
