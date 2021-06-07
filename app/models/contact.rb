@@ -23,7 +23,7 @@ class Contact < ApplicationRecord
   has_one    :user
   has_and_belongs_to_many :projects
 
-  scope :search,              -> (str) { where('first_name LIKE ? OR last_name LIKE ? OR suffix LIKE ? OR address LIKE ?', "%#{str}%", "%#{str}%", "%#{str}%", "%#{str}%") }
+  scope :search,              -> (str) { where('first_name LIKE ? OR last_name LIKE ? OR suffix LIKE ?', "%#{str}%", "%#{str}%", "%#{str}%") }
 
   scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles).order('last_name') }
   scope :clients,     ->       { get_role('client') }

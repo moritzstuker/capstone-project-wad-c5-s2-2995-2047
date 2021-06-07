@@ -18,7 +18,7 @@ class Deadline < ApplicationRecord
   }
   scope :filter_by_urgency,  -> (str) { where(date: dates_by_urgency(str)) }
   scope :filter_by_user,     -> (str) { where(assignee: str) }
-  
+
   private
 
   def self.dates_by_urgency(str)
@@ -27,7 +27,6 @@ class Deadline < ApplicationRecord
     when str == '0' && dates.count >= 2 then dates[0..1]
     when str == '1' && dates.count >= 4 then dates[2..3]
     when str == '2' && dates.count >= 5 then dates[4..-1]
-    else dates
     end
   end
 end

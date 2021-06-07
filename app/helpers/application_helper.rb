@@ -7,7 +7,7 @@ module ApplicationHelper
     @current_user ||= User.find_by_id(session[:user_id]) if logged_in?
   end
 
-  def sidebar_text (str, sym)
-    raw "<span>#{ str }</span><span class=\"counter\">#{ page_items(sym.to_s.classify) }</span>"
+  def sidebar_header (str, int)
+    raw "<span>#{ str }</span><span class=\"counter\">#{ int }</span>"
   end
 end
