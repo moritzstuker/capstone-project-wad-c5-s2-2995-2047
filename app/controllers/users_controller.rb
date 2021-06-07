@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :restricted_access, only: [:show]
+  before_action -> { restrict_access(1) }
 
   def show
     @user = User.find(params[:id])

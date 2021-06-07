@@ -86,7 +86,7 @@
             <% @users.each do |user| %>
             <tr>
               <td><%= link_to user.contact.combine(:name), user %><%= " (You)" if user == current_user %></td>
-              <td><%= user.role.label.capitalize %> (<%= user.role.access_level %>)</td>
+              <td><%= user.role.label.capitalize %></td>
               <td><span class="disambiguate"><%= user.login %></span></td>
               <td><%= user.contact.email %></td>
               <td><%= image_tag(user.avatar, alt: 'Avatar', class: 'icon avatar') %></td>

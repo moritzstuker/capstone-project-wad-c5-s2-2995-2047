@@ -24,9 +24,8 @@ class ApplicationController < ActionController::Base
 
   def restrict_access (int)
     unless logged_in? && current_user.role.access_level <= int
-      store_location
       flash[:red] = "Access denied."
-      redirect_to login_path
+      redirect_back fallback_location: projects_path
     end
   end
 end

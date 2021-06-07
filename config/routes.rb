@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get  '/signup', to: 'users#new'
 
+  get   '/account', to: 'account#edit'
+  patch '/account', to: 'account#update'
+
   resources :activities
   resources :contacts
   resources :deadlines
