@@ -35,29 +35,14 @@
     color: inherit;
   }
 
-  &.blue {
+  &.notice {
     border-color: $blue-400;
     background-color: rgba($blue-500, .7);
   }
 
-  &.green {
-    border-color: $green-400;
-    background-color: rgba($green-500, .7);
-  }
-
-  &.orange {
-    border-color: $orange-300;
-    background-color: rgba($orange-400, .7);
-  }
-
-  &.red {
+  &.alert {
     border-color: $red-500;
     background-color: rgba($red-400, .7);
-  }
-
-  &.yellow {
-    border-color: $yellow-200;
-    background-color: rgba($yellow-300, .7);
   }
 }
 
