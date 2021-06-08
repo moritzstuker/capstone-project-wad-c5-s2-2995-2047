@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-rand_min = 10
+rand_min = 50
 rand_max = (rand_min * 1.5).round
 
 LEGALESE = [
@@ -119,26 +119,27 @@ def build_case
 end
 
 def build_contact(str = "client")
-  category = (str == "employee") ? Contact::CATEGORIES[0] : Contact::CATEGORIES[weighted_random()];
+  company = (str == "employee") ? false : [true, false][weighted_random()];
+  address = ContactAddress.create!(
+    pobox:      [nil, Faker::Address.mail_box][weighted_random()],
+    street:     Faker::Address.street_name,
+    streetno:   [nil, Faker::Address.building_number][weighted_random()],
+    zip:        Faker::Address.zip_code,
+    city:       Faker::Address.city,
+    country:    ["Switzerland", Faker::Address.country][weighted_random()]
+  )
   Contact.create!(
-    prefix:     category == "natural person" ? ["M.", "Mme"].sample : nil,
-    first_name: category == "natural person" ? Faker::Name.first_name : nil,
-    last_name:  category == "natural person" ? Faker::Name.last_name : Faker::Company.name,
-    suffix:     category == "natural person" ? nil : Faker::Company.suffix,
-    address: {
-      pobox:      [nil, Faker::Address.mail_box][weighted_random()],
-      street:     Faker::Address.street_address,
-      streetno:   [nil, Faker::Address.building_number][weighted_random()],
-      zip:        Faker::Address.zip_code,
-      city:       Faker::Address.city,
-      country:    ["Switzerland", Faker::Address.country][weighted_random()]
-    },
+    prefix:     company ? nil : ["M.", "Mme"].sample,
+    first_name: company ? nil : Faker::Name.first_name,
+    last_name:  company ? Faker::Company.name : Faker::Name.last_name,
+    suffix:     company ? Faker::Company.suffix : nil,
+    address:    address,
     phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,
-    birthday:   Faker::Date.birthday(min_age: 18, max_age: 100),
-    activity:   category == "natural person" ? (str == "employee" ? 'lawyer' : Faker::Company.profession) : Faker::Company.industry,
-    company_id: category == "natural person" ? nil : Faker::IDNumber.valid,
-    category:   category,
+    birthday:   company ? nil : Faker::Date.birthday(min_age: 18, max_age: 100),
+    activity:   company ? Faker::Company.industry : (str == "employee" ? 'Lawyer' : Faker::Company.profession),
+    company_id: company ? Faker::IDNumber.valid : nil,
+    company:    company,
     notes:      [nil, Faker::Hipster.sentence][weighted_random()],
     role:       ContactRole.find_by_label(str)
   )

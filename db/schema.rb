@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210606200452) do
+ActiveRecord::Schema.define(version: 20210608063907) do
 
   create_table "activities", force: :cascade do |t|
     t.string "label"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20210606200452) do
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
+  create_table "contact_addresses", force: :cascade do |t|
+    t.string "pobox"
+    t.string "street"
+    t.string "streetno"
+    t.string "zip"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "contact_roles", force: :cascade do |t|
     t.string "label"
     t.string "color"
@@ -46,18 +57,19 @@ ActiveRecord::Schema.define(version: 20210606200452) do
     t.string "first_name"
     t.string "last_name"
     t.string "suffix"
-    t.text "address"
     t.string "phone"
     t.string "email"
     t.date "birthday"
     t.string "activity"
-    t.string "category"
+    t.boolean "company"
+    t.string "company_id"
     t.text "notes"
+    t.integer "contact_address_id"
+    t.integer "contact_role_id"
+    t.index ["contact_address_id"], name: "index_contacts_on_contact_address_id"
+    t.index ["contact_role_id"], name: "index_contacts_on_contact_role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "contact_role_id"
-    t.string "company_id"
-    t.index ["contact_role_id"], name: "index_contacts_on_contact_role_id"
   end
 
   create_table "contacts_projects", id: false, force: :cascade do |t|
@@ -114,6 +126,7 @@ ActiveRecord::Schema.define(version: 20210606200452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_role_id"
+    t.string "preferred_lang"
     t.index ["contact_id"], name: "index_users_on_contact_id"
     t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end

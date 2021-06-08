@@ -21,6 +21,7 @@ class Contact < ApplicationRecord
 
   belongs_to :role, class_name: "ContactRole", foreign_key: "contact_role_id"
   has_one    :user
+  belongs_to              :address, class_name: "ContactAddress", foreign_key: "contact_address_id"
   has_and_belongs_to_many :projects
 
   scope :search,              -> (str) { where('first_name LIKE ? OR last_name LIKE ? OR suffix LIKE ?', "%#{str}%", "%#{str}%", "%#{str}%") }
@@ -40,9 +41,6 @@ class Contact < ApplicationRecord
   validates :first_name, length: { maximum: 60 }
   validates :last_name,  presence: true, length: { maximum: 60 }
   validates :email,      presence: true, length: { minimum: 6, maximum: 60 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
-  #validates :role,       presence: true
-
-  serialize :address, Hash
 
   def combine(format = :name)
     eval('"' + FORMATS[format.to_sym] + '"').gsub(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/i, "").gsub(/\s+/, " ").strip.html_safe
