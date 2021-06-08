@@ -27,7 +27,9 @@ details {
       z-index: 1000;
       position: absolute;
       width: auto;
+      max-height: 60vh;
       margin-top: $box-padding-y;
+      overflow-y: scroll;
       box-shadow: rgba(28, 33, 40, .85) 0 1em 2em 0;
       white-space: nowrap;
     }

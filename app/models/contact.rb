@@ -14,12 +14,20 @@ class Contact < ApplicationRecord
   scope :employees,   ->       { get_role('employee') }
   scope :other,       ->       { get_role('other') }
 
-  scope :filter_by_role, -> (str) { where(role: str) }
-  scope :filter_by_category, -> (str) { where(company: str) }
+  scope :filter_by_role,     -> (str) { where(role: str) }
+  scope :filter_by_country,  -> (str) { joins(:address).where("lower(contact_addresses.country) = ?", str) }
 
   validates :first_name, length: { maximum: 15 }
-  validates :last_name,  presence: true, length: { maximum: 30 }
+  validates :last_name,  presence: true, length: { maximum: 50 }
   validates :email,      presence: true, length: { minimum: 6, maximum: 60 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
+
+  def self.filter_by_category(str)
+    if str == '1'
+      where(company: true)
+    elsif str == '0'
+      where(company: false)
+    end
+  end
 
   def combine(format = :name)
 
