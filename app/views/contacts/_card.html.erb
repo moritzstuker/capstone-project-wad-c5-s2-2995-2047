@@ -1,10 +1,10 @@
 <div class="box">
   <div class="box-header">
-    <%= link_to highlight(contact.combine(:long_name), params[:q]), contact %>
+    <%= link_to highlight(contact.combine(:full_name), params[:q]), contact %>
     <span class="tag"><%= contact.combine(:category) %></span>
   </div>
   <div class="box-content">
-    <p><%= highlight(contact.combine(:address), params[:q]) %></p>
+    <p><%= highlight(simple_format(contact.combine(:address)), params[:q]) %></p>
   </div>
   <div class="box-footer">
     <span class="dot-label small">

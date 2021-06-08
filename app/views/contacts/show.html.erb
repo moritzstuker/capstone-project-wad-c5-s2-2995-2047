@@ -4,7 +4,7 @@
       <h1 class="title">
         <%= link_to "Contacts", contacts_path %>
         <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <%= @contact.combine(:long_name) %>
+        <%= @contact.combine(:full_name) %>
       </h1>
     </div>
     <div class="col-1 u-align-right icons">
@@ -20,8 +20,8 @@
         <h2 class="heading">Address</h2>
       </header>
       <div class="box-content">
-        <p><strong><%= @contact.combine(:long_name) %></strong></p>
-        <p><%= @contact.combine(:address) %></p>
+        <p><strong><%= @contact.combine(:full_name) %></strong></p>
+        <%= simple_format(@contact.combine(:address)) %>
       </div>
     </section>
   </div>
@@ -41,13 +41,13 @@
         </p>
         <p><strong>Phone:</strong>&nbsp;<span class="disambiguate"><%= @contact.phone %></span></p>
         <p><strong>Email:</strong>&nbsp;<%= mail_to @contact.email %></p>
-        <% if @contact.category == 'natural person' %>
-        <p><strong>Birthday:</strong>&nbsp;<%= @contact.birthday %></p>
-        <p><strong>Profession:</strong>&nbsp;<%= @contact.activity.capitalize %></p>
-        <% elsif @contact.category == 'legal person' %>
+        <% if @contact.company %>
         <p><strong>Activity:</strong>&nbsp;<%= @contact.activity.capitalize %></p>
         <p><strong>Company ID:</strong>&nbsp;<%= @contact.company_id %></p>
         <p><strong>Incorporated in:</strong>&nbsp;<%= @contact.address[:country].capitalize %></p>
+        <% else %>
+        <p><strong>Birthday:</strong>&nbsp;<%= @contact.birthday %></p>
+        <p><strong>Profession:</strong>&nbsp;<%= @contact.activity.capitalize %></p>
         <% end %>
         <hr>
         <p><strong>Notes:</strong></p>

@@ -3,13 +3,16 @@
     <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
-    <% Contact.distinct.pluck(:category).sort.each do |category| %>
       <li role="menuitem">
-        <%= link_to url_for(category: category), class: "box-row small#{ ' orange-color' if params[:category] == category }" do %>
-          <%= "#{category == 'natural person' ? 'Private person' : 'Company'}" %> (<%= Contact.where(category: category).count %>)
-        <% end %>
+        <%= link_to "Companies (#{Contact.filter_by_category(true).count})",
+        url_for(category: 1),
+        class: "box-row small#{ ' orange-color' if params[:category].present? && params[:category] == 'active' }" %>
       </li>
-    <% end %>
+      <li role="menuitem">
+        <%= link_to "Private persons (#{Contact.filter_by_category(false).count})",
+        url_for(category: 0),
+        class: "box-row small#{ ' orange-color' if params[:category].present? && params[:category] == 'inactive' }" %>
+      </li>
   </ul>
 </details>
 
