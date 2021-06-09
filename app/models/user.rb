@@ -35,7 +35,8 @@ class User < ApplicationRecord
   private
 
   def default_values!
+    self.preferred_lang ||= 'en'
     self.avatar         ||= 'fallback_avatars/1.jpg'
-    #self.access_level   ||= ROLES.last
+    self.role           ||= UserRoles.last
   end
 end

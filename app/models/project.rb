@@ -24,4 +24,12 @@ class Project < ApplicationRecord
   scope :filter_by_user,     -> (str) { joins(:assignments).where("projects.owner_id = ? OR assignments.user_id = ?", str, str) } # Went for SQL because: https://stackoverflow.com/questions/40742078/relation-passed-to-or-must-be-structurally-compatible-incompatible-values-r/40742611#comment-68712244
 
   validates :label,    presence: true
+
+  after_validation :default_values!
+
+  private
+
+  def default_values!
+    self.status ||= 'active'
+  end
 end

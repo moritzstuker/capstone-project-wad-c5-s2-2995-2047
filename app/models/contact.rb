@@ -21,6 +21,8 @@ class Contact < ApplicationRecord
   validates :last_name,  presence: true, length: { maximum: 50 }
   validates :email,      presence: true, length: { minimum: 6, maximum: 60 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
 
+  after_validation :default_values!
+
   def self.filter_by_category(str)
     if str == '1'
       where(company: true)
@@ -45,5 +47,11 @@ class Contact < ApplicationRecord
     else
       formats[format.to_sym]
     end
+  end
+
+  private
+
+  def default_values!
+    self.company ||= false
   end
 end

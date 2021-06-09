@@ -10,5 +10,12 @@ class Activity < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  before_validation { self.fee ||= 0 }
+  after_validation :default_values!
+
+  private
+
+  def default_values!
+    self.fee ||= 0
+    self.date ||= Date.today
+  end
 end
