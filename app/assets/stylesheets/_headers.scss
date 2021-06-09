@@ -33,15 +33,11 @@
   }
 }
 
-.page-header,
-.section-header {
-  margin-top: $gutter;
-}
-
-.section-header {
+.page-header {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
+  margin-top: $gutter;
 
   & > * {
     margin-left: $box-padding-x;
