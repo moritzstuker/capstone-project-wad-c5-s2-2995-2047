@@ -1,14 +1,11 @@
 <div class="form-row">
-  <%= form.label attribute.to_sym, label, class: 'form-label' %>
-  <% if local_assigns[:type] == 'password' %>
-    <%= form.password_field attribute.to_sym, class: 'form-input' %>
-  <% elsif local_assigns[:type] == 'phone' %>
-    <%= form.phone_field attribute.to_sym, class: 'form-input' %>
-  <% elsif local_assigns[:type] == 'date' %>
-    <%= form.date_field attribute.to_sym, label, class: 'form-input' %>
-  <% elsif local_assigns[:type] == 'select' %>
-    <%= form.select attribute.to_sym, options, class: 'form-input' %>
-  <% else %>
-    <%= form.text_field attribute.to_sym, class: 'form-input' %>
+  <%= form.label attribute.to_sym, "#{label}#{ '*' if local_assigns[:required]}", class: 'form-label' %>
+  <% case local_assigns[:type]
+  when 'password' %> <%= form.password_field local_assigns[:attribute],                     class: 'form-input', required: local_assigns[:required] %>
+  <% when 'phone' %>    <%= form.phone_field local_assigns[:attribute],                     class: 'form-input', required: local_assigns[:required] %>
+  <% when 'date' %>     <%= form.date_field local_assigns[:attribute],                      class: 'form-input', required: local_assigns[:required] %>
+  <% when 'textarea' %> <%= form.text_area local_assigns[:attribute],                       class: 'form-input', required: local_assigns[:required] %>
+  <% when 'select' %>   <%= form.select local_assigns[:attribute], local_assigns[:options], class: 'form-input', required: local_assigns[:required] %>
+  <% else %>            <%= form.text_field local_assigns[:attribute],                      class: 'form-input', required: local_assigns[:required] %>
   <% end %>
 </div>
