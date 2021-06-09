@@ -45,10 +45,7 @@
 
   &-footer {
     @extend .mute;
-
-    .box-content + & {
-      border-top: $border-base;
-    }
+    border-top: $border-base;
   }
 
   &-row {
