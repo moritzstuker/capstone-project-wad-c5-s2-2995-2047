@@ -2,23 +2,41 @@
   <div class="col-2">
     <%= render 'dashboard_sidebar' %>
   </div>
-  <div class="col-4">
-    <section class="box">
-      <header class="box-header">
-        <h2>Preferred settings</h2>
-      </header>
-      <div class="box-content">
-        default fee
-        language
+  <div class="col-6">
+    <%= form_with model:current_user, url: account_path do |form| %>
+    <header class="page-header">
+      <h1 class="page-title">User settings</h1>
+      <div class="button-group">
+        <%= link_to 'Cancel', url_for, class: 'button small outline' %>
+        <%= form.submit 'Save', class: 'button small light blue' %>
       </div>
-    </section>
-  </div>
-</div>
+    </header>
 
-<div class="row">
-  <div class="col">
-
-      <span class="button">cancel</span>
-      <span class="button">update</span>
+    <div class="box">
+      <%= render partial: 'forms/row', locals: {
+        form: form,
+        attribute: 'login',
+        label: 'Login'
+      } %>
+      <%= render partial: 'forms/row', locals: {
+        form: form,
+        attribute: 'password',
+        label: 'Password',
+        type: 'password'
+      } %>
+      <%= render partial: 'forms/row', locals: {
+        form: form,
+        attribute: 'avatar',
+        label: 'Avatar'
+      } %>
+      <%= render partial: 'forms/row', locals: {
+        form: form,
+        attribute: 'preferred_lang',
+        label: 'Language',
+        type: 'select',
+        options: User.distinct.pluck(:preferred_lang) { |p| [ p.preferred_lang ] }
+      } %>
+    </div>
+    <% end %>
   </div>
 </div>
