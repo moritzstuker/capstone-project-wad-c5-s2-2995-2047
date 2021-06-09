@@ -37,6 +37,10 @@
     border-bottom: $border-base;
     background-color: $background-color-secondary;
     font-weight: $medium-font-weight;
+
+    &:not(:first-child) {
+      border-top: $border-base;
+    }
   }
 
   &-footer {
