@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get  '/signup', to: 'users#new'
 
+  get   '/dashboard', to: 'dashboard#index'
+
   get   '/account', to: 'account#edit'
   patch '/account', to: 'account#update'
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :activities
   resources :contacts
+  resources :dashboard
   resources :deadlines
   resources :home
   resources :projects
