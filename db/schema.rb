@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210608063907) do
+ActiveRecord::Schema.define(version: 20210608161014) do
 
   create_table "activities", force: :cascade do |t|
     t.string "label"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20210608063907) do
     t.date "date"
     t.integer "project_id"
     t.integer "user_id"
+    t.decimal "fee", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "fee", precision: 10, scale: 2
     t.index ["project_id"], name: "index_activities_on_project_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
@@ -66,10 +66,10 @@ ActiveRecord::Schema.define(version: 20210608063907) do
     t.text "notes"
     t.integer "contact_address_id"
     t.integer "contact_role_id"
-    t.index ["contact_address_id"], name: "index_contacts_on_contact_address_id"
-    t.index ["contact_role_id"], name: "index_contacts_on_contact_role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["contact_address_id"], name: "index_contacts_on_contact_address_id"
+    t.index ["contact_role_id"], name: "index_contacts_on_contact_role_id"
   end
 
   create_table "contacts_projects", id: false, force: :cascade do |t|
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 20210608063907) do
     t.string "category"
     t.date "date"
     t.integer "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "assignee_id"
     t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["assignee_id"], name: "index_deadlines_on_assignee_id"
     t.index ["project_id"], name: "index_deadlines_on_project_id"
   end
@@ -100,12 +100,12 @@ ActiveRecord::Schema.define(version: 20210608063907) do
   create_table "projects", force: :cascade do |t|
     t.string "label"
     t.text "description"
-    t.integer "project_category_id"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "reference"
     t.integer "owner_id"
+    t.integer "project_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_projects_on_owner_id"
     t.index ["project_category_id"], name: "index_projects_on_project_category_id"
   end
@@ -123,10 +123,10 @@ ActiveRecord::Schema.define(version: 20210608063907) do
     t.string "password_digest"
     t.string "avatar"
     t.integer "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_role_id"
     t.string "preferred_lang"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_users_on_contact_id"
     t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
