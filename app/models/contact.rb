@@ -6,6 +6,8 @@ class Contact < ApplicationRecord
   has_one                 :user
   has_and_belongs_to_many :projects
 
+  accepts_nested_attributes_for :address
+
   scope :search,              -> (str) { where('first_name LIKE ? OR last_name LIKE ? OR suffix LIKE ?', "%#{str}%", "%#{str}%", "%#{str}%") }
 
   scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles).order('last_name') }

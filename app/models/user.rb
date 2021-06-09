@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :projects, through: :assignments, source: :assignee
   has_many :projects, inverse_of: :owner
 
+  accepts_nested_attributes_for :contact
+
   has_secure_password
 
   scope :get_role,   -> (str) { includes(:role).where("user_roles.label = '#{str}'").references(:user_roles) }
