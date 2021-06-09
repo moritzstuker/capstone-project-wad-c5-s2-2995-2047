@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   get   '/account', to: 'account#edit'
   patch '/account', to: 'account#update'
 
-  get   '/account/contact', to: 'account/contact#edit'
-
   resources :activities
   resources :contacts
   resources :dashboard
