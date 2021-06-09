@@ -4,12 +4,12 @@
     <span class="tag"><%= contact.combine(:category) %></span>
   </div>
   <div class="box-content">
-    <p><%= highlight(simple_format(contact.combine(:address)), params[:q]) %></p>
+    <%= highlight(simple_format(contact.combine(:address)), params[:q]) %>
   </div>
   <div class="box-footer">
-    <span class="dot-label small">
+    <span class="dot-label">
       <span class="dot-icon" style="background-color: <%= contact.role.color %>"></span>
-      <%= contact.role.label.capitalize %>
+      <span class="small"><%= contact.role.label.capitalize %></span>
     </span>
     <% if contact.projects.count > 0 %>
       <span class="keys">Party in <%= pluralize(contact.projects.count, 'case') %></span>
