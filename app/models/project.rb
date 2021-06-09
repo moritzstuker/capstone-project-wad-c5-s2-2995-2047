@@ -19,9 +19,9 @@ class Project < ApplicationRecord
   scope :reference_contains, -> (str) { where('reference LIKE ?', "%#{str}%") }
   scope :search,             -> (str) { label_contains(str).or(reference_contains(str)) }
 
-  scope :filter_by_category, -> (str) { where(category: str) }
-  scope :filter_by_status,   -> (str) { where(status: str) }
-  scope :filter_by_user,     -> (str) { joins(:assignments).where("projects.owner_id = ? OR assignments.user_id = ?", str, str) } # Went for SQL because: https://stackoverflow.com/questions/40742078/relation-passed-to-or-must-be-structurally-compatible-incompatible-values-r/40742611#comment-68712244
+  scope :filter_by_category, -> (str) { where(category: str).distinct }
+  scope :filter_by_status,   -> (str) { where(status: str).distinct }
+  scope :filter_by_user,     -> (str) { joins(:assignments).where("projects.owner_id = ? OR assignments.user_id = ?", str, str).distinct } # Went for SQL because: https://stackoverflow.com/questions/40742078/relation-passed-to-or-must-be-structurally-compatible-incompatible-values-r/40742611#comment-68712244
 
   validates :label,    presence: true
 
