@@ -4,10 +4,7 @@
       <%= link_to "Dashboard", dashboard_path, class: "box-row#{ ' is-active' if current_page?(dashboard_path) }"  %>
     </li>
     <li class="sidebar-category">
-      <%= link_to "User settings", account_path, class: "box-row#{ ' is-active' if current_page?(account_path) }"  %>
-    </li>
-    <li class="sidebar-category">
-      <%= link_to "Contact information", account_contact_path, class: "box-row#{ ' is-active' if current_page?(account_contact_path) }"  %>
+      <%= link_to "Account", account_path, class: "box-row#{ ' is-active' if current_page?(account_path) }"  %>
     </li>
   </ul>
 </nav>
