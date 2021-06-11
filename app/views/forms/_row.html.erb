@@ -1,5 +1,5 @@
 <div class="form-row">
-  <%= form.label attribute.to_sym, "#{label}#{ '*' if local_assigns[:required]}", class: 'form-label' %>
+  <%= form.label attribute.to_sym, "#{local_assigns[:label]}#{ '*' if local_assigns[:required]}", class: 'form-label' %>
   <% case local_assigns[:type]
   when 'password' %> <%= form.password_field local_assigns[:attribute],                     class: 'form-input', required: local_assigns[:required] %>
   <% when 'phone' %>    <%= form.phone_field local_assigns[:attribute],                     class: 'form-input', required: local_assigns[:required] %>
