@@ -1,18 +1,15 @@
-<header class="page-header">
-  <div class="row">
-    <div class="col-5 col-offset-1">
-      <h1 class="title">
-        <%= link_to "Contacts", contacts_path %>
+<div class="row">
+  <div class="col-6 col-offset-1">
+    <header class="page-header">
+      <h1 class="page-title">
+        <%= link_to "Contacts", contacts_path, class: 'heading' %>
         <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <%= @contact.combine(:full_name) %>
+        <%= build_label(@contact, :full_name) %>
       </h1>
-    </div>
-    <div class="col-1 u-align-right icons">
-      <%= link_to icon_tag('pencil'), edit_contact_path(@contact) %>
-      <%= link_to icon_tag('trash'), @contact, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+      <%= render 'page_controls', obj: @contact %>
+    </header>
   </div>
-</header>
+</div>
 <div class="row">
   <div class="col-3 col-offset-1">
     <section class="box">
@@ -20,8 +17,8 @@
         <h2 class="heading">Address</h2>
       </header>
       <div class="box-content">
-        <p><strong><%= @contact.combine(:full_name) %></strong></p>
-        <%= simple_format(@contact.combine(:address)) %>
+        <p><strong><%= build_label(@contact, :full_name) %></strong></p>
+        <%= simple_format(build_label(@contact, :address)) %>
       </div>
     </section>
   </div>
@@ -31,7 +28,7 @@
         <h2 class="heading">Properties</h2>
       </header>
       <div class="box-content">
-        <p><strong>Category:</strong>&nbsp;<%= @contact.combine(:category) %></p>
+        <p><strong>Category:</strong>&nbsp;<%= build_label(@contact, :category) %></p>
         <p><strong>Role:</strong>&nbsp;
           <span class="dot-label">
             <span class="dot-icon" style="background-color: <%= @contact.role.color %>"></span>
@@ -68,7 +65,7 @@
         Party in the following <%= pluralize(@contact.projects.count, 'case') %>:
         <ul>
           <% @contact.projects.each do |project| %>
-          <li><%= link_to("#{project.label}&nbsp;<span class=\"mute\">(</span>#{main_parties(project, false)}<span class=\"mute\">)</span>".html_safe, project) %></li>
+          <li><%= link_to(build_label(project, :label_with_parties), project) %></li>
           <% end %>
         </ul>
         <% else %>

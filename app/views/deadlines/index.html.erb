@@ -9,7 +9,7 @@
     </header>
     <% if @deadlines.count > 0 %>
     <ul class="box">
-      <% @deadlines.distinct.pluck(:date).each do |date| %>
+      <% @dates.each do |date| %>
       <li><%= render 'card', date: date %></li>
       <% end %>
     </ul>

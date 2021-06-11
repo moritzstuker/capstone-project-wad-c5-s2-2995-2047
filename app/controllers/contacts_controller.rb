@@ -3,11 +3,17 @@ class ContactsController < ApplicationController
   helper_method :can_edit?, :can_delete?
 
   def index
-    @contacts = Contact.filter(params.slice(:role, :category, :country)).order(:last_name, :first_name) # filters
+    @all_contacts = Contact
+    @contacts = @all_contacts.filter(params.slice(:role, :category, :country)).order(:last_name, :first_name) # filters
     @contacts = @contacts.search(params[:q]) if params[:q].present? # searches
+    @contacts = @contacts.includes(:address, :role) # this is to prevent an N+1 query down the line
+
+    @countries = ContactAddress.distinct.pluck(:country).sort
   end
 
   def show
+  end
+
   private
 
   def set_contact

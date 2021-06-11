@@ -5,10 +5,18 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.filter(params.slice(:category, :status, :user)).order(:label) # filters
     @projects = @projects.search(params[:q]) if params[:q].present? # searches
+    @projects = @projects.includes(:category) # this is to prevent an N+1 query down the line
     @assignments = Assignment.all
+
+    @users = User.includes(:contact).order("contacts.last_name")
   end
 
   def show
+    @activities = @project.activities.order('date DESC').includes(:user)
+    @deadlines  = @project.deadlines.includes(:assignee)
+    @assignees  = @project.assignees.includes(:contact)
+  end
+
   private
 
   def set_project
