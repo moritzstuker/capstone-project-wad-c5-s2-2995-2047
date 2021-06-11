@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-2">
+    <%= render 'dashboard_sidebar' %>
+  </div>
+  <section class="col-6">
+    <header class="page-header">
+      <h1 class="page-title">Users</h1>
+      <div class="button-group">
+        <%= link_to 'New user', new_user_path, class: 'button small light blue' %>
+      </div>
+    </header>
+    <section class="box">
+      <table class="box-content">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Avatar</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to build_label(user.contact, :name), user %><%= " (you)" if user == current_user %></td>
+            <td><span class="disambiguate"><%= user.login %></span></td>
+            <td><%= user.role.label.capitalize %></td>
+            <td><%= image_tag(user.avatar, alt: 'Avatar', class: 'icon avatar') %></td>
+            <td class="align-right">
+              <div class="icons">
+                <%= link_to icon_tag('eye'), user %>
+                <%= link_to icon_tag('pencil'), edit_user_path(user) if can_edit?(user) %>
+                <%= link_to icon_tag('trash'), user, method: :delete, data: { confirm: 'Are you sure?' } if can_delete?(user) %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  </section>
+</div>

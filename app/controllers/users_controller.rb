@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action -> { restrict_access(1) }
+  def index
+    @users = User.all.includes(:contact, :role)
+  end
 
   def show
     @user = User.find(params[:id])
