@@ -17,9 +17,9 @@
     <p><strong>Last updated at:</strong>&nbsp;<%= @project.updated_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
     <p><strong>Assigned to:</strong></p>
     <ul>
-      <li><%= link_to @project.owner.combine(:name), @project.owner %><span class="mute">&nbsp;(owner)</span></li>
-      <% @project.assignees.each do |assignee| %>
-      <li><%= link_to assignee.combine(:name), assignee %></li>
+      <li><%= link_to build_label(@project.owner.contact, :name), @project.owner %><span class="mute">&nbsp;(owner)</span></li>
+      <% @assignees.each do |assignee| %>
+      <li><%= link_to build_label(assignee.contact, :name), assignee %></li>
       <% end %>
     </ul>
     <hr />

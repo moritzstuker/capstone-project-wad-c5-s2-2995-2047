@@ -22,7 +22,7 @@
         <td><%= activity.label %></td>
         <td><%= number_with_precision(activity.duration, precision: 2) %></td>
         <td class="no-wrap"><%= fee(activity.fee) %></td>
-        <td><%= link_to activity.user.combine(:name), activity.user %></td>
+        <td><%= link_to build_label(activity.user.contact, :name), activity.user %></td>
       </tr>
       <% end %>
     </tbody>

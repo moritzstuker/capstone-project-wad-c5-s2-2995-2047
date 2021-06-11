@@ -3,9 +3,9 @@
     <span class="button small light<%= ' orange' if params[:country].present? %>">Country <%= icon_tag('triangle-down') %></span>
   </summary>
   <ul class="box dropdown">
-    <% ContactAddress.distinct.pluck(:country).sort.each do |country| %>
+    <% @countries.each do |country| %>
       <li role="menuitem">
-        <%= link_to "#{country} (#{Contact.filter_by_country(country.downcase).count})",
+        <%= link_to "#{country} (#{@all_contacts.filter_by_country(country.downcase).count})",
         url_for(country: country.downcase),
         class: "box-row small#{ ' orange-color' if params[:country] == country.downcase }" %>
       </li>
@@ -19,12 +19,12 @@
   </summary>
   <ul class="box dropdown">
       <li role="menuitem">
-        <%= link_to "Companies (#{Contact.where(company: true).count})",
+        <%= link_to "Companies (#{@all_contacts.where(company: true).count})",
         url_for(category: 1),
         class: "box-row small#{ ' orange-color' if params[:category].present? && params[:category] == 'active' }" %>
       </li>
       <li role="menuitem">
-        <%= link_to "Private persons (#{Contact.where(company: false).count})",
+        <%= link_to "Private persons (#{@all_contacts.where(company: false).count})",
         url_for(category: 0),
         class: "box-row small#{ ' orange-color' if params[:category].present? && params[:category] == 'inactive' }" %>
       </li>

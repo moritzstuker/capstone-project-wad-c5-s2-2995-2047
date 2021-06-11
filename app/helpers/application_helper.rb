@@ -1,13 +1,13 @@
 module ApplicationHelper
-  def logged_in?
-    !!session[:user_id]
-  end
-
-  def current_user
-    @current_user ||= User.find_by_id(session[:user_id]) if logged_in?
-  end
-
-  def sidebar_header (str, int)
-    raw "<span>#{ str }</span><span class=\"counter\">#{ int }</span>"
+  def build_label(obj, format = :name)
+    if obj.class == Contact || obj.class == Project || obj.class == Deadline
+      format = eval(obj.class::FORMATS[format]) if format.is_a? Symbol
+      if format.is_a?(Array)
+        separator = format.pop
+        sanitize format.reject(&:blank?).join(separator)
+      else
+        sanitize format
+      end
+    end
   end
 end

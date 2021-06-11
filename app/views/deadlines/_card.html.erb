@@ -6,7 +6,7 @@
     </span>
   </header>
   <ul>
-    <% Deadline.where(date: date).each do |deadline| %>
+    <% @deadlines.where(date: date).each do |deadline| %>
     <li role="menuitem" class="card"<%= ' disabled' if deadline.completed_at %>>
       <div class="card-header">
         <%= link_to highlight(deadline.label, params[:q]), project_path(deadline.project, anchor: 'deadlines') %>
@@ -17,11 +17,11 @@
       <div class="card-content">
         <span class="small mute">
           <%= icon_tag('repo', class: 'inline') %>
-          <%= link_to("#{deadline.project.label}&nbsp;(#{main_parties(deadline.project, false)})".html_safe, deadline.project, class: 'invisible-link') %>
+          <%= link_to(build_label(deadline.project, :label_with_parties), deadline.project, class: 'invisible-link') %>
         </span>
       </div>
       <div class="card-footer">
-        Assigned to <%= deadline.assignee == current_user ? '<span class="bold">you</span>'.html_safe : link_to(deadline.assignee.combine(:name), deadline.assignee) %>
+        Assigned to <%= deadline.assignee == current_user ? sanitize('<span class="bold">you</span>') : link_to(build_label(deadline.assignee.contact, :name), deadline.assignee) %>
       </div>
     </li>
     <% end %>

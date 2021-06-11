@@ -2,7 +2,7 @@
   <header class="box-header">
     <h2 class="heading">Deadlines</h2>
   </header>
-  <% if @project.deadlines.count > 0 %>
+  <% if @deadlines.count > 0 %>
   <table class="box-content deadlines">
     <thead>
       <tr>
@@ -15,14 +15,14 @@
       </tr>
     </thead>
     <tbody>
-      <% @project.deadlines.order(:date).each do |deadline| %>
+      <% @deadlines.order(:date).each do |deadline| %>
       <% if deadline.completed_at %>
       <tr class="disabled">
         <td><%= icon_tag('issue-closed') %></td>
         <td><%= deadline.date.strftime("%d.%m.%Y") %></td>
         <td><%= deadline.label %></td>
         <td><span class="label"><%= deadline.category %></span></td>
-        <td><%= link_to deadline.assignee.combine(:name), deadline.assignee %></td>
+        <td><%= link_to build_label(deadline.assignee.contact, :name), deadline.assignee %></td>
         <td><button type="button" name="button" class="button small">Reopen</button></td>
       </tr>
       <% else %>
@@ -31,7 +31,7 @@
         <td><%= deadline.date.strftime("%d.%m.%Y") %></td>
         <td><%= deadline.label %></td>
         <td><span class="label"><%= deadline.category %></span></td>
-        <td><%= link_to deadline.assignee.combine(:name), deadline.assignee %></td>
+        <td><%= link_to build_label(deadline.assignee.contact, :name), deadline.assignee %></td>
         <td><button type="button" name="button" class="button small green">Done</button></td>
       </tr>
       <% end %>

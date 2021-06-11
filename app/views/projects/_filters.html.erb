@@ -4,9 +4,9 @@
       <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
     </summary>
     <ul class="box dropdown">
-      <% User.all.each do |user| %>
+      <% @users.each do |user| %>
         <li role="menuitem">
-          <%= link_to "#{user.contact.combine(:name)} (#{Project.filter_by_user(user).count})",
+          <%= link_to "#{build_label(user.contact, :name)} (#{Project.filter_by_user(user).count})",
           url_for(user: user),
           class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
         </li>

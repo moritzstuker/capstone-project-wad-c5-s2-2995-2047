@@ -1,7 +1,7 @@
 module Layouts
   module ApplicationLayoutHelper
-    def page_items(str)
-      eval("#{str}.search(params[:q])")
+    def sidebar_header(str, int)
+      sanitize("<span>#{ str }</span><span class=\"counter\">#{ int }</span>") if int.is_a? Integer
     end
 
     def icon_tag(str, hash = {})

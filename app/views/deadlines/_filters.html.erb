@@ -4,9 +4,9 @@
       <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
     </summary>
     <ul class="box dropdown">
-      <% User.all.each do |user| %>
+      <% @users.each do |user| %>
         <li role="menuitem">
-          <%= link_to "#{user.contact.combine(:name)} (#{Deadline.filter_by_user(user).count})",
+          <%= link_to "#{build_label(user.contact, :name)} (#{@deadlines.filter_by_user(user).count})",
           url_for(user: user),
           class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
         </li>
@@ -19,9 +19,9 @@
       <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
     </summary>
     <ul class="box dropdown">
-      <% Deadline.distinct.pluck(:category).sort.each do |category| %>
+      <% @categories.each do |category| %>
       <li role="menuitem">
-        <%= link_to "#{category.capitalize} (#{Deadline.filter_by_category(category).count})",
+        <%= link_to "#{category.capitalize} (#{@all_deadlines.filter_by_category(category).count})",
         url_for(category: category),
         class: "box-row small#{ ' orange-color' if params[:category] == category }" %>
       </li>
@@ -35,12 +35,12 @@
     </summary>
     <ul class="box dropdown">
       <li role="menuitem">
-        <%= link_to "Active (#{Deadline.filter_by_show('active').count})",
+        <%= link_to "Active (#{@all_deadlines.filter_by_show('active').count})",
         url_for(show: 'active'),
         class: "box-row small#{ ' orange-color' if params[:show].present? && params[:show] == 'active' }" %>
       </li>
       <li role="menuitem">
-        <%= link_to "Inactive (#{Deadline.filter_by_show('inactive').count})",
+        <%= link_to "Inactive (#{@all_deadlines.filter_by_show('inactive').count})",
         url_for(show: 'inactive'),
         class: "box-row small#{ ' orange-color' if params[:show].present? && params[:show] == 'inactive' }" %>
       </li>

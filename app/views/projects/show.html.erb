@@ -1,18 +1,15 @@
-<header class="page-header">
-  <div class="row">
-    <div class="col-7">
-      <h1 class="title">
-        <%= link_to "Cases", projects_path %>
+<div class="row">
+  <div class="col">
+    <header class="page-header">
+      <h1 class="page-title">
+        <%= link_to "Cases", projects_path, class: 'heading' %>
         <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <%= @project.label %>&nbsp;<span class="mute">(</span><%= main_parties(@project, false) %><span class="mute">)</span>
+        <%= build_label(@project, :label_with_parties) %>
       </h1>
-    </div>
-    <div class="col-1 u-align-right icons">
-      <%= link_to icon_tag('pencil'), edit_project_path(@project) %>
-      <%= link_to icon_tag('trash'), @project, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+      <%= render 'page_controls', obj: @project %>
+    </header>
   </div>
-</header>
+</div>
 
 <div class="row">
   <div class="col-5">
@@ -25,7 +22,7 @@
         <p><%= @project.description %></p>
       </div>
       <% else %>
-      <%= image_tag('undraw/void.svg', class: 'void') %>
+        <%= image_tag('undraw/void.svg', class: 'void') %>
       <% end %>
     </section>
     <section class="box">
