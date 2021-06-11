@@ -1,0 +1,33 @@
+<%= form_with(model: contact, local: true) do |form| %>
+<%= render partial: 'form_errors', locals: { obj: contact } %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'prefix',
+  label: 'Prefix'
+} %>
+
+IS COMPANY?
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'first_name',
+  label: 'First name',
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'last_name',
+  label: 'Last name',
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'suffix',
+  label: 'Suffix',
+} %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
