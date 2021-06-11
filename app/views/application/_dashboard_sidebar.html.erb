@@ -6,5 +6,10 @@
     <li class="sidebar-category">
       <%= link_to "Account", account_path, class: "box-row#{ ' is-active' if current_page?(account_path) }"  %>
     </li>
+    <% if is_partner?(current_user) || is_admin?(current_user) %>
+    <li class="sidebar-category">
+      <%= link_to "Users", users_path, class: "box-row#{ ' is-active' if current_page?(users_path) }"  %>
+    </li>
+    <% end %>
   </ul>
 </nav>

@@ -2,19 +2,19 @@
   <div class="container">
     <div class="row">
       <div class="col-2">
-        <%= link_to_if logged_in?, icon_tag('empire'), projects_path, class: 'site-logo' do |name| %>
+        <%= link_to_if is_logged_in?, icon_tag('empire'), projects_path, class: 'site-logo' do |name| %>
           <%= link_to name, root_path, class: 'site-logo' %>
         <% end %>
       </div>
 
       <div class="col-4">
-        <% if logged_in? %>
+        <% if is_logged_in? %>
         <%= render 'search_form' %>
         <% end %>
       </div>
 
       <div class="col-2">
-        <% if logged_in? %>
+        <% if is_logged_in? %>
         <details>
           <summary aria-haspopup="true">
             <div class="a">
@@ -35,11 +35,11 @@
             </div>
           </summary>
           <ul class="box dropdown">
-            <li role="menuitem"><span class="box-row small"><span>Signed in as<br /><strong><%= current_user.contact.combine(:name) %></strong></span></span></li>
+            <li role="menuitem"><span class="box-row small"><span>Signed in as<br /><strong><%= build_label(current_user.contact, :name) %></strong></span></span></li>
             <li role="menuitem"><%= link_to "Dashboard", dashboard_path, class: 'box-row small' %></li>
             <li role="menuitem"><%= link_to "Account", account_path, class: 'box-row small' %></li>
             <% if current_user.role.access_level <= 1 %>
-            <li role="menuitem"><%= link_to "Settings", settings_path, class: 'box-row small' %></li>
+            <li role="menuitem"><%= link_to "Users", users_path, class: 'box-row small' %></li>
             <% end %>
             <li role="menuitem"><%= link_to "Log out", logout_path, class: "box-row small", method: :delete %></li>
           </ul>
