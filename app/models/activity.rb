@@ -15,7 +15,7 @@ class Activity < ApplicationRecord
   private
 
   def default_values!
-    self.fee ||= 0
-    self.date ||= Date.today
+    self.fee    ||= 0
+    self.date   ||= Date.today
   end
 end
