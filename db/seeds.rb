@@ -81,7 +81,7 @@ LEGALESE = [
   "Transplantation du foie",
   "Travaux accessoires",
   "Usage commun"
-]
+].shuffle
 
 AVATARS = Dir.glob("#{Rails.root}/app/assets/images/fallback_avatars/*.jpg").shuffle
 
@@ -106,7 +106,7 @@ def build_case
   case_owner = User.partners.sample()
   case_assignees = User.lawyers.sample(rand(1...3)).to_a.reject { |user| user == case_owner}
   Project.create!(
-    label:       LEGALESE.sample,
+    label:       LEGALESE.shuffle.pop,
     description: [Faker::Hipster.paragraph, nil][weighted_random(0.5)],
     status:      Project::STATUS.sample,
     category:    ProjectCategory.all.sample,
@@ -172,15 +172,15 @@ def build_project_category(arr)
   )
 end
 
-def build_user(obj, int)
-  User.create!(
-    login:    "#{obj.label}@test.dev",
+def build_user(obj, filler = false)
+  user = User.create!(
+    login:    filler ? Faker::Internet.username : "#{obj.label}@test.dev",
     password: "password",
     role:     obj,
-    avatar:   "fallback_avatars/#{AVATARS[int].split('/').last}",
+    avatar:   "fallback_avatars/#{AVATARS[rand(1...10)].split('/').last}",
     contact:  build_contact("employee")
   )
-  puts "   Generated user '#{obj.label}@test.dev'."
+  puts "   Generated user '#{user.login}' (#{user.role.label})."
 end
 
 def build_user_role(hash)
@@ -202,11 +202,18 @@ end
 puts "✓  Successfully generated #{ContactRole.all.count} contact roles."
 
 puts "   Generating one user per role..."
-UserRole::DEFAULTS.each_with_index do |e, i|
+UserRole::DEFAULTS.each do |e|
   role = build_user_role(e)
-  build_user(role, i)
+  build_user(role)
 end
 puts "✓  Successfully generated #{User.all.count} users."
+
+puts "   Generating additional users..."
+rand((rand_min / 10)...(rand_max / 10)).times do |i|
+  role = UserRole.all[1..-1].sample
+  build_user(role, true)
+end
+puts "✓  Successfully generated a total of #{User.all.count} users."
 
 puts "   Generating project categories..."
 ProjectCategory::DEFAULTS.each do |e|
