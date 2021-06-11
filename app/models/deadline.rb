@@ -19,7 +19,13 @@ class Deadline < ApplicationRecord
   scope :filter_by_urgency,  -> (str) { where(date: dates_by_urgency(str)) }
   scope :filter_by_user,     -> (str) { where(assignee: str) }
 
+  after_validation :default_values!
+
   private
+
+  def default_values!
+    self.date   ||= Date.today
+  end
 
   def self.dates_by_urgency(str)
     dates = Deadline.where(completed_at: nil).distinct.pluck(:date).sort

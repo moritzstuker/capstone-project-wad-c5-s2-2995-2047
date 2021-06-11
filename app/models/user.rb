@@ -18,18 +18,14 @@ class User < ApplicationRecord
   scope :interns,    ->       { get_role('intern') }
   scope :lawyers,    ->       { includes(:role).where("user_roles.label != 'admin'").references(:user_roles) }
 
-  after_initialize  :default_values!
+  before_create  :default_values!
   before_validation { self.login = login.downcase }
 
   validates :login,    presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: { case_sensitive: false }
   validates :password_digest, presence: true, length: { minimum: 6 }
   # validates :access_level,    presence: true
   # validates :contact HAS TO BE UNIQUE
-
-  def combine(format = :name)
-    contact.combine(format)
-  end
-
+  
   def fee
     role.default_fee
   end
