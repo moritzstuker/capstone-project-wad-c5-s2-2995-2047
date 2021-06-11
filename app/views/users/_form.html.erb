@@ -1,0 +1,34 @@
+<%= form_with(model: user, local: true) do |form| %>
+<%= render partial: 'form_errors', locals: { user: user } %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'login',
+  label: 'Username',
+  required: true
+} %>
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'password',
+  label: 'Password',
+  type: 'password',
+  required: true
+} %>
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'avatar',
+  label: 'Avatar',
+  required: true
+} %>
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'preferred_lang',
+  label: 'Language',
+  type: 'select',
+  options: User.distinct.pluck(:preferred_lang) { |p| [ p.preferred_lang ] }
+} %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
