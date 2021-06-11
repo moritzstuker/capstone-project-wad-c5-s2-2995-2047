@@ -49,9 +49,17 @@
 .sidebar {
   font-weight: 500;
 
-  &-category {
-    & + .sidebar-category {
+  &-category:not(:first-of-type) {
+    & > .box-row {
       border-top: $border-base;
+    }
+  }
+
+  &-category {
+    & > .box-row {
+      & + ul {
+        border-top: $border-base;
+      }
     }
   }
 }
