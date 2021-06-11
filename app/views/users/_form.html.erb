@@ -1,5 +1,5 @@
 <%= form_with(model: user, local: true) do |form| %>
-<%= render partial: 'form_errors', locals: { user: user } %>
+<%= render partial: 'form_errors', locals: { obj: user } %>
 
 <%= render partial: 'forms/row', locals: {
   form: form,
