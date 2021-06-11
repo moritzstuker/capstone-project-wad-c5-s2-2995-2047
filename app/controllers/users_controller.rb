@@ -2,33 +2,49 @@ class UsersController < ApplicationController
   before_action :set_user,  only: %i[ show edit update destroy ]
   before_action :can_edit?, only: %i[ edit update destroy ]
   helper_method :can_edit?, :can_delete?
+
   def index
     @users = User.all.includes(:contact, :role)
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
     @user = User.new
   end
 
+  def edit
+  end
+
   def create
     @user = User.new(user_params)
-    if @user.save
-      log_in @user
-      flash.notice = "Welcome to the app!"
-      redirect_to @user
-    else
-      render 'new'
+
+    respond_to do |format|
+      if @user.save
+        log_in @user
+        format.html { redirect_to @user, notice: "User was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
-  private
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: "User was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+    end
   end
 
   private
