@@ -1,40 +1,52 @@
 // Tables
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-table {
+table, .table {
   -ms-font-feature-settings: 'tnum' 1, $default-font-features;
   -o-font-feature-settings: 'tnum' 1, $default-font-features;
+  display: table;
   width: 100%;
   border-collapse: collapse;
   font-feature-settings: 'tnum' 1, $default-font-features;
   empty-cells: show;
 }
 
-thead {
+thead, .thead {
+  display: table-header-group;
   border-bottom: $border-base;
 }
 
-tr {
+tbody, .tbody {
+  display: table-row-group;
+}
+
+tfoot, .tfoot {
+  display: table-footer-group;
+}
+
+tr, .tr {
+  display: table-row;
+
   &:nth-child(even) {
     background-color: $grey-800
   }
 }
 
-th, td {
-  padding-right: $box-padding-x;
-  padding-bottom: ($box-padding-y / 2);
-  padding-left: $box-padding-x;
+th, .th,
+td, .td {
+  display: table-cell;
+  position: relative;
+  padding: ($box-padding-y / 2) $box-padding-x;
   vertical-align: middle;
 }
 
-th {
-  padding-top: ($box-padding-y / 2);
-  padding-bottom: ($box-padding-y / 2);
+th, .th {
   font-weight: $bold-font-weight;
   text-align: left;
 }
 
-td {
-  position: relative;
-  padding-top: ($box-padding-y / 2);
+td, .td {
+  &.align-right {
+    text-align: right;
+  }
 }
