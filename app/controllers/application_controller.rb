@@ -13,27 +13,27 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_id(session[:user_id]) if is_logged_in?
   end
 
-  def is_current_user?(user)
+  def is_current_user?(user = current_user)
     user == current_user
   end
 
-  def user_role(user)
+  def user_role(user = current_user)
     user.role.label if is_logged_in?
   end
 
-  def is_admin?(user)
+  def is_admin?(user = current_user)
     user_role(user) == 'admin'
   end
 
-  def is_partner?(user)
+  def is_partner?(user = current_user)
     user_role(user) == 'partner'
   end
 
-  def is_associate?(user)
+  def is_associate?(user = current_user)
     user_role(user) == 'associate'
   end
 
-  def is_intern?(user)
+  def is_intern?(user = current_user)
     user_role(user) == 'intern'
   end
 
