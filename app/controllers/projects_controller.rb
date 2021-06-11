@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show ]
+  before_action :set_project, only: %i[ show edit update destroy ]
   helper_method :can_edit?, :can_delete?
 
   def index
@@ -17,10 +17,55 @@ class ProjectsController < ApplicationController
     @assignees  = @project.assignees.includes(:contact)
   end
 
+  def new
+    @project = Project.new
+    @potential_owners = User.partners.includes([:contact]).order('contacts.last_name')
+    @potential_categories = ProjectCategory.all.order(:label)
+    @potential_assignees = User.lawyers.includes([:contact]).order('contacts.last_name ASC, contacts.first_name ASC')
+    @potential_clients = Contact.clients.order('last_name ASC, first_name ASC')
+    @potential_adversaries = Contact.adversaries.order('last_name ASC, first_name ASC')
+  end
+
+  def edit
+  end
+
+  def create
+    @project = Project.new(project_params)
+
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: "Project was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to @project, notice: "Project was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @project.destroy
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
+    end
+  end
+
   private
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def project_params
+    params.require(:project).permit(:login, :password, :avatar, :contact, :role, :preferred_lang)
   end
 
   def can_edit?(project = @project, user = current_user)

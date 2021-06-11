@@ -1,0 +1,80 @@
+<%= form_with(model: project, local: true) do |form| %>
+<%= render partial: 'form_errors', locals: { obj: project } %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'label',
+  label: 'Name',
+  required: true
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'description',
+  label: 'Description',
+  type: 'textarea'
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'status',
+  label: 'Status',
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'reference',
+  label: 'Case reference',
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'owner',
+  label: 'Owner',
+  type: 'select',
+  options: @potential_owners.collect {|e| [ build_label(e.contact, :name), e.id ] },
+  required: true
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'category',
+  label: 'Category',
+  type: 'select',
+  options: @potential_categories.collect { |e| [ e.label.capitalize, e.id ] },
+  required: true
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'assignees',
+  label: 'Assignees',
+  type: 'select',
+  options: @potential_assignees.collect { |e| [ build_label(e.contact, :name), e.id ] },
+  required: true,
+  multiple: true
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'clients',
+  label: 'Clients',
+  type: 'select',
+  options: @potential_clients.collect { |e| [ build_label(e, :name), e.id ] },
+  required: true,
+  multiple: true
+} %>
+
+<%= render partial: 'forms/row', locals: {
+  form: form,
+  attribute: 'adversaries',
+  label: 'Adversaries',
+  type: 'select',
+  options: @potential_adversaries.collect { |e| [ build_label(e, :name), e.id ] },
+  multiple: true
+} %>
+
+  <div class="actions">
+    <%= form.submit 'Open case' %>
+  </div>
+<% end %>

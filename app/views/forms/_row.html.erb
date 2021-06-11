@@ -5,7 +5,7 @@
   <% when 'phone' %>    <%= form.phone_field local_assigns[:attribute],                     class: 'form-input', required: local_assigns[:required] %>
   <% when 'date' %>     <%= form.date_field local_assigns[:attribute],                      class: 'form-input', required: local_assigns[:required] %>
   <% when 'textarea' %> <%= form.text_area local_assigns[:attribute],                       class: 'form-input', required: local_assigns[:required] %>
-  <% when 'select' %>   <%= form.select local_assigns[:attribute], local_assigns[:options], class: 'form-input', required: local_assigns[:required] %>
+  <% when 'select' %>   <%= form.select local_assigns[:attribute], local_assigns[:options], {}, { multiple: local_assigns[:multiple], required: local_assigns[:required], class: 'form-input'} %>
   <% else %>            <%= form.text_field local_assigns[:attribute],                      class: 'form-input', required: local_assigns[:required] %>
   <% end %>
 </div>
