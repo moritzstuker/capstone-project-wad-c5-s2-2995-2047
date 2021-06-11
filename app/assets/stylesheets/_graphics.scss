@@ -53,10 +53,15 @@ figure {
 }
 
 .icons {
+  display: inline-block;
   white-space: nowrap;
 
   & > * + * {
     margin-left: .5em;
+  }
+
+  a {
+    display: inline-block;
   }
 }
 
@@ -68,6 +73,14 @@ a,
     & > .icon {
       fill: currentColor;
       border-color: $text-color-highlight;
+
+      &.eye {
+        fill: $yellow-200;
+      }
+
+      &.pencil {
+        fill: $green-300;
+      }
 
       &.trash {
         fill: $red;

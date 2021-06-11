@@ -166,9 +166,24 @@ sup,
   }
 }
 
-.page-title {
-  display: inline-block;
-  @extend %heading;
+.page {
+  &-title {
+    display: inline-block;
+    @extend %heading;
+  }
+
+  &-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      margin-left: $box-padding-y;
+    }
+  }
 }
 
 .no-wrap {
