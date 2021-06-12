@@ -34,6 +34,9 @@ gem 'bcrypt', '~> 3.1.7'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 gem 'kaminari'
 
+# Makes http fun again! Ain't no party like a httparty, because a httparty don't stop.
+gem 'httparty'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
