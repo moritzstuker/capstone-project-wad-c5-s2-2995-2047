@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     @projects = Project.filter(params.slice(:category, :status, :user)).order(:label) # filters
     @projects = @projects.search(params[:q]) if params[:q].present? # searches
     @projects = @projects.includes(:category) # this is to prevent an N+1 query down the line
+    @projects = @projects.page(params[:page]).per(10) # Finally, add some pagination
     @assignments = Assignment.all
 
     @users = User.includes(:contact).order("contacts.last_name")

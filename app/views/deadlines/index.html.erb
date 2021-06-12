@@ -13,6 +13,7 @@
       <li><%= render 'card', date: date %></li>
       <% end %>
     </ul>
+    <%= paginate @deadlines %>
     <% else %>
     <div class="box">
       <%= image_tag('undraw/void.svg', class: 'void') %>

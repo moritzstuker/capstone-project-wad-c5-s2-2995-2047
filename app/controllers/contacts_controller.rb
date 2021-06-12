@@ -9,6 +9,7 @@ class ContactsController < ApplicationController
     @contacts = @all_contacts.filter(params.slice(:role, :category, :country)).order(:last_name, :first_name) # filters
     @contacts = @contacts.search(params[:q]) if params[:q].present? # searches
     @contacts = @contacts.includes(:address, :role) # this is to prevent an N+1 query down the line
+    @contacts = @contacts.page(params[:page]).per(10) # Finally, add some pagination
 
     @countries = ContactAddress.distinct.pluck(:country).sort
   end

@@ -14,6 +14,7 @@
       <li><%= render 'card', project: project %></li>
       <% end %>
     </ul>
+    <%= paginate @projects %>
     <% else %>
     <div class="box">
       <%= image_tag('undraw/void.svg', class: 'void') %>

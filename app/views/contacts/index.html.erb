@@ -13,6 +13,12 @@
       <li class="col-4"><%= render 'card', contact: contact %></li>
       <% end %>
     </ul>
+
+    <div class="box">
+      <div class="box-content">
+        <%= paginate @contacts %>
+      </div>
+    </div>
     <% else %>
     <div class="box">
       <%= image_tag('undraw/void.svg', class: 'void') %>
