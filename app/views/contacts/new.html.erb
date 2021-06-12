@@ -1,5 +1,31 @@
 <h1 class='text-center'>New contact</h1>
 
-<%= render 'form', contact: @contact %>
+<%= form_with(method: 'get', local: true) do |form| %>
 
-<%= link_to 'Back', contacts_path %>
+<div class="form-row">
+  <%= form.label :find, 'Search online', class: 'form-label' %>
+  <%= form.text_field :find, class: 'form-input' %>
+</div>
+
+<div class="actions">
+  <%= link_to 'Back', contacts_path %>
+  <%= form.submit 'Search', class: 'button small blue' %>
+</div>
+<% end %>
+
+<% if @results %>
+  <% if @results[:total] > 25 %>
+    <p>Search rendered <%= @results[:total] %> results; please be more specific.</p>
+  <% elsif @results[:total].between?(1, 25)%>
+    <p>Found <%= pluralize(@results[:total], 'result') %> for '<%= params[:find] %>'</p>
+    <ul class="row">
+      <% @results[:items].each do |person| %>
+      <li class="col-4">
+        <%= render 'card_for_import', person: person %>
+      </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= image_tag('undraw/void.svg', class: 'void') %>
+  <% end %>
+<% end %>

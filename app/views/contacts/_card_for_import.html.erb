@@ -1,0 +1,26 @@
+<div class="box">
+  <div class="box-header">
+    <% if person['name'] %>
+      <%= "#{ person['name'] }#{ ', ' + person['firstname'] if person['type'] == 'Person' }" %>
+      <span class="tag"><%= person['type'] == 'Organisation' ? 'Company' : 'Private person' %></span>
+    <% else %>
+      <%= person['title'] %>
+    <% end %>
+  </div>
+  <div class="box-content">
+    <% if person['street'] %>
+      <%= simple_format(tel_search_address(person)) %>
+    <% else %>
+      <%= person['content'].remove(person['title']).strip %>
+    <% end %>
+  </div>
+  <div class="box-footer">
+    <span class="mute small">
+      <% if person['copyright'] %>
+        <%= simple_format(person['copyright'], {}, wrapper_tag: "span") if person['copyright'] %>
+        &nbsp;|&nbsp;
+      <% end %>
+      <%= link_to 'View source', tel_search_link(person), target: "_blank" %></span>
+      <%= link_to 'Import', tel_search_link(person), class: 'button small green' %>
+  </div>
+</div>

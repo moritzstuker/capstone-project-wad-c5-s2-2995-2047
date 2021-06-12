@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
   include Filtering
+  include HTTParty # This is to perform API requests
 
   FORMATS = {
     name:      '[obj.first_name, obj.last_name, " "]',

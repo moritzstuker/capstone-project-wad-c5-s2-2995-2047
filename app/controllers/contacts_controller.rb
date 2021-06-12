@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @results = params[:find].present? ? query_tel_search(params[:find]) : nil
   end
 
   def edit
@@ -70,5 +71,21 @@ class ContactsController < ApplicationController
   def can_delete?(contact = @contact, user = current_user)
     is_partner?(user) || is_admin?(user)
     # 'contact = @contact' is not used. But this method is called from partials that apply tu multiple different models, so there has to be an attribute casing.
+  end
+
+  def query_tel_search(query)
+    query = URI.parse(URI.escape(query))
+    response = HTTParty.get(
+      # the TEL_SEARCH_KEY cannot be passed as a header item in this case, this being a requirement from this provider... https://tel.search.ch/api/help.html
+      "https://tel.search.ch/api/?was=#{ query }&maxnum=25&lang=#{ 'fr' }&key=#{ ENV['TEL_SEARCH_KEY'] }"
+    )
+
+    hash = Hash.from_xml(response.body)
+    results = {
+      total: hash['feed']['totalResults'].to_i,
+      items: hash['feed']['entry']
+    }
+
+    response.code == 200 ? results : nil
   end
 end
