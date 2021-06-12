@@ -114,7 +114,6 @@ The project will be based on the following models:
     - `prefix:string`,
     - `first_name:string`,
     - `last_name:string`,
-    - `suffix:string`,
     - `address:text` ([serialized hash](https://api.rubyonrails.org/classes/ActiveRecord/AttributeMethods/Serialization/ClassMethods.html#method-i-serialize)),
     - `phone:string`,
     - `email:string`,

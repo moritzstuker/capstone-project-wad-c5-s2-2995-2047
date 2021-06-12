@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210609204535) do
+ActiveRecord::Schema.define(version: 20210612074221) do
 
   create_table "activities", force: :cascade do |t|
     t.string "label"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20210609204535) do
     t.string "prefix"
     t.string "first_name"
     t.string "last_name"
-    t.string "suffix"
     t.string "phone"
     t.string "email"
     t.date "birthday"

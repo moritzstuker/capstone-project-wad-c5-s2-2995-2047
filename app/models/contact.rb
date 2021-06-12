@@ -3,7 +3,7 @@ class Contact < ApplicationRecord
 
   FORMATS = {
     name:      '[obj.first_name, obj.last_name, " "]',
-    full_name: '[obj.prefix, obj.first_name, obj.last_name, obj.suffix, " "]',
+    full_name: '[obj.prefix, obj.first_name, obj.last_name, " "]',
     address:   '[obj.address.pobox, "#{obj.address.street} #{obj.address.streetno}", "#{obj.address.zip} #{obj.address.city}", obj.address.country, "\n"]',
     category:  '"#{obj.company ? "Company" : "Private person"}"'
   }

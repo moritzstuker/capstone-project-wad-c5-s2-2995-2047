@@ -132,7 +132,6 @@ def build_contact(str = "client")
     prefix:     company ? nil : ["M.", "Mme"].sample,
     first_name: company ? nil : Faker::Name.first_name,
     last_name:  company ? Faker::Company.name : Faker::Name.last_name,
-    suffix:     company ? Faker::Company.suffix : nil,
     address:    address,
     phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,

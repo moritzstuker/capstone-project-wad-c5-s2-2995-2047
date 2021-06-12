@@ -4,7 +4,6 @@ one:
   prefix: MyString
   first_name: MyString
   last_name: MyString
-  suffix: MyString
   address: MyText
   phone: MyString
   email: MyString
@@ -18,7 +17,6 @@ two:
   prefix: MyString
   first_name: MyString
   last_name: MyString
-  suffix: MyString
   address: MyText
   phone: MyString
   email: MyString
