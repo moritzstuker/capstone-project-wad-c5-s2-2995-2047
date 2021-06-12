@@ -38,5 +38,26 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <div class="box">
+          <div class="box-header">
+            Latest articles from&nbsp;<%= link_to 'Lawinside.ch', 'http://www.lawinside.ch' %>
+          </div>
+          <% if @news %>
+          <ul>
+            <% @news.each do |article| %>
+            <li class="box-row">
+              <div class="">
+                <p><%= link_to article[:title], article[:link], target: "_blank" %></p>
+                <p class="mute"><%= article[:author] %>&nbsp;|&nbsp;<%= article[:pubdate].strftime("%d.%m.%Y") %></p>
+              </div>
+            </li>
+            <% end %>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
 </section>
 </div>
