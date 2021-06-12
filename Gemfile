@@ -37,6 +37,9 @@ gem 'kaminari'
 # Makes http fun again! Ain't no party like a httparty, because a httparty don't stop.
 gem 'httparty'
 
+# Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
+gem 'figaro'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
