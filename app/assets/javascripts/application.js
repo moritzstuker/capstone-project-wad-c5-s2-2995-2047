@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require particles
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
