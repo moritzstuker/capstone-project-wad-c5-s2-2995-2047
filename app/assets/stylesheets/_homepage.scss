@@ -1,0 +1,28 @@
+// Homepage-specific rules
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%; // fallback for browsers that don't support vh
+  height: 80vh;
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title {
+    margin-right: -.4em; // to counter letter-spacing of last letter
+    font-size: 10rem;
+    font-weight: 600;
+    letter-spacing: .4em;
+    line-height: 1.25;
+    opacity: .8;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+}
