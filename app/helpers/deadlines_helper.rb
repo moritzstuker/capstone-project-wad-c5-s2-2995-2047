@@ -9,8 +9,9 @@ module DeadlinesHelper
 
   def get_urgency_of_date(date)
     case true
-    when date <= Date.today then '0'
-    when date.between?(Date.tomorrow, Date.today + 10) then '1'
+    when date <= Date.tomorrow then '0'
+    when date.between?(Date.tomorrow + 1, Date.today + 10) then '1'
+    when date >= Date.today + 11 then '2'
     else nil
     end
   end

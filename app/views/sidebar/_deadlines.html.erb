@@ -14,4 +14,12 @@
     <% end %>
   </li>
   <% end %>
+
+  <% if Deadline.with_urgency('2', params[:query]).count > 0 %>
+  <li>
+    <%= link_to deadlines_path(urgency: '2', query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:urgency] == '2' }" do %>
+    <%= dot_label("Due later (#{ Deadline.with_urgency('2', params[:query]).count })", color_by_urgency('2')) %>
+    <% end %>
+  </li>
+  <% end %>
 </ul>

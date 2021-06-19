@@ -8,56 +8,16 @@
     </header>
     <div class="row">
       <div class="col">
-        <div class="box">
-          <div class="box-header">
-            Financials
-          </div>
-          <% if true %>
-          <div class="box-content">
-            <p>Total billable hours:&nbsp;<%= number_with_precision(Activity.where(user: current_user).sum(&:duration), precision: 2) %> (<%= number_with_precision(Activity.where(user: current_user, date: 1.month.ago..Time.now).sum(&:duration), precision: 2) %> since <%= 1.month.ago %>)</p>
-            <p>Total fees:&nbsp;<%= fee(Activity.where(user: current_user).sum("duration * fee")) %> (<%= fee(Activity.where(user: current_user, date: 1.month.ago..Time.now).sum("duration * fee")) %> since <%= 1.month.ago %>)</p>
-          </div>
-          <% else %>
-          <%= image_tag('undraw/void.svg', class: 'void') %>
-          <% end %>
-        </div>
+        <%= render 'financials' %>
       </div>
       <div class="col">
-        <div class="box">
-          <div class="box-header">
-            Financials
-          </div>
-          <% if true %>
-          <div class="box-content">
-            <p>Total billable hours:&nbsp;<%= number_with_precision(Activity.where(user: current_user).sum(&:duration), precision: 2) %></p>
-            <p>Total fees:&nbsp;<%= fee(Activity.where(user: current_user).sum("duration * fee")) %></p>
-          </div>
-          <% else %>
-          <%= image_tag('undraw/void.svg', class: 'void') %>
-          <% end %>
-        </div>
+        <%= render 'financials' %>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <div class="box">
-          <div class="box-header">
-            Latest articles from&nbsp;<%= link_to 'Lawinside.ch', 'http://www.lawinside.ch' %>
-          </div>
-          <% if @news %>
-          <ul>
-            <% @news.each do |article| %>
-            <li class="box-row">
-              <div class="">
-                <p><%= link_to article[:title], article[:link], target: "_blank" %></p>
-                <p class="mute"><%= article[:author] %>&nbsp;|&nbsp;<%= article[:pubdate].strftime("%d.%m.%Y") %></p>
-              </div>
-            </li>
-            <% end %>
-          </ul>
-          <% end %>
-        </div>
+        <%= render 'news' %>
       </div>
     </div>
-</section>
+  </section>
 </div>

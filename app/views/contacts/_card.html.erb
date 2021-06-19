@@ -4,7 +4,7 @@
     <%= simple_format(contact.category.capitalize, { class: 'push tag' }, wrapper_tag: 'span') %>
   </header>
 
-  <div class="padding">
+  <div class="box-content">
     <%= highlight(build_address(contact), params[:query]) %>
   </div>
 

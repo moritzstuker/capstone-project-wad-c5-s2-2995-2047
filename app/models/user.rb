@@ -31,6 +31,10 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def friendly_name
+    "#{ first_name } #{ last_name } (#{ role.capitalize })"
+  end
+
   private
 
   def set_defaults

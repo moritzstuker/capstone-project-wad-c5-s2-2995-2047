@@ -11,8 +11,9 @@ class Deadline < ApplicationRecord
   validates :label, presence: true, length: { in: 2..50 }
   validates :category, presence: true, length: { in: 2..50 }
 
-  scope :due_immediately, -> { where('date <= ?', Date.today) }
-  scope :due_soon,        -> { where(date: (Date.tomorrow..Date.today + 10)) }
+  scope :due_immediately, -> { where('date <= ?', Date.tomorrow) }
+  scope :due_soon,        -> { where(date: (Date.tomorrow + 1..Date.today + 10)) }
+  scope :due_later,       -> { where('date >= ?', Date.today + 11) }
 
   scope :filter_by_category, -> (str) { where(category: str) }
   scope :filter_by_user,     -> (str) { where(assignee: str) }
@@ -22,6 +23,7 @@ class Deadline < ApplicationRecord
     case str.to_i
     when 0 then send(:due_immediately)
     when 1 then send(:due_soon)
+    when 2 then send(:due_later)
     end
   end
 

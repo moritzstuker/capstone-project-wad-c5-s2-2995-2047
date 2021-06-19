@@ -1,49 +1,73 @@
-<%= form_with(model: project, local: true) do |form| %>
+<%= form_with(model: project, local: true, class: 'box') do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
-      <% project.errors.full_messages.each do |message| %>
+        <% project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :label %>
-    <%= form.text_field :label, id: :project_label %>
+  <div class="row">
+    <div class="col">
+      <div class="form-field">
+        <%= form.label :label %>
+        <%= form.text_field :label, required: true, id: :project_label %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :owner_id %>
+        <%= form.select :owner_id, User.lawyers.order(role: :desc, last_name: :asc).collect { |user| ["#{ build_name(user) } (#{ user.role.capitalize })", user.id] }, required: true, id: :project_owner_id %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :project_category_id %>
+        <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, required: true, id: :project_project_category_id) %>
+      </div>
+
+      <%= link_to 'Add category', new_project_category_path %>
+
+      <div class="form-field">
+        <%= form.label :description %>
+        <%= form.text_area :description, id: :project_description %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :status %>
+        <%= form.select :status, Project.statuses.keys.map { |status| [status.capitalize, status] }, id: :project_status %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :reference %>
+        <%= form.text_field :reference, id: :project_reference %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-field">
+        <%= form.label :assignees %>
+        <%= form.collection_select(:assignees, User.lawyers.order(role: :desc, last_name: :asc), :id, :friendly_name, { include_hidden: false }, { size: 6, multiple: true, id: :project_assignees }) %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :clients %>
+        <%= form.collection_select(:clients, Contact.clients.order(last_name: :asc, first_name: :asc), :id, :friendly_name, { include_hidden: false }, { size: 6, multiple: true, required: true, id: :project_clients }) %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :adversaries %>
+        <%= form.select :adversaries, Contact.adversaries.order(last_name: :asc, first_name: :asc).collect { |adversary| [build_name(adversary), adversary.id] }, { include_hidden: false }, size: 6, multiple: true, id: :project_adversaries %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :owner_id %>
-    <%= form.select :owner_id, User.lawyers.order(role: :desc, last_name: :asc).collect { |user| ["#{ build_name(user) } (#{ user.role.capitalize })", user.id] }, id: :project_owner_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, ProjectCategory.all.order(:label).collect { |category| [category.label.capitalize, category.id] }, id: :project_category_id %>
-  </div>
-
-  <%= link_to 'Add category', new_project_category_path %>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :project_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Project.statuses.keys.map { |status| [status.capitalize, status] }, id: :project_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reference %>
-    <%= form.text_field :reference, id: :project_reference %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Créer projet', class: 'button blue' %>
+  <div class="row">
+    <div class="col">
+      <div class="form-action">
+        <%= form.submit 'Créer projet', class: 'button blue' %>
+      </div>
+    </div>
   </div>
 <% end %>

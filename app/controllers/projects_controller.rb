@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:label, :reference, :status, :description, :owner_id, :project_category_id)
+      params.require(:project).permit(:label, :reference, :status, :description, :owner_id, :project_category_id, clients: [:id])
     end
 
     def can_edit?(project = @project, user = current_user)

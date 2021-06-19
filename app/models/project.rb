@@ -15,6 +15,8 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :adversaries, -> { adversaries }, class_name: 'Contact'
   has_and_belongs_to_many :clients,     -> { clients },     class_name: 'Contact'
 
+  accepts_nested_attributes_for :deadlines
+
   validates :label, presence: true, length: { in: 2..50 }
   validates :reference, presence: false, length: { maximum: 50 }
   validates :owner, presence: true

@@ -11,4 +11,8 @@ class ProjectCategory < ApplicationRecord
   }
 
   has_many :projects
+
+  def friendly_name
+    "#{ label.capitalize }"
+  end
 end

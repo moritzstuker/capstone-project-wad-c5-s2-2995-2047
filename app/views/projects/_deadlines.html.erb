@@ -1,0 +1,31 @@
+<ul class="timeline">
+  <% @project.deadlines.group_by(&:date).sort.each do |date| %>
+  <li class="timeline-date">
+    <header class="header heading">
+      <span class="timeline-icon"><%= icon_tag('git-commit') %></span>
+      <%= dot_label(date.first.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(date.first))) %>
+    </header>
+
+    <ul class="box">
+      <% date.last.each do |deadline| %>
+      <li class="box-row">
+        <div class="card block-link">
+          <div class="card-header heading">
+            <%= deadline.label %>
+            <span class="push tag">
+              <%= i18n_enum(deadline, 'category').capitalize %>
+            </span>
+          </div>
+          <div class="card-footer">
+            <span class="icon-text small">
+              <%= icon_tag('people') %><%= t('deadlines.card.assigned_to') %> <%= avatar_tag_for(deadline.assignee) %><%= (build_name(deadline.assignee)) %>
+            </span>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+
+  </li>
+  <% end %>
+</ul>

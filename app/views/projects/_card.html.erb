@@ -4,7 +4,7 @@
     <%= simple_format(project.status, { class: 'push tag' }, wrapper_tag: 'span') if project.status == 'inactive' %>
   </header>
 
-  <div class="padding">
+  <div class="box-content">
     <span class="icon-text"><%= icon_tag('people') %><%= simple_format(strip_links(main_parties(project)), {}, wrapper_tag: 'span') %></span>
   </div>
 
@@ -13,7 +13,7 @@
     <% if project.reference %>
       <span class="keys disambiguate"><%= highlight(simple_format(project.reference), params[:query]) %></span>
     <% end %>
-    <% if project.activities && project.status == 'active' %>
+    <% if project.activities.count > 0 && project.status == 'active' %>
       <span class="keys">Last activity <%= time_ago_in_words(project.activities.last.date) %> ago.</span>
     <% end %>
     <span class="keys"><%= avatar_tag_for(project.owner) %><%= (build_name(project.owner)) %></span>

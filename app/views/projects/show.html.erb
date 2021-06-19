@@ -1,31 +1,74 @@
 <div class="row">
   <div class="col">
     <header class="page-header">
-      <h1 class="title">Cases</h1>
-      <span class="push button-group"><%= render 'filters' %></span>
+      <h1 class="title">
+        <%= link_to "Cases", projects_path, class: 'heading' %>
+        <span class="mute">&nbsp;&sol;&nbsp;</span>
+        <%= @project.label %> (<%= strip_tags(main_parties(@project)) %>)
+      </h1>
+      <span class="push button-group">
+        <%= render 'edit-box', target: @project %>
+      </span>
     </header>
   </div>
 </div>
-<section class="row">
-  <aside class="col-2">
-    <%= render 'sidebar/index' %>
-  </aside>
-  <div class="col">
-    <% if @projects %>
-      <ul>
-        <% @projects.each do |project| %>
-        <li><%= render 'card', project: project %></li>
-        <% end %>
-      </ul>
-      <%= paginate @projects %>
-    <% else %>
-      <div class="box">
-        <%= image_tag('undraw/void.svg', class: 'void') %>
+<div class="row">
+  <div class="col-5">
+    <section class="box">
+      <header class="box-header">
+        <h2 class="heading">Description</h2>
+      </header>
+      <% if @project.description %>
+      <div class="box-content">
+        <p><%= @project.description %></p>
       </div>
-    <% end %>
+      <% else %>
+      <%= image_tag('undraw/void.svg', class: 'void') %>
+      <% end %>
+    </section>
+    <section class="box">
+      <header class="box-header">
+        <h2 class="heading">Parties</h2>
+      </header>
+      <div class="box-content">
+        <div class="row">
+          <%= render 'parties' %>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-
+  <div class="col-3">
+    <%= render 'properties' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="box">
+      <span class="box-header header">
+        <h2 class="heading">Upcoming deadlines</h2>
+      </span>
+      <div class="box-content">
+        <% if @project.deadlines.count > 0 %>
+        <%= render 'deadlines' %>
+        <% else %>
+        <%= image_tag('undraw/void.svg', class: 'void') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="box">
+    <%= link_to icon_tag('plus-circle'), nil, class: 'push' %>
+      <% if @project.activities.count > 0 %>
+      <%= render 'timesheet' %>
+      <% else %>
+      <%= image_tag('undraw/void.svg', class: 'void') %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <p id="notice"><%= notice %></p>
 
@@ -54,10 +97,4 @@
   <%= build_name(@project.owner) %>
 </p>
 
-<p>
-  <strong>Project category:</strong>
-  <%= @project.category.label.capitalize %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Edit', edit_project_path(@project) %>

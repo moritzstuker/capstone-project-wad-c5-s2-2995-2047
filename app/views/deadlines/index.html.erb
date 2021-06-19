@@ -19,7 +19,7 @@
       </li>
       <% end %>
     </ul>
-    PAGINATE
+    <%= paginate @deadlines_by_dates %>
     <% else %>
     <div class="box">
       <%= image_tag('undraw/void.svg', class: 'void') %>

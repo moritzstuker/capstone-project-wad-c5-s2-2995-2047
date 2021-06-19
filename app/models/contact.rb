@@ -55,6 +55,10 @@ class Contact < ApplicationRecord
     filter_by_query(query).filter_by_role(role.id)
   end
 
+  def friendly_name
+    "#{ first_name } #{ last_name }"
+  end
+
   private
 
   def set_defaults
