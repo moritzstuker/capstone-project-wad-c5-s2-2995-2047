@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-rand_min = 200
+rand_min = 500
 rand_max = (rand_min * 1.5).round
 
 AVATARS = Dir.glob("#{Rails.root}/app/assets/images/fallback_avatars/*.jpg").shuffle
@@ -147,7 +147,7 @@ end
 puts "✓  Successfully generated #{Project.all.count} cases"
 
 puts "   Generating activities..."
-rand((rand_min * 10)...(rand_max * 10)).times do |i|
+rand((rand_min * 5)...(rand_max * 5)).times do |i|
   build_activity()
   puts "   already generated #{i} activities, still more to go..." if i % 100 == 0 && i > 0
 end
