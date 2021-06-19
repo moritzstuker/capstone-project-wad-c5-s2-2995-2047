@@ -128,3 +128,13 @@ a,
     height: auto;
   }
 }
+
+.icon-group {
+  & > * + * {
+    margin-left: .5em;
+  }
+
+  .icon {
+    height: 2rem;
+  }
+}

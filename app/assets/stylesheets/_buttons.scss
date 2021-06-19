@@ -48,6 +48,16 @@ input[type='submit'] {
     background-color: $grey-600;
   }
 
+  &.big {
+    padding: ($box-padding-y / 3) $box-padding-x;
+    font-size: $base-font-size;
+    text-transform: uppercase;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
   &.blue {
     border-color: $blue-400;
     background-color: $blue-700;
