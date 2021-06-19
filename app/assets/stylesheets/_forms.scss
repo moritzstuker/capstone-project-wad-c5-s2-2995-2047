@@ -49,6 +49,8 @@ textarea {
 }
 
 select {
+  font-weight: $base-font-weight;
+
   &::-ms-expand {
     display: none;
   }
@@ -106,137 +108,23 @@ input[type='date'] {
   font: inherit
 }
 
-.input-group {
-  position: relative;
-  margin-top: $box-padding-y;
-  margin-bottom: $box-padding-y;
-
-  .icon {
-    position: absolute;
-    top: calc(50% - .7em);
-    left: .7em;
-    width: 1.4em;
-    height: 1.4em;
-    color: $grey-300;
-    pointer-events: none;
-  }
-
-  input:not(.button) {
-    position: relative;
-    padding-left: ($gutter * 1.8);
-  }
-
-  & + & {
-    margin-top: $gutter;
-  }
-}
-
-.inline-form {
-  display: flex;
-
-  input {
-    border-right: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-
-    &:active,
-    &:focus {
-      border-color: $blue-500;
-
-      & + button {
-        border-color: $blue-500;
-        background-color: $grey-700;
-      }
-    }
-  }
-
-  button {
-    padding-right: $box-padding-y;
-    padding-left: $box-padding-y;
-    border-left: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-
-    &:active,
-    &:hover {
-      border-color: $grey-500;
-      background-color: $grey-700;
-
-      .icon {
-        fill: $blue-500;
-      }
-    }
-
-    .icon {
-      width: $big-font-size;
-    }
-  }
-}
-
-.field-group {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-  .label {
-    @extend .mute;
-    flex: 1 0 20%;
-    width: 100%;
-    max-width: 20%;
-    margin-top: .45em;
-    font-weight: $medium-font-weight;
-  }
-
-  .input,
-  .field-subgroup {
-    flex: 1 0 80%;
-    width: 100%;
-    max-width: 80%;
-  }
-
-  .input {
-    background-color: transparent;
-  }
-
-  &-buttons {
-    flex-basis: 0;
-    flex-grow: 1;
-    width: 100%;
-    margin-left: 20%;
-  }
-
-  & + .field-group {
-    margin-top: $box-padding-x;
-  }
-}
-
-
 .form {
-  &-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: $box-padding;
+  &-field,
+  &-action {
+    margin: $box-padding;
+      font-weight: $medium-font-weight;
 
-    & + &,
-    input[type='hidden'] + & {
-      border-top: $border-base;
+    label {
+      margin-bottom: .5em;
+      font-size: $small-font-size;
+      letter-spacing: .025em;
+    }
+
+    input {
     }
   }
 
-  &-label {
-    flex: 1 0 30%;
-    max-width: 30%;
-    margin-top: .65rem;
-    font-weight: $medium-font-weight;
-  }
-
-  &-input {
-    flex: 1 0 70%;
-    max-width: 70%;
-  }
-
-  &-buttons {
-    margin-left: auto;
+  &-action {
+    margin-top: $box-padding-x;
   }
 }
