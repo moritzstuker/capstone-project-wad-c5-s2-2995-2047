@@ -3,15 +3,17 @@
 one:
   label: MyString
   category: MyString
-  time: 9.99
-  date: 2021-04-28
+  date: 2021-06-13
+  duration: 9.99
+  fee: 9.99
   project: one
   user: one
 
 two:
   label: MyString
   category: MyString
-  time: 9.99
-  date: 2021-04-28
+  date: 2021-06-13
+  duration: 9.99
+  fee: 9.99
   project: two
   user: two

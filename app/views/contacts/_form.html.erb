@@ -1,27 +1,113 @@
+<form>
+  <fieldset>
+    <div class="row">
+      <label for="nameField" class="col-2 label">Name</label>
+      <input type="text" placeholder="CJ Patoilo" id="nameField" class="col label">
+    </div>
+    <label for="ageRangeField">Age Range</label>
+    <select id="ageRangeField">
+      <option value="0-13">0-13</option>
+      <option value="14-17">14-17</option>
+      <option value="18-23">18-23</option>
+      <option value="24+">24+</option>
+    </select>
+    <label for="commentField">Comment</label>
+    <textarea placeholder="Hi CJ …" id="commentField"></textarea>
+    <input type="checkbox" id="confirmField">
+    <label class="label-inline" for="confirmField">Send a copy to yourself</label>
+    <input class="button-primary" type="submit" value="Send">
+  </fieldset>
+</form>
+
 <%= form_with(model: contact, local: true) do |form| %>
-<%= render partial: 'form_errors', locals: { obj: contact } %>
+<% if contact.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'prefix',
-  label: 'Prefix'
-} %>
+  <ul>
+    <% contact.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-IS COMPANY?
+<div class="field">
+  <%= form.label :prefix %>
+  <%= form.text_field :prefix, id: :contact_prefix %>
+</div>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'first_name',
-  label: 'First name',
-} %>
+<div class="field">
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name, id: :contact_first_name %>
+</div>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'last_name',
-  label: 'Last name',
-} %>
+<div class="field">
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name, id: :contact_last_name %>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="field">
+  <%= form.label :activity %>
+  <%= form.text_field :activity, id: :contact_activity %>
+</div>
+
+<div class="field">
+  <%= form.label :phone %>
+  <%= form.text_field :phone, id: :contact_phone %>
+</div>
+
+<div class="field">
+  <%= form.label :email %>
+  <%= form.text_field :email, id: :contact_email %>
+</div>
+
+<div class="field">
+  <%= form.label :pobox %>
+  <%= form.text_field :pobox, id: :contact_pobox %>
+</div>
+
+<div class="field">
+  <%= form.label :street %>
+  <%= form.text_field :street, id: :contact_street %>
+</div>
+
+<div class="field">
+  <%= form.label :streetno %>
+  <%= form.text_field :streetno, id: :contact_streetno %>
+</div>
+
+<div class="field">
+  <%= form.label :zip %>
+  <%= form.text_field :zip, id: :contact_zip %>
+</div>
+
+<div class="field">
+  <%= form.label :city %>
+  <%= form.text_field :city, id: :contact_city %>
+</div>
+
+<div class="field">
+  <%= form.label :country %>
+  <%= form.text_field :country, id: :contact_country %>
+</div>
+
+<div class="field">
+  <%= form.label :category %>
+  <%= form.number_field :category, id: :contact_category %>
+</div>
+
+<div class="field">
+  <%= form.label :notes %>
+  <%= form.text_area :notes, id: :contact_notes %>
+</div>
+
+<div class="field">
+  <%= form.label :role_id %>
+  <%= form.text_field :role_id, id: :contact_role_id %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
 <% end %>

@@ -1,0 +1,36 @@
+// Pagination
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.pagination {
+  display: inline-flex;
+  position: relative;
+  width: auto;
+  margin-top: $gutter;
+  overflow: hidden;
+  border: $border-base;
+  border-radius: $border-radius;
+
+  .current {
+    font-weight: $medium-font-weight;
+    cursor: default;
+  }
+
+  a,
+  .current,
+  .gap {
+    display: inline-block;
+    padding: ($box-padding-y / 2) $box-padding-x;
+    text-decoration: none !important;
+  }
+
+  a {
+    &:active,
+    &:hover {
+      background-color: $background-color-secondary;
+    }
+  }
+
+  & > *:not(:first-child) {
+    border-left: $border-base;
+  }
+}

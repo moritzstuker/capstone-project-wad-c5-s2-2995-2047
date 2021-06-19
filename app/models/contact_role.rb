@@ -1,9 +1,8 @@
 class ContactRole < ApplicationRecord
-  DEFAULTS = {
+  ROLES = {
     'client':    '#347d39', # green
     'adversary': '#ad2e2c', # red
-    'other':     '#daaa3f', # yellow
-    'employee':  '#4184e4', # blue
+    'other':     '#daaa3f'  # yellow
   }
 
   has_many :contacts

@@ -4,24 +4,32 @@ one:
   prefix: MyString
   first_name: MyString
   last_name: MyString
-  address: MyText
+  activity: MyString
   phone: MyString
   email: MyString
-  birthday: 2021-04-28
-  activity: MyString
-  role: MyString
-  personality: MyString
+  pobox: MyString
+  street: MyString
+  streetno: MyString
+  zip: MyString
+  city: MyString
+  country: MyString
+  category: 1
   notes: MyText
+  contact_role: one
 
 two:
   prefix: MyString
   first_name: MyString
   last_name: MyString
-  address: MyText
+  activity: MyString
   phone: MyString
   email: MyString
-  birthday: 2021-04-28
-  activity: MyString
-  role: MyString
-  personality: MyString
+  pobox: MyString
+  street: MyString
+  streetno: MyString
+  zip: MyString
+  city: MyString
+  country: MyString
+  category: 1
   notes: MyText
+  contact_role: two

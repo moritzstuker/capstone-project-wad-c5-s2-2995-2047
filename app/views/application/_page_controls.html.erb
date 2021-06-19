@@ -1,4 +1,0 @@
-<div class="page-controls">
-  <%= link_to icon_tag('pencil'), controller: obj.class.name.tableize, action: 'edit', id: obj if can_edit?(obj) %>
-  <%= link_to icon_tag('trash'), obj, method: :delete, data: { confirm: 'Are you sure?' } if can_delete?(obj) %>
-</div>

@@ -1,29 +1,30 @@
-<article>
-  <header class="box-header">
-    <span class="dot-label">
-      <span class="dot-icon <%= urgency_by_date(date) %>"></span>
-      <%= date.strftime("%d.%m.%Y") %>
-    </span>
-  </header>
-  <ul>
-    <% @deadlines.where(date: date).each do |deadline| %>
-    <li role="menuitem" class="card"<%= ' disabled' if deadline.completed_at %>>
-      <div class="card-header">
-        <%= link_to highlight(deadline.label, params[:q]), project_path(deadline.project, anchor: 'deadlines') %>
-        <span class="tag">
-          <%= deadline.category %>
-        </span>
-      </div>
-      <div class="card-content">
-        <span class="small mute">
-          <%= icon_tag('repo', class: 'inline') %>
-          <%= link_to(build_label(deadline.project, :label_with_parties), deadline.project, class: 'invisible-link') %>
-        </span>
-      </div>
-      <div class="card-footer">
-        Assigned to <%= deadline.assignee == current_user ? sanitize('<span class="bold">you</span>') : link_to(build_label(deadline.assignee.contact, :name), deadline.assignee) %>
-      </div>
-    </li>
+<header class="header heading">
+  <span class="timeline-icon"><%= icon_tag('git-commit') %></span>
+  <%= dot_label(date.first.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(date.first))) %>
+</header>
+<ul class="box">
+  <% date.last.each do |deadline| %>
+  <li class="box-row">
+    <%= link_to deadline.project, class: 'card block-link' do %>
+    <div class="card-header heading">
+      <span class="link-color">
+        <%= highlight(deadline.label, params[:query]) %>
+      </span>
+      <span class="push tag">
+        <%= i18n_enum(deadline, 'category').capitalize %>
+      </span>
+    </div>
+    <div class="card-content">
+      <span class="icon-text small">
+        <%= icon_tag('repo') %><span class="mute"><%= "#{ deadline.project.label } (#{ strip_tags(main_parties(deadline.project)) })" %></span>
+      </span>
+    </div>
+    <div class="card-footer">
+      <span class="icon-text small">
+        <%= icon_tag('people') %><%= t('.assigned_to') %> <%= avatar_tag_for(deadline.assignee) %><%= (build_name(deadline.assignee)) %>
+      </span>
+    </div>
     <% end %>
-  </ul>
-</article>
+  </li>
+  <% end %>
+</ul>

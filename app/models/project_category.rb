@@ -1,5 +1,5 @@
 class ProjectCategory < ApplicationRecord
-  DEFAULTS = {
+  CATEGORIES = {
     'bankruptcy law':        '#22272e', # dark grey
     'civil law':             '#4184e4', # blue
     'corporate law':         '#143d79', # dark blue

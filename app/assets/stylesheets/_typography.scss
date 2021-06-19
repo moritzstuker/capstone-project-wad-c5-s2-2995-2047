@@ -1,20 +1,19 @@
 // Typography
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-%heading {
+.heading {
+  font-size: $big-font-size;
+  font-weight: $medium-font-weight;
+  letter-spacing: .025em;
+  line-height: inherit;
+}
+
+.title {
+  font-size: $biggest-font-size;
   font-weight: $bold-font-weight;
   letter-spacing: .025em;
   line-height: inherit;
   text-transform: uppercase;
-}
-
-.heading {
-  @extend %heading;
-}
-
-.title {
-  font-size: $big-font-size;
-  font-weight: $medium-font-weight;
 }
 
 .disambiguate {

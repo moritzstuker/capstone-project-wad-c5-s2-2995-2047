@@ -1,34 +1,7 @@
-<div class="row">
-  <div class="col-4 col-offset-2">
-    <div class="box login-form">
-      <div class="box-header">
-        <h1>Log in</h1>
-      </div>
-      <div class="box-content">
-        <%= form_with(url: login_path, scope: :session, local: true, class: 'form') do |f| %>
-        <div class="input-group">
-          <%= f.text_field :login, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder: 'Username' %>
-          <%= icon_tag('person') %>
-        </div>
-        <div class="input-group">
-          <%= f.password_field :password, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder: 'Password' %>
-          <%= icon_tag('key') %>
-        </div>
-        <div class="input-group">
-          <%= f.submit 'Log in', class: 'button blue' %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-4 col-offset-2">
-    <div class="box">
-      <div class="box-content">
-        <p>Don't have an account? <%= link_to "Click here to sign up", signup_path %>.</p>
-      </div>
-    </div>
-  </div>
-</div>
+<h1>Log in</h1>
+<%= form_with(url: login_path, scope: :session, local: true) do |form| %>
+  <%= form.text_field :login, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder: 'Username' %>
+  <%= form.password_field :password, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder: 'Password' %>
+  <%= form.submit 'Log in' %>
+<% end %>
+<%= link_to "Click here to sign up", signup_path %>

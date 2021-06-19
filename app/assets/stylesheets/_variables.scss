@@ -15,9 +15,10 @@ $light-opacity-factor: .5;
 
 // –– Typography ––––––––––––––––––––––––––––––––––––
 
-$small-font-size: 1.2rem;
-$base-font-size:  1.4rem;
-$big-font-size:   1.6rem;
+$small-font-size:   1.2rem;
+$base-font-size:    1.4rem;
+$big-font-size:     1.5rem;
+$biggest-font-size: 1.6rem;
 
 $base-line-height: 1.61803398875; // golden ratio
 
@@ -38,7 +39,7 @@ $border-radius: .6rem;
 
 $small-icon:  1.6rem;
 $medium-icon: 2.4rem;
-$big-icon:    4.8rem;
+$large-icon:  4.8rem;
 
 // –– Spacing –––––––––––––––––––––––––––––––––––––––
 
@@ -52,7 +53,7 @@ $block-width-xs:  38.4rem;
 $block-width-s:   51.2rem;
 $block-width-m:   76.8rem;
 $block-width-l:   96.0rem;
-$block-width-xl: 102.4rem;
+$block-width-xl: 112.0rem;
 
 $columns: 8;
 

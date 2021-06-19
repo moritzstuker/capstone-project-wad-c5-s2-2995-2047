@@ -1,0 +1,6 @@
+en:
+  deadlines:
+    index:
+      title: 'Deadlines'
+    card:
+      assigned_to: 'Attribué à'

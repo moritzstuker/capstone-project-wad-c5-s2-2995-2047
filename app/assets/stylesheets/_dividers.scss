@@ -6,7 +6,7 @@ hr {
   margin-bottom: $gutter;
   border-top: $border-base;
 
-  .box-content & {
+  .card & {
     width: calc(100% + (#{$gutter} * 2));
     margin: $box-padding;
     margin-left: ($gutter * -1);

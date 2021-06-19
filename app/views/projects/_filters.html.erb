@@ -1,36 +1,41 @@
-<div class="button-group">
-  <details>
+<div class="buttons-merged">
+  <details class="dropdown">
     <summary aria-haspopup="true">
-      <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
+      <%= simple_format('Assigned to', { class: "button dropdown-trigger#{ ' orange' if params[:assignee].present? }" }, wrapper_tag: 'span') %>
     </summary>
-    <ul class="box dropdown">
+    <ul class="dropdown-content">
       <% @users.each do |user| %>
-        <li role="menuitem">
-          <%= link_to "#{build_label(user.contact, :name)} (#{Project.filter_by_user(user).count})",
-          url_for(user: user),
-          class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
+        <% if @all_projects.filter_by_assignee(user).count > 0 %>
+        <li role="menuitem" class="box-row">
+          <%= link_to "#{ build_name(user) } (#{ @all_projects.filter_by_assignee(user).count })",
+          url_for(assignee: user),
+          class: "menu-item#{ ' orange-color' if params[:assignee] == user.id.to_s }" %>
         </li>
+        <% end %>
       <% end %>
     </ul>
   </details>
 
-  <details>
+  <details class="dropdown">
     <summary aria-haspopup="true">
-      <span class="button small light<%= ' orange' if params[:status].present? %>">Status <%= icon_tag('triangle-down') %></span>
+      <%= simple_format('Status', { class: "button dropdown-trigger#{ ' orange' if params[:status].present? }" }, wrapper_tag: 'span') %>
     </summary>
-    <ul class="box dropdown">
-      <% Project.distinct.pluck(:status).sort.each do |status| %>
-        <li role="menuitem">
-          <%= link_to "#{status.capitalize} (#{Project.where(status: status).count})",
-          url_for(status: status),
-          class: "box-row small#{ ' orange-color' if params[:status] == status }" %>
-        </li>
-      <% end %>
+    <ul class="dropdown-content">
+      <li role="menuitem" class="box-row">
+        <%= link_to "Active (#{ @all_projects.where(status: :active).count })",
+        url_for(status: :active),
+        class: "menu-item#{ ' orange-color' if params[:status] == 'active' }" %>
+      </li>
+      <li role="menuitem" class="box-row">
+        <%= link_to "Inactive (#{ @all_projects.where(status: :inactive).count })",
+        url_for(status: :inactive),
+        class: "menu-item#{ ' orange-color' if params[:status] == 'inactive' }" %>
+      </li>
     </ul>
   </details>
 </div>
 
-<div class="button-group">
-  <%= link_to "Your active cases", url_for(user: current_user, status: 'active'), class: "button small light green" %>
-  <%= link_to "Show all", url_for, class: 'button small light blue' %>
+<div class="buttons-merged">
+  <%= link_to "Your active cases", url_for(assignee: current_user, status: :active), class: 'button green' %>
+  <%= link_to 'Show all', url_for, class: 'button blue' %>
 </div>

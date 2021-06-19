@@ -1,18 +1,17 @@
-<div class="box">
-  <div class="box-header">
-    <%= link_to highlight(build_label(contact, :full_name), params[:q]), contact %>
-    <span class="tag"><%= build_label(contact, :category) %></span>
+<%= link_to contact, class: 'box-link', role: 'article' do %>
+  <header class="box-header header heading">
+    <span class="link-color"><%= highlight(build_name(contact), params[:query]) %></span>
+    <%= simple_format(contact.category.capitalize, { class: 'push tag' }, wrapper_tag: 'span') %>
+  </header>
+
+  <div class="padding">
+    <%= highlight(build_address(contact), params[:query]) %>
   </div>
-  <div class="box-content">
-    <%= highlight(simple_format(build_label(contact, :address)), params[:q]) %>
-  </div>
-  <div class="box-footer">
-    <span class="dot-label">
-      <span class="dot-icon" style="background-color: <%= contact.role.color %>"></span>
-      <span class="small"><%= contact.role.label.capitalize %></span>
-    </span>
+
+  <footer class="box-footer">
+    <span class="keys"><%= dot_label(contact.role.label.capitalize, contact.role.color) %></span>
     <% if contact.projects.count > 0 %>
       <span class="keys">Party in <%= pluralize(contact.projects.count, 'case') %></span>
     <% end %>
-  </div>
-</div>
+  </footer>
+<% end %>

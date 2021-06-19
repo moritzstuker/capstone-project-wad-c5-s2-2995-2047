@@ -15,6 +15,12 @@ video {
 svg {
   fill: currentColor;
   stroke: none;
+
+  &.icon {
+    fill-rule: evenodd;
+    fill: $text-color-primary;
+    transition: fill $transition;
+  }
 }
 
 figure {
@@ -22,22 +28,13 @@ figure {
 }
 
 .icon {
-  fill-rule: evenodd;
-  fill: $text-color-primary;
   display: inline-block;
-  height: $big-font-size;
+  width: auto;
+  height: 1.2em;
   vertical-align: middle;
-  transition: fill $transition;
-
-  &.inline {
-    width: 1.2em;
-    height: 100%;
-    padding-right: .3em;
-  }
 
   &.avatar {
-    height: $medium-icon;
-    border: $border-base;
+    border: $border-width solid $grey-500;
     border-radius: 50%;
     transition: border-color $transition;
   }
@@ -46,8 +43,7 @@ figure {
     fill: $green-200;
   }
 
-  &.x-circle,
-  &.triangle-down {
+  &.search {
     fill: currentColor;
   }
 }
@@ -55,14 +51,6 @@ figure {
 .icons {
   display: inline-block;
   white-space: nowrap;
-
-  & > * + * {
-    margin-left: .5em;
-  }
-
-  a {
-    display: inline-block;
-  }
 }
 
 a,
@@ -98,8 +86,9 @@ a,
 }
 
 .site-logo {
-  width: $big-icon;
-  height: $big-icon;
+  display: inline-block;
+  width: $large-icon;
+  height: $large-icon;
   color: inherit;
 
   .icon {
@@ -124,4 +113,18 @@ a,
   max-width: 10rem;
   margin: 1em auto;
   opacity: .5;
+}
+
+.user-avatar {
+  display: inline-block;
+  position: relative;
+  width: 1.8em;
+  margin-right: .25em;
+
+  .icon {
+    position: absolute;
+    top: -1.25em;
+    width: 100%;
+    height: auto;
+  }
 }

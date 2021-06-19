@@ -2,86 +2,56 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .box {
+  position: relative;
   width: 100%;
   margin-top: $gutter;
+  margin-bottom: $gutter;
   overflow: hidden;
   border: $border-base;
   border-radius: $border-radius;
-  background-color: $background-color-primary;
-
-  &-header,
-  &-footer,
-  &-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-start;
-    padding: $box-padding;
-  }
-
-  &-header,
-  &-footer {
-  }
-
-  &-content {
-    padding: $box-padding;
-  }
 
   &-header {
     border-bottom: $border-base;
     background-color: $background-color-secondary;
     font-weight: $medium-font-weight;
+  }
 
-    &:not(:first-child) {
+  &-row {
+    display: block;
+
+    & + & {
       border-top: $border-base;
     }
   }
 
   &-footer {
-    @extend .mute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: ($box-padding-y / 1.5) $box-padding-x;
     border-top: $border-base;
-  }
 
-  &-row {
-
-    & + .box-row {
-      border-top: $border-base;
-    }
-
-    &.small {
-      padding-top: ($box-padding-y / 2);
-      padding-bottom: ($box-padding-y / 2);
-      font-weight: $medium-font-weight;
-    }
-
-    &.is-active {
-      position: relative;
-      background-color: $background-color-secondary;
-
-      &::before {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: .3rem;
-        background-color: $orange;
-        content: '';
-      }
+    .box-header + & {
+      border-top: none;
     }
   }
-}
 
-ul.box {
-  & > li + li {
-    border-top: $border-base;
-  }
-}
+  &-link {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-top: $gutter;
+    overflow: hidden;
+    border: $border-base;
+    border-radius: $border-radius;
+    color: inherit;
+    transition: background-color $transition;
 
-a.box-row {
-  color: inherit;
-  text-decoration: none;
-
-  &:active,
-  &:hover {
-    background-color: $background-color-secondary;
+    &:focus,
+    &:hover {
+      border-color: $grey-400;
+      background-color: lighten($background-color-primary, 3%);
+      text-decoration: none;
+    }
   }
 }

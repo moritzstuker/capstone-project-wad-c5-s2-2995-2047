@@ -2,65 +2,71 @@ class Contact < ApplicationRecord
   include Filtering
   include HTTParty # This is to perform API requests
 
-  FORMATS = {
-    name:      '[obj.first_name, obj.last_name, " "]',
-    full_name: '[obj.prefix, obj.first_name, obj.last_name, " "]',
-    address:   '[obj.address.pobox, "#{obj.address.street} #{obj.address.streetno}", "#{obj.address.zip} #{obj.address.city}", obj.address.country, "\n"]',
-    category:  '"#{obj.company ? "Company" : "Private person"}"'
+  enum category: {
+    person:  0,
+    company: 1
   }
 
-  belongs_to              :role, class_name: "ContactRole", foreign_key: "contact_role_id"
-  belongs_to              :address, class_name: "ContactAddress", foreign_key: "contact_address_id"
-  has_one                 :user
+  belongs_to              :role, class_name: 'ContactRole', foreign_key: 'contact_role_id'
   has_and_belongs_to_many :projects
 
-  accepts_nested_attributes_for :address
-
-  scope :search_in_contact_first_name, -> (str) { where('first_name LIKE ?', "%#{str}%") }
-  scope :search_in_contact_last_name,  -> (str) { where('last_name LIKE ?', "%#{str}%") }
-
-  scope :search_in_address_street,  -> (str) { includes(:address).where('contact_addresses.street LIKE ?', "%#{str}%") }
-  scope :search_in_address_zip,     -> (str) { includes(:address).where('contact_addresses.zip LIKE ?', "%#{str}%") }
-  scope :search_in_address_city,    -> (str) { includes(:address).where('contact_addresses.city LIKE ?', "%#{str}%") }
-  scope :search_in_address_country, -> (str) { includes(:address).where('contact_addresses.country LIKE ?', "%#{str}%") }
-
-  scope :search, -> (str) {
-     search_in_contact_first_name(str)
-    .or(search_in_contact_last_name(str))
-    .includes(:address)
-    .or(search_in_address_street(str))
-    .or(search_in_address_zip(str))
-    .or(search_in_address_city(str))
-    .or(search_in_address_country(str))
-    .references(:contact_addresses)
-  }
+  validates :prefix, length: { maximum: 5 }
+  validates :first_name, presence: false, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { in: 2..50 }
+  validates :activity, presence: false, length: { in: 2..50 }
+  validates :phone, presence: false, length: { in: 2..20 }
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
+  validates :pobox, presence: false, length: { maximum: 50 }
+  validates :street, presence: false, length: { in: 2..50 }
+  validates :streetno, presence: false, length: { maximum: 10 }
+  validates :zip, presence: false, length: { in: 2..10 }
+  validates :city, presence: false, length: { in: 2..50 }
+  validates :country, presence: true
+  validates :category, presence: true
+  validates :role, presence: true
 
   scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles) }
   scope :clients,     ->       { get_role('client') }
   scope :adversaries, ->       { get_role('adversary') }
-  scope :employees,   ->       { get_role('employee') }
   scope :other,       ->       { get_role('other') }
 
-  scope :filter_by_role,     -> (str) { where(role: str) }
-  scope :filter_by_country,  -> (str) { includes(:address).where("lower(contact_addresses.country) = ?", str).references(:contact_addresses) }
+  scope :search_in_first_name, -> (str) { where('first_name LIKE ?', "%#{str}%") }
+  scope :search_in_last_name,  -> (str) { where('last_name LIKE ?', "%#{str}%") }
+  scope :search_in_street,     -> (str) { where('street LIKE ?', "%#{str}%") }
+  scope :search_in_zip,        -> (str) { where('zip LIKE ?', "%#{str}%") }
+  scope :search_in_city,       -> (str) { where('city LIKE ?', "%#{str}%") }
+  scope :search_in_country,    -> (str) { where('country LIKE ?', "%#{str}%") }
 
-  validates :first_name, length: { maximum: 15 }
-  validates :last_name,  presence: true, length: { maximum: 50 }
-  validates :email,      presence: true, length: { minimum: 6, maximum: 60 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
+  scope :filter_by_role,     -> (str) { where(role: str.to_i) }
+  scope :filter_by_category, -> (str) { where(category: str.to_i) }
+  scope :filter_by_country,  -> (str) { where('country LIKE ?', "%#{str}%") }
+  scope :filter_by_query,    -> (str) {
+    search_in_first_name(str)
+    .or(search_in_last_name(str))
+    .or(search_in_street(str))
+    .or(search_in_zip(str))
+    .or(search_in_city(str))
+    .or(search_in_country(str))
+  }
 
-  after_validation :default_values!
+  after_initialize :set_defaults
 
-  def self.filter_by_category(str)
-    if str == '1'
-      where(company: true)
-    elsif str == '0'
-      where(company: false)
-    end
+  def self.with_role(role, query = nil)
+    filter_by_query(query).filter_by_role(role.id)
   end
 
   private
 
-  def default_values!
-    self.company ||= false
+  def set_defaults
+    if self.new_record?
+      self.category ||= 0
+
+      if self.category.nil? || self.category == 0
+        self.first_name ||= 'John'
+        self.last_name ||= 'Doe'
+      else
+        self.last_name ||= 'ACME Inc.'
+      end
+    end
   end
 end

@@ -1,4 +1,7 @@
 class AccountController < ApplicationController
+  def show
+  end
+
   def edit
   end
 
@@ -15,19 +18,6 @@ class AccountController < ApplicationController
   private
 
   def user_params
-    params.require(:user)
-    .permit(
-      :login,
-      :password,
-      :avatar,
-      :preferred_lang,
-      contact_attributes: [
-        :id,
-        :first_name,
-        :last_name,
-        :email,
-        :birthday
-      ]
-    )
+    params.require(:user).permit(:login, :first_name, :last_name, :password_digest, :avatar, :email, :locale, :role, :default_fee)
   end
 end

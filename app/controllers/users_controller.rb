@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user,  only: %i[ show edit update destroy ]
-  before_action :can_edit?, only: %i[ edit update destroy ]
-  helper_method :can_edit?, :can_delete?
+  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :restrict_access
 
   def index
-    @users = User.all.includes(:contact, :role)
+    @users = User.all
   end
 
   def show
@@ -22,7 +21,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in @user
         format.html { redirect_to @user, notice: "User was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,20 +46,18 @@ class UsersController < ApplicationController
   end
 
   private
-
     def set_user
       @user = User.find(params[:id])
     end
 
     def user_params
-      params.require(:user).permit(:login, :password, :avatar, :contact, :role, :preferred_lang)
+      params.require(:user).permit(:login, :first_name, :last_name, :password_digest, :avatar, :email, :locale, :role, :default_fee)
     end
 
-    def can_edit?(target_user, user = current_user)
-      can_delete?(target_user, user) || is_partner?(user) || is_admin?(user)
-    end
-
-    def can_delete?(target_user, user = current_user)
-      target_user.role.access_level > current_user.role.access_level
+    def restrict_access
+      unless is_admin?
+        flash[:error] = "You must be logged in to access this section"
+        redirect_to projects_path # halts request cycle
+      end
     end
 end

@@ -1,0 +1,47 @@
+<%= form_with(model: deadline, local: true) do |form| %>
+  <% if deadline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deadline.errors.count, "error") %> prohibited this deadline from being saved:</h2>
+
+      <ul>
+      <% deadline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :label %>
+    <%= form.text_field :label, id: :deadline_label %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, id: :deadline_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :deadline_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :completed_at %>
+    <%= form.datetime_select :completed_at, id: :deadline_completed_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id, id: :deadline_project_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assignee_id %>
+    <%= form.text_field :assignee_id, id: :deadline_assignee_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

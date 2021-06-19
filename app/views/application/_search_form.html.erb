@@ -1,8 +1,22 @@
-<%= form_tag projects_url, method: :get do %>
-<div class="inline-form">
-  <%= text_field_tag :q, params[:q], placeholder: 'Search...' %>
-  <%= button_tag 'Search', name: nil, class: 'button' do %>
-  <%= icon_tag('search') %>
-  <% end %>
+<%= form_tag search_path, method: :get, class: 'search-form', id: 'search-form' do %>
+<%= text_field_tag :query, params[:query], autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', autocomplete: 'off', placeholder: 'Search...', class: 'search-input' %>
+<div class="expanded-search" id="expanded-search">
+  <ul class="box">
+    <li class="box-row">
+      <%= button_tag 'Search', name: 'search_in', value: 'projects', class: 'menu-item' do %>
+        search for '<span class="search-value"></span>' in Cases<%= icon_tag('search', class: 'push') %>
+      <% end %>
+    </li>
+    <li class="box-row">
+      <%= button_tag 'Search', name: 'search_in', value: 'contacts', class: 'menu-item' do %>
+        search for '<span class="search-value"></span>' in Contacts<%= icon_tag('search', class: 'push') %>
+      <% end %>
+    </li>
+    <li class="box-row">
+      <%= button_tag 'Search', name: 'search_in', value: 'deadlines', class: 'menu-item' do %>
+        search for '<span class="search-value"></span>' in Deadlines<%= icon_tag('search', class: 'push') %>
+      <% end %>
+    </li>
+  </ul>
 </div>
 <% end %>

@@ -1,4 +1,4 @@
-// Dropdowns
+// Menus
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 details {
@@ -11,27 +11,52 @@ details {
     &::-webkit-details-marker {
       display:none;
     }
+  }
+}
 
-    & > .button {
-      &.small {
-        padding-right: $box-padding-x;
-        padding-left: $box-padding-x;
-      }
+.dropdown {
+  &-content {
+    z-index: 10;
+    position: absolute;
+    width: auto;
+    max-height: 60vh;
+    margin-top: $box-padding-y;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: $border-base;
+    border-radius: $border-radius;
+    background-color: $background-color-primary;
+    box-shadow: rgba(28, 33, 40, .85) 0 1em 2em 0;
+    font-size: $small-font-size;
+    white-space: nowrap;
+    cursor: default;
 
-      & > .icon {
-        margin-right: -.5em;
-      }
+    .box {
+      margin: 0;
     }
 
-    & + .dropdown {
-      z-index: 1000;
-      position: absolute;
-      width: auto;
-      max-height: 60vh;
-      margin-top: $box-padding-y;
-      overflow-y: scroll;
-      box-shadow: rgba(28, 33, 40, .85) 0 1em 2em 0;
-      white-space: nowrap;
+    .menu-header {
+      display: block;
+      padding: ($box-padding-y / 2) ($box-padding-x / 2);
+      border-bottom: 0;
+      background-color: $background-color-secondary;
+    }
+
+    .menu-item {
+      padding: ($box-padding-y / 2) ($box-padding-x / 2);
+    }
+  }
+
+  &-trigger {
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      .icon {
+        fill: $text-color-highlight;
+        border-color: $text-color-highlight;
+      }
     }
   }
 }

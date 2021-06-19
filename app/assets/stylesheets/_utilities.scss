@@ -1,11 +1,20 @@
 // Utilities & Misc
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-.u {
-  &-align-right {
-    text-align: right;
+.padding {
+  display: block;
+  padding: $box-padding;
+
+  &-small {
+    display: block;
+    padding: ($box-padding-y / 2) $box-padding-x;
   }
 }
+
+.push {
+  margin-left: auto !important;
+}
+
 [hidden] {
   display: none
 }
@@ -14,16 +23,6 @@
   cursor: default !important;
   opacity: 0.5;
   pointer-events: none !important;
-}
-
-#particles-js {
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

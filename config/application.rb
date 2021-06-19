@@ -16,6 +16,7 @@ module Codex
     # -- all .rb files in that directory are automatically loaded.
     config.generators.javascript_engine = :js
 
-    config.generators.assets = false
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.available_locales = [:en, :fr]
   end
 end

@@ -1,7 +1,23 @@
 class ApplicationController < ActionController::Base
   before_action :require_login # since most pages are restricted, sets a login requirement by default, with exceptions (ie login and home pages)
-  helper_method :current_user, :is_current_user?, :is_admin?, :is_partner?, :is_associate?, :is_intern?, :is_logged_in?
+
+  helper_method :current_user, :is_current_user?, :is_logged_in?, :is_admin?, :is_partner?, :is_associate?, :is_intern?
+
   protect_from_forgery with: :exception
+
+  around_action :switch_locale
+
+  around_action :switch_locale
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  # Maybe add to privates
+  def switch_locale(&action)
+    locale = current_user.try(:locale) || I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
 
   private
 
@@ -17,8 +33,12 @@ class ApplicationController < ActionController::Base
     user == current_user
   end
 
+  def is_logged_in?
+    !!session[:user_id]
+  end
+
   def user_role(user = current_user)
-    user.role.label if is_logged_in?
+    user.role if is_logged_in?
   end
 
   def is_admin?(user = current_user)
@@ -35,10 +55,6 @@ class ApplicationController < ActionController::Base
 
   def is_intern?(user = current_user)
     user_role(user) == 'intern'
-  end
-
-  def is_logged_in?
-    !!session[:user_id]
   end
 
   def require_login

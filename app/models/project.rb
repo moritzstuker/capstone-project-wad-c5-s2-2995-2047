@@ -1,40 +1,43 @@
 class Project < ApplicationRecord
   include Filtering
 
-  STATUS = [
-    'active',
-    'inactive'
-  ].freeze
-
-  FORMATS = {
-    label:              '[obj.label, " "]',
-    label_with_parties: '[obj.label, "<span class=\"mute\">(#{main_parties(obj, false)})</span>", " "]',
+  enum status: {
+    inactive: 0,
+    active: 1
   }
 
-  has_many                :activities
-  has_and_belongs_to_many :adversaries, -> { adversaries }, class_name: "Contact"
-  has_many                :assignments
-  has_many                :assignees, through: :assignments, source: :user
-  belongs_to              :category, class_name: "ProjectCategory", foreign_key: "project_category_id", optional: true
-  has_and_belongs_to_many :clients, -> { clients }, class_name: "Contact"
-  has_many                :deadlines
-  belongs_to              :owner, class_name: "User"
+  belongs_to :category, class_name: 'ProjectCategory', foreign_key: "project_category_id", optional: true
+  belongs_to :owner, class_name: 'User'
+  has_many   :activities, dependent: :destroy
+  has_many   :deadlines, dependent: :destroy
+  has_many   :assignments, dependent: :destroy
+  has_many   :assignees, through: :assignments, source: :user
+  has_and_belongs_to_many :adversaries, -> { adversaries }, class_name: 'Contact'
+  has_and_belongs_to_many :clients,     -> { clients },     class_name: 'Contact'
 
-  scope :label_contains,     -> (str) { where('label LIKE ?', "%#{str}%") }
-  scope :reference_contains, -> (str) { where('reference LIKE ?', "%#{str}%") }
-  scope :search,             -> (str) { label_contains(str).or(reference_contains(str)) }
+  validates :label, presence: true, length: { in: 2..50 }
+  validates :reference, presence: false, length: { maximum: 50 }
+  validates :owner, presence: true
 
+  scope :search_in_label,     -> (str) { where('label LIKE ?', "%#{str}%") }
+  scope :search_in_reference, -> (str) { where('reference LIKE ?', "%#{str}%") }
+
+  scope :filter_by_assignee, -> (str) { includes(:assignments).where("projects.owner_id = ? OR assignments.user_id = ?", str, str).references(:assignments).distinct } # Went for SQL because: https://stackoverflow.com/questions/40742078/relation-passed-to-or-must-be-structurally-compatible-incompatible-values-r/40742611#comment-68712244
   scope :filter_by_category, -> (str) { where(category: str).distinct }
   scope :filter_by_status,   -> (str) { where(status: str).distinct }
-  scope :filter_by_user,     -> (str) { includes(:assignments).where("projects.owner_id = ? OR assignments.user_id = ?", str, str).references(:assignments).distinct } # Went for SQL because: https://stackoverflow.com/questions/40742078/relation-passed-to-or-must-be-structurally-compatible-incompatible-values-r/40742611#comment-68712244
+  scope :filter_by_query,    -> (str) { search_in_label(str).or(search_in_reference(str)) }
 
-  validates :label,    presence: true
+  after_initialize :set_defaults
 
-  after_validation :default_values!
+  def self.with_category(category, query = nil)
+    filter_by_query(query).filter_by_category(category)
+  end
 
   private
 
-  def default_values!
-    self.status ||= 'active'
+  def set_defaults
+    if self.new_record?
+      self.status ||= 1
+    end
   end
 end

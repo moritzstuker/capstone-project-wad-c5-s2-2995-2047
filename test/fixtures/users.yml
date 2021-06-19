@@ -2,14 +2,22 @@
 
 one:
   login: MyString
-  password: MyString
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
   avatar: MyString
-  role: MyString
-  contact: one
+  email: MyString
+  locale: MyString
+  role: 1
+  default_fee: 9.99
 
 two:
   login: MyString
-  password: MyString
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
   avatar: MyString
-  role: MyString
-  contact: two
+  email: MyString
+  locale: MyString
+  role: 1
+  default_fee: 9.99

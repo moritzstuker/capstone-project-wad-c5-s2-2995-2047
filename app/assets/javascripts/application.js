@@ -12,22 +12,30 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require particles
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
-
-  // deadline buttons
-  document.querySelectorAll(".deadlines td .button").forEach(function(e) {
-    e.addEventListener("click", () => {
-      e.closest("tr").classList.toggle("disabled")
-    })
-  });
-
   // flash notification
   document.querySelectorAll(".flash-close").forEach(function(e) {
     e.addEventListener("click", () => {
       e.parentNode.remove();
     })
+  });
+
+  const searchForm = document.getElementById('search-form');
+  const searchInput = document.getElementById('query');
+  const expandedSearch = document.getElementById('expanded-search');
+  searchInput.addEventListener("keyup", () => {
+    if (searchInput.value) {
+      searchForm.classList.add("expanded");
+      expandedSearch.style.maxHeight = expandedSearch.scrollHeight + 'px';
+
+      document.querySelectorAll(".search-value").forEach(function(e) {
+        e.innerText = searchInput.value;
+      });
+    } else {
+      searchForm.classList.remove("expanded");
+      expandedSearch.style.maxHeight = '';
+    }
   });
 });

@@ -1,80 +1,49 @@
 <%= form_with(model: project, local: true) do |form| %>
-<%= render partial: 'form_errors', locals: { obj: project } %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'label',
-  label: 'Name',
-  required: true
-} %>
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'description',
-  label: 'Description',
-  type: 'textarea'
-} %>
+  <div class="field">
+    <%= form.label :label %>
+    <%= form.text_field :label, id: :project_label %>
+  </div>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'status',
-  label: 'Status',
-} %>
+  <div class="field">
+    <%= form.label :owner_id %>
+    <%= form.select :owner_id, User.lawyers.order(role: :desc, last_name: :asc).collect { |user| ["#{ build_name(user) } (#{ user.role.capitalize })", user.id] }, id: :project_owner_id %>
+  </div>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'reference',
-  label: 'Case reference',
-} %>
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, ProjectCategory.all.order(:label).collect { |category| [category.label.capitalize, category.id] }, id: :project_category_id %>
+  </div>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'owner',
-  label: 'Owner',
-  type: 'select',
-  options: @potential_owners.collect {|e| [ build_label(e.contact, :name), e.id ] },
-  required: true
-} %>
+  <%= link_to 'Add category', new_project_category_path %>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'category',
-  label: 'Category',
-  type: 'select',
-  options: @potential_categories.collect { |e| [ e.label.capitalize, e.id ] },
-  required: true
-} %>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :project_description %>
+  </div>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'assignees',
-  label: 'Assignees',
-  type: 'select',
-  options: @potential_assignees.collect { |e| [ build_label(e.contact, :name), e.id ] },
-  required: true,
-  multiple: true
-} %>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Project.statuses.keys.map { |status| [status.capitalize, status] }, id: :project_status %>
+  </div>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'clients',
-  label: 'Clients',
-  type: 'select',
-  options: @potential_clients.collect { |e| [ build_label(e, :name), e.id ] },
-  required: true,
-  multiple: true
-} %>
-
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'adversaries',
-  label: 'Adversaries',
-  type: 'select',
-  options: @potential_adversaries.collect { |e| [ build_label(e, :name), e.id ] },
-  multiple: true
-} %>
+  <div class="field">
+    <%= form.label :reference %>
+    <%= form.text_field :reference, id: :project_reference %>
+  </div>
 
   <div class="actions">
-    <%= form.submit 'Open case' %>
+    <%= form.submit 'Créer projet', class: 'button blue' %>
   </div>
 <% end %>

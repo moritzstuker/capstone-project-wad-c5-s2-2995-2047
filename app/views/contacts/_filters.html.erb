@@ -1,34 +1,36 @@
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small light<%= ' orange' if params[:country].present? %>">Country <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-    <% @countries.each do |country| %>
-      <li role="menuitem">
-        <%= link_to "#{country} (#{@all_contacts.filter_by_country(country.downcase).count})",
-        url_for(country: country.downcase),
-        class: "box-row small#{ ' orange-color' if params[:country] == country.downcase }" %>
-      </li>
-    <% end %>
-  </ul>
-</details>
+<div class="buttons-merged">
+  <details class="dropdown">
+    <summary aria-haspopup="true">
+      <%= simple_format('Country', { class: "button dropdown-trigger#{ ' orange' if params[:country].present? }" }, wrapper_tag: 'span') %>
+    </summary>
+    <ul class="dropdown-content">
+        <% @countries.each do |country| %>
+        <li role="menuitem" class="box-row">
+          <%= link_to "#{country} (#{@all_contacts.filter_by_country(country.downcase).count})",
+          url_for(country: country.downcase),
+          class: "menu-item#{ ' orange-color' if params[:country] == country.downcase }" %>
+        </li>
+        <% end %>
+    </ul>
+  </details>
 
-<details>
-  <summary aria-haspopup="true">
-    <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
-  </summary>
-  <ul class="box dropdown">
-      <li role="menuitem">
-        <%= link_to "Companies (#{@all_contacts.where(company: true).count})",
+  <details class="dropdown">
+    <summary aria-haspopup="true">
+      <%= simple_format('Category', { class: "button dropdown-trigger#{ ' orange' if params[:category].present? }" }, wrapper_tag: 'span') %>
+    </summary>
+    <ul class="dropdown-content">
+      <li role="menuitem" class="box-row">
+        <%= link_to "Companies (#{@all_contacts.where(category: :company).count})",
         url_for(category: 1),
-        class: "box-row small#{ ' orange-color' if params[:category].present? && params[:category] == 'active' }" %>
+        class: "menu-item#{ ' orange-color' if params[:category].present? && params[:category] == '1' }" %>
       </li>
-      <li role="menuitem">
-        <%= link_to "Private persons (#{@all_contacts.where(company: false).count})",
+      <li role="menuitem" class="box-row">
+        <%= link_to "Persons (#{@all_contacts.where(category: :person).count})",
         url_for(category: 0),
-        class: "box-row small#{ ' orange-color' if params[:category].present? && params[:category] == 'inactive' }" %>
+        class: "menu-item#{ ' orange-color' if params[:category].present? && params[:category] == '0' }" %>
       </li>
-  </ul>
-</details>
+    </ul>
+  </details>
+</div>
 
-<%= link_to "Show all", url_for, class: 'button small light blue' %>
+<%= link_to "Show all", url_for, class: 'button blue' %>

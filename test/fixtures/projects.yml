@@ -2,14 +2,16 @@
 
 one:
   label: MyString
+  reference: MyString
+  status: 1
   description: MyText
-  fee: 9.99
+  owner: one
   project_category: one
-  status: MyString
 
 two:
   label: MyString
+  reference: MyString
+  status: 1
   description: MyText
-  fee: 9.99
+  owner: two
   project_category: two
-  status: MyString

@@ -1,23 +1,29 @@
 <div class="row">
-  <div class="col-2">
-    <%= render 'sidebar' %>
-  </div>
-  <section class="col-6">
+  <div class="col">
     <header class="page-header">
-      <h1 class="page-title">Deadlines</h1>
-      <%= render 'filters' %>
+      <h1 class="title"><%= t('.title') %></h1>
+      <span class="push button-group"><%= render 'filters' %></span>
     </header>
+  </div>
+</div>
+<section class="row">
+  <aside class="col-2">
+    <%= render 'sidebar/index' %>
+  </aside>
+  <div class="col">
     <% if @deadlines.count > 0 %>
-    <ul class="box">
-      <% @dates.each do |date| %>
-      <li><%= render 'card', date: date %></li>
+    <ul class="timeline">
+      <% @deadlines_by_dates.each do |date| %>
+      <li class="timeline-date">
+        <%= render 'card', date: date %>
+      </li>
       <% end %>
     </ul>
-    <%= paginate @deadlines %>
+    PAGINATE
     <% else %>
     <div class="box">
       <%= image_tag('undraw/void.svg', class: 'void') %>
     </div>
     <% end %>
-  </section>
-</div>
+  </div>
+</section>

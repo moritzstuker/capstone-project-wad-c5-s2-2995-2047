@@ -1,188 +1,135 @@
 // Buttons
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-%button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  padding: .4em 1em;
-  overflow: visible;
-  border: $border-width solid $grey-500;
-  border-radius: $border-radius;
-  background-color: transparent;
-  box-shadow: none;
-  color: $grey-100;
-  vertical-align: middle;
-  white-space: nowrap;
-  transition: $transition;
-  transition-property: background-color, border-color;
-}
-
-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  height: auto;
-  overflow: visible;
-  border: 0;
-  background-color: transparent;
-  box-shadow: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.button,
+button,
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {
-  display: inline-flex;
-  @extend %heading;
-  @extend %button;
-  text-align: center;
-  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  height: auto;
+  overflow: visible;
+  background-color: transparent;
+  line-height: inherit;
   cursor: pointer;
+
+  &.menu-item {
+    &:active,
+    &:hover {
+      color: $text-color-highlight;
+    }
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: .2em .9em;
+  border: $border-width solid $grey-400;
+  border-radius: $border-radius;
+  background-color: $grey-800;
+  box-shadow: none;
+  color: $white;
+  font-size: $small-font-size;
+  font-weight: $bold-font-weight;
+  line-height: $base-line-height;
+  text-decoration: none !important;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: $transition;
+  transition-property: background-color, border-color;
 
   &:focus,
   &:hover {
     border-color: $grey-300;
+    outline: 0;
     background-color: $grey-600;
-    text-decoration: none !important;
-  }
-
-  &.small {
-    padding: .2em .8em;
-    text-transform: none;
-  }
-
-  &.blue,
-  &.green,
-  &.orange,
-  &.red,
-  &.yellow {
-    color: $white;
   }
 
   &.blue {
     border-color: $blue-400;
-    background-color: $blue-500;
+    background-color: $blue-700;
 
     &:active,
     &:hover {
       border-color: $blue-300;
-      background-color: $blue-400;
+      background-color: $blue-500;
     }
   }
 
   &.green {
     border-color: $green-400;
-    background-color: $green-500;
+    background-color: $green-700;
 
     &:active,
     &:hover {
       border-color: $green-300;
-      background-color: $green-400;
+      background-color: $green-500;
     }
   }
 
   &.orange {
-    border-color: $orange-300;
-    background-color: $orange-400;
+    border-color: $orange-400;
+    background-color: $orange-700;
 
     &:active,
     &:hover {
       border-color: $orange-200;
-      background-color: $orange-300;
+      background-color: $orange-500;
     }
   }
 
-  &.red {
-    border-color: $red-300;
-    background-color: $red-400;
+  &[disabled] {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
 
-    &:active,
+    &:focus,
     &:hover {
-      border-color: $red-200;
-      background-color: $red-300;
+      border-color: $text-color-highlight;
+      background-color: $text-color-highlight;
     }
   }
 
-  &.yellow {
-    border-color: $yellow-200;
-    background-color: $yellow-300;
-
-    &:active,
-    &:hover {
-      border-color: $yellow-100;
-      background-color: $yellow-200;
-    }
+  &.dropdown-trigger {
+    padding-right: 2.6rem;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="18"><path fill="%23'+str-slice(
+    inspect($white),
+    2
+    )+'" d="M0,0l6,8l6-8"/></svg>');
+    background-position: center right;
+    background-repeat: no-repeat;
   }
 
-  &.light {
-    &.blue {
-      background-color: rgba($blue-500, $light-opacity-factor);
-
-      &:active,
-      &:hover {
-        background-color: rgba($blue-400, $light-opacity-factor);
-      }
-    }
-
-    &.green {
-      background-color: rgba($green-500, $light-opacity-factor);
-
-      &:active,
-      &:hover {
-        background-color: rgba($green-400, $light-opacity-factor);
-      }
-    }
-
-    &.orange {
-      background-color: rgba($orange-400, $light-opacity-factor);
-
-      &:active,
-      &:hover {
-        background-color: rgba($orange-300, $light-opacity-factor);
-      }
-    }
-
-    &.red {
-      background-color: rgba($red-400, $light-opacity-factor);
-
-      &:active,
-      &:hover {
-        background-color: rgba($red-300, $light-opacity-factor);
-      }
-    }
-
-    &.yellow {
-      background-color: rgba($yellow-300, $light-opacity-factor);
-
-      &:active,
-      &:hover {
-        background-color: rgba($yellow-200, $light-opacity-factor);
-      }
-    }
-  }
-
-  &.outline {
-    background-color: transparent !important;
+  &::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
   }
 
   &:-moz-focusring {
-    outline: 1px dotted ButtonText
+    outline: 1px dotted ButtonText;
   }
 
-  & + & {
-    margin-left: 1em;
+  &.ghost {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    line-height: 1;
   }
 }
 
 .button-group {
-  display: flex;
+  & > * + * {
+    margin-left: .5em;
+  }
+}
+
+
+
+.buttons-merged {
+  display: inline-flex;
 
   & > .button {
     margin-left: -1px;
@@ -225,10 +172,5 @@ input[type='submit'] {
     &:active {
       z-index: 10;
     }
-  }
-
-  .button.orange {
-    z-index: 11;
-    position: relative;
   }
 }

@@ -1,52 +1,63 @@
 <div class="row">
   <div class="col">
     <header class="page-header">
-      <h1 class="page-title">
-        <%= link_to "Cases", projects_path, class: 'heading' %>
-        <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <%= build_label(@project, :label_with_parties) %>
-      </h1>
-      <%= render 'page_controls', obj: @project %>
+      <h1 class="title">Cases</h1>
+      <span class="push button-group"><%= render 'filters' %></span>
     </header>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-5">
-    <section class="box">
-      <header class="box-header">
-        <h2 class="heading">Description</h2>
-      </header>
-      <% if @project.description %>
-      <div class="box-content">
-        <p><%= @project.description %></p>
-      </div>
-      <% else %>
+<section class="row">
+  <aside class="col-2">
+    <%= render 'sidebar/index' %>
+  </aside>
+  <div class="col">
+    <% if @projects %>
+      <ul>
+        <% @projects.each do |project| %>
+        <li><%= render 'card', project: project %></li>
+        <% end %>
+      </ul>
+      <%= paginate @projects %>
+    <% else %>
+      <div class="box">
         <%= image_tag('undraw/void.svg', class: 'void') %>
-      <% end %>
-    </section>
-    <section class="box">
-      <header class="box-header">
-        <h2 class="heading">Parties</h2>
-      </header>
-      <div class="box-content">
-        <div class="row">
-          <%= render 'parties' %>
-        </div>
       </div>
-    </section>
+    <% end %>
   </div>
-  <div class="col-3">
-    <%= render 'properties' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <%= render 'deadlines' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <%= render 'timesheet' %>
-  </div>
-</div>
+</section>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @project.label %>
+</p>
+
+<p>
+  <strong>Reference:</strong>
+  <%= @project.reference %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @project.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= build_name(@project.owner) %>
+</p>
+
+<p>
+  <strong>Project category:</strong>
+  <%= @project.category.label.capitalize %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

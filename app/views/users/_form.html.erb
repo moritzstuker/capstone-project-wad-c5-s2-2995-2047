@@ -1,32 +1,60 @@
 <%= form_with(model: user, local: true) do |form| %>
-<%= render partial: 'form_errors', locals: { obj: user } %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'login',
-  label: 'Username',
-  required: true
-} %>
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'password',
-  label: 'Password',
-  type: 'password',
-  required: true
-} %>
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'avatar',
-  label: 'Avatar',
-  required: true
-} %>
-<%= render partial: 'forms/row', locals: {
-  form: form,
-  attribute: 'preferred_lang',
-  label: 'Language',
-  type: 'select',
-  options: User.distinct.pluck(:preferred_lang) { |p| [ p.preferred_lang ] }
-} %>
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :login %>
+    <%= form.text_field :login, id: :user_login %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, id: :user_first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :user_last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_digest %>
+    <%= form.text_field :password_digest, id: :user_password_digest %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= form.text_field :avatar, id: :user_avatar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :user_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :locale %>
+    <%= form.text_field :locale, id: :user_locale %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %>
+    <%= form.number_field :role, id: :user_role %>
+  </div>
+
+  <div class="field">
+    <%= form.label :default_fee %>
+    <%= form.text_field :default_fee, id: :user_default_fee %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

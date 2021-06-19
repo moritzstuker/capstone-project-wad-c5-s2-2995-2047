@@ -1,77 +1,79 @@
-<div class="row">
-  <div class="col-6 col-offset-1">
-    <header class="page-header">
-      <h1 class="page-title">
-        <%= link_to "Contacts", contacts_path, class: 'heading' %>
-        <span class="mute">&nbsp;&sol;&nbsp;</span>
-        <%= build_label(@contact, :full_name) %>
-      </h1>
-      <%= render 'page_controls', obj: @contact %>
-    </header>
-  </div>
-</div>
-<div class="row">
-  <div class="col-3 col-offset-1">
-    <section class="box">
-      <header class="box-header">
-        <h2 class="heading">Address</h2>
-      </header>
-      <div class="box-content">
-        <p><strong><%= build_label(@contact, :full_name) %></strong></p>
-        <%= simple_format(build_label(@contact, :address)) %>
-      </div>
-    </section>
-  </div>
-  <div class="col-3">
-    <section class="box">
-      <header class="box-header">
-        <h2 class="heading">Properties</h2>
-      </header>
-      <div class="box-content">
-        <p><strong>Category:</strong>&nbsp;<%= build_label(@contact, :category) %></p>
-        <p><strong>Role:</strong>&nbsp;
-          <span class="dot-label">
-            <span class="dot-icon" style="background-color: <%= @contact.role.color %>"></span>
-            <%= @contact.role.label.capitalize %>
-            <%= "(#{@contact.user.role.label})" if @contact.role.label == 'employee' %>
-          </span>
-        </p>
-        <p><strong>Phone:</strong>&nbsp;<span class="disambiguate"><%= @contact.phone %></span></p>
-        <p><strong>Email:</strong>&nbsp;<%= mail_to @contact.email %></p>
-        <% if @contact.company %>
-        <p><strong>Activity:</strong>&nbsp;<%= @contact.activity.capitalize %></p>
-        <p><strong>Company ID:</strong>&nbsp;<%= @contact.company_id %></p>
-        <p><strong>Incorporated in:</strong>&nbsp;<%= @contact.address[:country].capitalize %></p>
-        <% else %>
-        <p><strong>Birthday:</strong>&nbsp;<%= @contact.birthday %></p>
-        <p><strong>Profession:</strong>&nbsp;<%= @contact.activity.capitalize %></p>
-        <% end %>
-        <hr>
-        <p><strong>Notes:</strong></p>
-        <p><%= @contact.notes %></p>
-      </div>
-    </section>
+<p id="notice"><%= notice %></p>
 
-  </div>
-</div>
-<div class="row">
-  <div class="col-6 col-offset-1">
-    <section class="box">
-      <header class="box-header">
-        <h2 class="heading">Cases</h2>
-      </header>
-      <div class="box-content">
-        <% if @contact.projects.count > 0 %>
-        Party in the following <%= pluralize(@contact.projects.count, 'case') %>:
-        <ul>
-          <% @contact.projects.each do |project| %>
-          <li><%= link_to(build_label(project, :label_with_parties), project) %></li>
-          <% end %>
-        </ul>
-        <% else %>
-        <%= image_tag('undraw/void.svg', class: 'void') %>
-        <% end %>
-      </div>
-    </section>
-  </div>
-</div>
+<p>
+  <strong>Prefix:</strong>
+  <%= @contact.prefix %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @contact.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @contact.last_name %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @contact.activity %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @contact.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Pobox:</strong>
+  <%= @contact.pobox %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @contact.street %>
+</p>
+
+<p>
+  <strong>Streetno:</strong>
+  <%= @contact.streetno %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @contact.zip %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @contact.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @contact.country %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @contact.category %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @contact.notes %>
+</p>
+
+<p>
+  <strong>Contact role:</strong>
+  <%= @contact.role.label %>
+</p>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

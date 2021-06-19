@@ -1,54 +1,38 @@
-<div class="button-group">
-  <details>
+<div class="buttons-merged">
+  <details class="dropdown">
     <summary aria-haspopup="true">
-      <span class="button small light<%= ' orange' if params[:user].present? %>">Assigned to <%= icon_tag('triangle-down') %></span>
+      <%= simple_format('Assigned to', { class: "button dropdown-trigger#{ ' orange' if params[:user].present? }" }, wrapper_tag: 'span') %>
     </summary>
-    <ul class="box dropdown">
-      <% @users.each do |user| %>
-        <li role="menuitem">
-          <%= link_to "#{build_label(user.contact, :name)} (#{@deadlines.filter_by_user(user).count})",
-          url_for(user: user),
-          class: "box-row small#{ ' orange-color' if params[:user] == user.id.to_s }" %>
-        </li>
-      <% end %>
+    <ul class="dropdown-content">
+        <% @users.each do |user| %>
+          <% if @all_deadlines.filter_by_user(user).count > 0 %>
+            <li role="menuitem" class="box-row">
+              <%= link_to "#{ build_name(user) } (#{@all_deadlines.filter_by_user(user).count})",
+              url_for(user: user),
+              class: "menu-item#{ ' orange-color' if params[:user] == user.id.to_s }" %>
+            </li>
+          <% end %>
+        <% end %>
     </ul>
   </details>
 
-  <details>
+  <details class="dropdown">
     <summary aria-haspopup="true">
-      <span class="button small light<%= ' orange' if params[:category].present? %>">Category <%= icon_tag('triangle-down') %></span>
+      <%= simple_format('Category', { class: "button dropdown-trigger#{ ' orange' if params[:category].present? }" }, wrapper_tag: 'span') %>
     </summary>
-    <ul class="box dropdown">
-      <% @categories.each do |category| %>
-      <li role="menuitem">
-        <%= link_to "#{category.capitalize} (#{@all_deadlines.filter_by_category(category).count})",
-        url_for(category: category),
-        class: "box-row small#{ ' orange-color' if params[:category] == category }" %>
-      </li>
-      <% end %>
-    </ul>
-  </details>
-
-  <details>
-    <summary aria-haspopup="true">
-      <span class="button small light<%= ' orange' if params[:show].present? %>">Status <%= icon_tag('triangle-down') %></span>
-    </summary>
-    <ul class="box dropdown">
-      <li role="menuitem">
-        <%= link_to "Active (#{@all_deadlines.filter_by_show('active').count})",
-        url_for(show: 'active'),
-        class: "box-row small#{ ' orange-color' if params[:show].present? && params[:show] == 'active' }" %>
-      </li>
-      <li role="menuitem">
-        <%= link_to "Inactive (#{@all_deadlines.filter_by_show('inactive').count})",
-        url_for(show: 'inactive'),
-        class: "box-row small#{ ' orange-color' if params[:show].present? && params[:show] == 'inactive' }" %>
-      </li>
+    <ul class="dropdown-content">
+        <% @categories.each do |category| %>
+          <li role="menuitem" class="box-row">
+            <%= link_to "#{ i18n_enum(@all_deadlines.filter_by_category(category).first, :category).capitalize } (#{@all_deadlines.filter_by_category(category).count})",
+            url_for(category: category),
+            class: "menu-item#{ ' orange-color' if params[:category] == category }" %>
+          </li>
+        <% end %>
     </ul>
   </details>
 </div>
 
-<div class="button-group">
-  <%= link_to "Your open deadlines", url_for(user: current_user, show: 'active'), class: "button small light green" %>
-  <%= link_to "Show all", url_for(show: 'all'), class: 'button small light blue' %>
+<div class="buttons-merged">
+  <%= link_to 'Your open deadlines', url_for(user: current_user), class: 'button green' %>
+  <%= link_to 'Show all', url_for, class: 'button blue' %>
 </div>

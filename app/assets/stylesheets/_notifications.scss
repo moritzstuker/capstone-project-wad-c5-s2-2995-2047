@@ -1,0 +1,36 @@
+// Notifications
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.flash {
+  display: flex;
+  z-index: 10;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: $gutter;
+  padding: 1em;
+  border: $border-base;
+  border-radius: $border-radius;
+  color: $white;
+
+  &.alert {
+    border-color: $red-500;
+    background-color: rgba($red-400, .7);
+  }
+
+  &.notice {
+    border-color: $blue-400;
+    background-color: rgba($blue-500, .7);
+  }
+
+  .flash-close {
+    flex: 0 0 auto;
+    width: auto;
+    margin-left: auto;
+    color: inherit;
+  }
+
+  .icon {
+    fill: $white;
+  }
+}

@@ -1,0 +1,47 @@
+// Timeline
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.timeline {
+  position: relative;
+  width: 100%;
+  margin-top: $gutter;
+  margin-bottom: $gutter;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: ($border-width * 2);
+    border-radius: $border-width;
+    background-color: $border-color;
+    content: '';
+  }
+
+  &-date {
+    position: relative;
+    padding-left: ($box-padding-x / 2);
+  }
+
+  &-icon {
+    display: flex;
+    z-index: 2;
+    position: absolute;
+    left: ($box-padding-x * -.5);
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color-primary;
+    line-height: 1;
+
+    .icon {
+      width: 90%;
+    }
+  }
+
+  .box {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: $box-padding-x;
+  }
+}

@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  get    '/login',  to: 'sessions#new'
-  post   '/login',  to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/search', to: 'search#redirect'
 
-  get  '/signup', to: 'users#new'
+  scope '/:locale' do
+    root to: 'home#index'
 
-  get   '/dashboard', to: 'dashboard#index'
+    get    '/login',  to: 'sessions#new'
+    post   '/login',  to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
 
-  get   '/account', to: 'account#edit'
-  patch '/account', to: 'account#update'
+    get  '/signup', to: 'users#new'
 
-  resources :activities
-  resources :contacts
-  resources :dashboard
-  resources :deadlines
-  resources :home
-  resources :projects
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+    get   '/dashboard', to: 'dashboard#index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    get   '/account', to: 'account#edit'
+    patch '/account', to: 'account#update'
+
+    resources :contacts
+    resources :deadlines
+    resources :projects
+    resources :project_categories
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :users
+  end
 end

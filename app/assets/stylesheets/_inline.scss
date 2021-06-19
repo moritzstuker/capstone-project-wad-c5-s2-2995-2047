@@ -13,6 +13,21 @@ a,
   &:hover {
     text-decoration: underline;
   }
+
+  &.invisible {
+    color: inherit !important;
+  }
+
+  &.block-link {
+    display: block;
+    color: inherit;
+
+    &:focus,
+    &:hover {
+      background-color: $background-color-secondary;
+      text-decoration: none;
+    }
+  }
 }
 
 abbr[title] {
@@ -104,19 +119,30 @@ sup,
   }
 }
 
-.invisible-link {
-  display: inline;
-  color: inherit !important;
+.icon-text {
+  .icon {
+    margin-right: .5em;
+  }
 }
 
 .keys {
   display: inline-block;
   color: $text-color-secondary;
   font-size: $small-font-size;
+
+  & + & {
+    margin-left: $gutter;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .tag {
-  display: inline;
+  display: inline-block;
   margin-left: .5em;
   padding-right: .5em;
   padding-left: .5em;
@@ -132,60 +158,10 @@ sup,
   text-decoration-color: inherit;
 }
 
-.favorites-tag {
-  display: inline-block;
-  position: relative;
-  margin-left: auto;
-  padding-right: .5em;
-  font-size: $small-font-size;
-  white-space: nowrap;
-
-  &-text {
-    display: none;
-    position: absolute;
-    right: 0;
-    padding-right: 2em;
-    padding-left: .5em;
-    border: $border-base;
-    border-radius: 1em;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity $transition;
-    user-select: none;
-  }
-
-  &:hover {
-    .favorites-tag-text {
-      display: block;
-      opacity: 1;
-    }
-  }
-
-  .icon {
-    vertical-align: middle;
-  }
-}
-
-.page {
-  &-title {
-    display: inline-block;
-    @extend %heading;
-  }
-
-  &-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    & > * {
-      display: flex;
-      flex: 0 0 auto;
-      align-items: center;
-      margin-left: $box-padding-y;
-    }
-  }
-}
-
 .no-wrap {
   white-space: nowrap;
+}
+
+.link-color {
+  color: $text-color-highlight;
 }

@@ -1,0 +1,17 @@
+<ul role="menu" aria-label="Deadlines" class="submenu">
+  <% if Deadline.with_urgency('0', params[:query]).count > 0 %>
+  <li>
+    <%= link_to deadlines_path(urgency: '0', query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:urgency] == '0' }" do %>
+    <%= dot_label("Due immediately (#{ Deadline.with_urgency('0', params[:query]).count })", color_by_urgency('0')) %>
+    <% end %>
+  </li>
+  <% end %>
+
+  <% if Deadline.with_urgency('1', params[:query]).count > 0 %>
+  <li>
+    <%= link_to deadlines_path(urgency: '1', query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:urgency] == '1' }" do %>
+    <%= dot_label("Due soon (#{ Deadline.with_urgency('1', params[:query]).count })", color_by_urgency('1')) %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

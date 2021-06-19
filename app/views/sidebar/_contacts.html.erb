@@ -1,0 +1,14 @@
+<ul role="menu" aria-label="Contacts" class="submenu">
+  <% ContactRole.all.each do |role| %>
+    <% if Contact.with_role(role, params[:query]).count > 0 %>
+    <li>
+      <%= link_to contacts_path(role: role, query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:role] == role.to_s }" do %>
+      <span class="dot-label">
+        <span class="dot-icon" style="background-color: <%= role.color %>"></span>
+        <%= role.label.pluralize.capitalize %> (<%= Contact.with_role(role, params[:query]).count %>)
+      </span>
+      <% end %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>

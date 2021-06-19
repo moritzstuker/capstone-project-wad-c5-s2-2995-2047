@@ -7,15 +7,22 @@ ul {
   list-style: none;
 }
 
-:not(ul).box-content {
-  li {
-    position: relative;
-    padding-left: 1.2em;
+.menu {
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: ($box-padding-y / 2) $box-padding-x;
+    color: inherit;
+    font-size: $small-font-size;
+    font-weight: $medium-font-weight;
+    text-decoration: none !important;
+    white-space: nowrap;
 
-    &::before {
-      position: absolute;
-      left: 0;
-      content: '\2022';
+    &:active,
+    &:hover {
+      background-color: $background-color-secondary;
     }
   }
 }
