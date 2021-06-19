@@ -3,4 +3,4 @@ en:
     index:
       title: 'Deadlines'
     card:
-      assigned_to: 'Attribué à'
+      assigned_to: 'Assigned to'
