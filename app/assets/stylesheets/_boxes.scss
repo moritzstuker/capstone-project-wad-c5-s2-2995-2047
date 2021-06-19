@@ -5,12 +5,13 @@
   position: relative;
   width: 100%;
   margin-top: $gutter;
-  margin-bottom: $gutter;
   overflow: hidden;
   border: $border-base;
   border-radius: $border-radius;
+  background-color: $background-color-primary;
 
   &-header {
+    padding: $box-padding;
     border-bottom: $border-base;
     background-color: $background-color-secondary;
     font-weight: $medium-font-weight;
@@ -52,6 +53,25 @@
       border-color: $grey-400;
       background-color: lighten($background-color-primary, 3%);
       text-decoration: none;
+    }
+  }
+
+  &-content {
+    display: block;
+    padding: $box-padding;
+  }
+
+  &.invisible {
+    margin-bottom: 0;
+    border-color: transparent;
+
+    .box-header {
+      border: $border-base;
+      border-radius: $border-radius;
+    }
+
+    .box-content {
+      padding-top: 0;
     }
   }
 }
