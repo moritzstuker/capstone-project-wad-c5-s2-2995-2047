@@ -1,14 +1,9 @@
 // Utilities & Misc
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-.padding {
-  display: block;
-  padding: $box-padding;
-
-  &-small {
-    display: block;
-    padding: ($box-padding-y / 2) $box-padding-x;
-  }
+.space-above {
+  margin-top: 10rem; // kept for compatibility issues
+  margin-top: 10vh;
 }
 
 .push {
