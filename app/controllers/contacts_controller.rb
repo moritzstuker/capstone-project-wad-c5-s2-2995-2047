@@ -3,6 +3,7 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.filter(params.slice(:query, :role, :category, :country)).order(:name) # filters
+    @contacts = @contacts.includes([:role])
     @contacts = @contacts.page(params[:page]).per(20) # Add some pagination
 
     @all_contacts = Contact.all
@@ -49,7 +50,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
+      format.html { redirect_to contacts_url, notice: "Contact was successfully deleted." }
     end
   end
 

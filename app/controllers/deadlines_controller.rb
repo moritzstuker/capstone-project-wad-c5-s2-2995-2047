@@ -5,6 +5,7 @@ class DeadlinesController < ApplicationController
     @deadlines = Deadline.filter(params.slice(:query, :category, :urgency, :user)).order(:date, :label) # filters
     @all_deadlines = Deadline.all
 
+    @deadlines = @deadlines.includes(:project).includes(:assignee)
     @deadlines_by_dates = @deadlines.group_by(&:date).sort
     @deadlines_by_dates = Kaminari.paginate_array(@deadlines_by_dates).page(params[:page]).per(10)
 
@@ -49,7 +50,7 @@ class DeadlinesController < ApplicationController
   def destroy
     @deadline.destroy
     respond_to do |format|
-      format.html { redirect_to deadlines_url, notice: "Deadline was successfully destroyed." }
+      format.html { redirect_to deadlines_url, notice: "Deadline was successfully deleted." }
     end
   end
 
