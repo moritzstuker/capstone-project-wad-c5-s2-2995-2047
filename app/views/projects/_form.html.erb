@@ -45,11 +45,7 @@
         <%= form.text_field :reference, id: :project_reference %>
       </div>
     </div>
-    <div class="col">
-      <div class="form-field">
-        <%= form.label :assignees %>
-        <%= form.collection_select(:assignees, User.lawyers.order(role: :desc, last_name: :asc), :id, :friendly_name, { include_hidden: false }, { size: 6, multiple: true, id: :project_assignees }) %>
-      </div>
+  </div>
 
       <div class="form-field">
         <%= form.label :clients %>

@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   helper_method :can_edit?, :can_delete?
 
   def index
-    @projects = Project.filter(params.slice(:query, :assignee, :category, :status)).order(created_at: :desc) # filters
+    @projects = Project.filter(params.slice(:query, :category, :status)).order(created_at: :desc) # filters
     @all_projects = Project.all.order(created_at: :desc)
 
     @projects = @projects.includes(:category) # this is to prevent an N+1 query down the line
@@ -59,11 +59,11 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:label, :reference, :status, :description, :owner_id, :project_category_id, clients: [:id])
+      params.require(:project).permit(:label, :reference, :status, :description, :owner_id, :project_category_id, contact_ids: [])
     end
 
     def can_edit?(project = @project, user = current_user)
-      can_delete?(project, user) || project.assignees.include?(user)
+      can_delete?(project, user)
     end
 
     def can_delete?(project = @project, user = current_user)

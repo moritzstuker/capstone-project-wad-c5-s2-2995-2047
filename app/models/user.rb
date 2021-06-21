@@ -6,11 +6,9 @@ class User < ApplicationRecord
     admin: 3
   }
 
-  has_many   :owned_projects, foreign_key: :owner_id, class_name: 'Project', dependent: :destroy
+  has_many   :projects, foreign_key: :owner_id, class_name: 'Project', dependent: :destroy
   has_many   :activities
   has_many   :deadlines
-  has_many   :assignments, dependent: :destroy
-  has_many   :projects, through: :assignments
 
   validates :login, presence: true, length: { in: 2..50 }, uniqueness: { case_sensitive: false }
   validates :first_name, presence: true, length: { in: 2..50 }

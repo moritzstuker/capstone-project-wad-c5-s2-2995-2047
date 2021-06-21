@@ -1,23 +1,6 @@
 <div class="buttons-merged">
   <details class="dropdown">
     <summary aria-haspopup="true">
-      <%= simple_format('Assigned to', { class: "button dropdown-trigger#{ ' orange' if params[:assignee].present? }" }, wrapper_tag: 'span') %>
-    </summary>
-    <ul class="dropdown-content">
-      <% @users.each do |user| %>
-        <% if @all_projects.filter_by_assignee(user).count > 0 %>
-        <li role="menuitem" class="box-row">
-          <%= link_to "#{ build_name(user) } (#{ @all_projects.filter_by_assignee(user).count })",
-          url_for(assignee: user),
-          class: "menu-item#{ ' orange-color' if params[:assignee] == user.id.to_s }" %>
-        </li>
-        <% end %>
-      <% end %>
-    </ul>
-  </details>
-
-  <details class="dropdown">
-    <summary aria-haspopup="true">
       <%= simple_format('Status', { class: "button dropdown-trigger#{ ' orange' if params[:status].present? }" }, wrapper_tag: 'span') %>
     </summary>
     <ul class="dropdown-content">

@@ -13,7 +13,7 @@ AVATARS = Dir.glob("#{Rails.root}/app/assets/images/fallback_avatars/*.jpg").shu
 
 def build_activity
   project = Project.all.sample
-  activity_user = project.assignees.sample
+  activity_user = User.lawyers.sample
   Activity.create!(
     label:     Faker::Company.bs.capitalize,
     category:  Activity::CATEGORIES.sample,
@@ -36,8 +36,7 @@ def build_case()
     clients:     Contact.clients.sample(rand(1...3)),
     adversaries: Contact.adversaries.sample(rand(0...5)),
     reference:   [ref_no.to_s, nil].sample,
-    owner:       User.partners.sample,
-    assignees:   User.lawyers.sample(rand(1...3))
+    owner:       User.partners.sample
   )
 end
 
@@ -70,15 +69,13 @@ def build_contact_role(arr)
 end
 
 def build_deadline
-  project = Project.all.sample
-  assignee = project.assignees
   Deadline.create!(
     label:        Faker::Company.bs.capitalize,
     category:     Deadline::CATEGORIES.sample,
     date:         Faker::Date.forward(days: 120),
     completed_at: [Faker::Time.backward(days: 14), nil][weighted_random(0.8)],
-    project:      project,
-    assignee:     assignee.sample
+    project:      Project.all.sample,
+    assignee:     User.lawyers.sample
   )
 end
 

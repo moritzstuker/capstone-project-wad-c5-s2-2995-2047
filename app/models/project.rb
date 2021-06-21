@@ -10,8 +10,7 @@ class Project < ApplicationRecord
   belongs_to :owner, class_name: 'User'
   has_many   :activities, dependent: :destroy
   has_many   :deadlines, dependent: :destroy
-  has_many   :assignments, dependent: :destroy
-  has_many   :assignees, through: :assignments, source: :user
+  has_and_belongs_to_many :contacts
   has_and_belongs_to_many :adversaries, -> { adversaries }, class_name: 'Contact'
   has_and_belongs_to_many :clients,     -> { clients },     class_name: 'Contact'
 
@@ -24,7 +23,6 @@ class Project < ApplicationRecord
   scope :search_in_label,     -> (str) { where('label LIKE ?', "%#{str}%") }
   scope :search_in_reference, -> (str) { where('reference LIKE ?', "%#{str}%") }
 
-  scope :filter_by_assignee, -> (str) { includes(:assignments).where("projects.owner_id = ? OR assignments.user_id = ?", str, str).references(:assignments).distinct } # Went for SQL because: https://stackoverflow.com/questions/40742078/relation-passed-to-or-must-be-structurally-compatible-incompatible-values-r/40742611#comment-68712244
   scope :filter_by_category, -> (str) { where(category: str).distinct }
   scope :filter_by_status,   -> (str) { where(status: str).distinct }
   scope :filter_by_query,    -> (str) { search_in_label(str).or(search_in_reference(str)) }
