@@ -68,7 +68,7 @@
 
 <div class="field">
   <%= form.label :category %>
-  <%= form.number_field :category, id: :contact_category %>
+  <%= form.collection_radio_buttons :category, Contact.categories.keys.map { |category| [category.capitalize, category] }, :second, :first %>
 </div>
 
 <div class="field">
@@ -77,8 +77,8 @@
 </div>
 
 <div class="field">
-  <%= form.label :role_id %>
-  <%= form.text_field :role_id, id: :contact_role_id %>
+  <%= form.label :contact_role_id %>
+  <%= form.collection_radio_buttons :contact_role_id, ContactRole.all.order(:label), :id, :friendly_name %>
 </div>
 
 <div class="actions">
