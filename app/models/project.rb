@@ -14,11 +14,10 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :adversaries, -> { adversaries }, class_name: 'Contact'
   has_and_belongs_to_many :clients,     -> { clients },     class_name: 'Contact'
 
-  accepts_nested_attributes_for :deadlines
-
   validates :label, presence: true, length: { in: 2..50 }
   validates :reference, presence: false, length: { maximum: 50 }
   validates :owner, presence: true
+  validates :clients, presence: true
 
   scope :search_in_label,     -> (str) { where('label LIKE ?', "%#{str}%") }
   scope :search_in_reference, -> (str) { where('reference LIKE ?', "%#{str}%") }
