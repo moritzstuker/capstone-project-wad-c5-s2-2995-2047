@@ -35,7 +35,7 @@ module ContactsHelper
       street:     street,
       city:       city,
       country:    country,
-      phone:      person['phone'].present? ? person['phone'].strip : nil,
+      phone:      person['phone'].present? ? person['phone'] : nil,
       import_uid: uid
     }
   end
