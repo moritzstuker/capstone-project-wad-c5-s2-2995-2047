@@ -9,7 +9,7 @@
   </div>
   <div class="box-content">
     <% if person['street'] %>
-      <%= simple_format(tel_search_address(person)) %>
+      <%= simple_format(tel_search_content(person)) %>
     <% else %>
       <%= person['content'].remove(person['title']).strip %>
     <% end %>
@@ -20,7 +20,15 @@
         <%= simple_format(person['copyright'], {}, wrapper_tag: "span") if person['copyright'] %>
         &nbsp;|&nbsp;
       <% end %>
-      <%= link_to 'View source', tel_search_link(person), target: "_blank" %></span>
-      <%= link_to 'Import', tel_search_link(person), class: 'button small green' %>
+      <%= link_to 'View source', tel_search_link(person), target: "_blank" %>
+    </span>
+
+    <%= form_with(model: @contact, local: false) do |form| %>
+      <% tel_search_data(person).each do |k, v| %>
+        <%= form.hidden_field k, value: v %>
+      <% end %>
+      <%= form.collection_radio_buttons :contact_role_id, ContactRole.all.order(:label), :id, :friendly_name %>
+      <%= button_tag 'Import', class: 'button small green', type: 'submit' %>
+    <% end %>
   </div>
 </div>

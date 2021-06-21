@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def redirect
-    puts request.inspect
     unless params[:query].blank?
       case params[:search_in]
       when 'projects' then redirect_to projects_path(query: params[:query]) and return
