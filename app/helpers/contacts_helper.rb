@@ -23,6 +23,8 @@ module ContactsHelper
   def tel_search_data(person)
     category = (person['type'].present? && person['type'].strip == 'Organisation') ? :company : :person
     name = "#{ person['firstname'].strip if person['firstname'].present? } #{ person['name'].strip if person['name'].present? }".strip
+    street = "#{ person['street'].strip if person['street'].present? } #{ person['streetno'].strip if person['streetno'].present? }"
+    city = "#{ person['zip'].strip if person['zip'].present? } #{ person['city'].strip if person['city'].present? }".strip
     country = (person['country'].present? && person['country'].strip == 'ch') ? 'Switzerland' : nil
     uid = "tel_search:#{person['id'].last}"
 
@@ -30,10 +32,8 @@ module ContactsHelper
       category:   category,
       name:       name,
       activity:   person['occupation'].present? ? person['occupation'].strip.capitalize : nil,
-      street:     person['street'].present? ? person['street'].strip : nil,
-      streetno:   person['streetno'].present? ? person['streetno'].strip : nil,
-      zip:        person['zip'].present? ? person['zip'].strip : nil,
-      city:       person['city'].present? ? person['city'].strip : nil,
+      street:     street,
+      city:       city,
       country:    country,
       phone:      person['phone'].present? ? person['phone'].strip : nil,
       import_uid: uid

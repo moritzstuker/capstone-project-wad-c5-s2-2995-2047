@@ -60,7 +60,7 @@ class ContactsController < ApplicationController
     end
 
     def contact_params
-      params.require(:contact).permit(:prefix, :name, :activity, :phone, :email, :pobox, :street, :streetno, :zip, :city, :country, :category, :notes, :contact_role_id)
+      params.require(:contact).permit(:name, :activity, :phone, :email, :pobox, :street, :city, :country, :category, :notes, :contact_role_id)
     end
 
     def query_tel_search(query)

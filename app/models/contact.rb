@@ -10,15 +10,12 @@ class Contact < ApplicationRecord
   belongs_to              :role, class_name: 'ContactRole', foreign_key: 'contact_role_id'
   has_and_belongs_to_many :projects
 
-  # validates :prefix, length: { maximum: 5 }
   # validates :name, presence: true, length: { in: 2..100 }
   # validates :activity, presence: false, length: { in: 2..50 }
   # validates :phone, presence: false, length: { in: 2..20 }
   # validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
   # validates :pobox, presence: false, length: { maximum: 50 }
   # validates :street, presence: false, length: { in: 2..50 }
-  # validates :streetno, presence: false, length: { maximum: 10 }
-  # validates :zip, presence: false, length: { in: 2..10 }
   # validates :city, presence: false, length: { in: 2..50 }
   # validates :country, presence: true
   # validates :category, presence: true
@@ -31,7 +28,6 @@ class Contact < ApplicationRecord
 
   scope :search_in_name,    -> (str) { where('name LIKE ?', "%#{str}%") }
   scope :search_in_street,  -> (str) { where('street LIKE ?', "%#{str}%") }
-  scope :search_in_zip,     -> (str) { where('zip LIKE ?', "%#{str}%") }
   scope :search_in_city,    -> (str) { where('city LIKE ?', "%#{str}%") }
   scope :search_in_country, -> (str) { where('country LIKE ?', "%#{str}%") }
 
@@ -41,7 +37,6 @@ class Contact < ApplicationRecord
   scope :filter_by_query,    -> (str) {
     search_in_name(str)
     .or(search_in_street(str))
-    .or(search_in_zip(str))
     .or(search_in_city(str))
     .or(search_in_country(str))
   }

@@ -49,7 +49,7 @@ def build_contact()
     email:      Faker::Internet.unique.email,
     pobox:      [nil, Faker::Address.mail_box][weighted_random(0.1)],
     street:     "#{ Faker::Address.street_name } #{ [nil, Faker::Address.building_number][weighted_random()] }",
-    zip:        "#{ Faker::Address.zip_code } #{ Faker::Address.city }",
+    city:        "#{ Faker::Address.zip_code } #{ Faker::Address.city }",
     country:    ["Switzerland", Faker::Address.country][weighted_random()],
     category:   company ? 1 : 0,
     notes:      [nil, Faker::Hipster.sentence][weighted_random()],
