@@ -1,1 +1,13 @@
-console.log('test');
+document.body.addEventListener("ajax:success", (event) => {
+  let buttonCasing = event.target.parentNode;
+
+  let button = document.createElement("button");
+  button.innerText = "Already imported";
+  button.type = "button";
+  button.name = "button";
+  button.setAttribute("class", "button")
+  button.setAttribute("disabled", "disabled")
+
+  buttonCasing.innerHTML = ''
+  buttonCasing.appendChild(button);
+});

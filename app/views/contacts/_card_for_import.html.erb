@@ -1,7 +1,7 @@
 <div class="box" id="<%= person['id'].last %>">
   <div class="box-header">
     <% if person['name'] %>
-      <%= "#{ person['name'] }#{ ', ' + person['firstname'] if person['type'] == 'Person' }" %>
+      <%= [person['firstname'], person['name']].reject(&:blank?).join(' ') %>
       <span class="tag"><%= person['type'] == 'Organisation' ? 'Company' : 'Private person' %></span>
     <% else %>
       <%= person['title'] %>
@@ -23,12 +23,18 @@
       <%= link_to 'View source', tel_search_link(person), target: "_blank" %>
     </span>
 
-    <%= form_with(model: @contact, local: false) do |form| %>
-      <% tel_search_data(person).each do |k, v| %>
-        <%= form.hidden_field k, value: v %>
+    <div class="import-form">
+      <% if Contact.find_by_import_uid("#{person['id'].last}") %>
+        <%= button_tag 'Already imported', class: 'button', disabled: true %>
+      <% else %>
+        <%= form_with(model: @contact, local: false) do |form| %>
+          <% tel_search_data(person).each do |k, v| %>
+            <%= form.hidden_field k, value: v %>
+          <% end %>
+          <%= form.collection_radio_buttons :contact_role_id, ContactRole.all.order(:label), :id, :friendly_name %>
+          <%= button_tag 'Import', class: 'button green', type: 'submit' %>
+        <% end %>
       <% end %>
-      <%= form.collection_radio_buttons :contact_role_id, ContactRole.all.order(:label), :id, :friendly_name %>
-      <%= button_tag 'Import', class: 'button small green', type: 'submit' %>
-    <% end %>
+    </div>
   </div>
 </div>
