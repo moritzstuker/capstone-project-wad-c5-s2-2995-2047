@@ -20,6 +20,7 @@ class Contact < ApplicationRecord
   # validates :country, presence: true
   # validates :category, presence: true
   # validates :role, presence: true
+  # validates :import_uid, uniqueness: true
 
   scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles) }
   scope :clients,     ->       { get_role('client') }

@@ -26,7 +26,7 @@ module ContactsHelper
     street = "#{ person['street'].strip if person['street'].present? } #{ person['streetno'].strip if person['streetno'].present? }"
     city = "#{ person['zip'].strip if person['zip'].present? } #{ person['city'].strip if person['city'].present? }".strip
     country = (person['country'].present? && person['country'].strip == 'ch') ? 'Switzerland' : nil
-    uid = "tel_search:#{person['id'].last}"
+    uid = "#{person['id'].last}"
 
     return {
       category:   category,
