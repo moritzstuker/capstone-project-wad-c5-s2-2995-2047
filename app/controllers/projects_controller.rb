@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     @projects = Project.filter(params.slice(:query, :category, :status)).order(created_at: :desc) # filters
     @all_projects = Project.all.order(created_at: :desc)
 
-    @projects = @projects.includes(:category) # this is to prevent an N+1 query down the line
+    @projects = @projects.includes(:category, :owner) # this is to prevent an N+1 query down the line
     @projects = @projects.page(params[:page]).per(10) # Finally, add some pagination
 
     @users = User.order(role: :desc, last_name: :asc)

@@ -43,17 +43,13 @@ end
 def build_contact()
   company = [true, false][weighted_random()];
   Contact.create!(
-    prefix:     company ? nil : ["M.", "Mme"].sample,
-    first_name: company ? nil : Faker::Name.first_name,
-    last_name:  company ? Faker::Company.name : Faker::Name.last_name,
+    name:       company ? Faker::Company.name : "#{ Faker::Name.first_name } #{ Faker::Name.last_name }",
     activity:   company ? Faker::Company.industry : Faker::Company.profession.capitalize,
     phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,
     pobox:      [nil, Faker::Address.mail_box][weighted_random(0.1)],
-    street:     Faker::Address.street_name,
-    streetno:   [nil, Faker::Address.building_number][weighted_random()],
-    zip:        Faker::Address.zip_code,
-    city:       Faker::Address.city,
+    street:     "#{ Faker::Address.street_name } #{ [nil, Faker::Address.building_number][weighted_random()] }",
+    zip:        "#{ Faker::Address.zip_code } #{ Faker::Address.city }",
     country:    ["Switzerland", Faker::Address.country][weighted_random()],
     category:   company ? 1 : 0,
     notes:      [nil, Faker::Hipster.sentence][weighted_random()],
@@ -89,8 +85,7 @@ end
 def build_user(role = nil)
   user = User.create!(
     login:       role.nil? ? Faker::Internet.username : "#{role[0]}@test.dev",
-    first_name:  Faker::Name.first_name,
-    last_name:   Faker::Name.last_name,
+    name:        "#{ Faker::Name.first_name } #{ Faker::Name.last_name }",
     email:       Faker::Internet.unique.email,
     password:    "password",
     avatar:      "fallback_avatars/#{AVATARS[rand(1...10)].split('/').last}",

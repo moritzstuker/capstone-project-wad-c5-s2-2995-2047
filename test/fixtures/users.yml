@@ -2,8 +2,7 @@
 
 one:
   login: MyString
-  first_name: MyString
-  last_name: MyString
+  name: MyString
   password_digest: MyString
   avatar: MyString
   email: MyString
@@ -13,8 +12,7 @@ one:
 
 two:
   login: MyString
-  first_name: MyString
-  last_name: MyString
+  name: MyString
   password_digest: MyString
   avatar: MyString
   email: MyString

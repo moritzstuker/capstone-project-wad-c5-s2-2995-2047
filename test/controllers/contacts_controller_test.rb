@@ -17,7 +17,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create contact" do
     assert_difference('Contact.count') do
-      post contacts_url, params: { contact: { activity: @contact.activity, category: @contact.category, city: @contact.city, contact_role_id: @contact.contact_role_id, country: @contact.country, email: @contact.email, first_name: @contact.first_name, last_name: @contact.last_name, notes: @contact.notes, phone: @contact.phone, pobox: @contact.pobox, prefix: @contact.prefix, street: @contact.street, streetno: @contact.streetno, zip: @contact.zip } }
+      post contacts_url, params: { contact: { activity: @contact.activity, category: @contact.category, city: @contact.city, contact_role_id: @contact.contact_role_id, country: @contact.country, email: @contact.email, name: @contact.name, notes: @contact.notes, phone: @contact.phone, pobox: @contact.pobox, prefix: @contact.prefix, street: @contact.street, streetno: @contact.streetno, zip: @contact.zip } }
     end
 
     assert_redirected_to contact_url(Contact.last)
@@ -34,7 +34,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update contact" do
-    patch contact_url(@contact), params: { contact: { activity: @contact.activity, category: @contact.category, city: @contact.city, contact_role_id: @contact.contact_role_id, country: @contact.country, email: @contact.email, first_name: @contact.first_name, last_name: @contact.last_name, notes: @contact.notes, phone: @contact.phone, pobox: @contact.pobox, prefix: @contact.prefix, street: @contact.street, streetno: @contact.streetno, zip: @contact.zip } }
+    patch contact_url(@contact), params: { contact: { activity: @contact.activity, category: @contact.category, city: @contact.city, contact_role_id: @contact.contact_role_id, country: @contact.country, email: @contact.email, name: @contact.name, notes: @contact.notes, phone: @contact.phone, pobox: @contact.pobox, prefix: @contact.prefix, street: @contact.street, streetno: @contact.streetno, zip: @contact.zip } }
     assert_redirected_to contact_url(@contact)
   end
 

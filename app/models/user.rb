@@ -11,8 +11,7 @@ class User < ApplicationRecord
   has_many   :deadlines
 
   validates :login, presence: true, length: { in: 2..50 }, uniqueness: { case_sensitive: false }
-  validates :first_name, presence: true, length: { in: 2..50 }
-  validates :last_name, presence: true, length: { in: 2..50 }
+  validates :name, presence: true, length: { in: 2..100 }
   validates :password_digest, presence: true, length: { minimum: 6 }
   validates :email, presence: true, length: { in: 2..75 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
   validates :locale, inclusion: { in: proc { I18n.available_locales.map(&:to_s) } }
@@ -30,7 +29,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def friendly_name
-    "#{ first_name } #{ last_name } (#{ role.capitalize })"
+    "#{ name } (#{ role.capitalize })"
   end
 
   private

@@ -2,8 +2,7 @@
 
 one:
   prefix: MyString
-  first_name: MyString
-  last_name: MyString
+  name: MyString
   activity: MyString
   phone: MyString
   email: MyString
@@ -19,8 +18,7 @@ one:
 
 two:
   prefix: MyString
-  first_name: MyString
-  last_name: MyString
+  name: MyString
   activity: MyString
   phone: MyString
   email: MyString

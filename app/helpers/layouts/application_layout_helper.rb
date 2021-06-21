@@ -17,7 +17,7 @@ module Layouts
 
     def avatar_tag_for(user = current_user, str = nil)
       classes = "avatar icon #{ str }"
-      img = image_tag(user.avatar, { class: classes, alt: build_name(user) })
+      img = image_tag(user.avatar, { class: classes, alt: user.name })
       simple_format(img, { class: 'user-avatar' }, wrapper_tag: 'span')
     end
 

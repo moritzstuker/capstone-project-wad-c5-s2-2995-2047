@@ -34,20 +34,17 @@ ActiveRecord::Schema.define(version: 20210613055616) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "prefix"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
     t.string "activity"
     t.string "phone"
     t.string "email"
     t.string "pobox"
     t.string "street"
-    t.string "streetno"
-    t.string "zip"
     t.string "city"
     t.string "country"
     t.integer "category"
     t.text "notes"
+    t.string "import_uid"
     t.integer "contact_role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -94,8 +91,7 @@ ActiveRecord::Schema.define(version: 20210613055616) do
 
   create_table "users", force: :cascade do |t|
     t.string "login"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
     t.string "password_digest"
     t.string "avatar"
     t.string "email"

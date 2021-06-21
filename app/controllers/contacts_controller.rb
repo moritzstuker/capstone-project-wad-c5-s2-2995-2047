@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
 
   def index
-    @contacts = Contact.filter(params.slice(:query, :role, :category, :country)).order(:last_name, :first_name) # filters
+    @contacts = Contact.filter(params.slice(:query, :role, :category, :country)).order(:name) # filters
     @contacts = @contacts.page(params[:page]).per(20) # Add some pagination
 
     @all_contacts = Contact.all
@@ -56,6 +56,6 @@ class ContactsController < ApplicationController
     end
 
     def contact_params
-      #params.require(:contact).permit(:prefix, :first_name, :last_name, :activity, :phone, :email, :pobox, :street, :streetno, :zip, :city, :country, :category, :notes, :contact_role_id)
+      params.require(:contact).permit(:prefix, :name, :activity, :phone, :email, :pobox, :street, :streetno, :zip, :city, :country, :category, :notes, :contact_role_id)
     end
 end
