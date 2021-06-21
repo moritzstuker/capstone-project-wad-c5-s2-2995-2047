@@ -6,4 +6,8 @@ class ContactRole < ApplicationRecord
   }
 
   has_many :contacts
+
+  def friendly_name
+    "#{ label.capitalize }"
+  end
 end
