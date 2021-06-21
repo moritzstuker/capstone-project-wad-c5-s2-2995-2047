@@ -16,6 +16,6 @@
     <% if project.activities.count > 0 && project.status == 'active' %>
       <span class="keys">Last activity <%= time_ago_in_words(project.activities.last.date) %> ago.</span>
     <% end %>
-    <span class="keys"><%= avatar_tag_for(project.owner) %><%= (build_name(project.owner)) %></span>
+    <span class="keys"><%= avatar_tag_for(project.owner) %><%= (project.owner.name) %></span>
   </footer>
 <% end %>

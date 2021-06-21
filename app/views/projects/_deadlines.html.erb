@@ -18,7 +18,7 @@
           </div>
           <div class="card-footer">
             <span class="icon-text small">
-              <%= icon_tag('people') %><%= t('deadlines.card.assigned_to') %> <%= avatar_tag_for(deadline.assignee) %><%= (build_name(deadline.assignee)) %>
+              <%= icon_tag('people') %><%= t('deadlines.card.assigned_to') %> <%= avatar_tag_for(deadline.assignee) %><%= (deadline.assignee.name) %>
             </span>
           </div>
         </div>

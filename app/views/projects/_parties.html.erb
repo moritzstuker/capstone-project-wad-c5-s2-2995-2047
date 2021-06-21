@@ -3,7 +3,7 @@
   <h3 class="heading">Clients</h3>
   <ul>
     <% @project.clients.each do |client| %>
-    <li><%= link_to build_name(client), client %></li>
+    <li><%= link_to client.name, client %></li>
     <% end %>
   </ul>
 </div>
@@ -14,7 +14,7 @@
   <h3 class="heading">Adversaries</h3>
   <ul>
     <% @project.adversaries.each do |adversary| %>
-    <li><%= link_to build_name(adversary), adversary %></li>
+    <li><%= link_to adversary.name, adversary %></li>
     <% end %>
   </ul>
 </div>

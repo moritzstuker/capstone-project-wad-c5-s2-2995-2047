@@ -94,7 +94,7 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= build_name(@project.owner) %>
+  <%= @project.owner.name %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %>

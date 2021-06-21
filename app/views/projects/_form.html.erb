@@ -9,7 +9,7 @@
 
     <div class="form-field">
       <%= form.label :owner_id %>*
-      <%= form.select :owner_id, User.lawyers.order(role: :desc, last_name: :asc).collect { |user| ["#{ build_name(user) } (#{ user.role.capitalize })", user.id] }, required: true, id: :project_owner_id %>
+      <%= form.select :owner_id, User.lawyers.order(role: :desc, last_name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, required: true, id: :project_owner_id %>
     </div>
 
     <div class="form-field">

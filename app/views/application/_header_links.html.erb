@@ -19,7 +19,7 @@
     </span>
   </summary>
   <ul class="dropdown-content">
-    <li role="menuitem" class="box-row"><span class="menu-header">Signed in as<br /><strong><%= build_name %></strong></span></li>
+    <li role="menuitem" class="box-row"><span class="menu-header">Signed in as<br /><strong><%= current_user.name %></strong></span></li>
     <li role="menuitem" class="box-row"><%= link_to "Dashboard", dashboard_path, class: 'menu-item' %></li>
     <li role="menuitem" class="box-row"><%= link_to "Account", account_path, class: 'menu-item' %></li>
     <% if is_admin? || is_partner? %>

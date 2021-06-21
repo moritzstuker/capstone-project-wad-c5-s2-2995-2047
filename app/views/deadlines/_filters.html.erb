@@ -7,7 +7,7 @@
         <% @users.each do |user| %>
           <% if @all_deadlines.filter_by_user(user).count > 0 %>
             <li role="menuitem" class="box-row">
-              <%= link_to "#{ build_name(user) } (#{@all_deadlines.filter_by_user(user).count})",
+              <%= link_to "#{ user.name } (#{@all_deadlines.filter_by_user(user).count})",
               url_for(user: user),
               class: "menu-item#{ ' orange-color' if params[:user] == user.id.to_s }" %>
             </li>
