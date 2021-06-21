@@ -34,7 +34,6 @@ textarea {
   line-height: $base-line-height;
   text-decoration: none !important;
   text-transform: none;
-  white-space: nowrap;
   transition: $transition;
   transition-property: background-color, border-color;
 
@@ -49,10 +48,20 @@ textarea {
 }
 
 select {
+  -webkit-appearance: none;
+-moz-appearance: none;
+  padding-right: 2.6rem;
+  padding-left: 0.25em;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="18"><path fill="%23'+str-slice(
+  inspect($white),
+  2
+  )+'" d="M0,0l6,8l6-8"/></svg>');
+  background-position: center right;
+  background-repeat: no-repeat;
   font-weight: $base-font-weight;
 
   &::-ms-expand {
-    display: none;
+      display: none;
   }
 }
 
@@ -64,7 +73,8 @@ textarea {
 label,
 legend {
   box-sizing: border-box;
-  display: block;
+  display: inline-block;
+  width: auto;
   max-width: 100%;
   color: inherit;
   white-space: normal
@@ -125,6 +135,44 @@ input[type='date'] {
   }
 
   &-action {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
     margin-top: $box-padding-x;
+  }
+}
+
+.checkboxes {
+  height: 100%;
+  max-height: 20rem;
+  padding: ($box-padding-y / 2) $box-padding-x;
+  overflow-y: scroll;
+
+  &-wrapper {
+    border: $border-width solid $grey-400;
+    border-radius: $border-radius;
+    background-color: $background-color-secondary;
+  }
+
+  label {
+    display: block;
+    color: $white;
+  }
+
+  input {
+    margin-right: .5em;
+  }
+}
+
+.vertical-flex {
+  display: flex;
+  flex-direction: column;
+
+  .flex-item {
+    flex: 1 0 50%;
+
+    & + .flex-item {
+      margin-top: 1em;
+    }
   }
 }
