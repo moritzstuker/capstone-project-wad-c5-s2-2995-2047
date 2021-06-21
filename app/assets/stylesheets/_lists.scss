@@ -4,7 +4,10 @@
 dl,
 ol,
 ul {
-  list-style: none;
+  padding-left: $box-padding-x;
+}
+
+li {
 }
 
 .menu {
