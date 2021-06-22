@@ -11,22 +11,3 @@
   <%= link_to 'Back', contacts_path %>
   <%= form.submit 'Search', class: 'button small blue' %>
 </div>
-<% end %>
-
-<% if @results %>
-  <% if @results[:total] > 25 %>
-    <p>Results limited to the first <%= @results[:total] %>; please be more specific.</p>
-  <% end %>
-  <p>Found <%= pluralize(@results[:total], 'result') %> for '<%= params[:find] %>'</p>
-  <ul class="row">
-    <% @results[:items].each do |person| %>
-    <li class="col-4">
-      <%= render 'card_for_import', person: person %>
-    </li>
-    <% end %>
-  </ul>
-<% else %>
-  <%= image_tag('undraw/void.svg', class: 'void') %>
-<% end %>
-
-<%= render 'form', contact: @contact %>
