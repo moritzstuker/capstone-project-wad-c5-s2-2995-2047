@@ -49,7 +49,7 @@ class Contact < ApplicationRecord
   end
 
   def friendly_name
-    "#{ name }"
+    "#{ name } (#{ city })"
   end
 
   private
