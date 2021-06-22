@@ -1,60 +1,63 @@
-<%= form_with(model: project, local: true, class: 'box') do |form| %>
+<%= form_with(model: project, local: true) do |form| %>
 <%= render 'form_errors', obj: project %>
 <div class="row">
   <div class="col">
-    <div class="form-field">
-      <%= form.label :label %>*
-      <%= form.text_field :label, required: true, id: :project_label %>
-    </div>
+    <div class="box">
+      <div class="box-header">
+        Case properties
+      </div>
+      <div class="form-field">
+        <%= form.label :label, 'Label*' %>
+        <%= form.text_field :label, required: true, id: :project_label %>
+      </div>
 
-    <div class="form-field">
-      <%= form.label :owner_id %>*
-      <%= form.select :owner_id, User.lawyers.order(role: :desc, last_name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, required: true, id: :project_owner_id %>
-    </div>
+      <div class="form-field">
+        <%= form.label :owner_id, 'Case owner*' %>
+        <%= form.select :owner_id, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, required: true, id: :project_owner_id %>
+      </div>
 
-    <div class="form-field">
-      <%= form.label :description %>
-      <%= form.text_area :description, id: :project_description %>
-    </div>
+      <div class="form-field">
+        <%= form.label :description %>
+        <%= form.text_area :description, rows: 5, id: :project_description %>
+      </div>
 
-    <div class="form-field">
-      <%= form.label :project_category_id %>*
-      <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, required: true, id: :project_project_category_id) %>
-      <%= link_to 'Click to add category', new_project_category_path %>
-    </div>
+      <div class="form-field">
+        <%= form.label :project_category_id, 'Category*' %>
+        <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, required: true, id: :project_project_category_id) %>
+        <%= link_to 'Click to add category', new_project_category_path %>
+      </div>
 
-    <div class="form-field">
-      <%= form.label :status %>
-      <%= form.select :status, Project.statuses.keys.map { |status| [status.capitalize, status] }, id: :project_status %>
-    </div>
+      <div class="form-field">
+        <%= form.label :status %>
+        <%= form.select :status, options_for_select(Project.statuses.keys.map { |status| [status.capitalize, status] }, :active), id: :project_status %>
+      </div>
 
-    <div class="form-field">
-      <%= form.label :reference %>
-      <%= form.text_field :reference, id: :project_reference %>
+      <div class="form-field">
+        <%= form.label :reference %>
+        <%= form.text_field :reference, id: :project_reference %>
+      </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="form-field vertical-flex">
-      <div class="flex-item">
-        <%= form.label :contact_ids, 'Clients*' %>
-        <div class="checkboxes-wrapper">
-          <div class="checkboxes">
-            <%= form.collection_check_boxes(:contact_ids, Contact.clients.order(:name), :id, :friendly_name, { checked: @project.clients.map(&:to_param), include_hidden: false }) do |b| %>
-            <%= b.label(class: "check_box") { b.check_box(class: "check_box") + b.text.strip } %>
-            <% end %>
-          </div>
-        </div>
+    <div class="box">
+      <div class="box-header">
+        Clients
       </div>
-      <div class="flex-item">
-        <%= form.label :contact_ids, 'Adversaries' %>
-        <div class="checkboxes-wrapper">
-          <div class="checkboxes">
-            <%= form.collection_check_boxes(:contact_ids, Contact.adversaries.order(:name), :id, :friendly_name, { checked: @project.adversaries.map(&:to_param), include_hidden: false }) do |b| %>
-            <%= b.label(class: "check_box") { b.check_box(class: "check_box") + b.text.strip } %>
-            <% end %>
-          </div>
-        </div>
+      <div class="checkbox-list">
+        <%= form.collection_check_boxes(:contact_ids, Contact.clients.order(:name), :id, :friendly_name, { checked: project.clients.map(&:to_param), include_hidden: false }) do |b| %>
+        <%= b.label(class: "checkbox-label") { b.check_box + sanitize("<span class='checkbox-input'></span>") + b.text.strip } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-header">
+        Adversaries
+      </div>
+      <div class="checkbox-list">
+        <%= form.collection_check_boxes(:contact_ids, Contact.adversaries.order(:name), :id, :friendly_name, { checked: project.adversaries.map(&:to_param), include_hidden: false }) do |b| %>
+        <%= b.label(class: "checkbox-label") { b.check_box(class: "checkbox-input") + b.text.strip } %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -62,12 +65,14 @@
 
 <div class="row">
   <div class="col">
-    <div class="form-action">
-      <span class="mute small">* Required fields.</span>
-      <span class="push button-group">
-        <%= link_to 'Retour', @project, class: 'button outline' %>
-        <%= form.submit 'Créer projet', class: 'button blue push' %>
-      </span>
+    <div class="box">
+      <div class="form-action">
+        <span class="mute small">* Required fields.</span>
+        <span class="push button-group">
+          <%= link_to 'Retour', project, class: 'button outline' %>
+          <%= form.submit 'Créer projet', class: 'button blue push' %>
+        </span>
+      </div>
     </div>
   </div>
 </div>
