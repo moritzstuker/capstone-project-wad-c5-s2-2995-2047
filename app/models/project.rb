@@ -2,8 +2,8 @@ class Project < ApplicationRecord
   include Filtering
 
   enum status: {
-    inactive: 0,
-    active: 1
+    active: 1,
+    inactive: 0
   }
 
   belongs_to :category, class_name: 'ProjectCategory', foreign_key: "project_category_id", optional: true
@@ -17,7 +17,6 @@ class Project < ApplicationRecord
   validates :label, presence: true, length: { in: 2..50 }
   validates :reference, presence: false, length: { maximum: 50 }
   validates :owner, presence: true
-  validates :clients, presence: true
 
   scope :search_in_label,     -> (str) { where('label LIKE ?', "%#{str}%") }
   scope :search_in_reference, -> (str) { where('reference LIKE ?', "%#{str}%") }
