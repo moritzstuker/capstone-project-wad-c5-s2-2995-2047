@@ -1,6 +1,6 @@
-<%= link_to project, class: 'box-link', role: 'article' do %>
-  <header class="box-header header heading">
-    <span class="link-color"><%= highlight(project.label, params[:query]) %></span>
+<%= link_to project, class: 'box', role: 'article' do %>
+  <header class="box-header">
+    <%= highlight(project.label, params[:query]) %>
     <%= simple_format(project.status, { class: 'push tag' }, wrapper_tag: 'span') if project.status == 'inactive' %>
   </header>
 
@@ -16,6 +16,6 @@
     <% if project.activities.count > 0 && project.status == 'active' %>
       <span class="keys">Last activity <%= time_ago_in_words(project.activities.last.date) %> ago.</span>
     <% end %>
-    <span class="keys"><%= avatar_tag_for(project.owner) %><%= (project.owner.name) %></span>
+    <span class="keys"><%= avatar_tag_for(project.owner) %></span>
   </footer>
 <% end %>
