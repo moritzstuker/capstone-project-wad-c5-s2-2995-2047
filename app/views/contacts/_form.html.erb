@@ -1,72 +1,88 @@
 <%= form_with(model: contact, local: true) do |form| %>
-<% if contact.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<%= render 'form_errors', obj: contact %>
 
-  <ul>
-    <% contact.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+<div class="row">
+  <div class="col">
+    <div class="box">
+      <div class="box-header">
+        Basic information
+      </div>
+      <div class="form-field">
+        <%= form.label :name, 'Name*' %>
+        <%= form.text_field :name, required: true, id: :contact_name %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :category %>
+        <%= form.collection_radio_buttons :category, Contact.categories.keys.map { |category| [category.capitalize, category] }, :second, :first %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :activity, 'Profession' %>
+        <%= form.text_field :activity, id: :contact_activity %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :phone, 'Phone number' %>
+        <%= form.telephone_field :phone, id: :contact_phone %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :email, 'Email' %>
+        <%= form.text_field :email, id: :contact_email %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :notes %>
+        <%= form.text_area :notes, id: :contact_notes %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :contact_role_id %>
+        <%= form.collection_radio_buttons :contact_role_id, ContactRole.all.order(:label), :id, :friendly_name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="box">
+      <div class="box-header">
+        Address
+      </div>
+      <div class="form-field">
+        <%= form.label :pobox %>
+        <%= form.text_field :pobox, id: :contact_pobox %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :street %>
+        <%= form.text_field :street, id: :contact_street %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :city %>
+        <%= form.text_field :city, id: :contact_city %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :country %>
+        <%= form.text_field :country, id: :contact_country %>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
 
-<div class="field">
-  <%= form.label :name %>
-  <%= form.text_field :name, id: :contact_name %>
-</div>
-
-<div class="field">
-  <%= form.label :activity %>
-  <%= form.text_field :activity, id: :contact_activity %>
-</div>
-
-<div class="field">
-  <%= form.label :phone %>
-  <%= form.text_field :phone, id: :contact_phone %>
-</div>
-
-<div class="field">
-  <%= form.label :email %>
-  <%= form.text_field :email, id: :contact_email %>
-</div>
-
-<div class="field">
-  <%= form.label :pobox %>
-  <%= form.text_field :pobox, id: :contact_pobox %>
-</div>
-
-<div class="field">
-  <%= form.label :street %>
-  <%= form.text_field :street, id: :contact_street %>
-</div>
-
-<div class="field">
-  <%= form.label :city %>
-  <%= form.text_field :city, id: :contact_city %>
-</div>
-
-<div class="field">
-  <%= form.label :country %>
-  <%= form.text_field :country, id: :contact_country %>
-</div>
-
-<div class="field">
-  <%= form.label :category %>
-  <%= form.collection_radio_buttons :category, Contact.categories.keys.map { |category| [category.capitalize, category] }, :second, :first %>
-</div>
-
-<div class="field">
-  <%= form.label :notes %>
-  <%= form.text_area :notes, id: :contact_notes %>
-</div>
-
-<div class="field">
-  <%= form.label :contact_role_id %>
-  <%= form.collection_radio_buttons :contact_role_id, ContactRole.all.order(:label), :id, :friendly_name %>
-</div>
-
-<div class="actions">
-  <%= form.submit %>
+<div class="row">
+  <div class="col">
+    <div class="box">
+      <div class="form-action">
+        <span class="mute small">* Required fields.</span>
+        <span class="push button-group">
+          <%= link_to 'Retour', contact, class: 'button outline' %>
+          <%= form.submit 'Créer projet', class: 'button blue push' %>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 <% end %>
