@@ -1,13 +1,13 @@
-<h1 class='text-center'>New contact</h1>
-
-<%= form_with(method: 'get', local: true) do |form| %>
-
-<div class="form-row">
-  <%= form.label :find, 'Search online', class: 'form-label' %>
-  <%= form.text_field :find, class: 'form-input' %>
+<div class="row">
+  <div class="col">
+    <header class="page-header">
+      <h1 class="title">Create a new contact</h1>
+    </header>
+  </div>
 </div>
 
-<div class="actions">
-  <%= link_to 'Back', contacts_path %>
-  <%= form.submit 'Search', class: 'button small blue' %>
+<div class="row">
+  <div class="col">
+    <%= render 'form', contact: @contact %>
+  </div>
 </div>
