@@ -4,13 +4,14 @@
 details {
   display: inline-block;
   position: relative;
+}
 
-  & > summary {
-    list-style: none;
+summary {
+  display: inline-block;
+  list-style: none;
 
-    &::-webkit-details-marker {
-      display:none;
-    }
+  &::-webkit-details-marker {
+    display:none;
   }
 }
 
@@ -20,12 +21,9 @@ details {
     position: absolute;
     width: auto;
     max-height: 60vh;
-    margin-top: $box-padding-y;
+    margin-top: $box-padding-x;
     overflow-x: hidden;
     overflow-y: scroll;
-    border: $border-base;
-    border-radius: $border-radius;
-    background-color: $background-color-primary;
     box-shadow: rgba(28, 33, 40, .85) 0 1em 2em 0;
     font-size: $small-font-size;
     white-space: nowrap;

@@ -1,0 +1,15 @@
+// Link
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+a {
+  background-color: transparent;
+  color: $text-color-highlight;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}

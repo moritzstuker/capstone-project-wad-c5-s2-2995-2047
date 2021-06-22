@@ -1,14 +1,29 @@
-// Card layout
+// Card
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .card {
-  width: 100%;
   padding: $box-padding;
+  font-size: $small-font-size;
 
-  &-header {
+  &-header,
+  &-footer {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-weight: $medium-font-weight;
+  }
+
+  &-header {
+    margin-bottom: .35em;
+    font-size: $base-font-size;
+    font-weight: $bold-font-weight;
+  }
+
+  &-footer {
+    margin-top: .35em;
+    font-size: $small-font-size;
+
+    & > *:not(:first-child) {
+      margin-left:.5em;
+    }
   }
 }

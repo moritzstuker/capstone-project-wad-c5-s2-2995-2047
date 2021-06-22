@@ -1,52 +1,32 @@
-// Tables
+// Table
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-table, .table {
-  -ms-font-feature-settings: 'tnum' 1, $default-font-features;
-  -o-font-feature-settings: 'tnum' 1, $default-font-features;
-  display: table;
+table {
+  display: block;
   width: 100%;
-  border-collapse: collapse;
-  font-feature-settings: 'tnum' 1, $default-font-features;
-  empty-cells: show;
-}
-
-thead, .thead {
-  display: table-header-group;
-  border-bottom: $border-base;
-}
-
-tbody, .tbody {
-  display: table-row-group;
-}
-
-tfoot, .tfoot {
-  display: table-footer-group;
-}
-
-tr, .tr {
-  display: table-row;
-
-  &:nth-child(even) {
-    background-color: $grey-800
-  }
-}
-
-th, .th,
-td, .td {
-  display: table-cell;
-  position: relative;
-  padding: ($box-padding-y / 2) $box-padding-x;
-  vertical-align: middle;
-}
-
-th, .th {
-  font-weight: $bold-font-weight;
+  overflow-x: auto;
+  border-collapse:collapse;
+  border-spacing: 0;
   text-align: left;
 }
 
-td, .td {
-  &.align-right {
-    text-align: right;
+td,
+th {
+  padding:0;
+  border-bottom: $border-base;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 40rem) {
+  table {
+    display: table;
+    overflow-x: initial;
   }
 }

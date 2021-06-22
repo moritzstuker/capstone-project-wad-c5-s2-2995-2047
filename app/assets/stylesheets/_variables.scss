@@ -5,20 +5,17 @@
 
 $background-color-primary:   $grey-900;
 $background-color-secondary: $grey-800;
-$background-color-tertiary:  $grey-700;
 
 $text-color-primary:   $grey-100;
 $text-color-secondary: $grey-300;
 $text-color-highlight: $blue-300;
 
-$light-opacity-factor: .5;
-
 // –– Typography ––––––––––––––––––––––––––––––––––––
 
 $small-font-size:   1.2rem;
 $base-font-size:    1.4rem;
-$big-font-size:     1.5rem;
-$biggest-font-size: 1.6rem;
+$big-font-size:     1.6rem;
+$biggest-font-size: 1.8rem;
 
 $base-line-height: 1.61803398875; // golden ratio
 
@@ -35,9 +32,11 @@ $border-color:  $grey-600;
 $border-base:   $border-width solid $border-color;
 $border-radius: .6rem;
 
+$box-shadow: 0 0 .5rem .2rem rgba(0,0,0,0.35);
+
 // –– Icons –––––––––––––––––––––––––––––––––––––––––
 
-$small-icon:  1.6rem;
+$small-icon:  $big-font-size;
 $medium-icon: 2.4rem;
 $large-icon:  4.8rem;
 

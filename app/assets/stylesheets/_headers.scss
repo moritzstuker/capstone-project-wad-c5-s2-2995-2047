@@ -1,56 +1,6 @@
 // Headers
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-%header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.header {
-  @extend %header;
-  padding: $box-padding;
-}
-
-.menu-header {
-  @extend %header;
-  position: relative;
-  padding: $box-padding;
-  color: inherit;
-  font-weight: $medium-font-weight;
-  text-decoration: none !important;
-
-  &:active,
-  &:hover {
-    background-color: $background-color-secondary;
-  }
-
-  & + .submenu {
-    border-top: $border-base;
-  }
-
-  &.is-active {
-    background-color: $background-color-secondary;
-
-    &::before {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: .3rem;
-      background-color: $orange;
-      content: '';
-    }
-  }
-}
-
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: $gutter;
-}
-
 .site-header {
   padding-top: $box-padding-y;
   padding-bottom: $box-padding-y;
@@ -93,3 +43,48 @@
     }
   }
 }
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: $gutter;
+}
+
+/*
+.menu-header {
+@extend %header;
+position: relative;
+padding: $box-padding;
+color: inherit;
+font-weight: $medium-font-weight;
+text-decoration: none !important;
+
+&:active,
+&:hover {
+background-color: $background-color-secondary;
+}
+
+& + .submenu {
+border-top: $border-base;
+}
+
+&.is-active {
+background-color: $background-color-secondary;
+
+&::before {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+width: .3rem;
+background-color: $orange;
+content: '';
+}
+}
+}
+
+
+
+
+*/

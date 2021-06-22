@@ -1,6 +1,7 @@
-// Buttons
+// Button
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
+.button,
 button,
 input[type='button'],
 input[type='reset'],
@@ -9,31 +10,20 @@ input[type='submit'] {
   -moz-appearance: none;
   appearance: none;
   display: inline-block;
-  height: auto;
-  overflow: visible;
-  background-color: transparent;
-  line-height: inherit;
-  cursor: pointer;
-
-  &.menu-item {
-    &:active,
-    &:hover {
-      color: $text-color-highlight;
-    }
-  }
-}
-
-.button {
-  display: inline-block;
+  margin: 0;
   padding: .2em .9em;
+  overflow: visible;
   border: $border-width solid $grey-400;
   border-radius: $border-radius;
   background-color: $grey-800;
   box-shadow: none;
   color: $white;
+  font-family: inherit;
   font-size: $small-font-size;
   font-weight: $bold-font-weight;
+  letter-spacing: 0.035rem;
   line-height: $base-line-height;
+  text-align: center;
   text-decoration: none !important;
   text-transform: none;
   white-space: nowrap;
@@ -45,7 +35,7 @@ input[type='submit'] {
   &:hover {
     border-color: $grey-300;
     outline: 0;
-    background-color: $grey-600;
+    background-color: $grey-500;
   }
 
   &.big {
@@ -56,6 +46,13 @@ input[type='submit'] {
 
   &.full-width {
     width: 100%;
+  }
+
+  &.ghost {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    line-height: 1;
   }
 
   &.blue {
@@ -82,12 +79,12 @@ input[type='submit'] {
 
   &.orange {
     border-color: $orange-400;
-    background-color: $orange-700;
+    background-color: $orange-600;
 
     &:active,
     &:hover {
       border-color: $orange-200;
-      background-color: $orange-500;
+      background-color: $orange-400;
     }
   }
 
@@ -115,34 +112,31 @@ input[type='submit'] {
 
   &::-moz-focus-inner {
     padding: 0;
-    border-style: none;
+    border-style: none
   }
 
   &:-moz-focusring {
-    outline: 1px dotted ButtonText;
-  }
-
-  &.ghost {
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    line-height: 1;
+    outline: none;
   }
 }
 
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit
+}
+
 .button-group {
-  & > * + * {
+  & > *:not(:first-child) {
     margin-left: .5em;
   }
 }
 
-
-
 .buttons-merged {
   display: inline-flex;
+  margin-left: .1rem;
 
   & > .button {
-    margin-left: -1px;
+    margin-left: -.1rem;
 
     &:not(:first-child) {
       border-top-left-radius: 0;
@@ -162,7 +156,7 @@ input[type='submit'] {
 
   & > details,
   & > .button + .button {
-    margin-left: -1px;
+    margin-left: -.1rem;
 
     &:not(:first-child) {
       .button {

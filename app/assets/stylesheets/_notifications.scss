@@ -26,6 +26,7 @@
   .flash-close {
     flex: 0 0 auto;
     width: auto;
+    height: ($base-line-height * 1em);
     margin-left: auto;
     color: inherit;
   }
@@ -37,5 +38,4 @@
   form & {
     margin-top: 0;
   }
-
 }

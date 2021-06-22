@@ -1,9 +1,146 @@
 // Typography
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-.heading {
-  font-size: $big-font-size;
+p {
+  margin: 0;
+}
+
+a,
+.a {
+  background-color: transparent;
+  color: $text-color-highlight;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.invisible {
+    color: inherit !important;
+  }
+
+  &.block-link {
+    display: block;
+    color: inherit;
+
+    &:focus,
+    &:hover {
+      background-color: $background-color-secondary;
+      text-decoration: none;
+    }
+  }
+}
+
+b,
+strong,
+.bold {
+  font-weight: $bold-font-weight;
+}
+
+.medium-bold {
   font-weight: $medium-font-weight;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin:0;
+  padding:0;
+  font-size:$base-font-size;
+  font-weight: inherit;
+}
+
+abbr[title] {
+  text-decoration: underline;
+  text-decoration: underline dotted
+}
+
+mark {
+  padding: 0;
+  border-radius: 2px;
+  background-color: $yellow-100;
+  color: $black;
+}
+
+small,
+.small {
+  font-size: $small-font-size;
+}
+
+sub,
+.sub {
+  -ms-font-feature-settings: 'subs' 1, $default-font-features;
+  -o-font-feature-settings: 'subs' 1, $default-font-features;
+  font-feature-settings: 'subs' 1, $default-font-features;
+}
+
+sup,
+.sup {
+  -ms-font-feature-settings: 'sups' 1, $default-font-features;
+  -o-font-feature-settings: 'sups' 1, $default-font-features;
+  font-feature-settings: 'sups' 1, $default-font-features;
+}
+
+::-moz-selection {
+  background: rgba($blue-400, .6);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgba($blue-400, .6);
+  text-shadow: none;
+}
+
+.counter {
+  -ms-font-feature-settings: 'tnum' 1, $default-font-features;
+  -o-font-feature-settings: 'tnum' 1, $default-font-features;
+  display: inline-block;
+  min-width: $gutter;
+  margin-left: auto;
+  padding-right: .5em;
+  padding-left: .5em;
+  border-radius: 1em;
+  background-color: rgba($grey-300, 0.2);
+  color: $grey-200;
+  font-feature-settings: 'tnum' 1, $default-font-features;
+  font-size: $small-font-size;
+  font-weight: $bold-font-weight;
+  line-height: $gutter;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.keys {
+  color: $text-color-secondary;
+  font-size: $small-font-size;
+
+  &:not(:last-child) {
+    margin-right: $gutter;
+  }
+}
+
+.tag {
+  display: inline-block;
+  margin-left: .5em;
+  padding-right: .5em;
+  padding-left: .5em;
+  border: $border-base;
+  border-radius: 1em;
+  color: $text-color-secondary;
+  font-size: $small-font-size;
+  font-weight: $medium-font-weight;
+  white-space: nowrap;
+}
+
+.heading {
+  font-weight: $bold-font-weight;
   letter-spacing: .025em;
   line-height: inherit;
 }
@@ -14,6 +151,19 @@
   letter-spacing: .025em;
   line-height: inherit;
   text-transform: uppercase;
+}
+
+.mute {
+  color: $grey-300;
+  text-decoration-color: inherit;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.link-color {
+  color: $text-color-highlight;
 }
 
 .disambiguate {

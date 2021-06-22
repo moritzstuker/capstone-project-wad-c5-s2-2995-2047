@@ -63,10 +63,25 @@
     border-top-left-radius: 0;
     border-color: $text-color-highlight;
     background-color: $background-color-primary;
+
+    &-row:first-child {
+      border-top: $border-base;
+    }
   }
 
   .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-right: .8em;
     padding-left: .8em;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+
+    &:active,
+    &:hover {
+      background-color: $background-color-secondary;
+    }
   }
 }

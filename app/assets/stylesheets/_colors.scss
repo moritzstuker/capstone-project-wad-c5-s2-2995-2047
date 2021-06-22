@@ -19,15 +19,6 @@ $grey-800: #2d333b;
 $grey-900: #22272e;
 $grey: $grey-500;
 
-.grey {
-  background-color: $grey;
-}
-
-.grey-color {
-  fill: $grey !important;
-  color: $grey !important;
-}
-
 // –– Blue ––––––––––––––––––––––––––––––––––––––––––
 
 $blue-100: #96d0ff;
@@ -40,15 +31,6 @@ $blue-700: #1b4b91;
 $blue-800: #143d79;
 $blue-900: #0f2d5c;
 $blue: $blue-500;
-
-.blue {
-  background-color: $blue;
-}
-
-.blue-color {
-  fill: $blue !important;
-  color: $blue !important;
-}
 
 // –– Green –––––––––––––––––––––––––––––––––––––––––
 
@@ -63,15 +45,6 @@ $green-800: #1b4721;
 $green-900: #113417;
 $green: $green-500;
 
-.green {
-  background-color: $green;
-}
-
-.green-color {
-  fill: $green !important;
-  color: $green !important;
-}
-
 // –– Yellow ––––––––––––––––––––––––––––––––––––––––
 
 $yellow-100: #eac55f;
@@ -84,15 +57,6 @@ $yellow-700: #6c4400;
 $yellow-800: #593600;
 $yellow-900: #452700;
 $yellow: $yellow-500;
-
-.yellow {
-  background-color: $yellow;
-}
-
-.yellow-color {
-  fill: $yellow !important;
-  color: $yellow !important;
-}
 
 // –– Orange ––––––––––––––––––––––––––––––––––––––––
 
@@ -107,15 +71,6 @@ $orange-800: #682d0f;
 $orange-900: #4d210c;
 $orange: $orange-200;
 
-.orange {
-  background-color: $orange;
-}
-
-.orange-color {
-  fill: $orange !important;
-  color: $orange !important;
-}
-
 // –– Red –––––––––––––––––––––––––––––––––––––––––––
 
 $red-100: #ffb8b0;
@@ -128,12 +83,3 @@ $red-700: #922323;
 $red-800: #78191b;
 $red-900: #78191b;
 $red: $red-500;
-
-.red {
-  background-color: $red;
-}
-
-.red-color {
-  fill: $red-300 !important;
-  color: $red-300 !important;
-}

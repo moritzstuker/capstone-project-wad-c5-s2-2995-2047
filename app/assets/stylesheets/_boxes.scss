@@ -1,7 +1,10 @@
-// Box layout
+// Box
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .box {
+
+  -webkit-box-shadow: $box-shadow;
+  display: block;
   position: relative;
   width: 100%;
   margin-top: $gutter;
@@ -9,19 +12,45 @@
   border: $border-base;
   border-radius: $border-radius;
   background-color: $background-color-primary;
+box-shadow: $box-shadow;
 
   &-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     padding: $box-padding;
     border-bottom: $border-base;
     background-color: $background-color-secondary;
+    color: inherit;
     font-weight: $medium-font-weight;
+    text-decoration: none !important;
+  }
+
+  &-content {
+    padding: $box-padding;
+
+    ul {
+      padding-left: $base-font-size;
+    }
+
+    li {
+      list-style: initial;
+    }
+
+    .col:not(:first-of-type) {
+      border-left: $border-base;
+    }
   }
 
   &-row {
-    display: block;
+    padding: $box-padding;
 
-    & + & {
+    &:not(:first-child) {
       border-top: $border-base;
+    }
+
+    .box-header + & {
+      border-top: none;
     }
   }
 
@@ -36,42 +65,20 @@
       border-top: none;
     }
   }
+}
 
-  &-link {
-    display: block;
-    position: relative;
-    width: 100%;
-    margin-top: $gutter;
-    overflow: hidden;
-    border: $border-base;
-    border-radius: $border-radius;
+a {
+  &.box {
     color: inherit;
-    transition: background-color $transition;
 
-    &:focus,
+    &:active,
     &:hover {
-      border-color: $grey-400;
-      background-color: lighten($background-color-primary, 3%);
+      border-color: $text-color-highlight;
       text-decoration: none;
     }
   }
+}
 
-  &-content {
-    display: block;
-    padding: $box-padding;
-  }
-
-  &.invisible {
-    margin-bottom: 0;
-    border-color: transparent;
-
-    .box-header {
-      border: $border-base;
-      border-radius: $border-radius;
-    }
-
-    .box-content {
-      padding-top: 0;
-    }
-  }
+li.box-row {
+  padding: 0;
 }

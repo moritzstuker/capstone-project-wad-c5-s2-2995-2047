@@ -1,14 +1,12 @@
-// Dividers
+// Divider
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 hr {
-  margin-top: $gutter;
-  margin-bottom: $gutter;
+  box-sizing: content-box;
+  height: 0;
+  margin: $box-padding-y 0;
+  padding:0;
+  overflow: visible;
+  border: 0;
   border-top: $border-base;
-
-  .card & {
-    width: calc(100% + (#{$gutter} * 2));
-    margin: $box-padding;
-    margin-left: ($gutter * -1);
-  }
 }
