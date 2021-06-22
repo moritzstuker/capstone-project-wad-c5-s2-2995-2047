@@ -1,6 +1,6 @@
-<%= link_to contact, class: 'box-link', role: 'article' do %>
-  <header class="box-header header heading">
-    <span class="link-color"><%= highlight(contact.name, params[:query]) %></span>
+<%= link_to contact, class: 'box', role: 'article' do %>
+  <header class="box-header">
+    <%= highlight(contact.name, params[:query]) %>
     <%= simple_format(contact.category.capitalize, { class: 'push tag' }, wrapper_tag: 'span') %>
   </header>
 
