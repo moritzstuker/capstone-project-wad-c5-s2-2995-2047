@@ -3,7 +3,7 @@
     <summary aria-haspopup="true">
       <%= simple_format('Country', { class: "button dropdown-trigger#{ ' orange' if params[:country].present? }" }, wrapper_tag: 'span') %>
     </summary>
-    <ul class="dropdown-content">
+    <ul class="dropdown-content box">
         <% @countries.each do |country| %>
         <li role="menuitem" class="box-row">
           <%= link_to "#{country} (#{@all_contacts.filter_by_country(country.downcase).count})",
@@ -18,7 +18,7 @@
     <summary aria-haspopup="true">
       <%= simple_format('Category', { class: "button dropdown-trigger#{ ' orange' if params[:category].present? }" }, wrapper_tag: 'span') %>
     </summary>
-    <ul class="dropdown-content">
+    <ul class="dropdown-content box">
       <li role="menuitem" class="box-row">
         <%= link_to "Companies (#{@all_contacts.where(category: :company).count})",
         url_for(category: 1),
