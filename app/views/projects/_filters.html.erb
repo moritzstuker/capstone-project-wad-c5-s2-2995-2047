@@ -1,21 +1,19 @@
-<div class="buttons-merged">
-  <details class="dropdown">
-    <summary aria-haspopup="true">
-      <%= simple_format('Status', { class: "button dropdown-trigger#{ ' orange' if params[:status].present? }" }, wrapper_tag: 'span') %>
-    </summary>
-    <ul class="dropdown-content">
-      <li role="menuitem" class="box-row">
-        <%= link_to "Active (#{ @all_projects.where(status: :active).count })",
-        url_for(status: :active),
-        class: "menu-item#{ ' orange-color' if params[:status] == 'active' }" %>
-      </li>
-      <li role="menuitem" class="box-row">
-        <%= link_to "Inactive (#{ @all_projects.where(status: :inactive).count })",
-        url_for(status: :inactive),
-        class: "menu-item#{ ' orange-color' if params[:status] == 'inactive' }" %>
-      </li>
-    </ul>
-  </details>
-</div>
+<details class="dropdown">
+  <summary aria-haspopup="true">
+    <%= simple_format('Status', { class: "button dropdown-trigger#{ ' orange' if params[:status].present? }" }, wrapper_tag: 'span') %>
+  </summary>
+  <ul class="dropdown-content box">
+    <li role="menuitem" class="box-row">
+      <%= link_to "Active (#{ @all_projects.where(status: :active).count })",
+      url_for(status: :active),
+      class: "menu-item#{ ' orange-color' if params[:status] == 'active' }" %>
+    </li>
+    <li role="menuitem" class="box-row">
+      <%= link_to "Inactive (#{ @all_projects.where(status: :inactive).count })",
+      url_for(status: :inactive),
+      class: "menu-item#{ ' orange-color' if params[:status] == 'inactive' }" %>
+    </li>
+  </ul>
+</details>
 
 <%= link_to 'Show all', url_for, class: 'button blue' %>
