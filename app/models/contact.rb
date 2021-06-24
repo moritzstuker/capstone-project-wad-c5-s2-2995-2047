@@ -10,17 +10,15 @@ class Contact < ApplicationRecord
   belongs_to              :role, class_name: 'ContactRole', foreign_key: 'contact_role_id'
   has_and_belongs_to_many :projects
 
-  # validates :name, presence: true, length: { in: 2..100 }
-  # validates :activity, presence: false, length: { in: 2..50 }
-  # validates :phone, presence: false, length: { in: 2..20 }
-  # validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
-  # validates :pobox, presence: false, length: { maximum: 50 }
-  # validates :street, presence: false, length: { in: 2..50 }
-  # validates :city, presence: false, length: { in: 2..50 }
-  # validates :country, presence: true
-  # validates :category, presence: true
-  # validates :role, presence: true
-  # validates :import_uid, uniqueness: true
+  validates :name, presence: true, length: { in: 2..100 }
+  validates :activity, presence: false, length: { in: 2..50 }
+  validates :email, presence: false, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { allow_blank: true }
+  validates :street, presence: false, length: { in: 2..50 }
+  validates :city, presence: false, length: { in: 2..50 }
+  validates :country, presence: true
+  validates :category, presence: true
+  validates :role, presence: true
+  validates :import_uid, uniqueness: { allow_blank: true }
 
   scope :get_role,    -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles) }
   scope :clients,     ->       { get_role('client') }
