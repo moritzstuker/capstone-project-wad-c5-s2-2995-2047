@@ -45,9 +45,7 @@ def build_contact()
   Contact.create!(
     name:       company ? Faker::Company.name : "#{ Faker::Name.first_name } #{ Faker::Name.last_name }",
     activity:   company ? Faker::Company.industry : Faker::Company.profession.capitalize,
-    phone:      Faker::PhoneNumber.cell_phone_in_e164,
     email:      Faker::Internet.unique.email,
-    pobox:      [nil, Faker::Address.mail_box][weighted_random(0.1)],
     street:     "#{ Faker::Address.street_name } #{ [nil, Faker::Address.building_number][weighted_random()] }",
     city:        "#{ Faker::Address.zip_code } #{ Faker::Address.city }",
     country:    ["Switzerland", Faker::Address.country][weighted_random()],

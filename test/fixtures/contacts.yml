@@ -3,9 +3,7 @@
 one:
   name: MyString
   activity: MyString
-  phone: MyString
   email: MyString
-  pobox: MyString
   street: MyString
   city: MyString
   country: MyString
@@ -16,9 +14,7 @@ one:
 two:
   name: MyString
   activity: MyString
-  phone: MyString
   email: MyString
-  pobox: MyString
   street: MyString
   city: MyString
   country: MyString

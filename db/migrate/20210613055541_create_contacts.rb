@@ -3,9 +3,7 @@ class CreateContacts < ActiveRecord::Migration[5.1]
     create_table :contacts do |t|
       t.string :name
       t.string :activity
-      t.string :phone
       t.string :email
-      t.string :pobox
       t.string :street
       t.string :city
       t.string :country

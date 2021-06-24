@@ -1,7 +1,6 @@
 module ContactsHelper
   def build_address(person)
     simple_format([
-      person.pobox,
       person.street,
       person.city,
       person.country
@@ -35,7 +34,6 @@ module ContactsHelper
       street:     street,
       city:       city,
       country:    country,
-      phone:      person['phone'].present? ? person['phone'] : nil,
       import_uid: uid
     }
   end

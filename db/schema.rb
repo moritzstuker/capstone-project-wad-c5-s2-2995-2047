@@ -36,9 +36,7 @@ ActiveRecord::Schema.define(version: 20210613055616) do
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "activity"
-    t.string "phone"
     t.string "email"
-    t.string "pobox"
     t.string "street"
     t.string "city"
     t.string "country"
