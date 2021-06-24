@@ -149,6 +149,10 @@ optgroup {
   &-action {
     margin: $box-padding;
 
+    &:last-child {
+      margin-bottom: $box-padding-x;
+    }
+
     label {
       margin-bottom: .5em;
       font-size: $small-font-size;
@@ -213,5 +217,34 @@ optgroup {
     &:checked + .checkbox-input {
       background-color: $text-color-highlight;
     }
+  }
+}
+
+.inline-fields {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+
+  & > *:not(:last-child) {
+    margin-right: ($box-padding-x / 2);
+  }
+
+  input,
+  select {
+    flex: 1 0 auto;
+    width: auto;
+  }
+
+  .button {
+    flex: 0 0 auto;
+  }
+
+  input,
+  select,
+  button {
+    display: inline-block;
+    font-size: $small-font-size;
+    font-weight: $bold-font-weight;
   }
 }
