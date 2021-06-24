@@ -2,7 +2,6 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .box {
-
   -webkit-box-shadow: $box-shadow;
   display: block;
   position: relative;
@@ -12,7 +11,7 @@
   border: $border-base;
   border-radius: $border-radius;
   background-color: $background-color-primary;
-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
 
   &-header {
     display: flex;
