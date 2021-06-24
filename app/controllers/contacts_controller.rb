@@ -17,8 +17,6 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    @results = params[:find].present? ? query_tel_search(params[:find]) : nil
-    @import_link = params[:tel_search_data].present? ? params[:tel_search_data] : nil
   end
 
   def edit
@@ -54,30 +52,34 @@ class ContactsController < ApplicationController
     end
   end
 
+  def import
+    @contact = Contact.new
+    @results = params[:search].present? ? query_tel_search(params[:search]) : nil
+    @import_link = params[:tel_search_data].present? ? params[:tel_search_data] : nil
+  end
+
   private
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
 
-    def contact_params
-      params.require(:contact).permit(:name, :activity, :phone, :email, :pobox, :street, :city, :country, :category, :notes, :contact_role_id, :import_uid)
-    end
+  def contact_params
+    params.require(:contact).permit(:name, :activity, :email, :street, :city, :country, :category, :notes, :contact_role_id, :import_uid)
+  end
 
-    def query_tel_search(query)
-      query = URI.parse(URI.escape(query))
-      response = HTTParty.get(
-        # the TEL_SEARCH_KEY cannot be passed as a header item in this case, this being a requirement from this provider... https://tel.search.ch/api/help.html
-        "https://tel.search.ch/api/?was=#{ query }&maxnum=25&lang=#{ 'fr' }&key=#{ ENV['TEL_SEARCH_KEY'] }"
-      )
+  def query_tel_search(query)
+    query = URI.parse(URI.escape(query))
+    response = HTTParty.get(
+      # the TEL_SEARCH_KEY cannot be passed as a header item in this case, this being a requirement from this provider... https://tel.search.ch/api/help.html
+      "https://tel.search.ch/api/?was=#{ query }&maxnum=25&lang=#{ I18n.locale.to_s }&key=#{ ENV['TEL_SEARCH_KEY'] }"
+    )
 
-      hash = Hash.from_xml(response.body)
-      results = {
-        total: hash['feed']['totalResults'].to_i,
-        items: hash['feed']['entry']
-      }
+    hash = Hash.from_xml(response.body)
+    results = {
+      total: hash['feed']['totalResults'].to_i,
+      items: hash['feed']['entry']
+    }
 
-      puts results
-
-      response.code == 200 ? results : nil
-    end
+    response.code == 200 ? results : nil
+  end
 end
