@@ -2,10 +2,10 @@ document.body.addEventListener("ajax:success", (event) => {
   let buttonCasing = event.target.parentNode;
 
   let button = document.createElement("button");
-  button.innerText = "Already imported";
+  button.innerText = "Successfully imported";
   button.type = "button";
   button.name = "button";
-  button.setAttribute("class", "button");
+  button.setAttribute("class", "button push");
   button.setAttribute("disabled", "disabled");
 
   buttonCasing.innerHTML = '';

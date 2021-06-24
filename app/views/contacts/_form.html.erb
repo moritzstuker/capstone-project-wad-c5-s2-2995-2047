@@ -13,18 +13,13 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :category %>
-        <%= form.collection_radio_buttons :category, Contact.categories.keys.map { |category| [category.capitalize, category] }, :second, :first %>
+        <%= form.label :category, 'Category*' %>
+        <%= form.select :category, Contact.categories.keys.map { |category| [category.capitalize, category] }, { required: true } %>
       </div>
 
       <div class="form-field">
-        <%= form.label :activity, 'Profession' %>
-        <%= form.text_field :activity, id: :contact_activity %>
-      </div>
-
-      <div class="form-field">
-        <%= form.label :phone, 'Phone number' %>
-        <%= form.telephone_field :phone, id: :contact_phone %>
+        <%= form.label :activity, 'Profession/activity' %>
+        <%= form.text_field :activity %>
       </div>
 
       <div class="form-field">
@@ -33,13 +28,13 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :notes %>
-        <%= form.text_area :notes, id: :contact_notes %>
+        <%= form.label :contact_role_id, 'Role*' %>
+        <%= form.select :contact_role_id, ContactRole.all.order(:label).collect {|p| [ p.label.capitalize, p.id ] }, { required: true } %>
       </div>
 
       <div class="form-field">
-        <%= form.label :contact_role_id %>
-        <%= form.collection_radio_buttons :contact_role_id, ContactRole.all.order(:label), :id, :friendly_name %>
+        <%= form.label :notes %>
+        <%= form.text_area :notes, id: :contact_notes %>
       </div>
     </div>
   </div>
@@ -49,24 +44,20 @@
       <div class="box-header">
         Address
       </div>
-      <div class="form-field">
-        <%= form.label :pobox %>
-        <%= form.text_field :pobox, id: :contact_pobox %>
-      </div>
 
       <div class="form-field">
         <%= form.label :street %>
-        <%= form.text_field :street, id: :contact_street %>
+        <%= form.text_field :street %>
       </div>
 
       <div class="form-field">
         <%= form.label :city %>
-        <%= form.text_field :city, id: :contact_city %>
+        <%= form.text_field :city %>
       </div>
 
       <div class="form-field">
         <%= form.label :country %>
-        <%= form.text_field :country, id: :contact_country %>
+        <%= form.text_field :country %>
       </div>
     </div>
   </div>
@@ -79,7 +70,7 @@
         <span class="mute small">* Required fields.</span>
         <span class="push button-group">
           <%= link_to 'Retour', contact, class: 'button outline' %>
-          <%= form.submit 'Créer projet', class: 'button blue push' %>
+          <%= form.submit 'Créer contact', class: 'button blue push' %>
         </span>
       </div>
     </div>
