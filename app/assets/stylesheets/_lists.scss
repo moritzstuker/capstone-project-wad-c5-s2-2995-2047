@@ -2,11 +2,8 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 dd,
-dl,
 dt,
-li,
-ol,
-ul {
+li {
   margin:0;
   padding:0
 }
@@ -14,5 +11,13 @@ ul {
 dl,
 ol,
 ul {
+    display: block;
+    margin: 0;
+    padding-left: $box-padding-x;
+    list-style-type: disc
+}
+
+.no-list {
+  padding-left: 0;
   list-style: none;
 }

@@ -1,4 +1,4 @@
-<ul role="menu" aria-label="Contacts" class="submenu">
+<ul role="menu" aria-label="Contacts" class="menu">
   <% ContactRole.all.each do |role| %>
     <% if Contact.with_role(role, params[:query]).count > 0 %>
     <li>

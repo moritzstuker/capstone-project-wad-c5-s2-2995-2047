@@ -12,7 +12,7 @@
   </aside>
   <div class="col">
     <% if @projects.count > 0 %>
-      <ul>
+      <ul class="no-list">
         <% @projects.each do |project| %>
         <li><%= render 'card', project: project %></li>
         <% end %>

@@ -7,6 +7,7 @@
   position: relative;
   width: 100%;
   margin-top: $gutter;
+  padding: 0;
   overflow: hidden;
   border: $border-base;
   border-radius: $border-radius;
@@ -27,15 +28,6 @@
 
   &-content {
     padding: $box-padding;
-
-    ul {
-      padding-left: $base-font-size;
-    }
-
-    li {
-      list-style: initial;
-    }
-
     .col:not(:first-of-type) {
       border-left: $border-base;
     }
@@ -80,4 +72,5 @@ a {
 
 li.box-row {
   padding: 0;
+  list-style: none;
 }

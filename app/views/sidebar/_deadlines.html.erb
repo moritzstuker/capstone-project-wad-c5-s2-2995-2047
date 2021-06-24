@@ -1,4 +1,4 @@
-<ul role="menu" aria-label="Deadlines" class="submenu">
+<ul role="menu" aria-label="Deadlines" class="menu">
   <% if Deadline.with_urgency('0', params[:query]).count > 0 %>
   <li>
     <%= link_to deadlines_path(urgency: '0', query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:urgency] == '0' }" do %>
