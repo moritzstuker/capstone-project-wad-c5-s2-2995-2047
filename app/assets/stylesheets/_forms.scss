@@ -231,7 +231,7 @@ optgroup {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  width: auto;
 
   & > *:not(:last-child) {
     margin-right: ($box-padding-x / 2);
