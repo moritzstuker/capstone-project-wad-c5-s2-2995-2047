@@ -1,5 +1,6 @@
 document.body.addEventListener("ajax:success", (event) => {
-  let buttonCasing = event.target.parentNode;
+  let buttonForm = event.target;
+  let buttonCasing = buttonForm.parentNode;
 
   let button = document.createElement("button");
   button.innerText = "Successfully imported";
@@ -8,6 +9,6 @@ document.body.addEventListener("ajax:success", (event) => {
   button.setAttribute("class", "button push");
   button.setAttribute("disabled", "disabled");
 
-  buttonCasing.innerHTML = '';
+  buttonCasing.removeChild(buttonForm);
   buttonCasing.appendChild(button);
 });
