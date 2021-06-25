@@ -77,7 +77,8 @@ textarea {
   overflow: auto;
 }
 
-label {
+label,
+.label {
   box-sizing: border-box;
   display: block;
   margin:0;
@@ -112,9 +113,14 @@ input {
     padding: 0
   }
 
-  &[type=number]::-webkit-inner-spin-button,
-  &[type=number]::-webkit-outer-spin-button {
-    height: auto
+  &[type=number] {
+    -moz-appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   &[type=search] {
@@ -153,7 +159,8 @@ optgroup {
       margin-bottom: $box-padding-x;
     }
 
-    label {
+    label,
+    .label {
       margin-bottom: .5em;
       font-size: $small-font-size;
       font-weight: $medium-font-weight;
@@ -246,5 +253,49 @@ optgroup {
     display: inline-block;
     font-size: $small-font-size;
     font-weight: $bold-font-weight;
+  }
+}
+
+.file-uploader {
+  position: relative;
+
+  .avatar {
+    transition: opacity $transition;
+
+    &:active,
+    &:hover {
+      opacity: .3;
+
+      & + .file-uploader-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-input {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &-label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    color: $white;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition;
+  }
+
+  input[type='file'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
   }
 }
