@@ -40,6 +40,11 @@ path {
     height:$large-icon
   }
 
+  &.avatar {
+width: auto;
+height: $medium-icon;
+  }
+
   &.dot {
     z-index: 1;
     position: relative;
@@ -136,14 +141,13 @@ a,
     height: $large-icon;
     pointer-events: none;
     transition: ($transition-duration * 2) cubic-bezier(.3,0,.5,1);
-    transition-property: transform, color;
+    transition-property: transform, fill;
   }
 
   &:active,
   &:hover {
-    color: $orange;
-
     .icon {
+      fill: $orange;
       transform: rotate(60deg);
     }
   }
@@ -152,7 +156,7 @@ a,
 .avatar {
   display: inline-block;
   width: auto;
-  height: $medium-icon;
+  height: ($large-icon * 3);
   border: $border-base;
   border-radius: 50%;
 }
