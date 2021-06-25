@@ -12,11 +12,15 @@
 
 .row {
   display: flex;
-  flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
   margin-right: ($gutter / -2);
   margin-left: ($gutter / -2);
+}
+
+ul.row {
+  padding-left: 0;
+  list-style: none;
 }
 
 %col {

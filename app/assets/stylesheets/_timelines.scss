@@ -29,14 +29,13 @@
     align-items: center;
     padding: $box-padding;
     font-weight: $medium-font-weight;
-    vertical-align: middle;
   }
 
   &-icon {
     display: flex;
     z-index: 2;
     position: absolute;
-    left: -.5em;
+    left: ($box-padding-x / -1.75);
     align-items: center;
     justify-content: center;
     background-color: $background-color-primary;
@@ -55,4 +54,9 @@
       background-color: $background-color-secondary;
     }
   }
+}
+
+ul.timeline {
+  padding-left: 0;
+  list-style: none;
 }
