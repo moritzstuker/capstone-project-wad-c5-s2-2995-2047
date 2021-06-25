@@ -56,6 +56,14 @@
       border-top: none;
     }
   }
+
+  &.invisible {
+    -webkit-box-shadow: none;
+    border-radius: $border-radius;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+  }
 }
 
 a.box {
