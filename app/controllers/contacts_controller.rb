@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
+  helper_method :can_edit?, :can_delete?
 
   def index
     @contacts = Contact.filter(params.slice(:query, :role, :category, :country)).order(:name) # filters
@@ -81,5 +82,13 @@ class ContactsController < ApplicationController
     }
 
     response.code == 200 ? results : nil
+  end
+
+  def can_edit?(contact = @contact, user = current_user)
+    is_associate?(user) || can_delete?(contact, user)
+  end
+
+  def can_delete?(contact = @contact, user = current_user)
+    is_admin?(user)
   end
 end
