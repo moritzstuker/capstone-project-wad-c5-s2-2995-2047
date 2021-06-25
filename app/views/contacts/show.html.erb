@@ -1,49 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Full name:</strong>
-  <%= @contact.name %>
-</p>
-
-<p>
-  <strong>Activity:</strong>
-  <%= @contact.activity %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @contact.email %>
-</p>
-
-<p>
-  <strong>Street:</strong>
-  <%= @contact.street %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @contact.city %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @contact.country %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @contact.category %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @contact.notes %>
-</p>
-
-<p>
-  <strong>Contact role:</strong>
-  <%= @contact.role.label %>
-</p>
-
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<div class="row">
+  <div class="col-6 col-offset-1">
+    <header class="page-header">
+      <h1 class="title">
+        <%= link_to "Contacts", contacts_path, class: 'heading' %>
+        <span class="mute">&nbsp;&sol;&nbsp;</span>
+        <%= @contact.name %>
+      </h1>
+      <span class="push button-group">
+        <%= render 'edit-box', target: @contact %>
+      </span>
+    </header>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3 col-offset-1">
+    <section class="box">
+      <header class="box-header">
+        <h2>Address</h2>
+      </header>
+      <div class="box-content">
+        <%= build_address(@contact) %>
+      </div>
+    </section>
+  </div>
+  <div class="col-3">
+    <%= render 'properties', contact: @contact %>
+  </div>
+</div>

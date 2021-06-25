@@ -1,0 +1,19 @@
+<section class="box">
+  <header class="box-header">
+    <h2>Properties</h2>
+  </header>
+  <div class="box-content">
+    <p><strong>Category:</strong>&nbsp;<%= contact.category.capitalize %></p>
+    <p><strong>Role:</strong>&nbsp;<%= dot_label(contact.role.label.capitalize, contact.role.color) %></p>
+    <p><strong>Email:</strong>&nbsp;<%= mail_to contact.email %></p>
+    <p><strong><%= contact.category == :company ? 'Activity' : 'Profession' %>:</strong>&nbsp;<%= contact.activity.capitalize %></p>
+    <hr>
+    <p><strong>Notes:</strong></p>
+    <% if contact.notes %>
+      <%= simple_format(contact.notes) %>
+    <% else %>
+      <%= image_tag('undraw/void.svg', class: 'void') %>
+    <% end %>
+
+  </div>
+</section>
