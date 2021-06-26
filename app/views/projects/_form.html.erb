@@ -24,7 +24,6 @@
       <div class="form-field">
         <%= form.label :project_category_id, 'Category*' %>
         <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, required: true, id: :project_project_category_id) %>
-        <%= link_to 'Click to add category', new_project_category_path %>
       </div>
 
       <div class="form-field">
