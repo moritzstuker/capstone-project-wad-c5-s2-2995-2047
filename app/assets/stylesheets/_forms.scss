@@ -229,7 +229,7 @@ optgroup {
 
 .inline-fields {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
   width: auto;
 
@@ -237,10 +237,18 @@ optgroup {
     margin-right: ($box-padding-x / 2);
   }
 
-  input,
+  input[type='text'],
   select {
     flex: 1 0 auto;
     width: auto;
+  }
+
+  input[type='color'] {
+    width: ($gutter * 2);
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+    background-color: transparent;
   }
 
   .button {
@@ -253,6 +261,27 @@ optgroup {
     display: inline-block;
     font-size: $small-font-size;
     font-weight: $bold-font-weight;
+    line-height: $gutter;
+  }
+
+  .expand {
+    flex: 1 0 auto;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .form-field {
+    margin-right: $box-padding-y;
+    margin-left: $box-padding-y;
+  }
+
+  .form-action {
+    display: flex;
+    align-items: flex-end;
+    margin-right: $box-padding-y;
+    margin-left: $box-padding-y;
   }
 }
 
