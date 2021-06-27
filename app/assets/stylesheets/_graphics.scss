@@ -32,6 +32,10 @@ path {
   overflow: visible !important;
   vertical-align: text-bottom;
 
+  &.is-small {
+    height:$small-icon
+  }
+
   &.is-medium {
     height:$medium-icon
   }
@@ -41,8 +45,8 @@ path {
   }
 
   &.avatar {
-width: auto;
-height: $medium-icon;
+    width: auto;
+    height: $medium-icon;
   }
 
   &.dot {
@@ -71,6 +75,7 @@ height: $medium-icon;
     color: inherit;
     line-height: $base-line-height;
     vertical-align: top;
+    white-space: nowrap;
 
     .icon {
       flex-grow:0;
@@ -88,6 +93,9 @@ height: $medium-icon;
   }
 
   &-group {
+    display: inline-block;
+    width: 100%;
+
     & > * {
       margin-left: .5em;
     }
