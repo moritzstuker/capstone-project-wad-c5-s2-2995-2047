@@ -63,7 +63,7 @@
       <% if is_admin? %>
       <div class="form-field">
         <%= form.label :role %>
-        <%= form.select :role, options_for_select(User.roles.keys.reverse.map { |role| [role.capitalize, role] }, :associate), id: :user_role %>
+        <%= form.select :role, options_for_select(User.roles.keys.reverse.map { |role| [role.capitalize, role] }, user.role), value: user.role, id: :user_role %>
       </div>
       <% end %>
     </div>
