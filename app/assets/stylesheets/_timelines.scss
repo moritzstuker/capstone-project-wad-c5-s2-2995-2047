@@ -28,6 +28,8 @@
     display: flex;
     align-items: center;
     padding: $box-padding;
+    color: $grey-300;
+    font-size: $small-font-size;
     font-weight: $medium-font-weight;
   }
 
@@ -35,7 +37,7 @@
     display: flex;
     z-index: 2;
     position: absolute;
-    left: ($box-padding-x / -1.75);
+    left: ($box-padding-x / -2);
     align-items: center;
     justify-content: center;
     background-color: $background-color-primary;
@@ -43,6 +45,7 @@
   }
 
   .box {
+    width: initial;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: $box-padding-x;
