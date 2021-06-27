@@ -3,7 +3,7 @@
     Latest articles from&nbsp;<%= link_to 'Lawinside.ch', 'http://www.lawinside.ch' %>
   </div>
   <% if @news.count > 0 %>
-  <ul>
+  <ul class="no-list">
     <% @news.each do |article| %>
     <li class="box-row">
       <%= link_to article[:link], target: "_blank", class: 'card block-link' do %>
