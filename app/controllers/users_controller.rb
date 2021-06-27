@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[ new create ]
   before_action :set_user, only: %i[ show edit update destroy ]
+  helper_method :can_view?, :can_edit?, :can_delete?
 
   def index
     @users = User.all
@@ -52,6 +53,18 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:login, :name, :password, :password_confirmation, :avatar, :email, :locale, :role, :default_fee)
+    end
+
+    def can_view?(user)
+      is_admin?(current_user)
+    end
+
+    def can_edit?(user)
+      is_admin?(current_user) || user == current_user
+    end
+
+    def can_delete?(user)
+      is_admin?(current_user) unless user == current_user
     end
 
     def restrict_access
