@@ -16,6 +16,7 @@
 
   &-header {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: flex-start;
     padding: $box-padding;
@@ -27,7 +28,9 @@
   }
 
   &-content {
+    display: block;
     padding: $box-padding;
+
     .col:not(:first-of-type) {
       border-left: $border-base;
     }
@@ -79,4 +82,18 @@ a.box {
 li.box-row {
   padding: 0;
   list-style: none;
+}
+
+.is-active {
+  background-color: $background-color-secondary;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: .3rem;
+    background-color: $orange;
+    content: '';
+  }
 }
