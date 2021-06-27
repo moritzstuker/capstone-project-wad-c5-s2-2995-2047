@@ -22,7 +22,8 @@ class Project < ApplicationRecord
   scope :search_in_reference, -> (str) { where('reference LIKE ?', "%#{str}%") }
 
   scope :filter_by_category, -> (str) { where(category: str).distinct }
-  scope :filter_by_status,   -> (str) { where(status: str).distinct }
+  scope :filter_by_status,   -> (str) { where(status: str) }
+  scope :filter_by_owner,    -> (str) { where(owner: str) }
   scope :filter_by_query,    -> (str) { search_in_label(str).or(search_in_reference(str)) }
 
   after_initialize :set_defaults

@@ -16,4 +16,24 @@
   </ul>
 </details>
 
-<%= link_to 'Show all', url_for, class: 'button blue' %>
+<details class="dropdown">
+  <summary aria-haspopup="true">
+    <%= simple_format('Case owner', { class: "button dropdown-trigger#{ ' orange' if params[:owner].present? }" }, wrapper_tag: 'span') %>
+  </summary>
+  <ul class="dropdown-content box">
+    <% User.all.order(role: :desc, name: :asc).each do |user| %>
+    <% if Project.where(owner: user).count > 0 %>
+    <li role="menuitem" class="box-row">
+      <%= link_to "#{ user.name } (#{ Project.where(owner: user).count })",
+      url_for(owner: user.id),
+      class: "menu-item#{ ' orange-color' if params[:owner] == 'active' }" %>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
+</details>
+
+<div class="buttons-merged">
+  <%= link_to 'Your active cases', url_for(owner: current_user, status: :active), class: 'button green' if current_user.projects.where(status: :active).count > 0 %>
+  <%= link_to 'Show all', url_for, class: 'button blue' %>
+</div>
