@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
 
     def can_view?(user)
-      is_admin?(current_user)
+      is_partner?(current_user) || can_edit?(user)
     end
 
     def can_edit?(user)
