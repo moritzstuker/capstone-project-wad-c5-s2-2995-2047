@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
     end
 
     def can_edit?(project = @project, user = current_user)
-      can_delete?(project, user)
+      can_delete?(project, user) || is_partner?(user) || is_associate?(user)
     end
 
     def can_delete?(project = @project, user = current_user)
