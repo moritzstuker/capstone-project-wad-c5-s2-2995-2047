@@ -38,6 +38,7 @@ b,
 strong,
 .bold {
   font-weight: $bold-font-weight;
+  letter-spacing: .0175em;
 }
 
 .medium-bold {
@@ -137,6 +138,7 @@ sup,
   font-size: $small-font-size;
   font-weight: $medium-font-weight;
   white-space: nowrap;
+  cursor: default;
 }
 
 .heading {
