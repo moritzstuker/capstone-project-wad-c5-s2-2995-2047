@@ -50,12 +50,8 @@ path {
   }
 
   &.dot {
-    z-index: 1;
-    position: relative;
-    flex: 0 0 auto;
     width: .8em;
     height: .8em;
-    margin-right: .5em;
     border: $border-width solid rgba(205, 217, 229, 0.2);
     border-radius: 50%;
   }
@@ -69,25 +65,23 @@ path {
   }
 
   &-text {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
+    position: relative;
+    margin-right: .25em;
+    padding-left: 2em;
     color: inherit;
-    line-height: $base-line-height;
-    vertical-align: top;
+    font-weight: $medium-font-weight;
+    line-height: inherit;
     white-space: nowrap;
 
     .icon {
-      flex-grow:0;
-      flex-shrink:0;
-      margin-right: .5em;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
 
-      &:not(:last-child) {
-        margin-right:.25em
-      }
-
-      &:not(:first-child) {
-        margin-left:.25em
+      &.avatar {
+        width: 1.8em;
+        height: auto;
       }
     }
   }
@@ -100,6 +94,10 @@ path {
       margin-left: .5em;
     }
   }
+}
+
+.dot-label {
+padding-left: 1.4em;
 }
 
 a,
