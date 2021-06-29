@@ -2,28 +2,19 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .card {
-  padding: $box-padding;
+  padding: ($box-padding-y * 0.65) ($box-padding-x * 0.65);
   font-size: $small-font-size;
 
-  &-header,
-  &-footer {
+  &-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-  }
-
-  &-header {
-    margin-bottom: .35em;
+    margin-bottom: .5em;
     font-size: $base-font-size;
     font-weight: $bold-font-weight;
   }
 
   &-footer {
-    margin-top: .35em;
     font-size: $small-font-size;
-
-    & > *:not(:first-child) {
-      margin-left:.5em;
-    }
   }
 }
