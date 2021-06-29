@@ -23,7 +23,7 @@ module Layouts
 
     def dot_label(label, color)
       icon = "<span class='dot icon' style='background-color: #{ sanitize(color) }'></span>"
-      simple_format("#{ icon }#{ sanitize(label) }", { class: 'icon-text' }, wrapper_tag: 'span', sanitize: false)
+      simple_format("#{ icon }#{ sanitize(label) }", { class: 'icon-text dot-label' }, wrapper_tag: 'span', sanitize: false)
     end
   end
 end

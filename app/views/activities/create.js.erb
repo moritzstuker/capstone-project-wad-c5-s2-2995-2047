@@ -1,0 +1,132 @@
+// Create Activity node
+var nodeLi = document.createElement('li');
+nodeLi.classList.add('box-row');
+
+var nodeCard = document.createElement('div');
+nodeCard.classList.add('card');
+
+var nodeCardHeader = document.createElement('div');
+nodeCardHeader.classList.add('card-header');
+
+var nodeTag = document.createElement('span');
+nodeTag.classList.add('tag');
+
+var nodeDelete = '<%= j link_to icon_tag("trash"), project_activity_path(@project, @activity), method: :delete, data: { confirm: "Are you sure?" }, class: "push" if can_delete_activity?(@activity, current_user) %>';
+
+var nodeCardFooter = document.createElement('div');
+nodeCardFooter.classList.add('card-footer');
+nodeCardFooter.classList.add('medium-bold');
+
+var nodeIconText = document.createElement('span');
+nodeIconText.classList.add('icon-text');
+
+var nodeAvatar = document.createElement('img');
+nodeAvatar.classList.add('avatar');
+nodeAvatar.classList.add('icon');
+nodeAvatar.setAttribute('alt', '<%= j @activity.user.name %>');
+nodeAvatar.setAttribute('src', '<%= j image_path(@activity.user.avatar) %>');
+
+var nodeMute1 = document.createElement('span');
+nodeMute1.classList.add('mute');
+
+var nodeMute2 = document.createElement('span');
+nodeMute2.classList.add('mute');
+
+var nodeMute3 = document.createElement('span');
+nodeMute3.classList.add('mute');
+
+var textLabel = document.createTextNode('<%= j @activity.label %>');
+var textAuthor = document.createTextNode('<%= j @activity.user.name %>');
+var textTag = document.createTextNode('<%= j @activity.category %>');
+var textMute1 = document.createTextNode('<%= j "worked on it for" %>');
+var textMute2 = document.createTextNode('<%= j "and billed" %>');
+var textMute3 = document.createTextNode('<%= j "(at a rate of #{ fee(@activity.fee) }/hour)" %>'.replace('&#39;', '\x27'));
+var textDuration = document.createTextNode('<%= j pluralize(@activity.duration, "hour") %>');
+var textFee = document.createTextNode('<%= j fee(@activity.fee * @activity.duration) %>'.replace('&#39;', '\x27'));
+
+nodeTag.appendChild(textTag);
+
+nodeCardHeader.appendChild(textLabel);
+nodeCardHeader.appendChild(nodeTag);
+nodeCardHeader.innerHTML += nodeDelete; // I know this is dangerous and exposes to XSS. But in this case, there's no user supplied content, so the risk is moot.
+
+nodeIconText.appendChild(nodeAvatar);
+nodeIconText.appendChild(textAuthor);
+
+nodeMute1.appendChild(textMute1);
+nodeMute2.appendChild(textMute2);
+nodeMute3.appendChild(textMute3);
+
+nodeCardFooter.appendChild(nodeIconText);
+nodeCardFooter.appendChild(nodeMute1);
+nodeCardFooter.append('\u00A0');
+nodeCardFooter.appendChild(textDuration);
+nodeCardFooter.append('\u00A0');
+nodeCardFooter.appendChild(nodeMute2);
+nodeCardFooter.append('\u00A0');
+nodeCardFooter.appendChild(textFee);
+nodeCardFooter.append('\u00A0');
+nodeCardFooter.appendChild(nodeMute3);
+
+nodeCard.appendChild(nodeCardHeader);
+nodeCard.appendChild(nodeCardFooter);
+
+nodeLi.appendChild(nodeCard);
+
+// Set activity date
+var activityDate = Date.parse('<%= j @activity.date.strftime("%F") %>');
+
+// Check where to insert date
+var timesheet = document.getElementById('timesheet');
+var timesheetNodes = timesheet.querySelectorAll('[data-date]');
+var dateExists = false;
+
+for (let i = 0; i < timesheetNodes.length; i++) {
+  var targetNode = timesheetNodes[i];
+  var elem = Date.parse(targetNode.dataset.date)
+  if (elem == activityDate) { dateExists = true };
+  if (elem <= activityDate) { break; }
+}
+
+if (!dateExists) {
+  // Create date wrapper element
+  var wrapperNodeLi = document.createElement('li');
+  wrapperNodeLi.classList.add('timeline-date');
+  wrapperNodeLi.setAttribute('data-date', '<%= j @activity.date.strftime("%F") %>');
+
+  var wrapperNodeHeader = document.createElement('header');
+  wrapperNodeHeader.classList.add('timeline-header');
+
+  var wrapperNodeIcon = document.createElement('span');
+  wrapperNodeIcon.classList.add('timeline-icon');
+  wrapperNodeIcon.innerHTML = '<%= j icon_tag("git-commit") %>';
+
+  var wrapperNodeMute = document.createElement('span');
+  wrapperNodeMute.classList.add('mute');
+
+  var wrapperNodeList = document.createElement('ul');
+  wrapperNodeList.classList.add('box');
+
+  var wrapperNodeMuteText = document.createTextNode('Activity logged for');
+  var wrapperNodeHeaderText = document.createTextNode('<%= j @activity.date.strftime("%d.%m.%Y") %>');
+
+  wrapperNodeMute.appendChild(wrapperNodeMuteText);
+  wrapperNodeMute.append('\u00A0');
+
+  wrapperNodeHeader.appendChild(wrapperNodeIcon);
+  wrapperNodeHeader.appendChild(wrapperNodeMute);
+  wrapperNodeHeader.appendChild(wrapperNodeHeaderText);
+
+  wrapperNodeLi.appendChild(wrapperNodeHeader);
+  wrapperNodeLi.appendChild(wrapperNodeList);
+
+  // Insert date wrapper at the right place
+  timesheet.insertBefore(wrapperNodeLi, targetNode);
+
+  // Sets target node to newly created date
+  targetNode = wrapperNodeLi;
+}
+
+// Inserts activity
+var box = targetNode.querySelector('.box');
+box.insertBefore(nodeLi, box.firstChild);

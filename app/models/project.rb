@@ -26,6 +26,8 @@ class Project < ApplicationRecord
   scope :filter_by_owner,    -> (str) { where(owner: str) }
   scope :filter_by_query,    -> (str) { search_in_label(str).or(search_in_reference(str)) }
 
+  accepts_nested_attributes_for :activities
+
   after_initialize :set_defaults
 
   def self.with_category(category, query = nil)

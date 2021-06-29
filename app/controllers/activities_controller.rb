@@ -1,55 +1,40 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: %i[ show edit update destroy ]
-
-  def index
-    @activities = Activity.all
-  end
-
-  def show
-  end
-
-  def new
-    @activity = Activity.new
-  end
-
-  def edit
-  end
+  before_action :set_project
+  helper_method :can_delete?
 
   def create
     @activity = Activity.new(activity_params)
+    @activity.project = @project
+    @activity.user = current_user
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @activity, notice: "Activity was successfully created." }
+        format.html { redirect_to @project, notice: "Activity was successfully created." }
+        format.js
       else
-        format.html { render :new, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @activity.update(activity_params)
-        format.html { redirect_to @activity, notice: "Activity was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to @project, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
+    @activity = Activity.find(params[:id])
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to activities_url, notice: "Activity was successfully deleted." }
+      format.html { redirect_to @project, notice: "Activity was successfully deleted." }
     end
   end
 
   private
-    def set_activity
-      @activity = Activity.find(params[:id])
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     def activity_params
-      params.require(:activity).permit(:label, :category, :date, :duration, :fee, :project_id, :user_id)
+      params.require(:activity).permit(:label, :category, :date, :duration, :fee, :project_id, :user)
+    end
+
+    def can_delete?(activity)
+      current_user == activity.project.owner || current_user == activity.user || is_admin?(user)
     end
 end
