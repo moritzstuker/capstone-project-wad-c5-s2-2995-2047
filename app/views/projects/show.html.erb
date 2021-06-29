@@ -16,6 +16,16 @@
   <div class="col-5">
     <section class="box">
       <header class="box-header">
+        <h2>Parties</h2>
+      </header>
+      <div class="box-content">
+        <div class="row">
+          <%= render 'parties' %>
+        </div>
+      </div>
+    </section>
+    <section class="box">
+      <header class="box-header">
         <h2>Description</h2>
       </header>
       <% if @project.description %>
@@ -26,19 +36,10 @@
       <%= image_tag('undraw/void.svg', class: 'void') %>
       <% end %>
     </section>
-    <section class="box">
-      <header class="box-header">
-        <h2>Parties</h2>
-      </header>
-      <div class="box-content">
-        <div class="row">
-          <%= render 'parties' %>
-        </div>
-      </div>
-    </section>
   </div>
   <div class="col-3">
     <%= render 'properties' %>
+    <%= render 'statistics' %>
   </div>
 </div>
 <div class="row">
@@ -59,42 +60,10 @@
 </div>
 <div class="row">
   <div class="col">
-    <div class="box">
-    <%= link_to icon_tag('plus-circle'), nil, class: 'push' %>
-      <% if @project.activities.count > 0 %>
+    <% if @project.activities.count > 0 %>
       <%= render 'timesheet' %>
-      <% else %>
+    <% else %>
       <%= image_tag('undraw/void.svg', class: 'void') %>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Label:</strong>
-  <%= @project.label %>
-</p>
-
-<p>
-  <strong>Reference:</strong>
-  <%= @project.reference %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @project.owner.name %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %>
