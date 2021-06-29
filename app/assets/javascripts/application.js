@@ -23,20 +23,23 @@ document.addEventListener("turbolinks:load", function() {
     })
   });
 
+  // search form
   const searchForm = document.getElementById('search-form');
-  const searchInput = document.getElementById('query');
-  const expandedSearch = document.getElementById('expanded-search');
-  searchInput.addEventListener("keyup", () => {
-    if (searchInput.value) {
-      searchForm.classList.add("expanded");
-      expandedSearch.style.maxHeight = expandedSearch.scrollHeight + 'px';
+  if (document.body.contains(searchForm)) {
+    const searchInput = document.getElementById('query');
+    const expandedSearch = document.getElementById('expanded-search');
+    searchInput.addEventListener("keyup", () => {
+      if (searchInput.value) {
+        searchForm.classList.add("expanded");
+        expandedSearch.style.maxHeight = expandedSearch.scrollHeight + 'px';
 
-      document.querySelectorAll(".search-value").forEach(function(e) {
-        e.innerText = searchInput.value;
-      });
-    } else {
-      searchForm.classList.remove("expanded");
-      expandedSearch.style.maxHeight = '';
-    }
-  });
+        document.querySelectorAll(".search-value").forEach(function(e) {
+          e.innerText = searchInput.value;
+        });
+      } else {
+        searchForm.classList.remove("expanded");
+        expandedSearch.style.maxHeight = '';
+      }
+    });
+  }
 });
