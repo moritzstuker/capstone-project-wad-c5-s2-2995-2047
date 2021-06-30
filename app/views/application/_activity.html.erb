@@ -2,9 +2,9 @@
   <div class="card-header">
     <%= activity.label %>
     <span class="tag"><%= activity.category %></span>
-    <%= link_to icon_tag('trash'), project_activity_path(@project, activity), method: :delete, data: { confirm: 'Are you sure?' }, class: 'push' if can_delete_activity?(activity, current_user) %>
+    <%= link_to icon_tag('trash', class: 'small'), project_activity_path(@project, activity), method: :delete, data: { confirm: 'Are you sure?' }, class: 'push' if can_delete_activity?(activity, current_user) %>
   </div>
-  <div class="card-footer medium-bold">
-    <%= avatar_tag_for(activity.user) %><span class="mute">worked on it for </span><%= pluralize(activity.duration, 'hour') %><span class="mute"> and billed </span><%= fee(activity.fee * activity.duration) %><span class="mute"> (at a rate of <%= fee(activity.fee) %>/hour)</span>
+  <div class="card-content">
+    <%= avatar_tag_for(activity.user) %> <span class="mute">worked on it for </span><%= pluralize(activity.duration, 'hour') %><span class="mute"> and billed </span><%= fee(activity.fee * activity.duration) %><span class="mute"> (at a rate of <%= fee(activity.fee) %>/hour)</span>
   </div>
 </div>

@@ -16,9 +16,8 @@ module Layouts
     end
 
     def avatar_tag_for(user = current_user, str = nil)
-      classes = "avatar icon #{ str }"
-      img = image_tag(user.avatar, { class: classes, alt: user.name })
-      simple_format("#{img}#{user.name}", { class: 'icon-text' }, wrapper_tag: 'span')
+      avatar = image_tag(user.avatar, { class: "avatar icon #{ str }", alt: user.name })
+      simple_format("#{avatar}#{user.name}", { class: 'icon-text' }, wrapper_tag: 'span')
     end
 
     def dot_label(label, color)

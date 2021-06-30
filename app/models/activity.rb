@@ -3,4 +3,14 @@ class Activity < ApplicationRecord
 
   belongs_to :project
   belongs_to :user
+
+  after_initialize :set_defaults
+
+  private
+
+  def set_defaults
+    if self.new_record?
+      self.date ||= Date.today
+    end
+  end
 end

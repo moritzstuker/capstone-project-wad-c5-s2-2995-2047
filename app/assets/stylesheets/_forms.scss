@@ -237,10 +237,15 @@ optgroup {
     margin-right: ($box-padding-x / 2);
   }
 
-  input[type='text'],
-  select {
+  input[type='text'] {
     flex: 1 0 auto;
     width: auto;
+  }
+
+  input[type='number'],
+  input[type='date'],
+  select {
+    flex: 1 0 5rem;
   }
 
   input[type='color'] {

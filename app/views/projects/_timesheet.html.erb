@@ -3,13 +3,13 @@
     <ul class="box">
       <li class="box-row">
         <div class="card">
-          <%= form_with(model: [@project, @project.activities.build], local: false) do |form| %>
+          <%= form_with(model: [@project, @project.activities.build], class: 'inline-fields', local: false) do |form| %>
             <%= form.text_field(:label, required: true, placeholder: 'Label') %>
             <%= form.select(:category, Activity::CATEGORIES, required: true) %>
-            <%= form.date_field(:date, value: Date.today, required: true, placeholder: 'Date') %>
-            <%= form.number_field(:duration, step: 0.1, required: true, placeholder: 'Duration (0.1 format)') %>
+            <%= form.number_field(:duration, step: 0.1, value: 0.1, placeholder: 'Duration (0.1 format)') %>
             <%= form.number_field(:fee, step: 0.05, value: current_user.default_fee, required: true, placeholder: 'Fee (CHF / hour)') %>
-            <%= form.submit 'Create', class: 'button blue' %>
+            <%= form.date_field(:date, value: Date.today, required: true, placeholder: 'Date') %>
+            <%= form.submit 'Log', class: 'button green' %>
           <% end %>
         </div>
       </li>
@@ -19,7 +19,7 @@
   <li class="timeline-date" data-date="<%= date.first.strftime("%F") %>">
     <header class="timeline-header">
       <span class="timeline-icon"><%= icon_tag('git-commit') %></span>
-      <span class="mute">Activity logged for&nbsp;</span><%= date.first.strftime("%d.%m.%Y") %>
+      <span class="mute">Activity dated&nbsp;</span><%= date.first.strftime("%d.%m.%Y") %>
     </header>
     <ul class="box">
       <% date.last.sort_by(&:created_at).reverse.each do |activity| %>
