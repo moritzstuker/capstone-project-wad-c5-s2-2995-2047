@@ -9,12 +9,41 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: .5em;
     font-size: $base-font-size;
     font-weight: $bold-font-weight;
   }
 
+  &-content {
+    margin-top: .25em;
+    margin-bottom: .25em;
+    color: $text-color-secondary;
+  }
+
   &-footer {
+    color: $text-color-secondary;
     font-size: $small-font-size;
+  }
+
+  &-list {
+    -webkit-box-shadow: inset $box-shadow;
+    padding: ($box-padding-x / 2) ($box-padding-x / 2);
+    box-shadow: inset $box-shadow;
+
+    .card {
+      display: block;
+      border: $border-base;
+      background-color: $background-color-secondary;
+      cursor: pointer;
+
+      &:not(:first-child) {
+        margin-top: ($box-padding-x / 2);
+      }
+
+      &:active,
+      &:hover {
+        border-color: $text-color-highlight;
+        background-color: $background-color-secondary;
+      }
+    }
   }
 }

@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @deadlines_by_dates = @project.deadlines.group_by(&:date).sort
   end
 
   def new

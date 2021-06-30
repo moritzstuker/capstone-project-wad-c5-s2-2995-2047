@@ -5,10 +5,7 @@
   <div class="box-content">
     <p><strong>Status:</strong>&nbsp;<%= @project.status.capitalize %></p>
     <p><strong>Category:</strong>&nbsp;
-      <span class="dot-label">
-        <span class="dot-icon" style="background-color: <%= @project.category.color %>"></span>
-        <%= @project.category.label.capitalize %>
-      </span>
+      <%= dot_label(@project.category.label.capitalize, @project.category.color) %>
     </p>
     <% if @project.reference.present? %>
     <p><strong>Court reference:</strong>&nbsp;<span class="disambiguate"><%= @project.reference %></span></p>

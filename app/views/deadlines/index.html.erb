@@ -12,9 +12,9 @@
   </aside>
   <div class="col order-s-0 order-l-1">
     <% if @deadlines.count > 0 %>
-    <ul class="timeline">
+    <ul class="no-list">
       <% @deadlines_by_dates.each do |date| %>
-      <li class="timeline-date">
+      <li>
         <%= render 'card', date: date %>
       </li>
       <% end %>

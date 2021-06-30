@@ -1,35 +1,30 @@
-<header class="timeline-header">
-  <span class="timeline-icon"><%= icon_tag('git-commit') %></span>
-  <%= dot_label(date.first.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(date.first))) %>
-</header>
-<ul class="box">
-  <% date.last.each do |deadline| %>
-  <li class="box-row">
-    <div class="card">
-      <div class="card-header">
-        <%= link_to highlight(deadline.label, params[:query]), deadline.project %>
-        <span class="push tag"><%= i18n_enum(deadline, 'category') %></span>
-      </div>
-      <div class="card-content">
-        <span class="icon-text">
-          <%= icon_tag('repo') %>
-          <span class="mute">
+<div class="box">
+  <div class="box-header">
+    <%= dot_label(date.first.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(date.first))) %>
+  </div>
+  <ul class="card-list">
+    <% date.last.each do |deadline| %>
+    <li class="card">
+      <%= link_to deadline.project, class: 'block-link' do %>
+        <div class="card-header">
+          <%= highlight(deadline.label, params[:query]) %>
+          <span class="push tag"><%= i18n_enum(deadline, 'category') %></span>
+        </div>
+        <div class="card-content">
+          <span class="icon-text">
+            <%= icon_tag('repo') %>
             <%= "#{ deadline.project.label } (#{ strip_tags(main_parties(deadline.project)) })" %>
           </span>
-        </span>
-      </div>
-      <div class="card-footer">
-        <span class="icon-text">
-          <%= icon_tag('people') %>
-          <span class="mute">
-            <%= t('.assigned_to') %>
+        </div>
+        <div class="card-footer">
+          <span class="icon-text">
+            <%= icon_tag('people') %>
+              <%= t('.assigned_to') %>
           </span>
-        </span>
-        <span class="mute">
-          <%= avatar_tag_for(deadline.assignee) %>
-        </span>
-      </div>
-    </div>
-  </li>
-  <% end %>
-</ul>
+            <%= avatar_tag_for(deadline.assignee) %>
+        </div>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>

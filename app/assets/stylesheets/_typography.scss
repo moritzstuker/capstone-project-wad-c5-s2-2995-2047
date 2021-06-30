@@ -107,7 +107,7 @@ sup,
   padding-right: .5em;
   padding-left: .5em;
   border-radius: 1em;
-  background-color: rgba($grey-300, 0.2);
+  background-color: rgba($text-color-secondary, 0.2);
   color: $grey-200;
   font-feature-settings: 'tnum' 1, $default-font-features;
   font-size: $small-font-size;
@@ -157,7 +157,7 @@ sup,
 }
 
 .mute {
-  color: $grey-300;
+  color: $text-color-secondary;
   text-decoration-color: inherit;
 }
 

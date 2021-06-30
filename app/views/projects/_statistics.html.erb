@@ -2,14 +2,16 @@
   <header class="box-header">
     <h2>Statistics</h2>
   </header>
-  <p><strong>Total hours:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %></p>
-  <p><strong>Total fee:</strong>&nbsp;<%= fee(@project.activities.sum(&:duration) * @project.activities.sum(&:duration)) %></p>
-  <hr>
-  <ul class="box-content">
-    <% @project.activities.includes(:user).group_by(&:user).sort.reverse.each do |user| %>
-      <li>
-        <%= avatar_tag_for(user.first) %>: <%= pluralize(user.last.count, 'task') %> for <%= fee(user.last.sum(&:fee)) %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="box-content">
+    <p><strong>Total hours:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %></p>
+    <p><strong>Total fees:</strong>&nbsp;<%= fee(@project.activities.sum(&:duration) * @project.activities.sum(&:duration)) %></p>
+    <hr>
+    <ul class="no-list">
+      <% @project.activities.includes(:user).group_by(&:user).sort.reverse.each do |user| %>
+        <li>
+          <%= avatar_tag_for(user.first) %> logged <%= pluralize(user.last.count, 'task', plural: 'tasks') %> for <%= fee(user.last.sum(&:fee)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </section>

@@ -12,6 +12,18 @@
 </div>
 <div class="row">
   <div class="col-5">
+  <section class="box">
+    <header class="box-header">
+      <h2>Description</h2>
+    </header>
+    <% if @project.description %>
+    <div class="box-content">
+      <p><%= @project.description %></p>
+    </div>
+    <% else %>
+    <%= image_tag('undraw/void.svg', class: 'void') %>
+    <% end %>
+  </section>
     <section class="box">
       <header class="box-header">
         <h2>Parties</h2>
@@ -22,38 +34,22 @@
         </div>
       </div>
     </section>
-    <section class="box">
-      <header class="box-header">
-        <h2>Description</h2>
-      </header>
-      <% if @project.description %>
-      <div class="box-content">
-        <p><%= @project.description %></p>
-      </div>
+    <div class="box">
+      <span class="box-header">
+        <h2>Upcoming deadlines</h2>
+      </span>
+      <% if @project.deadlines.count > 0 %>
+        <%= render 'deadlines' %>
       <% else %>
-      <%= image_tag('undraw/void.svg', class: 'void') %>
+      <div class="box-content">
+        <%= image_tag('undraw/void.svg', class: 'void') %>
+      </div>
       <% end %>
-    </section>
+    </div>
   </div>
   <div class="col-3">
     <%= render 'properties' %>
     <%= render 'statistics' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <div class="box">
-      <span class="box-header header">
-        <h2>Upcoming deadlines</h2>
-      </span>
-      <div class="box-content">
-        <% if @project.deadlines.count > 0 %>
-        <%= render 'deadlines' %>
-        <% else %>
-        <%= image_tag('undraw/void.svg', class: 'void') %>
-        <% end %>
-      </div>
-    </div>
   </div>
 </div>
 <div class="row">
