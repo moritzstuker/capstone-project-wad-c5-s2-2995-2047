@@ -6,9 +6,7 @@
         <span class="mute">&nbsp;&sol;&nbsp;</span>
         <%= @project.label %> (<%= strip_tags(main_parties(@project)) %>)
       </h1>
-      <span class="push button-group">
-        <%= render 'edit-box', target: @project %>
-      </span>
+      <%= render 'edit-box', target: @project %>
     </header>
   </div>
 </div>

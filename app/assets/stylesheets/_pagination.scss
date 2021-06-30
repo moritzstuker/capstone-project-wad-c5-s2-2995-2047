@@ -4,7 +4,9 @@
 .pagination {
   display: inline-flex;
   width: auto;
+  max-width: 100%;
   margin-top: $gutter;
+  overflow-x: scroll;
   border: $border-base;
   border-radius: $border-radius;
 
@@ -20,6 +22,7 @@
     padding: ($box-padding-y / 2) $box-padding-x;
     color: inherit;
     text-decoration: none !important;
+    white-space: nowrap;
   }
 
   a {

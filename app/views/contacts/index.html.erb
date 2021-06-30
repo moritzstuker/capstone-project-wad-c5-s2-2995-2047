@@ -2,15 +2,15 @@
   <div class="col">
     <header class="page-header">
       <h1 class="title">Contacts</h1>
-      <span class="push button-group"><%= render 'filters' %></span>
+      <%= render 'filters' %>
     </header>
   </div>
 </div>
 <section class="row">
-  <aside class="col-2">
+  <aside class="col-2 order-s-1 order-l-0">
     <%= render 'sidebar/index' %>
   </aside>
-  <div class="col">
+  <div class="col order-s-0 order-l-1">
     <% if @contacts.count > 0 %>
       <ul class="row">
         <% @contacts.each do |contact| %>

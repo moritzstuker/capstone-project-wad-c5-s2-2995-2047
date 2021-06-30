@@ -31,23 +31,76 @@ ul.row {
 
 .col {
   @extend %col;
-  flex-basis: 0;
+  flex-basis: 100%;
   flex-grow: 1;
   max-width: 100%;
+
+  @include media (m) {
+    flex-basis: 0;
+  }
 }
 
 @for $i from 1 through $columns {
   $percentage: (100 / $columns * $i * 1%);
   .col-#{$i} {
     @extend %col;
-    flex-basis: $percentage;
-    max-width: $percentage;
+    flex-basis: 100%;
+    max-width: 100%;
+
+    @include media (m) {
+      flex-basis: $percentage;
+      max-width: $percentage;
+    }
   }
 
   @if $i != $columns {
     .col-offset-#{$i} {
       @extend %col;
-      margin-left: $percentage;
+
+      @include media (m) {
+        margin-left: $percentage;
+      }
+    }
+  }
+}
+
+.no-col-s {
+  flex-basis: auto;
+  flex-grow: 1;
+}
+
+.order {
+  &-s {
+    &-0 {
+      order: 0;
+    }
+
+    &-1 {
+      order: 1;
+    }
+
+    &-2 {
+      order: 2;
+    }
+  }
+
+  &-l {
+    &-0 {
+      @include media (m) {
+        order: 0;
+      }
+    }
+
+    &-1 {
+      @include media (m) {
+        order: 1;
+      }
+    }
+
+    &-2 {
+      @include media (m) {
+        order: 2;
+      }
     }
   }
 }

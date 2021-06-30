@@ -88,9 +88,9 @@ path {
 
   &-group {
     display: inline-block;
-    width: 100%;
+    width: auto;
 
-    & > * {
+    & > *:not(:first-child) {
       margin-left: .5em;
     }
   }

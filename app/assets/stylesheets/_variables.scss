@@ -69,11 +69,11 @@ $transition: $transition-duration cubic-bezier(.3,0,.5,1);
       @content;
     }
   } @else if $media == 'm' {
-    @media (min-width: $block-width-s) {
+    @media (min-width: $block-width-m) {
       @content;
     }
   } @else if $media == 'l' {
-    @media (min-width: $block-width-m) {
+    @media (min-width: $block-width-l) {
       @content;
     }
   }

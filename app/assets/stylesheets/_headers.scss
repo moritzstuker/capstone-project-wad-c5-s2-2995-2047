@@ -49,6 +49,14 @@
   align-items: center;
   justify-content: flex-start;
   margin-top: $gutter;
+
+  .title {
+    flex: 1 1 auto;
+  }
+
+  .icon-group {
+    flex: 0 0 auto;
+  }
 }
 
 /*

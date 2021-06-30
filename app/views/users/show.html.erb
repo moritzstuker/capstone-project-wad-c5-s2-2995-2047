@@ -4,9 +4,7 @@
       <h1 class="title">
         <%= @user.name %>&nbsp(<%= @user.role.capitalize %>)
       </h1>
-      <span class="push button-group">
-        <%= render 'edit-box', target: @user %>
-      </span>
+      <%= render 'edit-box', target: @user %>
     </header>
   </div>
 </div>

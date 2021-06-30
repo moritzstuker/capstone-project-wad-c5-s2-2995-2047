@@ -121,6 +121,7 @@ sup,
 .keys {
   color: $text-color-secondary;
   font-size: $small-font-size;
+  white-space: nowrap;
 
   &:not(:last-child) {
     margin-right: $gutter;

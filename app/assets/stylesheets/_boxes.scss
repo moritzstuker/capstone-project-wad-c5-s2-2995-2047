@@ -51,10 +51,12 @@
 
   &-footer {
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: flex-start;
     padding: ($box-padding-y / 1.5) $box-padding-x;
     border-top: $border-base;
+    line-height: 2;
 
     .box-header + & {
       border-top: none;
