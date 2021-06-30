@@ -8,11 +8,12 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(login: params[:session][:login].downcase)
 
-    if user.present? && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password])
       log_in user
       redirect_to projects_path
     else
-      render 'new', danger: 'Invalid email/password combination'
+      flash.now[:alert] = 'Invalid email/password combination'
+      render 'new'
     end
   end
 

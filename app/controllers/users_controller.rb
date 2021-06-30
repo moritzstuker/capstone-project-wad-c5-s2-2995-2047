@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        log_in @user
         format.html { redirect_to @user, notice: "User was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,12 +48,17 @@ class UsersController < ApplicationController
   end
 
   private
+
     def set_user
       @user = User.find(params[:id])
     end
 
     def user_params
       params.require(:user).permit(:login, :name, :password, :password_confirmation, :avatar, :email, :locale, :role, :default_fee)
+    end
+
+    def log_in(user)
+      session[:user_id] = user.id
     end
 
     def can_view?(user)
