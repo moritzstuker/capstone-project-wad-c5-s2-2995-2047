@@ -11,4 +11,8 @@ module ProjectsHelper
     adversaries_suffix = "<span class=\"mute\">et al.</span>" if project.adversaries.count > 1
     sanitize([clients, clients_suffix, versus, adversaries, adversaries_suffix].reject(&:blank?).join(' '))
   end
+
+  def build_deadline_text(str)
+    "PLUT #{str.inspect}"
+  end
 end

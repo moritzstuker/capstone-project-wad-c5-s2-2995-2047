@@ -3,9 +3,6 @@
     <h2>Statistics</h2>
   </header>
   <div class="box-content">
-    <p><strong>Total hours:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %></p>
-    <p><strong>Total fees:</strong>&nbsp;<%= fee(@project.activities.sum(&:duration) * @project.activities.sum(&:duration)) %></p>
-    <hr>
     <ul class="no-list">
       <% @project.activities.includes(:user).group_by(&:user).sort.reverse.each do |user| %>
         <li>
@@ -13,5 +10,8 @@
         </li>
       <% end %>
     </ul>
+    <hr>
+    <p><strong>Total hours:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %></p>
+    <p><strong>Total fees:</strong>&nbsp;<%= fee(@project.activities.sum(&:fee) * @project.activities.sum(&:duration)) %></p>
   </div>
 </section>

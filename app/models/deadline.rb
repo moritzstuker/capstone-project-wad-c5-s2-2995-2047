@@ -1,8 +1,6 @@
 class Deadline < ApplicationRecord
   include Filtering
 
-  default_scope { where( completed_at: nil ) }
-
   CATEGORIES = %w(internal external court-ordered legal)
 
   belongs_to :project

@@ -56,12 +56,12 @@ path {
     border-radius: 50%;
   }
 
-  &.issue-closed {
-    fill: $green-200;
-  }
-
   &.search {
     fill: currentColor;
+  }
+
+  &.check-circle {
+    fill: $green-200;
   }
 
   &-text {

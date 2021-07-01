@@ -15,4 +15,8 @@ module DeadlinesHelper
     else nil
     end
   end
+
+  def can_delete_deadline?(deadline, user = current_user)
+    user == deadline.assignee || user == deadline.project.owner || is_admin?(user)
+  end
 end

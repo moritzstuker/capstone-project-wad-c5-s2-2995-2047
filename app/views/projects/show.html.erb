@@ -34,18 +34,14 @@
         </div>
       </div>
     </section>
+    <% if @deadlines.count > 0 %>
     <div class="box">
-      <span class="box-header">
+      <div class="box-header">
         <h2>Upcoming deadlines</h2>
-      </span>
-      <% if @project.deadlines.count > 0 %>
-        <%= render 'deadlines' %>
-      <% else %>
-      <div class="box-content">
-        <%= image_tag('undraw/void.svg', class: 'void') %>
       </div>
-      <% end %>
+      <%= render 'deadlines' %>
     </div>
+  <% end %>
   </div>
   <div class="col-3">
     <%= render 'properties' %>

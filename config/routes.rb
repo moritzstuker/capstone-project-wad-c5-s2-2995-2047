@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get    '/contacts/import',  to: 'contacts#import'
 
     resources :contacts
-    resources :deadlines
+
     resources :project_categories
     resources :sessions, only: [:new, :create, :destroy]
     resources :users
@@ -28,5 +28,12 @@ Rails.application.routes.draw do
     resources :projects do
       resources :activities, only: [:create, :destroy]
     end
+
+    resources :deadlines do
+      member do
+        patch :complete
+      end
+    end
+
   end
 end

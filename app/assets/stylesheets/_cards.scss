@@ -31,8 +31,6 @@
     .card {
       display: block;
       border: $border-base;
-      background-color: $background-color-secondary;
-      cursor: pointer;
 
       &:not(:first-child) {
         margin-top: ($box-padding-x / 2);
@@ -40,9 +38,31 @@
 
       &:active,
       &:hover {
-        border-color: $text-color-highlight;
         background-color: $background-color-secondary;
       }
     }
+  }
+
+  &.horizontal {
+    display: flex;
+    flex-direction: row;
+
+    .card-aside {
+      display: inline-flex;
+      align-items: center;
+
+      & + .card-main {
+        flex: 1 0 auto;
+        margin-left: $box-padding-y;
+      }
+    }
+  }
+}
+
+a.card {
+  &:active,
+  &:hover {
+    border-color: $text-color-highlight;
+    background-color: $background-color-secondary;
   }
 }

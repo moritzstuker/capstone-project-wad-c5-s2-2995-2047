@@ -5,9 +5,9 @@
     </summary>
     <ul class="dropdown-content box">
         <% @users.each do |user| %>
-          <% if @all_deadlines.filter_by_user(user).count > 0 %>
+          <% if @deadlines.filter_by_user(user).count > 0 %>
             <li role="menuitem" class="box-row">
-              <%= link_to "#{ user.name } (#{@all_deadlines.filter_by_user(user).count})",
+              <%= link_to "#{ user.name } (#{@deadlines.filter_by_user(user).count})",
               url_for(user: user),
               class: "menu-item#{ ' orange-color' if params[:user] == user.id.to_s }" %>
             </li>
@@ -23,7 +23,7 @@
     <ul class="dropdown-content box">
         <% @categories.each do |category| %>
           <li role="menuitem" class="box-row">
-            <%= link_to "#{ i18n_enum(@all_deadlines.filter_by_category(category).first, :category).capitalize } (#{@all_deadlines.filter_by_category(category).count})",
+            <%= link_to "#{ i18n_enum(@deadlines.filter_by_category(category).first, :category).capitalize } (#{@deadlines.filter_by_category(category).count})",
             url_for(category: category),
             class: "menu-item#{ ' orange-color' if params[:category] == category }" %>
           </li>
