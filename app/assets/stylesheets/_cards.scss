@@ -3,6 +3,7 @@
 
 .card {
   padding: ($box-padding-y * 0.65) ($box-padding-x * 0.65);
+    overflow-x: scroll;
   font-size: $small-font-size;
 
   &-header {
@@ -49,6 +50,7 @@
 
     .card-aside {
       display: inline-flex;
+      flex: 0 0 auto;
       align-items: center;
 
       & + .card-main {

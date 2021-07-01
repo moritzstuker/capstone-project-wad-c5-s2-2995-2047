@@ -2,7 +2,7 @@
   <div class="col">
     <header class="page-header">
       <h1 class="title">
-        <%= @user.name %>&nbsp(<%= @user.role.capitalize %>)
+        <%= @user.name %>
       </h1>
       <%= render 'edit-box', target: @user %>
     </header>
@@ -20,6 +20,11 @@
         <p>
           <strong>Username:</strong>
           <%= @user.login %>
+        </p>
+
+        <p>
+          <strong>Role:</strong>
+          <%= @user.role.capitalize %>
         </p>
 
         <p>
@@ -47,14 +52,34 @@
       <div class="box-header">
         Assigned deadlines
       </div>
-      <div class="box-content">
-        deadlines
-      </div>
+        <ul class="card-list">
+          <% @user.deadlines.includes(:assignee).sort_by(&:date).each do |deadline| %>
+          <li class="card horizontal">
+            <div class="card-aside">
+              <%= deadline.completed_at.nil? ? icon_tag('circle', class: 'small') : icon_tag('check-circle', class: 'small') %>
+            </div>
+            <div class="card-main<%= ' mute' unless deadline.completed_at.nil? %>">
+              <div class="card-header">
+                <%= deadline.label %>
+                <span class="tag"><%= i18n_enum(deadline, 'category') %></span>
+                <%= link_to icon_tag('trash', class: 'small'), deadline_path(deadline), method: :delete, data: { confirm: 'Are you sure?' }, class: 'push small' if can_delete_deadline?(deadline) %>
+              </div>
+              <div class="card-content">
+                <% if deadline.completed_at.present? %>
+                  <%= "Completed on #{ deadline.completed_at.strftime("%d.%m.%Y") }" if deadline.completed_at.present? %>
+                <% else %>
+                  <%= dot_label(deadline.date.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(deadline.date))) %>
+                <% end %>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
     </div>
   </div>
   <div class="col-5">
     <ul class="timeline">
-      <% @user.activities.order(date: :desc).limit(5).includes(:project).group_by(&:date).sort.reverse.each do |date| %>
+      <% @user.activities.order(date: :desc).limit(10).includes(:project).group_by(&:date).sort.reverse.each do |date| %>
       <li class="timeline-date">
         <header class="timeline-header">
           <span class="timeline-icon"><%= icon_tag('git-commit') %></span>
