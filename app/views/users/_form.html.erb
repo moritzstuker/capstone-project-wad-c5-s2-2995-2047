@@ -4,30 +4,30 @@
   <div class="col">
     <div class="box">
       <div class="box-header">
-        Profile
+        <%= t('.profile') %>
       </div>
       <div class="form-field">
-        <%= form.label :login, 'Username*' %>
-        <%= form.text_field :login, required: true, id: :user_login %>
-      </div>
-
-      <div class="form-field">
-        <%= form.label :password, 'Password*' %>
-        <%= form.password_field :password, required: true, id: :user_password %>
+        <%= form.label :login, "#{ t('.login') }*" %>
+        <%= form.text_field :login, id: :user_login %>
       </div>
 
       <div class="form-field">
-        <%= form.label :password_confirmation, 'Password confirmation*' %>
-        <%= form.password_field :password_confirmation, required: true, id: :user_password_confirmation %>
+        <%= form.label :password, "#{ t('.password') }*" %>
+        <%= form.password_field :password, id: :user_password %>
       </div>
 
       <div class="form-field">
-        <%= form.label :name, 'Full name*' %>
-        <%= form.text_field :name, required: true, id: :user_name %>
+        <%= form.label :password_confirmation, "#{ t('.password_confirmation') }*" %>
+        <%= form.password_field :password_confirmation, id: :user_password_confirmation %>
       </div>
 
       <div class="form-field">
-        <%= form.label :email, 'Email*' %>
+        <%= form.label :name, "#{ t('.name') }*" %>
+        <%= form.text_field :name, id: :user_name %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :email, "#{ t('.email') }*" %>
         <%= form.text_field :email, id: :user_email %>
       </div>
     </div>
@@ -36,33 +36,33 @@
   <div class="col">
     <div class="box">
       <div class="box-header">
-        Settings
+        <%= t('.settings') %>
       </div>
 
       <div class="form-field file-uploader">
         <%= form.label :avatar do %>
-        <span class="label">Avatar</span>
+        <span class="label"><%= t('.avatar') %></span>
         <div class="file-uploader-input">
           <%= image_tag(user.avatar, class: 'avatar') %>
-          <span class="file-uploader-label">Upload another</span>
+          <span class="file-uploader-label"><%= t('.upload_avatar') %></span>
         </div>
         <%= form.file_field :avatar, accept: '.jpg, .jpeg, .gif, .png', id: :user_avatar %>
         <%end %>
       </div>
 
       <div class="form-field">
-        <%= form.label :locale, 'Preferred language*' %>
-        <%= form.select :locale, I18n.available_locales.collect { |locale| [t('language', locale: locale), locale] }, required: true, id: :user_locale %>
+        <%= form.label :locale, "#{ t('.locale') }*" %>
+        <%= form.select :locale, I18n.available_locales.collect { |locale| [t('language', locale: locale), locale] }, id: :user_locale %>
       </div>
 
       <div class="form-field">
-        <%= form.label :default_fee %>
+        <%= form.label :default_fee, "#{ t('.default_fee') }" %>
         <%= form.number_field :default_fee, value: '%.2f' % user.default_fee, step: 0.05 %>
       </div>
 
       <% if is_admin? %>
       <div class="form-field">
-        <%= form.label :role %>
+        <%= form.label :role, "#{ t('.role') }" %>
         <%= form.select :role, options_for_select(User.roles.keys.reverse.map { |role| [role.capitalize, role] }, user.role), value: user.role, id: :user_role %>
       </div>
       <% end %>
@@ -74,9 +74,9 @@
   <div class="col">
     <div class="box">
       <div class="form-action">
-        <span class="mute small">* Required fields.</span>
+        <span class="mute small">* <%= t('.required_fields') %>.</span>
         <span class="push button-group">
-          <%= link_to 'Retour', user, class: 'button outline' %>
+          <%= link_to t('.back'), user, class: 'button outline' %>
           <%= form.submit class: 'button blue push' %>
         </span>
       </div>

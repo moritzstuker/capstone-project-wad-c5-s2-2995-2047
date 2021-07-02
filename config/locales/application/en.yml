@@ -1,0 +1,6 @@
+en:
+  application:
+    dashboard_sidebar:
+      dashboard: 'Dashboard'
+      account: 'Account'
+      users: 'Users'
