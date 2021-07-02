@@ -1,9 +1,9 @@
 <div class="box">
   <div class="box-header">
-    Financials
+    <%= t('.title') %>
   </div>
   <div class="box-content">
-    <p>Total billable hours:&nbsp;<%= number_with_precision(Activity.where(user: current_user).sum(&:duration), precision: 2) %></p>
-    <p>Total fees:&nbsp;<%= fee(Activity.where(user: current_user).sum("duration * fee")) %></p>
+    <p><%= t('.total_billable_hours') %>:&nbsp;<%= number_with_precision(Activity.where(user: current_user).sum(&:duration), precision: 2) %></p>
+    <p><%= t('.total_fees') %>:&nbsp;<%= fee(Activity.where(user: current_user).sum("duration * fee")) %></p>
   </div>
 </div>

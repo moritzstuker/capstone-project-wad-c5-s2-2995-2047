@@ -1,6 +1,6 @@
 <div class="box">
   <div class="box-header">
-    Latest articles from&nbsp;<%= link_to 'Lawinside.ch', 'http://www.lawinside.ch' %>
+    <%= t('.latest_news') %>&nbsp;<%= link_to 'Lawinside.ch', 'http://www.lawinside.ch' %>
   </div>
   <% if @news.count > 0 %>
   <ul class="card-list">

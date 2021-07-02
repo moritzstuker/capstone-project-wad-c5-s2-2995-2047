@@ -1,0 +1,8 @@
+en:
+  dashboard:
+    financials:
+      title: 'Financials'
+      total_billable_hours: 'Total billable hours'
+      total_fees: 'Total fees'
+    news:
+      latest_news: 'Latest news'
