@@ -5,11 +5,11 @@
     </span>
   </summary>
   <ul class="dropdown-content box">
-    <li role="menuitem" class="box-row"><%= link_to 'Add case', new_project_path, class: 'menu-item' %></li>
-    <li role="menuitem" class="box-row"><%= link_to 'Add contact', new_contact_path, class: 'menu-item' %></li>
-    <li role="menuitem" class="box-row"><%= link_to 'Add deadline', new_deadline_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.add_case'), new_project_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.add_contact'), new_contact_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.add_deadline'), new_deadline_path, class: 'menu-item' %></li>
     <% if is_admin? || is_partner? %>
-    <li role="menuitem" class="box-row"><%= link_to 'Add user', new_user_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.add_user'), new_user_path, class: 'menu-item' %></li>
     <% end %>
   </ul>
 </details>
@@ -20,12 +20,12 @@
     </span>
   </summary>
   <ul class="dropdown-content box">
-    <li role="menuitem" class="box-row"><span class="menu-header">Signed in as<br /><strong><%= current_user.name %></strong></span></li>
-    <li role="menuitem" class="box-row"><%= link_to "Dashboard", dashboard_path, class: 'menu-item' %></li>
-    <li role="menuitem" class="box-row"><%= link_to "Account", account_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><span class="menu-header"><%= t('.signed_in_as') %><br /><strong><%= current_user.name %></strong></span></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.dashboard'), dashboard_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.account'), account_path, class: 'menu-item' %></li>
     <% if is_admin? || is_partner? %>
-    <li role="menuitem" class="box-row"><%= link_to "Users", users_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.users'), users_path, class: 'menu-item' %></li>
     <% end %>
-    <li role="menuitem" class="box-row"><%= link_to "Log out", logout_path, method: :delete, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to t('.log_out'), logout_path, method: :delete, class: 'menu-item' %></li>
   </ul>
 </details>

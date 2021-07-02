@@ -1,15 +1,15 @@
 <nav aria-label="Sidebar">
   <ul role="menubar" aria-label="Sidebar" class="box">
     <li role="menuitem" class="box-row">
-      <%= link_to sidebar_header('Cases', Project.filter_by_query(params[:query]).count), projects_path(query: params[:query]), class: "box-header#{ ' is-active' if current_page?(projects_path) }"  %>
+      <%= link_to sidebar_header(t('.cases'), Project.filter_by_query(params[:query]).count), projects_path(query: params[:query]), class: "box-header#{ ' is-active' if current_page?(projects_path) }"  %>
       <%= render 'sidebar/projects' if Project.filter_by_query(params[:query]).count > 0 %>
     </li>
     <li role="menuitem" class="box-row">
-      <%= link_to sidebar_header('Contacts', Contact.filter_by_query(params[:query]).count), contacts_path(query: params[:query]), class: "box-header#{ ' is-active' if current_page?(contacts_path) }"  %>
+      <%= link_to sidebar_header(t('.contacts'), Contact.filter_by_query(params[:query]).count), contacts_path(query: params[:query]), class: "box-header#{ ' is-active' if current_page?(contacts_path) }"  %>
       <%= render 'sidebar/contacts' if Contact.filter_by_query(params[:query]).count > 0 %>
     </li>
     <li role="menuitem" class="box-row">
-      <%= link_to sidebar_header('Deadlines', Deadline.filter_by_query(params[:query]).where(completed_at: nil).count), deadlines_path(query: params[:query]), class: "box-header#{ ' is-active' if current_page?(deadlines_path) }"  %>
+      <%= link_to sidebar_header(t('.deadlines'), Deadline.filter_by_query(params[:query]).where(completed_at: nil).count), deadlines_path(query: params[:query]), class: "box-header#{ ' is-active' if current_page?(deadlines_path) }"  %>
       <%= render 'sidebar/deadlines' if Deadline.due_soon.filter_by_query(params[:query]).where(completed_at: nil).count > 0 %>
     </li>
   </ul>

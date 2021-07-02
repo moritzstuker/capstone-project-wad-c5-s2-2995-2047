@@ -1,4 +1,4 @@
 <span class="icon-group push">
   <%= link_to icon_tag('pencil'), edit_polymorphic_path(target) if can_edit?(target) %>
-  <%= link_to icon_tag('trash'), target, method: :delete, data: { confirm: 'Are you sure?' } if can_delete?(target) %>
+  <%= link_to icon_tag('trash'), target, method: :delete, data: { confirm: t('.confirm') } if can_delete?(target) %>
 </span>

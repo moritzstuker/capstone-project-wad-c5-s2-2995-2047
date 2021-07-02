@@ -1,12 +1,12 @@
 <div class="buttons-merged">
   <details class="dropdown">
     <summary aria-haspopup="true">
-      <%= simple_format('Country', { class: "button dropdown-trigger#{ ' orange' if params[:country].present? }" }, wrapper_tag: 'span') %>
+      <%= simple_format(t('.country'), { class: "button dropdown-trigger#{ ' orange' if params[:country].present? }" }, wrapper_tag: 'span') %>
     </summary>
     <ul class="dropdown-content box">
         <% @countries.each do |country| %>
         <li role="menuitem" class="box-row">
-          <%= link_to "#{country} (#{@all_contacts.filter_by_country(country.downcase).count})",
+          <%= link_to "#{ country } (#{@all_contacts.filter_by_country(country.downcase).count})",
           url_for(country: country.downcase),
           class: "menu-item#{ ' orange-color' if params[:country] == country.downcase }" %>
         </li>
@@ -16,16 +16,16 @@
 
   <details class="dropdown">
     <summary aria-haspopup="true">
-      <%= simple_format('Category', { class: "button dropdown-trigger#{ ' orange' if params[:category].present? }" }, wrapper_tag: 'span') %>
+      <%= simple_format(t('.category'), { class: "button dropdown-trigger#{ ' orange' if params[:category].present? }" }, wrapper_tag: 'span') %>
     </summary>
     <ul class="dropdown-content box">
       <li role="menuitem" class="box-row">
-        <%= link_to "Companies (#{@all_contacts.where(category: :company).count})",
+        <%= link_to "#{ t('.companies') } (#{@all_contacts.where(category: :company).count})",
         url_for(category: 1),
         class: "menu-item#{ ' orange-color' if params[:category].present? && params[:category] == '1' }" %>
       </li>
       <li role="menuitem" class="box-row">
-        <%= link_to "Persons (#{@all_contacts.where(category: :person).count})",
+        <%= link_to "#{ t('.persons') } (#{@all_contacts.where(category: :person).count})",
         url_for(category: 0),
         class: "menu-item#{ ' orange-color' if params[:category].present? && params[:category] == '0' }" %>
       </li>
@@ -33,4 +33,4 @@
   </details>
 </div>
 
-<%= link_to "Show all", url_for, class: 'button blue' %>
+<%= link_to t('helpers.link_to.show_all'), url_for, class: 'button blue' %>

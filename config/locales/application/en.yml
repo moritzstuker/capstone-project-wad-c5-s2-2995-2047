@@ -4,3 +4,15 @@ en:
       dashboard: 'Dashboard'
       account: 'Account'
       users: 'Users'
+    header_links:
+      add_case: 'Add case'
+      add_contact: 'Add contact'
+      add_deadline: 'Add deadline'
+      add_user: 'Add user'
+      signed_in_as: 'Signed in as'
+      dashboard: 'Dashboard'
+      account: 'Account'
+      users: 'Users'
+      log_out: 'Log out'
+    edit-box:
+      confirm: 'Are you sure?'

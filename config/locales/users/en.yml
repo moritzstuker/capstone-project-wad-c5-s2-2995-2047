@@ -15,3 +15,8 @@ en:
       role: 'Role'
       required_fields: 'Required fields'
       back: 'Back'
+    roles:
+      intern: 'Intern'
+      associate: 'Associate'
+      partner: 'Partner'
+      admin: 'Admin'

@@ -6,3 +6,6 @@ en:
       total_fees: 'Total fees'
     news:
       latest_news: 'Latest news'
+    index:
+      title: 'Dashboard'
+      activity_logged_on: 'Activity logged on'

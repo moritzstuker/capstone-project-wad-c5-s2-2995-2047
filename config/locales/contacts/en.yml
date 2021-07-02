@@ -1,0 +1,17 @@
+en:
+  contacts:
+    index:
+      title: 'Contacts'
+    filters:
+      country: 'Country'
+      category: 'Category'
+      companies: 'Companies'
+      persons: 'Persons'
+    roles:
+      client: 'Client'
+      adversary: 'Adversary'
+      other: 'Other'
+    card:
+      party_in_n_cases:
+        one: 'Party in one case'
+        other: 'Party in %{count} cases'
