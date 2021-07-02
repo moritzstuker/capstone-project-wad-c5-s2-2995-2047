@@ -34,13 +34,12 @@ The project's main features include:
 
 These overview pages are to include the following:
 - **Project** (i.e. "Case") overview, including at least:
-  - parties' addresses and roles
+  - parties' names and roles
   - case description
   - total number of hours spent
-  - financial overview (including expenses)
-  - next deadlines
+  - financial overview
+  - upcoming deadlines
   - employees working on the case
-  - links to case timesheet, deadlines, etc.
   - whether the case is active or archived
   - the project category
 - **User** (i.e. "Employee") overview, including at least:
