@@ -52,24 +52,17 @@ These overview pages are to include the following:
 
 I also intend to implement:
 - some sort of conflict-check verification:
-  - no duplicate contacts, which is to say that there will be a uniqueness validator
   - no contact can (ever) be simultaneously client in one case and adversary in another. This can be easily implementented by adding their role as an attribute. When opening a new case, only "clients" will show up as selectable clients and adversaries in their place.
-- ideally, query for addresses (via the tel.search.ch API) and commercial registry entries (via the zefix API).
+- ideally, query for addresses (via the tel.search.ch API).
 - the project will support french and english localization
 
 ## Front end
 
-The project will include numerous databases (timesheets, clients, employees, etc.), all of which have to be interacted with in an as intuitive as possible way. I will thus strive to make use of precisely the right amount of JS to provide for a simple UI.
+The project will include numerous databases (timesheets, clients, deadlines, etc.), all of which have to be interacted with in an as intuitive as possible way. I will thus strive to make use of precisely the right amount of JS to provide for a simple UI.
 
 Examples include:
-- the ability to easily add/remove/shift timesheet entries
+- the ability to easily add/remove timesheet entries
 - the ability to have overviews of different needs
-
-I intend to use the [Tailwind CSS 2.1.0](https://tailwindcss.com) framework for all my front-end needs, backed up by [AlpineJS](https://github.com/alpinejs/alpine).
-
-In order to [use Tailwind fully](https://tailwindcss.com/docs/installation#installing-tailwind-css-as-a-post-css-plugin), it needs to be loaded as a [PostCSS](https://postcss.org) plugin, which is included in [Webpack](https://webpack.js.org), [which does not come activated by default in rails 5.1.7](https://samuelmullen.com/articles/embracing-change-rails51-adopts-yarn-webpack-and-the-js-ecosystem/). So this will have to be implemented first.
-
-If, for some unforeseen reason, Tailwind CSS does not satisfy the needs, I will resort to the more traditional CSS Framework [Bulma](https://bulma.io), which does not need any additional tool such as Webpack. One of these reasons is the fact that I own an Apple Silicon-based MacBook Air, on which [Webpack is having issues](https://github.com/rails/webpacker/issues/2992#issuecomment-827002178).
 
 ### Mock ups
 
@@ -168,71 +161,70 @@ The following roles will be available:
 - Partner
 - Associate
 - Intern
-- Assistant
 
 ### Users
 
-| Action  | Admin | Partner | Associate | Intern | Assistant |
-|---------|-------|---------|-----------|--------|-----------|
-| index   | x     | x       | x         |        | x         |
-| show    | x     | x       | x         | (1)    | x         |
-| new     | x     | x       |           |        | x         |
-| edit    | x     | x       | (1)       | (1)    | x         |
-| create  | x     |         |           |        | x         |
-| update  | x     | x       | (1)       | (1)    | x         |
-| destroy | x     |         |           |        |           |
+| Action  | Admin | Partner | Associate | Intern |
+|---------|-------|---------|-----------|--------|
+| index   | x     | x       | x         |        |
+| show    | x     | x       | x         | (1)    |
+| new     | x     | x       |           |        |
+| edit    | x     | x       | (1)       | (1)    |
+| create  | x     |         |           |        |
+| update  | x     | x       | (1)       | (1)    |
+| destroy | x     |         |           |        |
 
 (1) restricted to self
 
 ### Contacts
 
-| Action  | Admin | Partner | Associate | Intern | Assistant |
-|---------|-------|---------|-----------|--------|-----------|
-| index   | x     | x       | x         | x      | x         |
-| show    | x     | x       | x         | x      | x         |
-| new     | x     | x       | x         | x      | x         |
-| edit    | x     | x       | x         | x      | x         |
-| create  | x     | x       | x         | x      | x         |
-| update  | x     | x       |           |        | x         |
-| destroy | x     | x       |           |        | x         |
+| Action  | Admin | Partner | Associate | Intern |
+|---------|-------|---------|-----------|--------|
+| index   | x     | x       | x         | x      |
+| show    | x     | x       | x         | x      |
+| new     | x     | x       | x         | x      |
+| edit    | x     | x       | x         | x      |
+| create  | x     | x       | x         | x      |
+| update  | x     | x       |           |        |
+| destroy | x     | x       |           |        |
 
 ### Projects
 
-| Action  | Admin | Partner | Associate | Intern | Assistant |
-|---------|-------|---------|-----------|--------|-----------|
-| index   | x     | x       | x         | x      | x         |
-| show    | x     | x       | x         | x      | x         |
-| new     | x     | x       | x         |        | x         |
-| edit    | x     | x       | x         |        | x         |
-| create  | x     | x       | x         |        | x         |
-| update  | x     | x       | x         |        | x         |
-| destroy | x     | x       |           |        | x         |
+| Action  | Admin | Partner | Associate | Intern |
+|---------|-------|---------|-----------|--------|
+| index   | x     | x       | x         | x      |
+| show    | x     | x       | x         | x      |
+| new     | x     | x       | x         |        |
+| edit    | x     | x       | x         |        |
+| create  | x     | x       | x         |        |
+| update  | x     | x       | x         |        |
+| destroy | x     | x       |           |        |
 
 ### Activities
 
-| Action  | Admin | Partner | Associate | Intern | Assistant |
-|---------|-------|---------|-----------|--------|-----------|
-| index   | x     | x       | x         | x      | x         |
-| show    | n/a   | n/a     | n/a       | n/a    | n/a       |
-| new     | x     | x       | x         | x      | x         |
-| edit    | n/a   | n/a     | n/a       | n/a    | n/a       |
-| create  | x     | x       | x         | x      | x         |
-| update  | x     | x       | x         | (1)    | x         |
-| destroy | x     | x       | x         | (1)    | x         |
+| Action  | Admin | Partner | Associate | Intern |
+|---------|-------|---------|-----------|--------|
+| index   | x     | x       | x         | x      |
+| show    | n/a   | n/a     | n/a       | n/a    |
+| new     | x     | x       | x         | x      |
+| edit    | n/a   | n/a     | n/a       | n/a    |
+| create  | x     | x       | x         | x      |
+| update  | x     | x       | x         | (1)    |
+| destroy | x     | x       | x         | (1)    |
 
 (1) restricted to own entries
 
 ### Deadlines
 
-| Action  | Admin | Partner | Associate | Intern | Assistant |
-|---------|-------|---------|-----------|--------|-----------|
-| index   | x     | x       | x         | x      | x         |
-| show    | n/a   | n/a     | n/a       | n/a    | n/a       |
-| new     | x     | x       | x         | x      | x         |
-| edit    | n/a   | n/a     | n/a       | n/a    | n/a       |
-| create  | x     | x       | x         | x      | x         |
-| update  | x     | x       | x         |        | x         |
-| destroy | x     | x       | x         |        | x         |
+| Action  | Admin | Partner | Associate | Intern |
+|---------|-------|---------|-----------|--------|
+| index   | x     | x       | x         | x      |
+| show    | n/a   | n/a     | n/a       | n/a    |
+| new     | x     | x       | x         | x      |
+| edit    | n/a   | n/a     | n/a       | n/a    |
+| create  | x     | x       | x         | x      |
+| update  | x     | x       | x         |        |
+| destroy | x     | x       | x         |        |
 
 ## Third party services
 
@@ -249,7 +241,6 @@ Include a list of all third party services that you envisage using in your proje
 * CSS frameworks
   - [Tailwind CSS](https://tailwindcss.com) for all my front-end needs.
 * Third party APIs
-  - [Zefix](https://www.e-service.admin.ch/wiki/display/openegovdoc/Zefix+Webservice), in order to get company information.
   - [tel.search](https://tel.search.ch/api/help.fr.html), in order to retrieve real user data.
 * Deployment services
-  - Most likely [Heroku](https://www.heroku.com), at least for the proof-of-concept. Later on, probably a company based in Switzerland for data protection reasons.
+  - Most likely [Heroku](https://www.heroku.com), at least for the proof-of-concept.
