@@ -333,3 +333,9 @@ optgroup {
     height: 0;
   }
 }
+
+.field_with_errors {
+  * {
+    border-color: $red-500 !important;
+  }
+}

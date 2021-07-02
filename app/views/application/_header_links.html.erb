@@ -7,6 +7,7 @@
   <ul class="dropdown-content box">
     <li role="menuitem" class="box-row"><%= link_to 'Add case', new_project_path, class: 'menu-item' %></li>
     <li role="menuitem" class="box-row"><%= link_to 'Add contact', new_contact_path, class: 'menu-item' %></li>
+    <li role="menuitem" class="box-row"><%= link_to 'Add deadline', new_deadline_path, class: 'menu-item' %></li>
     <% if is_admin? || is_partner? %>
     <li role="menuitem" class="box-row"><%= link_to 'Add user', new_user_path, class: 'menu-item' %></li>
     <% end %>
