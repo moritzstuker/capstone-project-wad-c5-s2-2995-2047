@@ -1,5 +1,11 @@
 en:
   deadlines:
+    fields:
+      label: 'Label'
+      date: 'Due by'
+      category: 'Category'
+      project: 'Project'
+      assigned_to: 'Assigned to'
     index:
       title: 'Deadlines'
     card:

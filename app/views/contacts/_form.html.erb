@@ -5,35 +5,35 @@
   <div class="col">
     <div class="box">
       <div class="box-header">
-        Basic information
+        <%= t('.basic_info') %>
       </div>
       <div class="form-field">
-        <%= form.label :name, 'Name*' %>
+        <%= form.label :name, "#{ t('contacts.fields.name') }*" %>
         <%= form.text_field :name, required: true, id: :contact_name %>
       </div>
 
       <div class="form-field">
-        <%= form.label :category, 'Category*' %>
+        <%= form.label :category, "#{ t('contacts.fields.category') }*" %>
         <%= form.select :category, Contact.categories.keys.map { |category| [category.capitalize, category] }, { required: true } %>
       </div>
 
       <div class="form-field">
-        <%= form.label :activity, 'Profession/activity' %>
+        <%= form.label :activity, "#{ t('contacts.fields.activity') }*" %>
         <%= form.text_field :activity %>
       </div>
 
       <div class="form-field">
-        <%= form.label :email, 'Email' %>
+        <%= form.label :email, "#{ t('contacts.fields.email') }" %>
         <%= form.text_field :email, id: :contact_email %>
       </div>
 
       <div class="form-field">
-        <%= form.label :contact_role_id, 'Role*' %>
+        <%= form.label :contact_role_id, "#{ t('contacts.fields.role') }*" %>
         <%= form.select :contact_role_id, ContactRole.all.order(:label).collect {|p| [ p.label.capitalize, p.id ] }, { required: true } %>
       </div>
 
       <div class="form-field">
-        <%= form.label :notes %>
+        <%= form.label :notes, "#{ t('contacts.fields.notes') }" %>
         <%= form.text_area :notes, id: :contact_notes %>
       </div>
     </div>
@@ -46,17 +46,17 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :street %>
+        <%= form.label :street, "#{ t('contacts.fields.street') }" %>
         <%= form.text_field :street %>
       </div>
 
       <div class="form-field">
-        <%= form.label :city %>
+        <%= form.label :city, "#{ t('contacts.fields.city') }" %>
         <%= form.text_field :city %>
       </div>
 
       <div class="form-field">
-        <%= form.label :country %>
+        <%= form.label :country, "#{ t('contacts.fields.country') }" %>
         <%= form.text_field :country %>
       </div>
     </div>
@@ -69,7 +69,7 @@
       <div class="form-action">
         <span class="mute small">* Required fields.</span>
         <span class="push button-group">
-          <%= link_to 'Retour', contact, class: 'button outline' %>
+          <%= link_to t('helpers.form.back'), contact, class: 'button outline' %>
           <%= form.submit 'Créer contact', class: 'button blue push' %>
         </span>
       </div>

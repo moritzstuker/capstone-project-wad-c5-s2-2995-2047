@@ -16,3 +16,6 @@ en:
       update: Update %{model}
     link_to:
       show_all: 'Show all'
+    form:
+      required_fields: 'Required fields'
+      back: 'Back'

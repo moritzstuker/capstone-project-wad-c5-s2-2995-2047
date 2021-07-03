@@ -1,5 +1,12 @@
 en:
   projects:
+    fields:
+      label: 'Label'
+      owner: 'Case owner'
+      category: 'Category'
+      description: 'Description'
+      status: 'Status'
+      reference: 'Reference'
     index:
       title: 'Cases'
     filters:
@@ -12,3 +19,9 @@ en:
       last_activity: 'Last activity'
       active: 'Active'
       inactive: 'Inactive'
+    new:
+      new_case: 'New case'
+    form:
+      properties: 'Properties'
+      clients: 'Clients'
+      adversaries: 'Adversaries'

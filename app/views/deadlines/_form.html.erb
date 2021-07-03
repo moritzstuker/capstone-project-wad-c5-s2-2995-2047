@@ -5,17 +5,17 @@
   <div class="col">
     <div class="box">
       <div class="form-field">
-        <%= form.label :label, 'Label*', id: :deadline_label %>
+        <%= form.label :label, "#{ t('deadlines.fields.label') }*", id: :deadline_label %>
         <%= form.text_field :label, id: :deadline_label %>
       </div>
 
       <div class="form-field">
-        <%= form.label :date, 'Due by*', id: :deadline_date %>
+        <%= form.label :date, "#{ t('deadlines.fields.date') }*", id: :deadline_date %>
         <%= form.date_field :date, id: :deadline_date %>
       </div>
 
       <div class="form-field">
-        <%= form.label :category, 'Category*', id: :deadline_category %>
+        <%= form.label :category, "#{ t('deadlines.fields.category') }*", id: :deadline_category %>
         <%= form.select :category, Deadline::CATEGORIES, id: :deadline_category %>
       </div>
     </div>
@@ -23,12 +23,12 @@
     <div class="col">
       <div class="box">
         <div class="form-field">
-          <%= form.label :project, 'Project', id: :deadline_project %>
+          <%= form.label :project, "#{ t('deadlines.fields.project') }*", id: :deadline_project %>
           <%= form.select :project, Project.all.order(:label).collect {|p| [ p.label.capitalize, p.id ] }, { include_blank: true }, id: :deadline_project %>
         </div>
 
         <div class="form-field">
-          <%= form.label :assignee, 'Assigned to*', id: :deadline_assignee %>
+          <%= form.label :assignee, "#{ t('deadlines.fields.assigned_to') }*", id: :deadline_assignee %>
           <%= form.select :assignee, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, id: :deadline_assignee %>
         </div>
     </div>
@@ -41,7 +41,7 @@
       <div class="form-action">
         <span class="mute small">* Required fields.</span>
         <span class="push button-group">
-          <%= link_to 'Retour', deadline, class: 'button outline' %>
+          <%= link_to t('helpers.form.back'), deadline, class: 'button outline' %>
           <%= form.submit 'Créer deadline', class: 'button blue push' %>
         </span>
       </div>

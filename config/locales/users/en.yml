@@ -1,22 +1,21 @@
 en:
   users:
-    form:
-      profile: 'Profile'
+    fields:
       login: 'Username'
       password: 'Password'
       password_confirmation: 'Password confirmation'
       name: 'Full name'
       email: 'Email'
-      settings: 'Settings'
       avatar: 'Avatar'
-      upload_avatar: 'Upload avatar'
       locale: 'Preferred language'
       default_fee: 'Default fee'
       role: 'Role'
-      required_fields: 'Required fields'
-      back: 'Back'
-    roles:
-      intern: 'Intern'
-      associate: 'Associate'
-      partner: 'Partner'
-      admin: 'Admin'
+      roles:
+        intern: 'Intern'
+        associate: 'Associate'
+        partner: 'Partner'
+        admin: 'Admin'
+    form:
+      profile: 'Profile'
+      settings: 'Settings'
+      upload_avatar: 'Upload avatar'

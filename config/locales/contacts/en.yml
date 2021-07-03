@@ -1,5 +1,19 @@
 en:
   contacts:
+    fields:
+      role: 'Role'
+      roles:
+        client: 'Client'
+        adversary: 'Adversary'
+        other: 'Other'
+      name: 'Name'
+      activity: 'Profession/activity'
+      email: 'E-mail'
+      street: 'Street & street nb'
+      city: 'Zip & City'
+      country: 'Country'
+      category: 'Category'
+      notes: 'Notes'
     index:
       title: 'Contacts'
     filters:
@@ -7,11 +21,12 @@ en:
       category: 'Category'
       companies: 'Companies'
       persons: 'Persons'
-    roles:
-      client: 'Client'
-      adversary: 'Adversary'
-      other: 'Other'
     card:
       party_in_n_cases:
         one: 'Party in one case'
         other: 'Party in %{count} cases'
+    new:
+      title: 'Create new contact'
+      import_tel_search: 'Import from tel.search.ch'
+    form:
+      basic_info: 'Basic information'
