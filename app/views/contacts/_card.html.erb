@@ -9,7 +9,7 @@
   </div>
 
   <footer class="box-footer">
-    <span class="keys"><%= dot_label(t("contacts.roles.#{ contact.role.label }"), contact.role.color) %></span>
+    <span class="keys"><%= dot_label(t("contacts.attributes.roles.#{ contact.role.label }"), contact.role.color) %></span>
     <% if contact.projects.count > 0 %>
       <span class="keys"><%= t('.party_in_n_cases', count: contact.projects.count) %>.</span>
     <% end %>

@@ -1,6 +1,6 @@
 en:
   projects:
-    fields:
+    attributes:
       label: 'Label'
       owner: 'Case owner'
       category: 'Category'

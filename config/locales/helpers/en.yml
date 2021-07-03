@@ -1,19 +1,5 @@
 en:
   helpers:
-    page_entries_info:
-      more_pages:
-        display_entries: Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total
-      one_page:
-        display_entries:
-          one: Displaying <b>%{count}</b> %{entry_name}
-          other: Displaying <b>all %{count}</b> %{entry_name}
-          zero: No %{entry_name} found
-    select:
-      prompt: Please select
-    submit:
-      create: Create %{model}
-      submit: Save %{model}
-      update: Update %{model}
     link_to:
       show_all: 'Show all'
       confirm: 'Are you sure?'

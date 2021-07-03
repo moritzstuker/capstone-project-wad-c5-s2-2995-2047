@@ -1,6 +1,6 @@
 en:
   users:
-    fields:
+    attributes:
       login: 'Username'
       password: 'Password'
       password_confirmation: 'Password confirmation'

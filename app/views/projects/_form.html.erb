@@ -7,32 +7,32 @@
         <%= t('.properties') %>
       </div>
       <div class="form-field">
-        <%= form.label :label, "#{ t('projects.fields.label') }*" %>
+        <%= form.label :label, "#{ t('projects.attributes.label') }*" %>
         <%= form.text_field :label, required: true, id: :project_label %>
       </div>
 
       <div class="form-field">
-        <%= form.label :owner_id, "#{ t('projects.fields.owner') }*" %>
+        <%= form.label :owner_id, "#{ t('projects.attributes.owner') }*" %>
         <%= form.select :owner_id, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, required: true, id: :project_owner_id %>
       </div>
 
       <div class="form-field">
-        <%= form.label :description, "#{ t('projects.fields.description') }" %>
+        <%= form.label :description, "#{ t('projects.attributes.description') }" %>
         <%= form.text_area :description, rows: 5, id: :project_description %>
       </div>
 
       <div class="form-field">
-        <%= form.label :project_category_id, "#{ t('projects.fields.category') }*" %>
+        <%= form.label :project_category_id, "#{ t('projects.attributes.category') }*" %>
         <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, required: true, id: :project_project_category_id) %>
       </div>
 
       <div class="form-field">
-        <%= form.label :status, "#{ t('projects.fields.status') }" %>
+        <%= form.label :status, "#{ t('projects.attributes.status') }" %>
         <%= form.select :status, options_for_select(Project.statuses.keys.map { |status| [status.capitalize, status] }, :active), id: :project_status %>
       </div>
 
       <div class="form-field">
-        <%= form.label :reference, "#{ t('projects.fields.reference') }" %>
+        <%= form.label :reference, "#{ t('projects.attributes.reference') }" %>
         <%= form.text_field :reference, id: :project_reference %>
       </div>
     </div>

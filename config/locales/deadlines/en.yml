@@ -1,11 +1,16 @@
 en:
   deadlines:
-    fields:
+    attributes:
       label: 'Label'
       date: 'Due by'
       category: 'Category'
       project: 'Project'
       assigned_to: 'Assigned to'
+      categories:
+        court-ordered: 'court-ordered'
+        external: 'external'
+        internal: 'internal'
+        legal: 'legal'
     index:
       title: 'Deadlines'
     card:

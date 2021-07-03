@@ -8,32 +8,32 @@
         <%= t('.basic_info') %>
       </div>
       <div class="form-field">
-        <%= form.label :name, "#{ t('contacts.fields.name') }*" %>
+        <%= form.label :name, "#{ t('contacts.attributes.name') }*" %>
         <%= form.text_field :name, required: true, id: :contact_name %>
       </div>
 
       <div class="form-field">
-        <%= form.label :category, "#{ t('contacts.fields.category') }*" %>
+        <%= form.label :category, "#{ t('contacts.attributes.category') }*" %>
         <%= form.select :category, Contact.categories.keys.map { |category| [category.capitalize, category] }, { required: true } %>
       </div>
 
       <div class="form-field">
-        <%= form.label :activity, "#{ t('contacts.fields.activity') }*" %>
+        <%= form.label :activity, "#{ t('contacts.attributes.activity') }*" %>
         <%= form.text_field :activity %>
       </div>
 
       <div class="form-field">
-        <%= form.label :email, "#{ t('contacts.fields.email') }" %>
+        <%= form.label :email, "#{ t('contacts.attributes.email') }" %>
         <%= form.text_field :email, id: :contact_email %>
       </div>
 
       <div class="form-field">
-        <%= form.label :contact_role_id, "#{ t('contacts.fields.role') }*" %>
+        <%= form.label :contact_role_id, "#{ t('contacts.attributes.role') }*" %>
         <%= form.select :contact_role_id, ContactRole.all.order(:label).collect {|p| [ p.label.capitalize, p.id ] }, { required: true } %>
       </div>
 
       <div class="form-field">
-        <%= form.label :notes, "#{ t('contacts.fields.notes') }" %>
+        <%= form.label :notes, "#{ t('contacts.attributes.notes') }" %>
         <%= form.text_area :notes, id: :contact_notes %>
       </div>
     </div>
@@ -46,17 +46,17 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :street, "#{ t('contacts.fields.street') }" %>
+        <%= form.label :street, "#{ t('contacts.attributes.street') }" %>
         <%= form.text_field :street %>
       </div>
 
       <div class="form-field">
-        <%= form.label :city, "#{ t('contacts.fields.city') }" %>
+        <%= form.label :city, "#{ t('contacts.attributes.city') }" %>
         <%= form.text_field :city %>
       </div>
 
       <div class="form-field">
-        <%= form.label :country, "#{ t('contacts.fields.country') }" %>
+        <%= form.label :country, "#{ t('contacts.attributes.country') }" %>
         <%= form.text_field :country %>
       </div>
     </div>

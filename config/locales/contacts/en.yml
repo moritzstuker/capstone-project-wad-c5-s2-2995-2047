@@ -1,6 +1,6 @@
 en:
   contacts:
-    fields:
+    attributes:
       role: 'Role'
       roles:
         client: 'Client'
