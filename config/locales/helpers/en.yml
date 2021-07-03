@@ -16,6 +16,12 @@ en:
       update: Update %{model}
     link_to:
       show_all: 'Show all'
+      confirm: 'Are you sure?'
     form:
       required_fields: 'Required fields'
       back: 'Back'
+      form_contains: 'The form contains'
+      errors:
+        one: 'error'
+        other: 'errors'
+      search: 'Search'

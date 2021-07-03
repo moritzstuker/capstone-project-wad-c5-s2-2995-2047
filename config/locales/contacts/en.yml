@@ -30,3 +30,8 @@ en:
       import_tel_search: 'Import from tel.search.ch'
     form:
       basic_info: 'Basic information'
+    import:
+      found_n_results:
+        one: "Found 1 result for '%{query}'"
+        other: "Found %{count} result for '%{query}'"
+      too_many_results: 'Results limited to the first %{limit}; please be more specific'

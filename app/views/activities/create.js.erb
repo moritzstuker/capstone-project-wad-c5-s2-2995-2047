@@ -11,7 +11,7 @@ nodeCardHeader.classList.add('card-header');
 var nodeTag = document.createElement('span');
 nodeTag.classList.add('tag');
 
-var nodeDelete = '<%= j link_to icon_tag("trash"), project_activity_path(@project, @activity), method: :delete, data: { confirm: "Are you sure?" }, class: "push" if can_delete_activity?(@activity, current_user) %>';
+var nodeDelete = '<%= j link_to icon_tag("trash"), project_activity_path(@project, @activity), method: :delete, data: { confirm: t("helpers.link_to.confirm") }, class: "push" if can_delete_activity?(@activity, current_user) %>';
 
 var nodeCardFooter = document.createElement('div');
 nodeCardFooter.classList.add('card-footer');
@@ -38,10 +38,10 @@ nodeMute3.classList.add('mute');
 var textLabel = document.createTextNode('<%= j @activity.label %>');
 var textAuthor = document.createTextNode('<%= j @activity.user.name %>');
 var textTag = document.createTextNode('<%= j @activity.category %>');
-var textMute1 = document.createTextNode('<%= j "worked on it for" %>');
-var textMute2 = document.createTextNode('<%= j "and billed" %>');
-var textMute3 = document.createTextNode('<%= j "(at a rate of #{ fee(@activity.fee) }/hour)" %>'.replace('&#39;', '\x27'));
-var textDuration = document.createTextNode('<%= j pluralize(@activity.duration, "hour") %>');
+var textMute1 = document.createTextNode('<%= j t("activity.worked_on_it_for") %>');
+var textMute2 = document.createTextNode('<%= j t("activity.and_billed") %>');
+var textMute3 = document.createTextNode('<%= j "(#{ t("activity.at_a_rate_of") } #{ fee(@activity.fee) }/#{ t("activity.hour.one") })" %>'.replace('&#39;', '\x27'));
+var textDuration = document.createTextNode('<%= j t("activity.hour", count: activity.duration) %>');
 var textFee = document.createTextNode('<%= j fee(@activity.fee * @activity.duration) %>'.replace('&#39;', '\x27'));
 
 nodeTag.appendChild(textTag);
@@ -107,7 +107,7 @@ if (!dateExists) {
   var wrapperNodeList = document.createElement('ul');
   wrapperNodeList.classList.add('box');
 
-  var wrapperNodeMuteText = document.createTextNode('Activity logged for');
+  var wrapperNodeMuteText = document.createTextNode('<%= j t(".activity_logged_for") %>');
   var wrapperNodeHeaderText = document.createTextNode('<%= j @activity.date.strftime("%d.%m.%Y") %>');
 
   wrapperNodeMute.appendChild(wrapperNodeMuteText);

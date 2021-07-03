@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col">
     <header class="page-header">
-      <h1 class="title">Import a contact from tel.search.ch</h1>
+      <h1 class="title"><%= t('contacts.new.import_tel_search') %></h1>
     </header>
   </div>
 </div>
@@ -12,19 +12,21 @@
       <%= form_with(method: 'get', local: true) do |form| %>
       <div class="inline-fields">
         <%= form.text_field :search %>
-        <%= form.submit 'Search', class: 'button small blue' %>
+        <%= form.submit t('helpers.form.search'), class: 'button small blue' %>
       </div>
       <% end %>
     </div>
   </div>
 </div>
 
+<%= t 'date.formats.short' %>
+
 <div class="row">
   <div class="col">
     <% if @results %>
-      <p>Found <%= pluralize(@results[:total], 'result') %> for '<%= params[:search] %>'.</p>
-      <% if @results[:total] > 25 %>
-        <p>Results limited to the first 25; please be more specific.</p>
+      <p><%= t('.found_n_results', count: @results[:total], query: params[:search]) %>.</p>
+      <% if @results[:total] > @search_limit %>
+        <p><%= t('.too_many_results', limit: @search_limit) %>.</p>
       <% end %>
       <ul class="row">
         <% @results[:items].each do |person| %>

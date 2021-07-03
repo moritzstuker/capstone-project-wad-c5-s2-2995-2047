@@ -3,18 +3,18 @@
 <div class="expanded-search" id="expanded-search">
   <ul class="box">
     <li class="box-row">
-      <%= button_tag 'Search', name: 'search_in', value: 'projects', class: 'menu-item' do %>
-        search for '<span class="search-value"></span>' in Cases<%= icon_tag('search', class: 'push') %>
+      <%= button_tag t('helpers.form.search'), name: 'search_in', value: 'projects', class: 'menu-item' do %>
+        <%= t('.search_for') %> '<span class="search-value"></span>' <%= t('.in') %> <%= t('.cases') %><%= icon_tag('search', class: 'push') %>
       <% end %>
     </li>
     <li class="box-row">
-      <%= button_tag 'Search', name: 'search_in', value: 'contacts', class: 'menu-item' do %>
-        search for '<span class="search-value"></span>' in Contacts<%= icon_tag('search', class: 'push') %>
+      <%= button_tag t('helpers.form.search'), name: 'search_in', value: 'contacts', class: 'menu-item' do %>
+        <%= t('.search_for') %> '<span class="search-value"></span>' <%= t('.in') %> <%= t('.contacts') %><%= icon_tag('search', class: 'push') %>
       <% end %>
     </li>
     <li class="box-row">
-      <%= button_tag 'Search', name: 'search_in', value: 'deadlines', class: 'menu-item' do %>
-        search for '<span class="search-value"></span>' in Deadlines<%= icon_tag('search', class: 'push') %>
+      <%= button_tag t('helpers.form.search'), name: 'search_in', value: 'deadlines', class: 'menu-item' do %>
+        <%= t('.search_for') %> '<span class="search-value"></span>' <%= t('.in') %> <%= t('.deadlines') %><%= icon_tag('search', class: 'push') %>
       <% end %>
     </li>
   </ul>

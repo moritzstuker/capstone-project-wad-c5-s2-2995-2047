@@ -55,6 +55,7 @@ class ContactsController < ApplicationController
   end
 
   def import
+    @search_limit = 25
     @contact = Contact.new
     @results = params[:search].present? ? query_tel_search(params[:search]) : nil
     @import_link = params[:tel_search_data].present? ? params[:tel_search_data] : nil
@@ -73,7 +74,7 @@ class ContactsController < ApplicationController
     query = URI.parse(URI.escape(query))
     response = HTTParty.get(
       # the TEL_SEARCH_KEY cannot be passed as a header item in this case, this being a requirement from this provider... https://tel.search.ch/api/help.html
-      "https://tel.search.ch/api/?was=#{ query }&maxnum=25&lang=#{ I18n.locale.to_s }&key=#{ ENV['TEL_SEARCH_KEY'] }"
+      "https://tel.search.ch/api/?was=#{ query }&maxnum=#{ @search_limit }&lang=#{ I18n.locale.to_s }&key=#{ ENV['TEL_SEARCH_KEY'] }"
     )
 
     hash = Hash.from_xml(response.body)

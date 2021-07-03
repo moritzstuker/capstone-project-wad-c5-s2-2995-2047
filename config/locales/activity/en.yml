@@ -1,0 +1,8 @@
+en:
+  activity:
+    worked_on_it_for: 'Worked on it for'
+    hour:
+      one: 'hour'
+      other: 'hours'
+    and_billed: 'and billed'
+    at_a_rate_of: 'at a rate of'

@@ -1,7 +1,7 @@
 <% if obj.errors.any? %>
 <div class="flash alert">
   <div class="flash-content">
-    <p>The form contains <%= pluralize(obj.errors.count, "error") %>.</p>
+    <p><%= t('helpers.form.form_contains') %> <%= t('helpers.form.errors', count: obj.errors.count) %>.</p>
     <ul>
     <% obj.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
