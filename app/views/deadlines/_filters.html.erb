@@ -23,7 +23,7 @@
     <ul class="dropdown-content box">
         <% @categories.each do |category| %>
           <li role="menuitem" class="box-row">
-            <%= link_to "#{ i18n_enum(@deadlines.filter_by_category(category).first, :category).capitalize } (#{@deadlines.filter_by_category(category).count})",
+            <%= link_to "#{ t("deadlines.attributes.categories.#{ @deadlines.filter_by_category(category).first.category }").capitalize } (#{@deadlines.filter_by_category(category).count})",
             url_for(category: category),
             class: "menu-item#{ ' orange-color' if params[:category] == category }" %>
           </li>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col">
     <header class="page-header">
-      <h1 class="title">Dashboard</h1>
+      <h1 class="title"><%= t('.title') %></h1>
     </header>
   </div>
 </div>
@@ -14,10 +14,10 @@
       <table>
         <thead>
           <tr>
-            <th>User</th>
-            <th>Role</th>
-            <th>Language</th>
-            <th>Default fee</th>
+            <th><%= t('.user') %></th>
+            <th><%= t('.role') %></th>
+            <th><%= t('.language') %></th>
+            <th><%= t('.default_fee') %></th>
             <th></th>
           </tr>
         </thead>
@@ -35,7 +35,7 @@
                 <%= link_to_if(user == current_user, icon_tag('pencil'), account_path) do %>
                   <%= link_to(icon_tag('pencil'), edit_user_path(user)) %>
                 <% end %>
-                <%= link_to icon_tag('trash'), user, method: :delete, data: { confirm: 'Are you sure?' } if can_delete?(user) %>
+                <%= link_to icon_tag('trash'), user, method: :delete, data: { confirm: t('helpers.link_to.confirm') } if can_delete?(user) %>
               </span>
             </td>
           </tr>

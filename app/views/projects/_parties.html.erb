@@ -1,6 +1,6 @@
 <% if @project.clients.exists? %>
 <div class="col">
-  <h3 class="heading">Clients</h3>
+  <h3 class="heading"><%= t('projects.form.clients') %></h3>
   <ul>
     <% @project.clients.each do |client| %>
     <li><%= link_to client.name, client %></li>
@@ -11,7 +11,7 @@
 
 <% if @project.adversaries.exists? %>
 <div class="col">
-  <h3 class="heading">Adversaries</h3>
+  <h3 class="heading"><%= t('projects.form.adversaries') %></h3>
   <ul>
     <% @project.adversaries.each do |adversary| %>
     <li><%= link_to adversary.name, adversary %></li>

@@ -9,6 +9,7 @@ en:
       avatar: 'Avatar'
       locale: 'Preferred language'
       default_fee: 'Default fee'
+      projects: 'Cases owned'
       role: 'Role'
       roles:
         intern: 'Intern'
@@ -19,3 +20,16 @@ en:
       profile: 'Profile'
       settings: 'Settings'
       upload_avatar: 'Upload avatar'
+    edit:
+      title: 'Edit user'
+    index:
+      title: 'All users'
+      user: 'User'
+      role: 'Role'
+      language: 'Language'
+      default_fee: 'Default fee'
+    new:
+      title: 'New user'
+    show:
+      profile: 'Profile'
+      deadlines: 'Assigned deadlines'

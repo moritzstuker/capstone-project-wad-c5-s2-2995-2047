@@ -1,15 +1,15 @@
 <details class="dropdown">
   <summary aria-haspopup="true">
-    <%= simple_format(t('.status'), { class: "button dropdown-trigger#{ ' orange' if params[:status].present? }" }, wrapper_tag: 'span') %>
+    <%= simple_format(t('projects.attributes.status'), { class: "button dropdown-trigger#{ ' orange' if params[:status].present? }" }, wrapper_tag: 'span') %>
   </summary>
   <ul class="dropdown-content box">
     <li role="menuitem" class="box-row">
-      <%= link_to "#{ t('.active') } (#{ @all_projects.where(status: :active).count })",
+      <%= link_to "#{ t("projects.attributes.statuses.active") } (#{ @all_projects.where(status: :active).count })",
       url_for(status: :active),
       class: "menu-item#{ ' orange-color' if params[:status] == 'active' }" %>
     </li>
     <li role="menuitem" class="box-row">
-      <%= link_to "#{ t('.inactive') } (#{ @all_projects.where(status: :inactive).count })",
+      <%= link_to "#{ t("projects.attributes.statuses.inactive") } (#{ @all_projects.where(status: :inactive).count })",
       url_for(status: :inactive),
       class: "menu-item#{ ' orange-color' if params[:status] == 'inactive' }" %>
     </li>
@@ -18,7 +18,7 @@
 
 <details class="dropdown">
   <summary aria-haspopup="true">
-    <%= simple_format(t('.case_owner'), { class: "button dropdown-trigger#{ ' orange' if params[:owner].present? }" }, wrapper_tag: 'span') %>
+    <%= simple_format(t('projects.attributes.owner'), { class: "button dropdown-trigger#{ ' orange' if params[:owner].present? }" }, wrapper_tag: 'span') %>
   </summary>
   <ul class="dropdown-content box">
     <% User.all.order(role: :desc, name: :asc).each do |user| %>

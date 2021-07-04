@@ -7,27 +7,27 @@
         <%= t('.profile') %>
       </div>
       <div class="form-field">
-        <%= form.label :login, "#{ t('users.fields.login') }*" %>
+        <%= form.label :login, "#{ t('users.attributes.login') }*" %>
         <%= form.text_field :login, id: :user_login %>
       </div>
 
       <div class="form-field">
-        <%= form.label :password, "#{ t('users.fields.password') }*" %>
+        <%= form.label :password, "#{ t('users.attributes.password') }*" %>
         <%= form.password_field :password, id: :user_password %>
       </div>
 
       <div class="form-field">
-        <%= form.label :password_confirmation, "#{ t('users.fields.password_confirmation') }*" %>
+        <%= form.label :password_confirmation, "#{ t('users.attributes.password_confirmation') }*" %>
         <%= form.password_field :password_confirmation, id: :user_password_confirmation %>
       </div>
 
       <div class="form-field">
-        <%= form.label :name, "#{ t('users.fields.name') }*" %>
+        <%= form.label :name, "#{ t('users.attributes.name') }*" %>
         <%= form.text_field :name, id: :user_name %>
       </div>
 
       <div class="form-field">
-        <%= form.label :email, "#{ t('users.fields.email') }*" %>
+        <%= form.label :email, "#{ t('users.attributes.email') }*" %>
         <%= form.text_field :email, id: :user_email %>
       </div>
     </div>
@@ -41,7 +41,7 @@
 
       <div class="form-field file-uploader">
         <%= form.label :avatar do %>
-        <span class="label"><%= t('users.fields.avatar') %></span>
+        <span class="label"><%= t('users.attributes.avatar') %></span>
         <div class="file-uploader-input">
           <%= image_tag(user.avatar, class: 'avatar') %>
           <span class="file-uploader-label"><%= t('.upload_avatar') %></span>
@@ -51,18 +51,18 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :locale, "#{ t('users.fields.locale') }*" %>
+        <%= form.label :locale, "#{ t('users.attributes.locale') }*" %>
         <%= form.select :locale, I18n.available_locales.collect { |locale| [t('language', locale: locale), locale] }, id: :user_locale %>
       </div>
 
       <div class="form-field">
-        <%= form.label :default_fee, "#{ t('users.fields.default_fee') }" %>
+        <%= form.label :default_fee, "#{ t('users.attributes.default_fee') }" %>
         <%= form.number_field :default_fee, value: '%.2f' % user.default_fee, step: 0.05 %>
       </div>
 
       <% if is_admin? %>
       <div class="form-field">
-        <%= form.label :role, "#{ t('users.fields.role') }" %>
+        <%= form.label :role, "#{ t('users.attributes.role') }" %>
         <%= form.select :role, options_for_select(User.roles.keys.reverse.map { |role| [role.capitalize, role] }, user.role), value: user.role, id: :user_role %>
       </div>
       <% end %>

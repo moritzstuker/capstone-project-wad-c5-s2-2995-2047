@@ -6,22 +6,38 @@ en:
       category: 'Category'
       description: 'Description'
       status: 'Status'
+      statuses:
+        active: 'Active'
+        inactive: 'Inactive'
       reference: 'Reference'
+      created_at: 'Created at'
+      updated_at: 'Last updated at'
     index:
       title: 'Cases'
     filters:
-      status: 'Status'
-      case_owner: 'Case owner'
       your_active_cases: 'Your active cases'
-      active: 'Active'
-      inactive: 'Inactive'
     card:
       last_activity: 'Last activity'
-      active: 'Active'
-      inactive: 'Inactive'
     new:
-      new_case: 'New case'
+      title: 'New case'
     form:
       properties: 'Properties'
       clients: 'Clients'
       adversaries: 'Adversaries'
+    properties:
+      title: 'Properties'
+    statistics:
+      title: 'Statistics'
+      logged_tasks:
+        one: 'logged 1 task for '
+        other: 'logged %{count} tasks for '
+      total_hours: 'Total hours'
+      total_fees: 'Total fees'
+    show:
+      description: 'Description'
+      parties: 'Parties'
+      deadlines: 'Upcoming deadlines'
+    timesheet:
+      duration_placeholder: 'Duration (0.1 format)'
+      rate_placeholder: 'Hourly rate (CHF / hour)'
+      activity_dated: 'Activity dated'

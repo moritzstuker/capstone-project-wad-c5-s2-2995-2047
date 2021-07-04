@@ -1,7 +1,7 @@
 <%= link_to project, class: 'box', role: 'article' do %>
   <header class="box-header">
     <%= highlight(project.label, params[:query]) %>
-    <%= simple_format(t(".#{ project.status }"), { class: 'push tag' }, wrapper_tag: 'span') if project.status == 'inactive' %>
+    <%= simple_format(t("projects.attributes.statuses.#{ project.status }"), { class: 'push tag' }, wrapper_tag: 'span') if project.status == 'inactive' %>
   </header>
 
   <div class="box-content">

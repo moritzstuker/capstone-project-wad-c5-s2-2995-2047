@@ -1,17 +1,17 @@
 <section class="box">
   <header class="box-header">
-    <h2>Properties</h2>
+    <h2><%= t('.title') %></h2>
   </header>
   <div class="box-content">
-    <p><strong>Status:</strong>&nbsp;<%= @project.status.capitalize %></p>
-    <p><strong>Category:</strong>&nbsp;
-      <%= dot_label(@project.category.label.capitalize, @project.category.color) %>
+    <p><strong><%= t('projects.attributes.status') %>:</strong>&nbsp;<%= t("projects.attributes.statuses.#{@project.status}").capitalize %></p>
+    <p><strong><%= t('projects.attributes.category') %>:</strong>&nbsp;
+      <%= dot_label(t("project_categories.attributes.#{@project.category.id}"), @project.category.color) %>
     </p>
     <% if @project.reference.present? %>
-    <p><strong>Court reference:</strong>&nbsp;<span class="disambiguate"><%= @project.reference %></span></p>
+    <p><strong><%= t('projects.attributes.reference') %>:</strong>&nbsp;<span class="disambiguate"><%= @project.reference %></span></p>
     <% end %>
-    <p><strong>Created at:</strong>&nbsp;<%= @project.created_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
-    <p><strong>Last updated at:</strong>&nbsp;<%= @project.updated_at.strftime("%d.%m.%Y, %H:%M:%S") %></p>
-    <p><strong>Case owner:</strong>&nbsp;<%= link_to avatar_tag_for(@project.owner), @project.owner %></p>
+    <p><strong><%= t('projects.attributes.created_at') %>:</strong>&nbsp;<%= l(@project.created_at, format: :long) %></p>
+    <p><strong><%= t('projects.attributes.updated_at') %>:</strong>&nbsp;<%= l(@project.updated_at, format: :long) %></p>
+    <p><strong><%= t('projects.attributes.owner') %>:</strong>&nbsp;<%= link_to avatar_tag_for(@project.owner), @project.owner %></p>
   </div>
 </section>

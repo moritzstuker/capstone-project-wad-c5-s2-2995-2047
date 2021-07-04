@@ -1,9 +1,7 @@
 <div class="row">
   <div class="col">
     <header class="page-header">
-      <h1 class="title">
-        <%= @user.name %>
-      </h1>
+      <h1 class="title"><%= @user.name %></h1>
       <%= render 'edit-box', target: @user %>
     </header>
   </div>
@@ -13,68 +11,46 @@
   <div class="col-3">
     <div class="box">
       <div class="box-header">
-        Profile
+        <%= t('.profile') %>
       </div>
       <div class="box-content">
         <%= image_tag(@user.avatar, class: 'avatar') %>
         <p>
-          <strong>Username:</strong>
+          <strong><%= t('users.attributes.login') %>:</strong>
           <%= @user.login %>
         </p>
 
         <p>
-          <strong>Role:</strong>
+          <strong><%= t('users.attributes.role') %>:</strong>
           <%= @user.role.capitalize %>
         </p>
 
         <p>
-          <strong>Email:</strong>
+          <strong><%= t('users.attributes.email') %>:</strong>
           <%= mail_to @user.email %>
         </p>
 
         <p>
-          <strong>Locale:</strong>
+          <strong><%= t('users.attributes.locale') %>:</strong>
           <%= t('language', locale: @user.locale) %>
         </p>
 
         <p>
-          <strong>Default fee:</strong>
+          <strong><%= t('users.attributes.default_fee') %>:</strong>
           <%= fee(@user.default_fee) %>
         </p>
 
         <p>
-          <strong>Cases owned:</strong>
+          <strong><%= t('users.attributes.projects') %>:</strong>
           <%= link_to @user.projects.count, projects_path(owner: @user.id) %> (<%= link_to @user.projects.where(status: :active).count, projects_path(owner: @user.id, status: :active) %> of which are active)
         </p>
       </div>
     </div>
     <div class="box">
       <div class="box-header">
-        Assigned deadlines
+        <%= t('.deadlines') %>
       </div>
-        <ul class="card-list">
-          <% @user.deadlines.includes(:assignee).sort_by(&:date).each do |deadline| %>
-          <li class="card horizontal">
-            <div class="card-aside">
-              <%= deadline.completed_at.nil? ? icon_tag('circle', class: 'small') : icon_tag('check-circle', class: 'small') %>
-            </div>
-            <div class="card-main<%= ' mute' unless deadline.completed_at.nil? %>">
-              <div class="card-header">
-                <%= deadline.label %>
-                <span class="tag"><%= i18n_enum(deadline, 'category') %></span>
-                <%= link_to icon_tag('trash', class: 'small'), deadline_path(deadline), method: :delete, data: { confirm: 'Are you sure?' }, class: 'push small' if can_delete_deadline?(deadline) %>
-              </div>
-              <div class="card-content">
-                <% if deadline.completed_at.present? %>
-                  <%= "Completed on #{ deadline.completed_at.strftime("%d.%m.%Y") }" if deadline.completed_at.present? %>
-                <% else %>
-                  <%= dot_label(deadline.date.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(deadline.date))) %>
-                <% end %>
-              </div>
-            </div>
-          </li>
-          <% end %>
-        </ul>
+      <%= render 'deadlines', deadlines: @user.deadlines %>
     </div>
   </div>
   <div class="col-5">

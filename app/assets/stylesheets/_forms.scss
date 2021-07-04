@@ -52,7 +52,6 @@ select {
 
 select {
   padding-right: 2.6rem;
-  padding-left: 0.25em;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="18"><path fill="%23'+str-slice(
   inspect($white),
   2

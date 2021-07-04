@@ -1,17 +1,17 @@
 <section class="box">
   <header class="box-header">
-    <h2>Statistics</h2>
+    <h2><%= t('.title') %></h2>
   </header>
   <div class="box-content">
     <ul class="no-list">
       <% @project.activities.includes(:user).group_by(&:user).sort.reverse.each do |user| %>
         <li>
-          <%= avatar_tag_for(user.first) %> logged <%= pluralize(user.last.count, 'task', plural: 'tasks') %> for <%= fee(user.last.sum(&:fee)) %>
+          <%= avatar_tag_for(user.first) %> <%= t('.logged_tasks', count: user.last.count) %><%= fee(user.last.sum(&:fee)) %>
         </li>
       <% end %>
     </ul>
     <hr>
-    <p><strong>Total hours:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %></p>
-    <p><strong>Total fees:</strong>&nbsp;<%= fee(@project.activities.sum(&:fee) * @project.activities.sum(&:duration)) %></p>
+    <p><strong><%= t('.total_hours') %>:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %></p>
+    <p><strong><%= t('.total_fees') %>:</strong>&nbsp;<%= fee(@project.activities.sum(&:fee) * @project.activities.sum(&:duration)) %></p>
   </div>
 </section>

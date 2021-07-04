@@ -1,6 +1,6 @@
 module ProjectsHelper
   def fee (int)
-    number_to_currency(int, unit: "fr.", separator: ".", delimiter: "'", format: "%n %u")
+    number_to_currency(int, unit: "fr.", format: "%n %u")
   end
 
   def main_parties (project)

@@ -6,8 +6,8 @@
           <%= form_with(model: [@project, @project.activities.build], class: 'inline-fields', local: false) do |form| %>
             <%= form.text_field(:label, required: true, placeholder: 'Label') %>
             <%= form.select(:category, Activity::CATEGORIES, required: true) %>
-            <%= form.number_field(:duration, step: 0.1, value: 0.1, placeholder: 'Duration (0.1 format)') %>
-            <%= form.number_field(:fee, step: 0.05, value: current_user.default_fee, required: true, placeholder: 'Fee (CHF / hour)') %>
+            <%= form.number_field(:duration, step: 0.1, value: 0.1, placeholder: t('.duration_placeholder')) %>
+            <%= form.number_field(:fee, step: 0.05, value: number_with_precision(current_user.default_fee, precision: 2), required: true, placeholder: t('.rate_placeholder')) %>
             <%= form.date_field(:date, value: Date.today, required: true, placeholder: 'Date') %>
             <%= form.submit 'Log', class: 'button green' %>
           <% end %>
@@ -19,7 +19,7 @@
   <li class="timeline-date" data-date="<%= date.first.strftime("%F") %>">
     <header class="timeline-header">
       <span class="timeline-icon"><%= icon_tag('git-commit') %></span>
-      <span class="mute">Activity dated&nbsp;</span><%= date.first.strftime("%d.%m.%Y") %>
+      <span class="mute"><%= t('.activity_dated') %>&nbsp;</span><%= l(date.first, format: :long) %>
     </header>
     <ul class="box">
       <% date.last.sort_by(&:created_at).reverse.each do |activity| %>
