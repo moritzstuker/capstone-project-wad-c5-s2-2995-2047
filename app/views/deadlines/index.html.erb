@@ -15,7 +15,12 @@
     <ul class="no-list">
       <% @deadlines_by_dates.each do |date| %>
       <li>
-        <%= render 'card', date: date %>
+        <div class="box">
+          <div class="box-header">
+            <%= dot_label(date.first.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(date.first))) %>
+          </div>
+          <%= render 'deadlines', deadlines: date.last %>
+        </div>
       </li>
       <% end %>
     </ul>
