@@ -1,6 +1,6 @@
 en:
   dashboard:
-    financials:
+    statistics:
       title: 'Financials'
       total_billable_hours: 'Total billable hours'
       total_fees: 'Total fees'
@@ -8,4 +8,5 @@ en:
       latest_news: 'Latest news'
     index:
       title: 'Dashboard'
+    timeline:
       activity_logged_on: 'Activity logged on'
