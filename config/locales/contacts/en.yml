@@ -1,37 +1,37 @@
-en:
+en: 
   contacts:
     attributes:
-      role: 'Role'
+      activity: Profession/activity
+      category: Category
+      city: "Zip & City"
+      country: Country
+      email: E-mail
+      name: Name
+      notes: Notes
+      role: Role
       roles:
-        client: 'Client'
-        adversary: 'Adversary'
-        other: 'Other'
-      name: 'Name'
-      activity: 'Profession/activity'
-      email: 'E-mail'
-      street: 'Street & street nb'
-      city: 'Zip & City'
-      country: 'Country'
-      category: 'Category'
-      notes: 'Notes'
-    index:
-      title: 'Contacts'
-    filters:
-      country: 'Country'
-      category: 'Category'
-      companies: 'Companies'
-      persons: 'Persons'
+        adversary: Adversary
+        client: Client
+        other: Other
+      street: "Street & street nb"
     card:
       party_in_n_cases:
-        one: 'Party in one case'
-        other: 'Party in %{count} cases'
-    new:
-      title: 'Create new contact'
-      import_tel_search: 'Import from tel.search.ch'
+        one: "Party in one case"
+        other: "Party in %{count} cases"
+    filters:
+      category: Category
+      companies: Companies
+      country: Country
+      persons: Persons
     form:
-      basic_info: 'Basic information'
+      basic_info: "Basic information"
     import:
       found_n_results:
         one: "Found 1 result for '%{query}'"
         other: "Found %{count} result for '%{query}'"
-      too_many_results: 'Results limited to the first %{limit}; please be more specific'
+      too_many_results: "Results limited to the first %{limit}; please be more specific"
+    index:
+      title: Contacts
+    new:
+      import_tel_search: "Import from tel.search.ch"
+      title: "Create new contact"

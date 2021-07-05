@@ -1,12 +1,12 @@
-en:
+en: 
   dashboard:
-    statistics:
-      title: 'Financials'
-      total_billable_hours: 'Total billable hours'
-      total_fees: 'Total fees'
-    news:
-      latest_news: 'Latest news'
     index:
-      title: 'Dashboard'
+      title: Dashboard
+    news:
+      latest_news: "Latest news"
+    statistics:
+      title: Financials
+      total_billable_hours: "Total billable hours"
+      total_fees: "Total fees"
     timeline:
-      activity_logged_on: 'Activity logged on'
+      activity_logged_on: "Activity logged on"

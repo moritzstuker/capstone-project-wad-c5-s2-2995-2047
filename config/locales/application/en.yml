@@ -1,25 +1,25 @@
 en:
   application:
     dashboard_sidebar:
-      dashboard: 'Dashboard'
-      account: 'Account'
-      users: 'Users'
-    header_links:
-      add_case: 'Add case'
-      add_contact: 'Add contact'
-      add_deadline: 'Add deadline'
-      add_user: 'Add user'
-      signed_in_as: 'Signed in as'
-      dashboard: 'Dashboard'
-      account: 'Account'
-      users: 'Users'
-      log_out: 'Log out'
-    search_form:
-      search_for: 'Search for'
-      in: 'in'
-      cases: 'Cases'
-      contacts: 'Contacts'
-      deadlines: 'Deadlines'
+      account: Account
+      dashboard: Dashboard
+      users: Users
     deadlines:
-      you: 'you'
       deadlines_with_limit: "Assigned deadlines (first %{limit})"
+      you: you
+    header_links:
+      account: Account
+      add_case: "Add case"
+      add_contact: "Add contact"
+      add_deadline: "Add deadline"
+      add_user: "Add user"
+      dashboard: Dashboard
+      log_out: "Log out"
+      signed_in_as: "Signed in as"
+      users: Users
+    search_form:
+      cases: Cases
+      contacts: Contacts
+      deadlines: Deadlines
+      in: in
+      search_for: "Search for"

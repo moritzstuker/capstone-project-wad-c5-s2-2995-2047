@@ -1,43 +1,43 @@
-en:
+en: 
   projects:
     attributes:
-      label: 'Label'
-      owner: 'Case owner'
-      category: 'Category'
-      description: 'Description'
-      status: 'Status'
+      category: Category
+      created_at: "Created at"
+      description: Description
+      label: Label
+      owner: "Case owner"
+      reference: Reference
+      status: Status
       statuses:
-        active: 'Active'
-        inactive: 'Inactive'
-      reference: 'Reference'
-      created_at: 'Created at'
-      updated_at: 'Last updated at'
-    index:
-      title: 'Cases'
-    filters:
-      your_active_cases: 'Your active cases'
+        active: Active
+        inactive: Inactive
+      updated_at: "Last updated at"
     card:
-      last_activity: 'Last activity'
-    new:
-      title: 'New case'
+      last_activity: "Last activity"
+    filters:
+      your_active_cases: "Your active cases"
     form:
-      properties: 'Properties'
-      clients: 'Clients'
-      adversaries: 'Adversaries'
+      adversaries: Adversaries
+      clients: Clients
+      properties: Properties
+    index:
+      title: Cases
+    new:
+      title: "New case"
     properties:
-      title: 'Properties'
-    statistics:
-      title: 'Statistics'
-      logged_tasks:
-        one: 'logged 1 task for '
-        other: 'logged %{count} tasks for '
-      total_hours: 'Total hours'
-      total_fees: 'Total fees'
+      title: Properties
     show:
-      description: 'Description'
-      parties: 'Parties'
-      deadlines: 'Upcoming deadlines'
+      deadlines: "Upcoming deadlines"
+      description: Description
+      parties: Parties
+    statistics:
+      logged_tasks:
+        one: "logged 1 task for "
+        other: "logged %{count} tasks for "
+      title: Statistics
+      total_fees: "Total fees"
+      total_hours: "Total hours"
     timesheet:
-      duration_placeholder: 'Duration (0.1 format)'
-      rate_placeholder: 'Hourly rate (CHF / hour)'
-      activity_dated: 'Activity dated'
+      activity_dated: "Activity dated"
+      duration_placeholder: "Duration (0.1 format)"
+      rate_placeholder: "Hourly rate (CHF / hour)"

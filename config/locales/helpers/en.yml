@@ -1,13 +1,13 @@
-en:
+en: 
   helpers:
-    link_to:
-      show_all: 'Show all'
-      confirm: 'Are you sure?'
     form:
-      required_fields: 'Required fields'
-      back: 'Back'
-      form_contains: 'The form contains'
+      back: Back
       errors:
-        one: 'error'
-        other: 'errors'
-      search: 'Search'
+        one: error
+        other: errors
+      form_contains: "The form contains"
+      required_fields: "Required fields"
+      search: Search
+    link_to:
+      confirm: "Are you sure?"
+      show_all: "Show all"

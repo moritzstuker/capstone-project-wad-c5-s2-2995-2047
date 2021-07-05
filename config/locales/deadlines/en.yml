@@ -1,18 +1,18 @@
-en:
+en: 
   deadlines:
     attributes:
-      label: 'Label'
-      date: 'Due by'
-      category: 'Category'
-      project: 'Project'
-      assigned_to: 'Assigned to'
+      assigned_to: "Assigned to"
       categories:
-        court-ordered: 'court-ordered'
-        external: 'external'
-        internal: 'internal'
-        legal: 'legal'
-    index:
-      title: 'Deadlines'
+        court-ordered: court-ordered
+        external: external
+        internal: internal
+        legal: legal
+      category: Category
+      date: "Due by"
+      label: Label
+      project: Project
     card:
-      assigned_to: 'Assigned to'
+      assigned_to: "Assigned to"
       completed_ago: "completed %{time_ago} ago"
+    index:
+      title: Deadlines
