@@ -12,10 +12,14 @@ en:
       projects: "Cases owned"
       role: Role
       roles:
-        admin: Admin
+        admin: Administrator
         associate: Associate
         intern: Intern
         partner: Partner
+    create:
+      success: "User was successfully created"
+    destroy:
+      success: "User was successfully deleted"
     edit:
       title: "Edit user"
     form:
@@ -33,3 +37,5 @@ en:
     show:
       deadlines: "Assigned deadlines"
       profile: Profile
+    update:
+      success: "User was successfully updated"

@@ -8,7 +8,7 @@ fr:
       email: E-mail
       name: Nom
       notes: Notes
-      role: Role
+      role: Rôle
       roles:
         adversary: Adversaire
         client: Client

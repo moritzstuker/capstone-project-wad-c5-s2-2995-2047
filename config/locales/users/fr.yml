@@ -10,12 +10,16 @@ fr:
       password: "Mot de passe"
       password_confirmation: "Confirmation du mot de passe"
       projects: "Dossiers sous gestion"
-      role: Role
+      role: Rôle
       roles:
-        admin: Admin
+        admin: Admininistrateur
         associate: Collaborateur
         intern: Stagiaire
         partner: Associé
+    create:
+      success: "Utilisateur créé."
+    destroy:
+      success: "Utilisateur effacé"
     edit:
       title: "Editer utilisateur"
     form:
@@ -25,7 +29,7 @@ fr:
     index:
       default_fee: "Honoraire par défaut"
       language: Langue
-      role: Role
+      role: Rôle
       title: "Tous les utilisateurs"
       user: Utilisateur
     new:
@@ -33,3 +37,5 @@ fr:
     show:
       deadlines: "Délais attribués"
       profile: Profil
+    update:
+      success: "Utilisateur mis à jour"
