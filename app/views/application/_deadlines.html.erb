@@ -1,5 +1,5 @@
 <ul class="card-list">
-  <% deadlines.sort_by(&:date).each do |deadline| %>
+  <% deadlines.limit(limit).sort_by(&:date).each do |deadline| %>
   <li class="card horizontal">
     <div class="card-aside">
       <%= link_to (deadline.completed_at.nil? ? icon_tag('circle', class: 'small') : icon_tag('check-circle', class: 'small')), complete_deadline_path(deadline), method: :patch %>
