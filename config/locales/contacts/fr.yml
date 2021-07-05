@@ -1,0 +1,37 @@
+fr:
+  contacts:
+    attributes:
+      activity: Profession/activité
+      category: Categorie
+      city: "NPA et ville"
+      country: Pays
+      email: E-mail
+      name: Nom
+      notes: Notes
+      role: Role
+      roles:
+        adversary: Adversaire
+        client: Client
+        other: Autre
+      street: "Rue et numéro"
+    card:
+      party_in_n_cases:
+        one: "Partie à un dossier"
+        other: "Partie à %{count} dossiers"
+    filters:
+      category: Categorie
+      companies: Sociétés
+      country: Pays
+      persons: Personnes
+    form:
+      basic_info: "Informations générales"
+    import:
+      found_n_results:
+        one: "1 résultat trouvé pour '%{query}'"
+        other: "%{count} résultats trouvés pour '%{query}'"
+      too_many_results: "Premiers %{limit} résultats affichés; merci d'être plus précis"
+    index:
+      title: Contacts
+    new:
+      import_tel_search: "Importer depuis tel.search.ch"
+      title: "Ajouter contact"

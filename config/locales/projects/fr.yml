@@ -1,0 +1,43 @@
+fr:
+  projects:
+    attributes:
+      category: Catégorie
+      created_at: "Créé le"
+      description: Description
+      label: Libellé
+      owner: "Responsable"
+      reference: Référence
+      status: Statut
+      statuses:
+        active: Actif
+        inactive: Inactif
+      updated_at: "Dernière mise à jour"
+    card:
+      last_activity: "Dernière activité"
+    filters:
+      your_active_cases: "Vos dossiers actifs"
+    form:
+      adversaries: Adversaires
+      clients: Clients
+      properties: Propriétés
+    index:
+      title: Dossiers
+    new:
+      title: "Nouveau dossier"
+    properties:
+      title: Propriétés
+    show:
+      deadlines: "Prochains délais"
+      description: Description
+      parties: Parties
+    statistics:
+      logged_tasks:
+        one: "a saisi 1 entrée pour "
+        other: "a saisi %{count} entrées pour "
+      title: Statistiques
+      total_fees: "Honoraires totaux"
+      total_hours: "Heures totales"
+    timesheet:
+      activity_dated: "Activité datée du"
+      duration_placeholder: "Durée (format: 0.1)"
+      rate_placeholder: "Tarif horaire (CHF / heure)"

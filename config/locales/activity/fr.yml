@@ -1,0 +1,8 @@
+fr:
+  activity:
+    and_billed: "et a facturé"
+    at_a_rate_of: "à un taux de"
+    hour:
+      one: heure
+      other: heures
+    worked_on_it_for: "y a contribué durant"

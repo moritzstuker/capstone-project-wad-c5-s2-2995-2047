@@ -1,0 +1,18 @@
+fr:
+  deadlines:
+    attributes:
+      assigned_to: "Assigné à"
+      categories:
+        court-ordered: judiciaire
+        external: externe
+        internal: interne
+        legal: légal
+      category: Categorie
+      date: "Echoit le"
+      label: Libellé
+      project: Dossier
+    card:
+      assigned_to: "Assigné à"
+      completed_ago: "complété il y a %{time_ago}"
+    index:
+      title: Délais

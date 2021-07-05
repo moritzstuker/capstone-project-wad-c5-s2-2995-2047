@@ -1,9 +1,9 @@
-en: 
+en:
   users:
     attributes:
       avatar: Avatar
       default_fee: "Default fee"
-      email: Email
+      email: E-mail
       locale: "Preferred language"
       login: Username
       name: "Full name"

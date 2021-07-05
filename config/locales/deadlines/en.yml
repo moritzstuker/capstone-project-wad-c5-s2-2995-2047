@@ -1,4 +1,4 @@
-en: 
+en:
   deadlines:
     attributes:
       assigned_to: "Assigned to"
@@ -10,7 +10,7 @@ en:
       category: Category
       date: "Due by"
       label: Label
-      project: Project
+      project: Case
     card:
       assigned_to: "Assigned to"
       completed_ago: "completed %{time_ago} ago"

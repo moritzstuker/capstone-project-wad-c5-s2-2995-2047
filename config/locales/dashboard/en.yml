@@ -1,11 +1,11 @@
-en: 
+en:
   dashboard:
     index:
       title: Dashboard
     news:
       latest_news: "Latest news"
     statistics:
-      title: Financials
+      title: Statistics
       total_billable_hours: "Total billable hours"
       total_fees: "Total fees"
     timeline:

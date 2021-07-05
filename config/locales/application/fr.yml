@@ -1,0 +1,25 @@
+fr:
+  application:
+    dashboard_sidebar:
+      account: Compte
+      dashboard: "Vue d'ensemble"
+      users: Utilisateurs
+    deadlines:
+      deadlines_with_limit: "Délais attribués (premiers %{limit})"
+      you: vous
+    header_links:
+      account: Compte
+      add_case: "Ajouter dossier"
+      add_contact: "Ajouter contact"
+      add_deadline: "Ajouter délai"
+      add_user: "Ajouter utilisateur"
+      dashboard: "Vue d'ensemble"
+      log_out: "Déconnexion"
+      signed_in_as: "Connecté en tant que"
+      users: Utilisateurs
+    search_form:
+      cases: Dossiers
+      contacts: Contacts
+      deadlines: Délais
+      in: dans
+      search_for: "Chercher"

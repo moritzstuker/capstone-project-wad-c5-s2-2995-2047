@@ -1,0 +1,12 @@
+fr:
+  dashboard:
+    index:
+      title: "Vue d'ensemble"
+    news:
+      latest_news: "Actualité"
+    statistics:
+      title: Statistiques
+      total_billable_hours: "Total d'heures facturables"
+      total_fees: "Total facturé"
+    timeline:
+      activity_logged_on: "Activité enregistrée pour le"

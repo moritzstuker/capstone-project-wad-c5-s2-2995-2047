@@ -1,0 +1,35 @@
+fr:
+  users:
+    attributes:
+      avatar: Avatar
+      default_fee: "Honoraire par défaut"
+      email: E-mail
+      locale: Langue
+      login: "Nom d'utilisateur"
+      name: "Nom complet"
+      password: "Mot de passe"
+      password_confirmation: "Confirmation du mot de passe"
+      projects: "Dossiers sous gestion"
+      role: Role
+      roles:
+        admin: Admin
+        associate: Collaborateur
+        intern: Stagiaire
+        partner: Associé
+    edit:
+      title: "Editer utilisateur"
+    form:
+      profile: Profil
+      settings: Réglages
+      upload_avatar: "Charger avatar"
+    index:
+      default_fee: "Honoraire par défaut"
+      language: Langue
+      role: Role
+      title: "Tous les utilisateurs"
+      user: Utilisateur
+    new:
+      title: "Nouvel utilisateur"
+    show:
+      deadlines: "Délais attribués"
+      profile: Profil
