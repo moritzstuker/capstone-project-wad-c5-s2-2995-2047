@@ -26,7 +26,7 @@
           <% @users.order(role: :desc, name: :asc).each do |user| %>
           <tr>
             <td><%= avatar_tag_for(user) %></td>
-            <td><%= user.role.capitalize %></td>
+            <td><%= t("users.attributes.roles.#{ user.role }") %></td>
             <td><%= t('language', locale: user.locale) %></td>
             <td><%= fee(user.default_fee) %></td>
             <td>
