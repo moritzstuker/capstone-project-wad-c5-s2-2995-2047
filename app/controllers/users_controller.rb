@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @deadlines_limit = 5
   end
 
   def new

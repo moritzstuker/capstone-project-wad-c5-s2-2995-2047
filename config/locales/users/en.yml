@@ -33,4 +33,3 @@ en:
     show:
       profile: 'Profile'
       deadlines: 'Assigned deadlines'
-      deadlines_with_limit: "Assigned deadlines (first %{limit})"

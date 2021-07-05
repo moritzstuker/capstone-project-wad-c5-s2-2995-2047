@@ -22,3 +22,4 @@ en:
       deadlines: 'Deadlines'
     deadlines:
       you: 'you'
+      deadlines_with_limit: "Assigned deadlines (first %{limit})"

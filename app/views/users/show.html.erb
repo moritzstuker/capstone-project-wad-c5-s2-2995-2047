@@ -9,61 +9,12 @@
 
 <div class="row">
   <div class="col-2">
-      <%= render 'dashboard_sidebar' %>
+    <%= render 'dashboard_sidebar' %>
   </div>
-  <div class="col-3">
-    <div class="box">
-      <div class="box-header">
-        <%= t('.profile') %>
-      </div>
-      <div class="box-content">
-        <%= image_tag(@user.avatar, class: 'avatar') %>
-        <p>
-          <strong><%= t('users.attributes.login') %>:</strong>
-          <%= @user.login %>
-        </p>
-
-        <p>
-          <strong><%= t('users.attributes.role') %>:</strong>
-          <%= @user.role.capitalize %>
-        </p>
-
-        <p>
-          <strong><%= t('users.attributes.email') %>:</strong>
-          <%= mail_to @user.email %>
-        </p>
-
-        <p>
-          <strong><%= t('users.attributes.locale') %>:</strong>
-          <%= t('language', locale: @user.locale) %>
-        </p>
-
-        <p>
-          <strong><%= t('users.attributes.default_fee') %>:</strong>
-          <%= fee(@user.default_fee) %>
-        </p>
-
-        <p>
-          <strong><%= t('users.attributes.projects') %>:</strong>
-          <%= link_to @user.projects.count, projects_path(owner: @user.id) %> (<%= link_to @user.projects.where(status: :active).count, projects_path(owner: @user.id, status: :active) %> of which are active)
-        </p>
-      </div>
-    </div>
+  <div class="col-2">
+    <%= render 'users/profile', user: @user %>
   </div>
-  <div class="col-3">
-    <div class="box">
-      <div class="box-header">
-        <% if @user.deadlines.count > @deadlines_limit %>
-          <%= t('.deadlines_with_limit', limit: @deadlines_limit) %>
-        <% else %>
-          <%= t('.deadlines') %>
-        <% end %>
-      </div>
-      <% if @user.deadlines.count > 0 %>
-        <%= render 'deadlines', deadlines: @user.deadlines, limit: @deadlines_limit %>
-      <% else %>
-        <%= image_tag('undraw/void.svg', class: 'void') %>
-      <% end %>
-    </div>
+  <div class="col-4">
+    <%= render 'deadlines', deadlines: @user.deadlines, limit: 5 %>
   </div>
 </div>

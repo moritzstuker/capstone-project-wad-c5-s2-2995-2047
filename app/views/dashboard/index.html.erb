@@ -13,10 +13,17 @@
   <section class="col-6">
     <div class="row">
       <div class="col">
-        <%= render 'timeline' %>
-      </div>
-      <div class="col">
+        <%= render 'users/profile', user: current_user %>
         <%= render 'statistics' %>
+      </div>
+
+      <div class="col">
+        <%= render 'deadlines', deadlines: current_user.deadlines, limit: 5 %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= render 'timeline' %>
       </div>
     </div>
     <div class="row">
