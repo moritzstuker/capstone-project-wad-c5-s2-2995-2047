@@ -7,19 +7,17 @@ class ApplicationController < ActionController::Base
 
   around_action :switch_locale
 
-  around_action :switch_locale
+  # uncomment to add locale to param
+  # def default_url_options
+  #   { locale: I18n.locale }
+  # end
 
-  def default_url_options
-    { locale: I18n.locale }
-  end
+  private
 
-  # Maybe add to privates
   def switch_locale(&action)
     locale = current_user.try(:locale) || I18n.default_locale
     I18n.with_locale(locale, &action)
   end
-
-  private
 
   def error_message_for(record, field)
     record.full_messages_for(field).join(",")
