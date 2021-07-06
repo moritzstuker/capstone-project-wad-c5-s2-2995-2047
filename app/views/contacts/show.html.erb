@@ -14,7 +14,7 @@
   <div class="col-3 col-offset-1">
     <section class="box">
       <header class="box-header">
-        <h2>Address</h2>
+        <h2><%= t('.address') %></h2>
       </header>
       <div class="box-content">
         <%= build_address(@contact) %>
@@ -33,8 +33,8 @@
       <table>
         <thead>
           <tr>
-            <th>Cases</th>
-            <th>Owner</th>
+            <th><%= t('.projects') %></th>
+            <th><%= t('.owner') %></th>
             <% if @contact.role.label == 'client' %>
             <th>Amount due</th>
             <% end %>
@@ -44,7 +44,7 @@
         <tbody>
           <% @projects.order(label: :asc).each do |project| %>
           <tr>
-            <td><%= link_to project.label, project %><%= simple_format(project.status, { class: 'tag' }, wrapper_tag: 'span') if project.status == 'inactive' %></td>
+            <td><%= link_to project.label, project %><%= simple_format(t("projects.attributes.statuses.#{ project.status }"), { class: 'tag' }, wrapper_tag: 'span') if project.status == 'inactive' %></td>
             <td><%= avatar_tag_for(project.owner) %></td>
             <% if @contact.role.label == 'client' %>
               <td><%= fee(project.activities.sum(&:fee) * project.activities.sum(&:duration) / project.clients.count) %>

@@ -1,12 +1,12 @@
 <section class="box">
   <header class="box-header">
-    <h2>Properties</h2>
+    <h2><%= t('contacts.show.properties') %></h2>
   </header>
   <div class="box-content">
-    <p><strong>Category:</strong>&nbsp;<%= contact.category.capitalize %></p>
-    <p><strong>Role:</strong>&nbsp;<%= dot_label(contact.role.label.capitalize, contact.role.color) %></p>
-    <p><strong>Email:</strong>&nbsp;<%= mail_to contact.email %></p>
-    <p><strong><%= contact.category == :company ? 'Activity' : 'Profession' %>:</strong>&nbsp;<%= contact.activity.capitalize %></p>
+    <p><strong><%= t('contacts.attributes.category') %>:</strong>&nbsp;<%= t("contacts.attributes.categories.#{ contact.category }") %></p>
+    <p><strong><%= t('contacts.attributes.role') %>:</strong>&nbsp;<%= dot_label(t("contacts.attributes.roles.#{ contact.role.label }"), contact.role.color) %></p>
+    <p><strong><%= t('contacts.attributes.email') %>:</strong>&nbsp;<%= mail_to contact.email %></p>
+    <p><strong><%= contact.category == :company ? t('contacts.attributes.activity_company') : t('contacts.attributes.activity_person') %>:</strong>&nbsp;<%= contact.activity.capitalize %></p>
     <hr>
     <p><strong>Notes:</strong></p>
     <% if contact.notes %>

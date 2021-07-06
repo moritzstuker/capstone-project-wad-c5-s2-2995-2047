@@ -2,7 +2,7 @@
   <% if Deadline.with_urgency('0', params[:query]).count > 0 %>
   <li>
     <%= link_to deadlines_path(urgency: '0', query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:urgency] == '0' }" do %>
-    <%= dot_label("Due immediately (#{ Deadline.with_urgency('0', params[:query]).count })", color_by_urgency('0')) %>
+    <%= dot_label("#{ t('deadlines.attributes.due_immediately') } (#{ Deadline.with_urgency('0', params[:query]).count })", color_by_urgency('0')) %>
     <% end %>
   </li>
   <% end %>
@@ -10,7 +10,7 @@
   <% if Deadline.with_urgency('1', params[:query]).count > 0 %>
   <li>
     <%= link_to deadlines_path(urgency: '1', query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:urgency] == '1' }" do %>
-    <%= dot_label("Due soon (#{ Deadline.with_urgency('1', params[:query]).count })", color_by_urgency('1')) %>
+    <%= dot_label("#{ t('deadlines.attributes.due_soon') } (#{ Deadline.with_urgency('1', params[:query]).count })", color_by_urgency('1')) %>
     <% end %>
   </li>
   <% end %>
@@ -18,7 +18,7 @@
   <% if Deadline.with_urgency('2', params[:query]).count > 0 %>
   <li>
     <%= link_to deadlines_path(urgency: '2', query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:urgency] == '2' }" do %>
-    <%= dot_label("Due later (#{ Deadline.with_urgency('2', params[:query]).count })", color_by_urgency('2')) %>
+    <%= dot_label("#{ t('deadlines.attributes.due_later') } (#{ Deadline.with_urgency('2', params[:query]).count })", color_by_urgency('2')) %>
     <% end %>
   </li>
   <% end %>

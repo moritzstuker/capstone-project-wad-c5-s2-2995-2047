@@ -1,8 +1,13 @@
-en: 
+en:
   contacts:
     attributes:
       activity: Profession/activity
+      activity_person: Profession
+      activity_company: Activity
       category: Category
+      categories:
+        person: Person
+        company: Company
       city: "Zip & City"
       country: Country
       email: E-mail
@@ -35,3 +40,8 @@ en:
     new:
       import_tel_search: "Import from tel.search.ch"
       title: "Create new contact"
+    show:
+      address: Address
+      projects: Cases
+      properties: Properties
+      owner: Owners

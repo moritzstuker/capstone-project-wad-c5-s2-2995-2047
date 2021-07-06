@@ -1,7 +1,7 @@
 <%= link_to contact, class: 'box', role: 'article' do %>
   <header class="box-header">
     <%= highlight(contact.name, params[:query]) %>
-    <%= simple_format(contact.category.capitalize, { class: 'push tag' }, wrapper_tag: 'span') %>
+    <%= simple_format(t("contacts.attributes.categories.#{ contact.category }").capitalize, { class: 'push tag' }, wrapper_tag: 'span') %>
   </header>
 
   <div class="box-content">

@@ -9,7 +9,7 @@
   </div>
 
   <footer class="box-footer">
-    <span class="keys"><%= dot_label(project.category.label.capitalize, project.category.color) %></span>
+    <span class="keys"><%= dot_label(t("project_categories.attributes.#{ project.category.id }").capitalize, project.category.color) %></span>
     <% if project.reference %>
       <span class="keys disambiguate"><%= highlight(simple_format(project.reference), params[:query]) %></span>
     <% end %>

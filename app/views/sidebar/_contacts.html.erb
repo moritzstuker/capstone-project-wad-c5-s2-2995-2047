@@ -3,7 +3,7 @@
     <% if Contact.with_role(role, params[:query]).count > 0 %>
     <li>
       <%= link_to contacts_path(role: role, query: params[:query]), role: 'menuitem', class: "menu-item#{ ' orange-color' if params[:role] == role.to_s }" do %>
-      <%= dot_label("#{ role.label.pluralize.capitalize } (#{ Contact.with_role(role, params[:query]).count })", role.color) %>
+        <%= dot_label("#{ t("contacts.attributes.roles.#{ role.label }").capitalize }s (#{ Contact.with_role(role, params[:query]).count })", role.color) %>
       <% end %>
     </li>
     <% end %>

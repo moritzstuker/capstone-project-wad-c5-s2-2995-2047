@@ -2,7 +2,12 @@ fr:
   contacts:
     attributes:
       activity: Profession/activité
-      category: Categorie
+      activity_person: Profession
+      activity_company: Activité
+      category: Catégorie
+      categories:
+        person: Personne
+        company: Société
       city: "NPA et ville"
       country: Pays
       email: E-mail
@@ -35,3 +40,8 @@ fr:
     new:
       import_tel_search: "Importer depuis tel.search.ch"
       title: "Ajouter contact"
+    show:
+      address: Adresse
+      projects: Dossiers
+      properties: Propriétés
+      owner: Responsables

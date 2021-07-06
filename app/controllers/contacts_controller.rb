@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @projects = @contact.projects.includes(:activities, :owner)
+    @projects = @contact.projects.includes(:owner)
   end
 
   def new

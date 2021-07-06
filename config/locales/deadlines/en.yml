@@ -9,6 +9,9 @@ en:
         legal: legal
       category: Category
       date: "Due by"
+      due_immediately: "Due immediately"
+      due_soon: "Due soon"
+      due_later: "Due later"
       label: Label
       project: Case
     card:

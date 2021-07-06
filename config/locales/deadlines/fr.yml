@@ -9,6 +9,9 @@ fr:
         legal: légal
       category: Categorie
       date: "Echoit le"
+      due_immediately: "Échéance brève"
+      due_soon: "Échéance moyenne"
+      due_later: "Échéance tardive"
       label: Libellé
       project: Dossier
     card:
