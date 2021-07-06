@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  CATEGORIES = %w(Email/Letter Meeting Phone\ call Court\ hearing)
+  CATEGORIES = %w(email_letter meeting phone_call court_hearing)
 
   belongs_to :project
   belongs_to :user

@@ -40,4 +40,6 @@ fr:
     timesheet:
       activity_dated: "Activité datée du"
       duration_placeholder: "Durée (format: 0.1)"
+      label: "Libellé"
       rate_placeholder: "Tarif horaire (CHF / heure)"
+      submit: "Saisir"

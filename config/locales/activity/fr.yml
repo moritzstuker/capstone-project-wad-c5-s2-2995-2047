@@ -2,6 +2,12 @@ fr:
   activity:
     and_billed: "et a facturé"
     at_a_rate_of: "à un taux de"
+    attributes:
+      categories:
+        court_hearing: Audience
+        email_letter: Email/lettre
+        meeting: Conférence
+        phone_call: "Appel téléphonique"
     hour:
       one: heure
       other: heures

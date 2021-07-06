@@ -1,4 +1,4 @@
-en: 
+en:
   projects:
     attributes:
       category: Category
@@ -40,4 +40,6 @@ en:
     timesheet:
       activity_dated: "Activity dated"
       duration_placeholder: "Duration (0.1 format)"
+      label: "Label"
       rate_placeholder: "Hourly rate (CHF / hour)"
+      submit: "Log"

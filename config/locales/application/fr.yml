@@ -5,6 +5,7 @@ fr:
       dashboard: "Vue d'ensemble"
       users: Utilisateurs
     deadlines:
+      deadlines: "Délais attribués"
       deadlines_with_limit: "Délais attribués (premiers %{limit})"
       you: vous
     header_links:

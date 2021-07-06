@@ -2,6 +2,12 @@ en:
   activity:
     and_billed: "and billed"
     at_a_rate_of: "at a rate of"
+    attributes:
+      categories:
+        court_hearing: "Court hearing"
+        email_letter: Email/letter
+        meeting: Meeting
+        phone_call: "Phone call"
     hour:
       one: hour
       other: hours

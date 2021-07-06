@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header">
     <%= activity.label %>
-    <span class="tag"><%= activity.category %></span>
+    <span class="tag"><%= t("activity.attributes.categories.#{ activity.category }") %></span>
     <%= link_to icon_tag('trash', class: 'small'), project_activity_path(@project, activity), method: :delete, data: { confirm: t('helpers.link_to.confirm') }, class: 'push' if can_delete_activity?(activity, current_user) %>
   </div>
   <div class="card-content">

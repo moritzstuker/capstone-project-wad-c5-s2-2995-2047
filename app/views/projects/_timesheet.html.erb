@@ -4,12 +4,12 @@
       <li class="box-row">
         <div class="card">
           <%= form_with(model: [@project, @project.activities.build], class: 'inline-fields', local: false) do |form| %>
-            <%= form.text_field(:label, required: true, placeholder: 'Label') %>
-            <%= form.select(:category, Activity::CATEGORIES, required: true) %>
+            <%= form.text_field(:label, placeholder: t('.label')) %>
+            <%= form.select(:category, options_for_select(Activity::CATEGORIES.map { |category| [t("activity.attributes.categories.#{ category }").capitalize, category] }, :active)) %>
             <%= form.number_field(:duration, step: 0.1, value: 0.1, placeholder: t('.duration_placeholder')) %>
-            <%= form.number_field(:fee, step: 0.05, value: number_with_precision(current_user.default_fee, precision: 2), required: true, placeholder: t('.rate_placeholder')) %>
-            <%= form.date_field(:date, value: Date.today, required: true, placeholder: 'Date') %>
-            <%= form.submit 'Log', class: 'button green' %>
+            <%= form.number_field(:fee, step: 0.05, value: number_with_precision(current_user.default_fee, precision: 2), placeholder: t('.rate_placeholder')) %>
+            <%= form.date_field(:date, value: Date.today, placeholder: 'Date') %>
+            <%= form.submit t('.submit'), class: 'button green' %>
           <% end %>
         </div>
       </li>

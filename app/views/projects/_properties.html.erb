@@ -10,8 +10,8 @@
     <% if @project.reference.present? %>
     <p><strong><%= t('projects.attributes.reference') %>:</strong>&nbsp;<span class="disambiguate"><%= @project.reference %></span></p>
     <% end %>
-    <p><strong><%= t('projects.attributes.created_at') %>:</strong>&nbsp;<%= l(@project.created_at, format: :long) %></p>
-    <p><strong><%= t('projects.attributes.updated_at') %>:</strong>&nbsp;<%= l(@project.updated_at, format: :long) %></p>
+    <p><strong><%= t('projects.attributes.created_at') %>:</strong>&nbsp;<%= l(@project.created_at, format: :short) %></p>
+    <p><strong><%= t('projects.attributes.updated_at') %>:</strong>&nbsp;<%= l(@project.updated_at, format: :short) %></p>
     <p><strong><%= t('projects.attributes.owner') %>:</strong>&nbsp;<%= link_to avatar_tag_for(@project.owner), @project.owner %></p>
   </div>
 </section>

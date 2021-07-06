@@ -1,6 +1,6 @@
 module ProjectsHelper
   def fee (int)
-    number_to_currency(int, unit: "fr.", format: "%n %u")
+    simple_format(number_to_currency(int, unit: "fr.", format: "%n %u"), { class: 'no-wrap' }, wrapper_tag: 'span')
   end
 
   def main_parties (project)

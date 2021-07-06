@@ -3,15 +3,15 @@
     <h2><%= t('.title') %></h2>
   </header>
   <div class="box-content">
-    <ul class="no-list">
-      <% @project.activities.includes(:user).group_by(&:user).sort.reverse.each do |user| %>
-        <li>
-          <%= avatar_tag_for(user.first) %> <%= t('.logged_tasks', count: user.last.count) %><%= fee(user.last.sum(&:fee)) %>
-        </li>
-      <% end %>
-    </ul>
-    <hr>
     <p><strong><%= t('.total_hours') %>:</strong>&nbsp;<%= number_with_precision(@project.activities.sum(&:duration), precision: 2) %></p>
     <p><strong><%= t('.total_fees') %>:</strong>&nbsp;<%= fee(@project.activities.sum(&:fee) * @project.activities.sum(&:duration)) %></p>
+    <hr>
+    <ul class="no-list">
+      <% @project.activities.includes(:user).group_by(&:user).sort.reverse.each do |user| %>
+      <li class="small">
+        <%= avatar_tag_for(user.first) %> <%= t('.logged_tasks', count: user.last.count) %><%= fee(user.last.sum(&:fee) * user.last.sum(&:duration)) %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </section>

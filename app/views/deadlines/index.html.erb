@@ -19,7 +19,11 @@
           <div class="box-header">
             <%= dot_label(date.first.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(date.first))) %>
           </div>
-          <%= render 'deadlines', deadlines: date.last %>
+          <ul class="card-list">
+            <% date.last.sort_by(&:date).each do |deadline| %>
+              <%= render 'card', deadline: deadline %>
+            <% end %>
+          </ul>
         </div>
       </li>
       <% end %>

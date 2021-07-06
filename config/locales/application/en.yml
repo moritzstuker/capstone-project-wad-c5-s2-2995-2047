@@ -5,6 +5,7 @@ en:
       dashboard: Dashboard
       users: Users
     deadlines:
+      deadlines: "Assigned deadlines"
       deadlines_with_limit: "Assigned deadlines (first %{limit})"
       you: you
     header_links:
