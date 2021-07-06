@@ -17,7 +17,7 @@ def build_activity
   Activity.create!(
     label:     Faker::Company.bs.capitalize,
     category:  Activity::CATEGORIES.sample,
-    date: Faker::Date.backward(days: 1000),
+    date:      Faker::Date.backward(days: 1000),
     duration:  rand(0.1..8.0).round(1),
     fee:       activity_user.default_fee,
     project:   project,
