@@ -27,6 +27,8 @@ en:
       success: "Contact successfully created"
     destroy:
       success: "Contact successfully deleted"
+    edit:
+      title: "Edit contact"
     filters:
       category: Category
       companies: Companies

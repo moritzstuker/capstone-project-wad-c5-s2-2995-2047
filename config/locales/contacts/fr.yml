@@ -27,6 +27,8 @@ fr:
       success: "Contact créé"
     destroy:
       success: "Contact effacé"
+    edit:
+      title: "Modifier contact"
     filters:
       category: Categorie
       companies: Sociétés
