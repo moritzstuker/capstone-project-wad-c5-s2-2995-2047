@@ -1,2 +1,0 @@
-class ProjectCategoriesController < ApplicationController
-end
