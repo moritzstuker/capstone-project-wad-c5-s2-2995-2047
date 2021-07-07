@@ -11,17 +11,11 @@ class DeadlinesController < ApplicationController
     @categories = @deadlines.distinct.pluck(:category).sort
     @users = User.all
 
-    flash.now[:notice] = 'No such deadline found…' if params[:query].present? && @deadlines.count == 0
-  end
-
-  def show
+    flash.now[:notice] = "#{ t('.no_results') }." if params[:query].present? && @deadlines.count == 0
   end
 
   def new
     @deadline = Deadline.new
-  end
-
-  def edit
   end
 
   def create
@@ -29,7 +23,7 @@ class DeadlinesController < ApplicationController
 
     respond_to do |format|
       if @deadline.save
-        format.html { redirect_to @deadline.project, notice: "Deadline was successfully created." }
+        format.html { redirect_to @deadline.project, notice: t('.success') }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -39,7 +33,7 @@ class DeadlinesController < ApplicationController
   def update
     respond_to do |format|
       if @deadline.update(deadline_params)
-        format.html { redirect_to @deadline.project, notice: "Deadline was successfully updated." }
+        format.html { redirect_to @deadline.project, notice: t('.success') }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -49,14 +43,14 @@ class DeadlinesController < ApplicationController
   def destroy
     @deadline.destroy
     respond_to do |format|
-      format.html { redirect_to @deadline.project, notice: "Deadline was successfully deleted." }
+      format.html { redirect_to @deadline.project, notice: t('.success') }
     end
   end
 
   def complete
     @deadline = Deadline.find(params[:id])
     @deadline.update(completed_at: Time.now)
-    redirect_to @deadline.project, notice: "Deadline was successfully marked as complete."
+    redirect_to @deadline.project, notice: t('.success')
   end
 
 

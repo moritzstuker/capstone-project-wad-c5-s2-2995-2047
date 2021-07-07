@@ -12,3 +12,7 @@ fr:
       one: heure
       other: heures
     worked_on_it_for: "y a contribué durant"
+  create:
+    success: "Activité enregistrée"
+  destroy:
+    success: "Activité effacée"

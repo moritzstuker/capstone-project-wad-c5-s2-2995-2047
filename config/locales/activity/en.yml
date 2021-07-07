@@ -12,3 +12,7 @@ en:
       one: hour
       other: hours
     worked_on_it_for: "worked on it for"
+  create:
+    success: "Activity was successfully logged"
+  destroy:
+    success: "Activity was successfully deleted"

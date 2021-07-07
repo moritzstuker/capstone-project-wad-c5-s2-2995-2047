@@ -23,6 +23,10 @@ fr:
       party_in_n_cases:
         one: "Partie à un dossier"
         other: "Partie à %{count} dossiers"
+    create:
+      success: "Contact créé"
+    destroy:
+      success: "Contact effacé"
     filters:
       category: Categorie
       companies: Sociétés
@@ -36,6 +40,7 @@ fr:
         other: "%{count} résultats trouvés pour '%{query}'"
       too_many_results: "Premiers %{limit} résultats affichés; merci d'être plus précis"
     index:
+      no_results: "No such contact found…"
       title: Contacts
     new:
       import_tel_search: "Importer depuis tel.search.ch"
@@ -45,3 +50,5 @@ fr:
       projects: Dossiers
       properties: Propriétés
       owner: Responsables
+    update:
+      success: "Contact mis à jour"

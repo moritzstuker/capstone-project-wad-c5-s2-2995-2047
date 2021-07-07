@@ -18,4 +18,5 @@ fr:
       assigned_to: "Assigné à"
       completed_ago: "complété il y a %{time_ago}"
     index:
+      no_results: "Aucun résultat…"
       title: Délais

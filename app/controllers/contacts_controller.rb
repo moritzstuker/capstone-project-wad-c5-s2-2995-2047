@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
     @all_contacts = Contact.all
     @countries = Contact.distinct.pluck(:country).sort
 
-    flash.now[:notice] = 'No such contact found…' if params[:query].present? && @contacts.count == 0
+    flash.now[:notice] = "#{ t('.no_results') }." if params[:query].present? && @contacts.count == 0
   end
 
   def show
@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: "Contact was successfully created." }
+        format.html { redirect_to @contact, notice: "#{ t('.success') }." }
         format.js
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: "Contact was successfully updated." }
+        format.html { redirect_to @contact, notice: "#{ t('.success') }." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: "Contact was successfully deleted." }
+      format.html { redirect_to contacts_url, notice: "#{ t('.success') }." }
     end
   end
 

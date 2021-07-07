@@ -23,6 +23,10 @@ en:
       party_in_n_cases:
         one: "Party in one case"
         other: "Party in %{count} cases"
+    create:
+      success: "Contact successfully created"
+    destroy:
+      success: "Contact successfully deleted"
     filters:
       category: Category
       companies: Companies
@@ -36,6 +40,7 @@ en:
         other: "Found %{count} result for '%{query}'"
       too_many_results: "Results limited to the first %{limit}; please be more specific"
     index:
+      no_results: "Aucun contact trouvé…"
       title: Contacts
     new:
       import_tel_search: "Import from tel.search.ch"
@@ -45,3 +50,5 @@ en:
       projects: Cases
       properties: Properties
       owner: Owners
+    update:
+      success: "Contact successfully updated"

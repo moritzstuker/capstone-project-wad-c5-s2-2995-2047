@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @project, notice: "Activity was successfully created." }
+        format.html { redirect_to @project, notice: "#{ t('.success') }." }
         format.js
       else
         format.html { redirect_to @project, status: :unprocessable_entity }
@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to @project, notice: "Activity was successfully deleted." }
+      format.html { redirect_to @project, notice: "#{ t('.success') }." }
     end
   end
 

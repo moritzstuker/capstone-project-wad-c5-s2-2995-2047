@@ -17,5 +17,14 @@ en:
     card:
       assigned_to: "Assigned to"
       completed_ago: "completed %{time_ago} ago"
+    complete:
+      success: "Deadline successfully completed"
+    create:
+      success: "Deadline successfully created"
+    destroy:
+      success: "Deadline successfully deleted"
     index:
+      no_results: "No such deadline found…"
       title: Deadlines
+    update:
+      success: "Deadline successfully updated"
