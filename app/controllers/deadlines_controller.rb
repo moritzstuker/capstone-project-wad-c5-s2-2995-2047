@@ -3,8 +3,8 @@ class DeadlinesController < ApplicationController
 
   def index
     @deadlines = Deadline.filter(params.slice(:query, :category, :urgency, :user)).order(:date, :label) # filters
+    @deadlines = @deadlines.includes(:assignee, project: [:owner])
 
-    @deadlines = @deadlines.includes(:project).includes(:assignee)
     @deadlines_by_dates = @deadlines.group_by(&:date).sort
     @deadlines_by_dates = Kaminari.paginate_array(@deadlines_by_dates).page(params[:page]).per(10)
 
