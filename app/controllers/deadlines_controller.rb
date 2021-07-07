@@ -23,7 +23,7 @@ class DeadlinesController < ApplicationController
 
     respond_to do |format|
       if @deadline.save
-        format.html { redirect_to @deadline.project, notice: t('.success') }
+        format.html { redirect_to @deadline.project, notice: "#{ t('.success') }." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -33,7 +33,7 @@ class DeadlinesController < ApplicationController
   def update
     respond_to do |format|
       if @deadline.update(deadline_params)
-        format.html { redirect_to @deadline.project, notice: t('.success') }
+        format.html { redirect_to @deadline.project, notice: "#{ t('.success') }." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -43,16 +43,16 @@ class DeadlinesController < ApplicationController
   def destroy
     @deadline.destroy
     respond_to do |format|
-      format.html { redirect_to @deadline.project, notice: t('.success') }
+      format.html { redirect_to @deadline.project, notice: "#{ t('.success') }." }
     end
   end
 
   def complete
     @deadline = Deadline.find(params[:id])
     @deadline.update(completed_at: Time.now)
-    redirect_to @deadline.project, notice: t('.success')
+    redirect_back(fallback_location: @deadline.project)
+    flash.now[:notice] = "#{ t('.success') }."
   end
-
 
   private
     def set_deadline
