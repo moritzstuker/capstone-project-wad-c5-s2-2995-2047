@@ -1,9 +1,9 @@
 class DeadlinesController < ApplicationController
-  before_action :set_deadline, only: %i[ show edit update destroy ]
+  before_action :set_deadline, only: %i[ update destroy complete ]
 
   def index
     @deadlines = Deadline.filter(params.slice(:query, :category, :urgency, :user)).order(:date, :label) # filters
-    @deadlines = @deadlines.includes(:assignee, project: [:owner])
+    @deadlines = @deadlines
 
     @deadlines_by_dates = @deadlines.group_by(&:date).sort
     @deadlines_by_dates = Kaminari.paginate_array(@deadlines_by_dates).page(params[:page]).per(10)
@@ -48,10 +48,11 @@ class DeadlinesController < ApplicationController
   end
 
   def complete
-    @deadline = Deadline.find(params[:id])
     @deadline.update(completed_at: Time.now)
-    redirect_back(fallback_location: @deadline.project)
-    flash.now[:notice] = "#{ t('.success') }."
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

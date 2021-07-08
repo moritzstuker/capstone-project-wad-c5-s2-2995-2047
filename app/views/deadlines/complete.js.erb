@@ -1,0 +1,13 @@
+function markComplete(target) {
+  var card = target.closest(".card");
+  if (card) {
+    let cardAside = card.querySelector(".card-aside");
+    let cardMain = card.querySelector(".card-main");
+    cardAside.innerHTML = "<%= j icon_tag('check-circle', class: 'small') %>";
+    cardMain.classList.add('mute');
+  }
+}
+
+document.body.addEventListener("ajax:success", (event) => {
+  markComplete(event.target);
+});

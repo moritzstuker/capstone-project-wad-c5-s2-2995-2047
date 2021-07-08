@@ -1,7 +1,7 @@
 <li class="card horizontal">
   <div class="card-aside">
     <% if deadline.completed_at.nil? %>
-      <%= link_to icon_tag('circle', class: 'small'), complete_deadline_path(deadline), method: :patch %>
+      <%= link_to '', complete_deadline_path(deadline), remote: true, method: :patch, class: 'icon-button complete' %>
     <% else %>
       <%= icon_tag('check-circle', class: 'small') %>
     <% end %>
