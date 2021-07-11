@@ -1,5 +1,4 @@
 class DashboardController < ApplicationController
-
   def index
     @news = get_news
     @deadlines = current_user.deadlines.includes(:assignee)
@@ -8,20 +7,24 @@ class DashboardController < ApplicationController
   private
 
   def get_news
-    feed = []
-    rss = RSS::Parser.parse(open("http://www.lawinside.ch/feed/").read, false).items[0..10]
+    begin
+      rss = RSS::Parser.parse(open("http://www.lawinside.ch/feed/").read, false).items[0..10]
 
-    rss.each do |item|
-      article = {
-        title: item.title,
-        pubdate: item.pubDate,
-        author: item.dc_creator,
-        link: item.link,
-        content: item.description
-      }
-      feed.push(article)
+      feed = []
+      rss.each do |item|
+        article = {
+          title: item.title,
+          pubdate: item.pubDate,
+          author: item.dc_creator,
+          link: item.link,
+          content: item.description
+        }
+        feed.push(article)
+      end
+
+      return feed
+    rescue SocketError => e
+      return e
     end
-
-    return feed
   end
 end

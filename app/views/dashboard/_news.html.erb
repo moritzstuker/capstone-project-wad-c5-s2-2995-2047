@@ -2,7 +2,11 @@
   <div class="box-header">
     <%= t('.latest_news') %>&nbsp;<%= link_to 'Lawinside.ch', 'http://www.lawinside.ch' %>
   </div>
-  <% if @news.count > 0 %>
+  <% if @news.is_a?(SocketError) %>
+  <div class="box-content">
+    <%= @news %>
+  </div>
+  <% elsif @news.count > 0 %>
   <ul class="card-list">
     <% @news.each do |article| %>
     <li class="card">
