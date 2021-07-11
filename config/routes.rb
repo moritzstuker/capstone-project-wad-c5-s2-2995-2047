@@ -12,26 +12,22 @@ Rails.application.routes.draw do
   get    '/dashboard', to: 'dashboard#index'
 
   get    '/account', to: 'account#edit'
-  patch  '/account', to: 'account#update'
 
   get    '/contacts/import',  to: 'contacts#import'
 
   resources :contacts
-
-  resources :project_categories
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
 
   resources :projects do
     resources :activities, only: [:create, :destroy]
   end
-  
+
   resources :deadlines do
     member do
       patch :complete
     end
   end
-
 end
 
 # Uncomment to add locale to url params
