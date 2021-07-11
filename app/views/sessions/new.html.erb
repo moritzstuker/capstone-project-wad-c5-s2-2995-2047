@@ -4,7 +4,7 @@
       <div class="box-header">
         <h1 class="heading">Log in</h1>
       </div>
-      <%= form_with(url: login_path, scope: :session, local: true, class: 'form') do |form| %>
+      <%= form_with(url: dashboard_path, scope: :session, local: true, class: 'form') do |form| %>
       <div class="form-field">
         <%= form.label :login, 'Username' %>
         <%= form.text_field :login, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false' %>
