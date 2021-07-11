@@ -42,6 +42,12 @@
         background-color: $background-color-secondary;
       }
     }
+
+    & > li {
+      &:not(:first-child) {
+        margin-top: ($box-padding-x / 2);
+      }
+    }
   }
 
   &.horizontal {
@@ -62,9 +68,10 @@
 }
 
 a.card {
+  color: inherit;
+  text-decoration: none !important;
   &:active,
   &:hover {
-    border-color: $text-color-highlight;
     background-color: $background-color-secondary;
   }
 }

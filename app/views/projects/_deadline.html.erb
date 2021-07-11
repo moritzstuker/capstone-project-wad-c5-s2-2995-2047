@@ -1,0 +1,25 @@
+<li class="card horizontal">
+  <div class="card-aside">
+    <% if deadline.completed_at.nil? %>
+      <%= link_to '', complete_deadline_path(deadline), remote: true, method: :patch, class: 'icon-button complete' %>
+    <% else %>
+      <%= icon_tag('check-circle', class: 'small') %>
+    <% end %>
+  </div>
+  <div class="card-main<%= ' mute' unless deadline.completed_at.nil? %>">
+    <div class="card-header">
+      <%= deadline.label %>
+      <span class="tag"><%= t("deadlines.attributes.categories.#{ deadline.category }") %></span>
+      <%= link_to icon_tag('trash', class: 'small'), deadline_path(deadline), method: :delete, data: { confirm: 'Are you sure?' }, class: 'push small' if can_delete_deadline?(deadline) %>
+    </div>
+    <div class="card-content">
+      <%= dot_label(deadline.date.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(deadline.date))) %>
+      <%= t('deadlines.card.assigned_to') %>
+      <% if current_user == deadline.assignee %>
+        <%= t('application.deadlines.you') %>
+      <% else %>
+        <%= avatar_tag_for(deadline.assignee) %><%= ", #{ t('deadlines.card.completed_ago', time_ago: time_ago_in_words(deadline.completed_at)) }." if deadline.completed_at.present? %>
+      <% end %>
+    </div>
+  </div>
+</li>

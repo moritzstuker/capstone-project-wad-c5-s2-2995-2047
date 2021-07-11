@@ -5,35 +5,6 @@ p {
   margin: 0;
 }
 
-a,
-.a {
-  background-color: transparent;
-  color: $text-color-highlight;
-  text-decoration: none;
-  text-decoration-skip-ink: auto;
-  cursor: pointer;
-
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
-
-  &.invisible {
-    color: inherit !important;
-  }
-
-  &.block-link {
-    display: block;
-    color: inherit;
-
-    &:focus,
-    &:hover {
-      background-color: $background-color-secondary;
-      text-decoration: none;
-    }
-  }
-}
-
 b,
 strong,
 .bold {

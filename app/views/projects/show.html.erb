@@ -41,7 +41,7 @@
       </div>
       <ul class="card-list">
         <% @deadlines.sort_by(&:date).each do |deadline| %>
-          <%= render 'deadlines/card', deadline: deadline %>
+          <%= render 'deadline', deadline: deadline %>
         <% end %>
       </ul>
     </div>
