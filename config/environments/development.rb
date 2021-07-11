@@ -1,15 +1,4 @@
 Rails.application.configure do
-  config.after_initialize do
-  Bullet.enable        = true
-  Bullet.alert         = true
-  Bullet.bullet_logger = true
-  Bullet.console       = true
-# Bullet.growl         = true
-  Bullet.rails_logger  = true
-  Bullet.add_footer    = true
-end
-
-
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -44,7 +33,7 @@ end
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
-
+  
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
@@ -62,14 +51,4 @@ end
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.bullet_logger = true
-    Bullet.console = true
-    Bullet.add_footer = true
-    Bullet.skip_html_injection = false
-    Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
-    Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware', ['my_file.rb', 'my_method'], ['my_file.rb', 16..20] ]
-  end
 end
