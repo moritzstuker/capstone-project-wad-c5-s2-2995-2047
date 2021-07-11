@@ -10,7 +10,7 @@
     </li>
     <li role="menuitem" class="box-row">
       <%= link_to sidebar_header(t('.deadlines'), Deadline.filter_by_query(params[:query]).where(completed_at: nil).count), deadlines_path(query: params[:query]), class: "box-header#{ ' is-active' if current_page?(deadlines_path) }"  %>
-      <%= render 'sidebar/deadlines' if Deadline.due_soon.filter_by_query(params[:query]).where(completed_at: nil).count > 0 %>
+      <%= render 'sidebar/deadlines' if Deadline.filter_by_query(params[:query]).where(completed_at: nil).count > 0 %>
     </li>
   </ul>
 </nav>
