@@ -11,11 +11,10 @@ nodeCardHeader.classList.add('card-header');
 var nodeTag = document.createElement('span');
 nodeTag.classList.add('tag');
 
-var nodeDelete = '<%= j link_to icon_tag("trash"), project_activity_path(@project, @activity), method: :delete, data: { confirm: t("helpers.link_to.confirm") }, class: "push" if can_delete_activity?(@activity, current_user) %>';
+var nodeDelete = "<%= j link_to icon_tag('trash', class: 'small'), project_activity_path(@project, @activity), method: :delete, data: { confirm: t('helpers.link_to.confirm') }, class: 'push' if can_delete_activity?(@activity, current_user) %>";
 
 var nodeCardFooter = document.createElement('div');
-nodeCardFooter.classList.add('card-footer');
-nodeCardFooter.classList.add('medium-bold');
+nodeCardFooter.classList.add('card-content');
 
 var nodeIconText = document.createElement('span');
 nodeIconText.classList.add('icon-text');
@@ -23,8 +22,8 @@ nodeIconText.classList.add('icon-text');
 var nodeAvatar = document.createElement('img');
 nodeAvatar.classList.add('avatar');
 nodeAvatar.classList.add('icon');
-nodeAvatar.setAttribute('alt', '<%= j @activity.user.name %>');
-nodeAvatar.setAttribute('src', '<%= j image_path(@activity.user.avatar) %>');
+nodeAvatar.setAttribute('alt', "<%= j @activity.user.name %>");
+nodeAvatar.setAttribute('src', "<%= j image_path(@activity.user.avatar) %>");
 
 var nodeMute1 = document.createElement('span');
 nodeMute1.classList.add('mute');
@@ -35,14 +34,14 @@ nodeMute2.classList.add('mute');
 var nodeMute3 = document.createElement('span');
 nodeMute3.classList.add('mute');
 
-var textLabel = document.createTextNode('<%= j @activity.label %>');
-var textAuthor = document.createTextNode('<%= j @activity.user.name %>');
-var textTag = document.createTextNode('<%= j @activity.category %>');
-var textMute1 = document.createTextNode('<%= j t("activity.worked_on_it_for") %>');
-var textMute2 = document.createTextNode('<%= j t("activity.and_billed") %>');
-var textMute3 = document.createTextNode('<%= j "(#{ t("activity.at_a_rate_of") } #{ fee(@activity.fee) }/#{ t("activity.hour.one") })" %>'.replace('&#39;', '\x27'));
-var textDuration = document.createTextNode('<%= j t("activity.hour", count: activity.duration) %>');
-var textFee = document.createTextNode('<%= j fee(@activity.fee * @activity.duration) %>'.replace('&#39;', '\x27'));
+var textLabel = document.createTextNode("<%= j @activity.label %>");
+var textAuthor = document.createTextNode("<%= j @activity.user.name %>");
+var textTag = document.createTextNode('<%= j t("activity.attributes.categories.#{ @activity.category }") %>');
+var textMute1 = document.createTextNode("<%= j t('activity.worked_on_it_for') %>");
+var textMute2 = document.createTextNode("<%= j t('activity.and_billed') %>");
+var textMute3 = document.createTextNode("(<%= j t('activity.at_a_rate_of') %> <%= j number_to_currency(@activity.fee, unit: 'fr.', format: '%n %u') %>/<%= j t('activity.hour') %>)".replace('&#39;', '\x27'));
+var textDuration = document.createTextNode("<%= j t('activity.hours', count: @activity.duration) %>");
+var textFee = document.createTextNode("<%= j number_to_currency(@activity.fee * @activity.duration, unit: 'fr.', format: '%n %u') %>".replace('&#39;', '\x27'));
 
 nodeTag.appendChild(textTag);
 
@@ -52,6 +51,7 @@ nodeCardHeader.innerHTML += nodeDelete; // I know this is dangerous and exposes 
 
 nodeIconText.appendChild(nodeAvatar);
 nodeIconText.appendChild(textAuthor);
+nodeIconText.append('\u00A0');
 
 nodeMute1.appendChild(textMute1);
 nodeMute2.appendChild(textMute2);
@@ -74,7 +74,7 @@ nodeCard.appendChild(nodeCardFooter);
 nodeLi.appendChild(nodeCard);
 
 // Set activity date
-var activityDate = Date.parse('<%= j @activity.date.strftime("%F") %>');
+var activityDate = Date.parse("<%= j @activity.date.strftime('%F') %>");
 
 // Check where to insert date
 var timesheet = document.getElementById('timesheet');
@@ -92,14 +92,14 @@ if (!dateExists) {
   // Create date wrapper element
   var wrapperNodeLi = document.createElement('li');
   wrapperNodeLi.classList.add('timeline-date');
-  wrapperNodeLi.setAttribute('data-date', '<%= j @activity.date.strftime("%F") %>');
+  wrapperNodeLi.setAttribute('data-date', "<%= j @activity.date.strftime('%F') %>");
 
   var wrapperNodeHeader = document.createElement('header');
   wrapperNodeHeader.classList.add('timeline-header');
 
   var wrapperNodeIcon = document.createElement('span');
   wrapperNodeIcon.classList.add('timeline-icon');
-  wrapperNodeIcon.innerHTML = '<%= j icon_tag("git-commit") %>';
+  wrapperNodeIcon.innerHTML = "<%= j icon_tag('git-commit') %>";
 
   var wrapperNodeMute = document.createElement('span');
   wrapperNodeMute.classList.add('mute');
@@ -107,8 +107,8 @@ if (!dateExists) {
   var wrapperNodeList = document.createElement('ul');
   wrapperNodeList.classList.add('box');
 
-  var wrapperNodeMuteText = document.createTextNode('<%= j t(".activity_logged_for") %>');
-  var wrapperNodeHeaderText = document.createTextNode('<%= j @activity.date.strftime("%d.%m.%Y") %>');
+  var wrapperNodeMuteText = document.createTextNode("<%= j t('activity.worked_on_it_for') %>");
+  var wrapperNodeHeaderText = document.createTextNode("<%= j @activity.date.strftime('%d.%m.%Y') %>");
 
   wrapperNodeMute.appendChild(wrapperNodeMuteText);
   wrapperNodeMute.append('\u00A0');

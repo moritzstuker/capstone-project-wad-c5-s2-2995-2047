@@ -8,9 +8,10 @@ en:
         email_letter: Email/letter
         meeting: Meeting
         phone_call: "Phone call"
-    hour:
-      one: hour
-      other: hours
+    hour: "hour"
+    hours:
+      one: "%{count} hour"
+      other: "%{count} hours"
     worked_on_it_for: "worked on it for"
   create:
     success: "Activity was successfully logged"

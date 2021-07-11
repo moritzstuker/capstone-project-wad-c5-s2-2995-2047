@@ -5,6 +5,6 @@
     <%= link_to icon_tag('trash', class: 'small'), project_activity_path(@project, activity), method: :delete, data: { confirm: t('helpers.link_to.confirm') }, class: 'push' if can_delete_activity?(activity, current_user) %>
   </div>
   <div class="card-content">
-    <%= avatar_tag_for(activity.user) %> <span class="mute"><%= t('activity.worked_on_it_for') %> </span><%= t('activity.hour', count: activity.duration) %><span class="mute"> <%= t('activity.and_billed') %> </span><%= fee(activity.fee * activity.duration) %><span class="mute"> (<%= t('activity.at_a_rate_of') %> <%= fee(activity.fee) %>/<%= t('activity.hour.one') %>)</span>
+    <%= avatar_tag_for(activity.user) %> <span class="mute"><%= t('activity.worked_on_it_for') %> </span><%= t('activity.hours', count: activity.duration) %><span class="mute"> <%= t('activity.and_billed') %> </span><%= fee(activity.fee * activity.duration) %><span class="mute"> (<%= t('activity.at_a_rate_of') %> <%= fee(activity.fee) %>/<%= t('activity.hour') %>)</span>
   </div>
 </div>

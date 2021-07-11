@@ -8,9 +8,10 @@ fr:
         email_letter: Email/lettre
         meeting: Conférence
         phone_call: "Appel téléphonique"
-    hour:
-      one: heure
-      other: heures
+    hour: "heure"
+    hours:
+      one: "%{count} heure"
+      other: "%{count} heures"
     worked_on_it_for: "y a contribué durant"
   create:
     success: "Activité enregistrée"

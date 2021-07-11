@@ -54,10 +54,6 @@
 </div>
 <div class="row">
   <div class="col">
-    <% if @project.activities.count > 0 %>
-      <%= render 'timesheet' %>
-    <% else %>
-      <%= image_tag('undraw/void.svg', class: 'void') %>
-    <% end %>
+    <%= render 'timesheet' %>
   </div>
 </div>

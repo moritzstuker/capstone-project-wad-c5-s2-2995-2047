@@ -41,5 +41,6 @@ en:
       activity_dated: "Activity dated"
       duration_placeholder: "Duration (0.1 format)"
       label: "Label"
+      new: "Add new activity"
       rate_placeholder: "Hourly rate (CHF / hour)"
       submit: "Log"
