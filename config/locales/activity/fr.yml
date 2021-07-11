@@ -14,6 +14,7 @@ fr:
       other: "%{count} heures"
     worked_on_it_for: "y a contribué durant"
   create:
+    failure: "Activité non sauvegardée: merci de remplir tous les champs"
     success: "Activité enregistrée"
   destroy:
     success: "Activité effacée"

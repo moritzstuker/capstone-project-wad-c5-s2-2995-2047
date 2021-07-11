@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :login, presence: true, length: { in: 2..50 }, uniqueness: { case_sensitive: false }
   validates :name, presence: true, length: { in: 2..100 }
-#  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }
   validates :email, presence: true, length: { in: 2..75 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
   validates :locale, inclusion: { in: proc { I18n.available_locales.map(&:to_s) } }
 

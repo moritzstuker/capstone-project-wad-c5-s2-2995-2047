@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to @project, notice: "#{ t('.success') }." }
         format.js
       else
-        format.html { redirect_to @project, status: :unprocessable_entity }
+        format.html { redirect_to @project, alert: "#{ t('activity.create.failure') }.", status: :unprocessable_entity }
       end
     end
   end
