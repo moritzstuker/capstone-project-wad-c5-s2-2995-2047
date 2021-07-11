@@ -1,4 +1,4 @@
-en: 
+en:
   helpers:
     form:
       back: Back
@@ -11,3 +11,4 @@ en:
     link_to:
       confirm: "Are you sure?"
       show_all: "Show all"
+      reset: "Reset"

@@ -2,7 +2,9 @@ class DeadlinesController < ApplicationController
   before_action :set_deadline, only: %i[ update destroy complete ]
 
   def index
-    @deadlines = Deadline.filter(params.slice(:query, :category, :urgency, :user)).order(:date, :label) # filters
+    @all_deadlines = Deadline.filter(params.slice(:query, :category, :urgency, :user)).order(:date, :label) # filters
+    @deadlines = params[:completed] == 'true' ? @all_deadlines : @all_deadlines.where(completed_at: nil)
+
     @deadlines_by_dates = @deadlines.group_by(&:date).sort
     @deadlines_by_dates = Kaminari.paginate_array(@deadlines_by_dates).page(params[:page]).per(10)
 

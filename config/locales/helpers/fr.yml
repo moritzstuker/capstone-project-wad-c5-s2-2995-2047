@@ -11,3 +11,4 @@ fr:
     link_to:
       confirm: "Êtes-vous sûr ?"
       show_all: "Montrer tout"
+      reset: "Réinitialiser"
