@@ -9,8 +9,8 @@ class DashboardController < ApplicationController
   def get_news
     begin
       rss = RSS::Parser.parse(open("http://www.lawinside.ch/feed/").read, false).items[0..10]
-
       feed = []
+      
       rss.each do |item|
         article = {
           title: item.title,

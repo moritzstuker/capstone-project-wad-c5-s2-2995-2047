@@ -11,7 +11,7 @@
         <div class="card">
           <div class="card-header">
             <%= link_to activity.label, activity.project %>
-            <span class="push tag"><%= activity.category %></span>
+            <span class="push tag"><%= t("activity.attributes.categories.#{ activity.category }") %></span>
           </div>
           <div class="card-content">
             <span class="icon-text">
