@@ -10,16 +10,16 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to projects_path
+      redirect_to dashboard_path
     else
-      flash.now[:alert] = 'Invalid email/password combination'
+      flash.now[:alert] = "#{ t('.invalid_combination') }."
       render 'new'
     end
   end
 
   def destroy
     log_out
-    redirect_to root_url, notice: "Logged out successfully."
+    redirect_to root_url, notice: "#{ t('.success') }."
   end
 
   private

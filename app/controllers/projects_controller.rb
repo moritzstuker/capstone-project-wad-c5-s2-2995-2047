@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 
     @users = User.order(role: :desc, last_name: :asc)
 
-    flash.now[:notice] = 'No such case found…' if params[:query].present? && @projects.count == 0
+    flash.now[:notice] = "#{ t('.no_results') }." if params[:query].present? && @projects.count == 0
   end
 
   def show
@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: "Case was successfully created." }
+        format.html { redirect_to @project, notice: "#{ t('.success') }." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: "Case was successfully updated." }
+        format.html { redirect_to @project, notice: "#{ t('.success') }." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Case was successfully deleted." }
+      format.html { redirect_to projects_url, notice: "#{ t('.success') }." }
     end
   end
 

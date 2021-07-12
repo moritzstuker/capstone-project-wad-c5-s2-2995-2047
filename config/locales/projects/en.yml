@@ -14,6 +14,10 @@ en:
       updated_at: "Last updated at"
     card:
       last_activity: "Last activity"
+    create:
+      success: "Case was successfully created"
+    destroy:
+      success: "Case was successfully deleted"
     filters:
       your_active_cases: "Your active cases"
     form:
@@ -22,6 +26,7 @@ en:
       properties: Properties
     index:
       title: Cases
+      no_results: "No such case found…"
     new:
       title: "New case"
     properties:
@@ -44,3 +49,5 @@ en:
       new: "Add new activity"
       rate_placeholder: "Hourly rate (CHF / hour)"
       submit: "Log"
+    update:
+      success: "Case was successfully updated"

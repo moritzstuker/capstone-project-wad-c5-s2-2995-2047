@@ -1,0 +1,6 @@
+fr:
+  sessions:
+    create:
+      invalid_combination: "Mauvaise combinaison"
+    destroy:
+      success: "Déconnecté avec succès"
