@@ -37,5 +37,9 @@ fr:
     show:
       deadlines: "Délais attribués"
       profile: Profil
+    profile:
+      active_cases:
+        one: "dont un seul est actif"
+        other: "dont %{count} sont actifs"
     update:
       success: "Utilisateur mis à jour"

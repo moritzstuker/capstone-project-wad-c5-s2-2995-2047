@@ -31,7 +31,7 @@
 
     <p>
       <strong><%= t('users.attributes.projects') %>:</strong>
-      <%= link_to user.projects.count, projects_path(owner: user.id) %> (<%= link_to user.projects.where(status: :active).count, projects_path(owner: user.id, status: :active) %> of which are active)
+      <%= link_to user.projects.count, projects_path(owner: user.id) %> (<%= link_to t('.active_cases', count: user.projects.where(status: :active).count), projects_path(owner: user.id, status: :active) %>)
     </p>
   </div>
 </div>

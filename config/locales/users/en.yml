@@ -34,6 +34,10 @@ en:
       user: User
     new:
       title: "New user"
+    profile:
+      active_cases:
+        one: "%{count} or which is active"
+        other: "%{count} of which are active"
     show:
       deadlines: "Assigned deadlines"
       profile: Profile
