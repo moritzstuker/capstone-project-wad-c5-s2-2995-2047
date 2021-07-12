@@ -26,6 +26,8 @@ class User < ApplicationRecord
   after_initialize :set_defaults
   before_validation { self.login = login.downcase }
 
+  mount_uploader :avatar, AvatarUploader
+
   has_secure_password
 
   def friendly_name

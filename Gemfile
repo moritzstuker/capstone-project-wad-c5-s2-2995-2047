@@ -43,6 +43,9 @@ gem 'rss'
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'figaro'
 
+# This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications, such as Ruby on Rails.
+gem 'carrierwave', '~> 2.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
