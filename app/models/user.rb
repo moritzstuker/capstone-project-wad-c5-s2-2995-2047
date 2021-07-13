@@ -39,7 +39,7 @@ class User < ApplicationRecord
   def set_defaults
     if self.new_record?
       self.default_fee ||= 300.00
-      self.avatar      ||= 'fallback_avatars/1.jpg'
+      self.avatar      ||= 'avatars/1.jpg'
       self.role        ||= :intern
     end
   end

@@ -9,7 +9,7 @@
 rand_min = 200
 rand_max = (rand_min * 1.5).round
 
-AVATARS = Dir.glob("#{Rails.root}/app/assets/images/fallback_avatars/*.jpg").shuffle
+AVATARS = Dir.glob("#{Rails.root}/app/assets/images/avatars/*.jpg").shuffle
 
 def build_activity
   project = Project.all.sample
@@ -86,7 +86,7 @@ def build_user(role = nil)
     name:        "#{ Faker::Name.first_name } #{ Faker::Name.last_name }",
     email:       Faker::Internet.unique.email,
     password:    "password",
-    avatar:      "fallback_avatars/#{AVATARS[rand(1...10)].split('/').last}",
+    avatar:      "avatars/#{AVATARS[rand(1...10)].split('/').last}",
     locale:      ['en', 'fr'].sample,
     role:        role.nil? ? rand(0..2) : role[1],
     default_fee: 150 * rand(1..4)
