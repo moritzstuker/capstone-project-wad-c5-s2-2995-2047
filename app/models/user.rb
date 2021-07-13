@@ -41,6 +41,7 @@ class User < ApplicationRecord
       self.default_fee ||= 300.00
       self.avatar      ||= 'avatars/1.jpg'
       self.role        ||= :intern
+      self.locale      ||= 'en'
     end
   end
 end
