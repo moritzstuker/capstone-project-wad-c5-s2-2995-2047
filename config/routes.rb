@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :activities, only: [:create, :destroy]
   end
 
-  resources :deadlines do
+  resources :deadlines, only: [:index, :create, :new, :edit, :update, :destroy, :complete] do
     member do
       patch :complete
     end
