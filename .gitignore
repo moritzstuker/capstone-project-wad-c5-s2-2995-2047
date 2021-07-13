@@ -101,6 +101,7 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+/public/uploads/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,rails
 
