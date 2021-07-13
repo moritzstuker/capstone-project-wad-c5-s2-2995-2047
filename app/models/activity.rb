@@ -8,7 +8,7 @@ class Activity < ApplicationRecord
   validates :category, inclusion: { in: CATEGORIES }
   validates :date, presence: true
   validates :duration, presence: true
-  validates :fee, presence: true
+  validates :fee, presence: true, numericality: true
 
   after_initialize :set_defaults
 
