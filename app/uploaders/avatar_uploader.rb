@@ -11,8 +11,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def default_url
-    "default-avatar.png"
+  def default_url(*args)
+    ActionController::Base.helpers.asset_path([version_name, "default-avatar.png"].compact.join('_'))
   end
 
   def extension_allowlist

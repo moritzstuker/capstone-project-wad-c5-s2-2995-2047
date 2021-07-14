@@ -27,7 +27,6 @@ class UserTest < ActiveSupport::TestCase
   test "sets correct defaults" do
     user = User.new login: 'user', name: 'Jake the Fixture', password: 'password', password_confirmation: 'password', email: 'jack@example.com'
     assert_equal user.default_fee, 300.00
-    assert_equal user.avatar, 'default-avatar.png'
     assert_equal user.role, :intern
     assert_equal user.locale, 'en'
   end
