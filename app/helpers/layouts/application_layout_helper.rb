@@ -5,7 +5,7 @@ module Layouts
     end
 
     def icon_tag(str, hash = {})
-      doc = File.open("app/assets/images/icons/#{str}.svg", 'r') { |f| Nokogiri::XML(f) }
+      doc = File.open("app/assets/icons/#{str}.svg", 'r') { |f| Nokogiri::XML(f) }
       icon = doc.at_css('svg')
       icon['class']  = "icon #{str}"
       icon['class'] += " #{ hash[:class] }" if hash[:class].present?
