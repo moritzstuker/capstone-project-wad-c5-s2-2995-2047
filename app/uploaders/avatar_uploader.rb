@@ -12,7 +12,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "avatars/#{model.id % 10}.jpg"
+    "default-avatar.png"
   end
 
   def extension_allowlist
