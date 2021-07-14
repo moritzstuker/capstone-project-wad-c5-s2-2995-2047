@@ -14,7 +14,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.count') do
       post users_url, params: {
         user: {
-          login: 'new@epfl.ch',
+          login: 'new@test.dev',
           name: 'Jack the Fixture',
           password: 'password',
           password_confirmation: 'password',
