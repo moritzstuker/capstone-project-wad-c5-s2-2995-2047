@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
   def require_login
     unless is_logged_in?
       session[:forwarding_url] = request.original_url if request.get?
-      redirect_to login_url, alert: "Please log in."
+      redirect_to login_url, alert: "#{ t('users.please_log_in') }."
     end
   end
 end

@@ -38,6 +38,8 @@ en:
       active_cases:
         one: "%{count} or which is active"
         other: "%{count} of which are active"
+    please_log_in: "You must be logged in to access this section"
+    restricted_access: "Restricted access"
     show:
       deadlines: "Assigned deadlines"
       profile: Profile

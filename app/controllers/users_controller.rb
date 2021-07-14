@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[ new create ]
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action do
+    has_access_rights(current_user)
+  end
   helper_method :can_view?, :can_edit?, :can_delete?
 
   def index
@@ -8,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to dashboard_url if @user == current_user
   end
 
   def new
@@ -49,34 +53,34 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:login, :name, :password, :password_confirmation, :avatar, :email, :locale, :role, :default_fee)
-    end
+  def user_params
+    params.require(:user).permit(:login, :name, :password, :password_confirmation, :avatar, :email, :locale, :role, :default_fee)
+  end
 
-    def log_in(user)
-      session[:user_id] = user.id
-    end
+  def log_in(user)
+    session[:user_id] = user.id
+  end
 
-    def can_view?(user)
-      is_partner?(current_user) || can_edit?(user)
-    end
+  def can_view?(user)
+    is_partner?(current_user) || can_edit?(user)
+  end
 
-    def can_edit?(user)
-      is_admin?(current_user) || user == current_user
-    end
+  def can_edit?(user)
+    is_admin?(current_user) || user == current_user
+  end
 
-    def can_delete?(user)
-      is_admin?(current_user) unless user == current_user
-    end
+  def can_delete?(user)
+    is_admin?(current_user) unless user == current_user
+  end
 
-    def restrict_access
-      unless is_admin?
-        flash[:error] = "#{ t('.restricted_access') }." #"You must be logged in to access this section"
-        redirect_to projects_path # halts request cycle
-      end
+  def has_access_rights(user)
+    unless is_admin?(user) || user == @user
+      flash[:alert] = "#{ t('users.restricted_access') }."
+      redirect_back fallback_location: dashboard_url
     end
+  end
 end

@@ -34,12 +34,14 @@ fr:
       user: Utilisateur
     new:
       title: "Nouvel utilisateur"
-    show:
-      deadlines: "Délais attribués"
-      profile: Profil
+    please_log_in: "Vous devez vous connecter pour accéder à cette partie"
     profile:
       active_cases:
         one: "dont un seul est actif"
         other: "dont %{count} sont actifs"
+    restricted_access: "Restricted access"
+    show:
+      deadlines: "Délais attribués"
+      profile: Profil
     update:
       success: "Utilisateur mis à jour"
