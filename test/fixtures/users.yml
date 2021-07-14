@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  login: MyString
-  name: MyString
-  password_digest: MyString
-  avatar: MyString
-  email: MyString
-  locale: MyString
-  role: 1
-  default_fee: 9.99
+admin:
+  login: admin@test.dev
+  name: Administrator
+  password_digest: <%= BCrypt::Password.create('password') %>
+  avatar: default-avatar.png
+  email: admin@test.dev
+  locale: en
+  role: 3
+  default_fee: 200
 
-two:
-  login: MyString
-  name: MyString
-  password_digest: MyString
-  avatar: MyString
-  email: MyString
-  locale: MyString
+registered:
+  login: registered@test.dev
+  name: Registered user
+  password_digest: <%= BCrypt::Password.create('password') %>
+  avatar: default-avatar.png
+  email: admin@test.dev
+  locale: fr
   role: 1
-  default_fee: 9.99
+  default_fee: 200
