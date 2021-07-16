@@ -49,14 +49,15 @@ gem 'carrierwave', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# A library for generating fake data such as names, addresses, and phone numbers.
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  # A library for generating fake data such as names, addresses, and phone numbers.
-  gem 'faker'
 end
 
 group :development do
