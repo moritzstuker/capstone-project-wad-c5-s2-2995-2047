@@ -71,7 +71,7 @@ end
 
 group :production do
   # Use postgres as the database for Active Record
-  #gem 'pg'
+  gem 'pg'
   gem 'carrierwave-aws'
 end
 
