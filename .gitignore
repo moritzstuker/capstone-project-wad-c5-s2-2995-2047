@@ -102,6 +102,7 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads/
+/public/assets/*
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,rails
 
