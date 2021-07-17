@@ -20,7 +20,10 @@ if Rails.env.production?
       cache_control: 'max-age=604800'
       } }
 
+    config.fog_provider = 'fog/aws'
+    config.fog_directory  = ENV.fetch('AWS_BUCKET')
     config.aws_credentials = {
+      provider:          'AWS',
       access_key_id:     ENV.fetch('AWS_ACCESS_KEY'),
       secret_access_key: ENV.fetch('AWS_SECRET_KEY'),
       region:            ENV.fetch('AWS_REGION')
