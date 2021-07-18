@@ -9,7 +9,6 @@
       <span class="tag"><%= t("deadlines.attributes.categories.#{ deadline.category }") %></span>
     </div>
     <div class="card-content">
-      <%= dot_label(deadline.date.strftime("%d.%m.%Y"), color_by_urgency(get_urgency_of_date(deadline.date))) %>
       <%= t('deadlines.card.assigned_to') %>
       <%= current_user == deadline.assignee ? t('application.deadlines.you') : avatar_tag_for(deadline.assignee) %>
       <%= ", #{ t('deadlines.card.completed_ago', time_ago: time_ago_in_words(deadline.completed_at)) }." if deadline.completed_at.present? %>
