@@ -47,6 +47,9 @@ gem 'figaro'
 # A library for generating fake data such as names, addresses, and phone numbers.
 gem 'faker'
 
+# Use carrierwave for image upload
+gem 'carrierwave'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -69,8 +72,6 @@ end
 group :production do
   # Use postgres as the database for Active Record
   gem 'pg'
-  # Use carrierwave for image upload
-  gem 'carrierwave'
   # Use the officially supported AWS-SDK library for S3 storage rather than relying on fog. There are several things going for it
   gem 'carrierwave-aws'
 end
