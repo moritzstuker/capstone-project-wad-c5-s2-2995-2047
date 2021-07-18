@@ -55,7 +55,7 @@
       </div>
       <div class="checkbox-list">
         <%= form.collection_check_boxes(:contact_ids, Contact.adversaries.order(:name), :id, :friendly_name, { checked: project.adversaries.map(&:to_param), include_hidden: false }) do |b| %>
-        <%= b.label(class: "checkbox-label") { b.check_box(class: "checkbox-input") + b.text.strip } %>
+        <%= b.label(class: "checkbox-label") { b.check_box + sanitize("<span class='checkbox-input'></span>") + b.text.strip } %>
         <% end %>
       </div>
     </div>
