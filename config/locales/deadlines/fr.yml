@@ -7,7 +7,7 @@ fr:
         external: externe
         internal: interne
         legal: légal
-      category: Categorie
+      category: Catégorie
       date: "Echoit le"
       due_immediately: "Échéance brève"
       due_soon: "Échéance moyenne"
@@ -17,6 +17,16 @@ fr:
     card:
       assigned_to: "Assigné à"
       completed_ago: "complété il y a %{time_ago}"
+    complete:
+      success: "Délai complété"
+    create:
+      success: "Nouveau délai créé"
+    destroy:
+      success: "Délai effacé"
+    filters:
+      your_open: "Vos délais ouverts"
     index:
       no_results: "Aucun résultat…"
       title: Délais
+    update:
+      success: "Délai mis à jour"

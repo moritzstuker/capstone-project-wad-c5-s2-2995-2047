@@ -33,7 +33,7 @@
 </div>
 
 <div class="buttons-merged">
-  <%= link_to 'Show all', url_for(completed: 'true'), class: 'button' %>
-  <%= link_to 'Your open deadlines', url_for(user: current_user), class: 'button green' %>
+  <%= link_to t('helpers.link_to.show_all'), url_for(completed: 'true'), class: 'button' %>
+  <%= link_to t('.your_open'), url_for(user: current_user), class: 'button green' %>
   <%= link_to t('helpers.link_to.reset'), url_for, class: 'button blue' %>
 </div>

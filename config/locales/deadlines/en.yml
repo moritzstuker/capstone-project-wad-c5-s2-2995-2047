@@ -23,6 +23,10 @@ en:
       success: "Deadline successfully created"
     destroy:
       success: "Deadline successfully deleted"
+    filters:
+      your_open: "Your open deadlines"
+    form:
+      create: "Add deadline"
     index:
       no_results: "No such deadline found…"
       title: Deadlines
