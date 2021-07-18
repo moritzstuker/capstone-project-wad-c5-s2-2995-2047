@@ -14,6 +14,10 @@ fr:
       updated_at: "Dernière mise à jour"
     card:
       last_activity: "Dernière activité"
+    create:
+      success: "Dossier ouvert correctement"
+    destroy:
+      success: "Dossier effacé"
     filters:
       your_active_cases: "Vos dossiers actifs"
     form:
@@ -45,3 +49,5 @@ fr:
       new: "Ajouter nouvelle activité"
       rate_placeholder: "Tarif horaire (CHF / heure)"
       submit: "Saisir"
+    update:
+      success: "Dossier mis à jour"
