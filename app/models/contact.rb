@@ -11,7 +11,7 @@ class Contact < ApplicationRecord
   has_and_belongs_to_many :projects
 
   validates :name, presence: true, length: { in: 2..100 }
-  validates :email, presence: false, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { allow_blank: true }
+  validates :email, presence: false, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, allow_blank: true, uniqueness: { allow_blank: true }
   validates :street, presence: false, length: { in: 2..50 }
   validates :city, presence: false, length: { in: 2..50 }
   validates :country, presence: true
