@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in @user
+        log_in @user unless is_logged_in?
         format.html { redirect_to @user, notice: "#{ t('.success') }." }
       else
         format.html { render :new, status: :unprocessable_entity }
