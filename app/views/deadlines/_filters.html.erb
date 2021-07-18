@@ -1,7 +1,7 @@
 <div class="buttons-merged">
   <details class="dropdown">
     <summary aria-haspopup="true">
-      <%= simple_format('Assigned to', { class: "button dropdown-trigger#{ ' orange' if params[:user].present? }" }, wrapper_tag: 'span') %>
+      <%= simple_format(t('deadlines.attributes.assigned_to'), { class: "button dropdown-trigger#{ ' orange' if params[:user].present? }" }, wrapper_tag: 'span') %>
     </summary>
     <ul class="dropdown-content box">
         <% @users.each do |user| %>
@@ -18,7 +18,7 @@
 
   <details class="dropdown">
     <summary aria-haspopup="true">
-      <%= simple_format('Category', { class: "button dropdown-trigger#{ ' orange' if params[:category].present? }" }, wrapper_tag: 'span') %>
+      <%= simple_format(t('deadlines.attributes.category'), { class: "button dropdown-trigger#{ ' orange' if params[:category].present? }" }, wrapper_tag: 'span') %>
     </summary>
     <ul class="dropdown-content box">
         <% @categories.each do |category| %>
