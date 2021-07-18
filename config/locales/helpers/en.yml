@@ -8,6 +8,7 @@ en:
       form_contains: "The form contains"
       required_fields: "Required fields"
       search: Search
+      submit: Submit
     link_to:
       confirm: "Are you sure?"
       show_all: "Show all"

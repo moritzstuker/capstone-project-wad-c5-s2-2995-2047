@@ -8,6 +8,7 @@ fr:
       form_contains: "Ce formulaire contient"
       required_fields: "Champs requis"
       search: Rechercher
+      submit: Envoyer
     link_to:
       confirm: "Êtes-vous sûr ?"
       show_all: "Montrer tout"
