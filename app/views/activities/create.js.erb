@@ -23,7 +23,7 @@ var nodeAvatar = document.createElement('img');
 nodeAvatar.classList.add('avatar');
 nodeAvatar.classList.add('icon');
 nodeAvatar.setAttribute('alt', "<%= j @activity.user.name %>");
-nodeAvatar.setAttribute('src', "<%= j image_path(@activity.user.avatar) %>");
+nodeAvatar.setAttribute('src', "<%= j image_path(@activity.user.avatar).html_safe %>");
 
 var nodeMute1 = document.createElement('span');
 nodeMute1.classList.add('mute');
