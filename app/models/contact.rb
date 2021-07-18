@@ -31,7 +31,7 @@ class Contact < ApplicationRecord
 
   scope :filter_by_role,     -> (str) { where(role: str.to_i) }
   scope :filter_by_category, -> (str) { where(category: str.to_i) }
-  scope :filter_by_country,  -> (str) { where('country LIKE ?', "%#{str}%") }
+  scope :filter_by_country,  -> (str) { where('lower(country) = ?', str.downcase) }
   scope :filter_by_query,    -> (str) {
     search_in_name(str)
     .or(search_in_street(str))
