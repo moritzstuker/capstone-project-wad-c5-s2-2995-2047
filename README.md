@@ -13,17 +13,17 @@ The intuitive toolkit for lawyers.
 
 ## Project overview
 
-Working as a lawyer, we are constantly questioning our software and looking for the unicorn CRM which is both complete enough yet intuitive enough. [There](https://www.coradis.ch) [are](https://www.winjur.com/features.php) [many](https://fr.timesensor.ch) [options](https://www.clio.com/uk/) [on](https://www.microsoft.com/fr-ch/microsoft-365/sharepoint/collaboration) [the](https://www.vertec.com/ch/) [market](https://www.sergroup.com/de/ecm-software.html), though none that satisfied me. So I decided to build my own so that we could use it in our law firm.
+Working as a lawyer, we are constantly questioning our software and looking for the unicorn CRM which is both complete enough yet intuitive enough. [There](https://www.coradis.ch) [are](https://www.winjur.com/features.php) [many](https://fr.timesensor.ch) [options](https://www.clio.com/uk/) [on](https://www.microsoft.com/fr-ch/microsoft-365/sharepoint/collaboration) [the](https://www.vertec.com/ch/) [market](https://www.sergroup.com/de/ecm-software.html), though none that satisfied me. So I decided to build my own, which could serve as a template for a full-fledged tool for lawfirms.
 
-_**Note:** For the purpose of this project, the terms "User" and "Employee" will be synonymous, as well as "Project" and "Case". The correct term for a lawyer's "project" is a "case". But it's a reserved word by Rails, so I will avoid using it to name this model. Accordingly, cases will be labeled as "Project"s. Employee is also the correct word for the intended users of the application, but the term "User" is more appropriate in the context of a rails application. Accordingly, the terms "User" and "Employee" will also be synonymous._
+_**Note:** For the purpose of this project, the terms "User" and "Employee" will be synonymous, as well as "Project" and "Case". The correct term for a lawyer's "project" is a "case". But this is a reserved word by Rails and a risky word in Ruby, so I will avoid using it to name this model. Accordingly, cases will be labeled as "Project"s. Employee is also the correct word for the intended users of the application, but the term "User" is more appropriate in the context of a rails application. Accordingly, the terms "User" and "Employee" will also be synonymous._
 
-_**Note 2:** Ruby of Rails style prescriptions based on [this Ruby Style Guide](https://rails.rubystyle.guide)._
+_**Note 2:** Ruby of Rails style prescriptions (mostly) based on [this Ruby Style Guide](https://rails.rubystyle.guide)._
 
 ## Application purpose
 
-Codex is a toolkit for lawyers that allows them to have an overview of their activity. Special care will be given to the intuitiveness of the application.
+Codex is a toolkit for lawyers that allows them to have an overview of their activity. Special care has been given to the intuitiveness of the application.
 
-Currently, software solutions for lawyers are solely coded by IT-professionals who don't always entirely understand the specific needs of this target audience and provide overly complex or overwhelming software (think [SAP](https://www.sap.com/suisse/index.html)). Thus, these software become hugely complex tools which the users rarely use fully. This project here tackles the problem by starting from the user's perspective, which I know, and tries to achieve high quality standards in terms of software development practices based on this.
+Currently, software solutions for lawyers are essentially based on general-purpose boilerplate CRMs and then reduced to fit particular needs. As such, they often provide overly complex or overwhelming features (think [SAP](https://www.sap.com/suisse/index.html)) but lack the specific logic required by this audience. Thus, these software risk being only partially understood and used fully. This project (tries to) tackle the problem by starting from the user's perspective — which I'm familiar with — and applying high quality standards in terms of software development practices to answer the stated needs.
 
 The project's main features include:
 - the ability to log an activity related to a specific project (_i.e._ timesheet for a case)
@@ -44,25 +44,25 @@ These overview pages are to include the following:
   - the project category
 - **User** (i.e. "Employee") overview, including at least:
   - active cases
-  - total hours (per day/month/year)
-  - the ability to edit their infos within their respective access level
+  - total hours
+  - the ability to edit their infos (provided the user's privilege allows it)
 - **Contact** (i.e. "Client/Adversary"), including at least:
   - overview of linked timesheet
   - overview of linked cases
 
 I also intend to implement:
 - some sort of conflict-check verification:
-  - no contact can (ever) be simultaneously client in one case and adversary in another. This can be easily implementented by adding their role as an attribute. When opening a new case, only "clients" will show up as selectable clients and adversaries in their place.
+  - no contact can (ever) be simultaneously client in one case and adversary in another. This can be easily implemented by adding their role as an attribute. When opening a new case, only "clients" will show up as selectable clients and adversaries as such.
 - ideally, query for addresses (via the tel.search.ch API).
 - the project will support french and english localization
 
 ## Front end
 
-The project will include numerous databases (timesheets, clients, deadlines, etc.), all of which have to be interacted with in an as intuitive as possible way. I will thus strive to make use of precisely the right amount of JS to provide for a simple UI.
+The project will include numerous databases (timesheets, clients, deadlines, etc.), all of which have to be interacted with in an as intuitive as possible way. I will thus strive to make use of precisely the right amount of JS to provide for a simple UI/UX.
 
 Examples include:
 - the ability to easily add/remove timesheet entries
-- the ability to have overviews of different needs
+- the ability to access easily various overviews of statistics
 
 ### Mock ups
 
@@ -106,18 +106,15 @@ The project will be based on the following models:
 - **Contact** (_i.e._ a client or an adversary)
   - Minimal attributes:
     - `prefix:string`,
-    - `first_name:string`,
-    - `last_name:string`,
-    - `address:text` ([serialized hash](https://api.rubyonrails.org/classes/ActiveRecord/AttributeMethods/Serialization/ClassMethods.html#method-i-serialize)),
-    - `phone:string`,
+    - `name:string`,
+    - `address:string`,
+    - `country:string`,
     - `email:string`,
-    - `birthday:date`,
     - `profession:string`,
-    - `role:string` (client, adversary, employee, other),
-    - `personality:string` (legal, natural),
+    - `role:string` (client, adversary, other),
+    - `personality:string` (company, private person),
     - `notes:text`.
   - Minimal associations:
-    - User (_i.e._ user's own contact information, one-to-one),
     - Project (many-to-many).
 - **Project** (_i.e._ a case)
   - Minimal attributes:
@@ -166,15 +163,17 @@ The following roles will be available:
 
 | Action  | Admin | Partner | Associate | Intern |
 |---------|-------|---------|-----------|--------|
-| index   | x     | x       | x         |        |
-| show    | x     | x       | x         | (1)    |
-| new     | x     | x       |           |        |
-| edit    | x     | x       | (1)       | (1)    |
-| create  | x     |         |           |        |
-| update  | x     | x       | (1)       | (1)    |
-| destroy | x     |         |           |        |
+| index   | x     |         |           |        |
+| show    | x     | (1)     | (1)       | (1)    |
+| new     | (3)   | (3)     | (3)       | (3)    |
+| edit    | x     | (1)     | (1)       | (1)    |
+| create  | (3)   | (3)     | (3)       | (3)    |
+| update  | x     | (1)     | (1)       | (1)    |
+| destroy | x (2) |         |           |        |
 
 (1) restricted to self
+(2) except self
+(3) no log in required
 
 ### Contacts
 
@@ -185,8 +184,9 @@ The following roles will be available:
 | new     | x     | x       | x         | x      |
 | edit    | x     | x       | x         | x      |
 | create  | x     | x       | x         | x      |
-| update  | x     | x       |           |        |
+| update  | x     | x       | x         | x      |
 | destroy | x     | x       |           |        |
+| import  | x     | x       | x         | x      |
 
 ### Projects
 
@@ -194,52 +194,45 @@ The following roles will be available:
 |---------|-------|---------|-----------|--------|
 | index   | x     | x       | x         | x      |
 | show    | x     | x       | x         | x      |
-| new     | x     | x       | x         |        |
-| edit    | x     | x       | x         |        |
-| create  | x     | x       | x         |        |
-| update  | x     | x       | x         |        |
-| destroy | x     | x       |           |        |
+| new     | x     | x       | x         | x      |
+| edit    | x     | x       | x         | (1)    |
+| create  | x     | x       | x         | x      |
+| update  | x     | x       | x         | (1)    |
+| destroy | x     | (1)     | (1)       | (1)    |
+
+(1) only if owner
 
 ### Activities
 
 | Action  | Admin | Partner | Associate | Intern |
 |---------|-------|---------|-----------|--------|
-| index   | x     | x       | x         | x      |
-| show    | n/a   | n/a     | n/a       | n/a    |
-| new     | x     | x       | x         | x      |
-| edit    | n/a   | n/a     | n/a       | n/a    |
 | create  | x     | x       | x         | x      |
-| update  | x     | x       | x         | (1)    |
-| destroy | x     | x       | x         | (1)    |
+| destroy | x     | (1)     | (1)       | (1)    |
 
-(1) restricted to own entries
+(1) only if project owner or activity author
 
 ### Deadlines
 
-| Action  | Admin | Partner | Associate | Intern |
-|---------|-------|---------|-----------|--------|
-| index   | x     | x       | x         | x      |
-| show    | n/a   | n/a     | n/a       | n/a    |
-| new     | x     | x       | x         | x      |
-| edit    | n/a   | n/a     | n/a       | n/a    |
-| create  | x     | x       | x         | x      |
-| update  | x     | x       | x         |        |
-| destroy | x     | x       | x         |        |
+| Action   | Admin | Partner | Associate | Intern |
+|----------|-------|---------|-----------|--------|
+| index    | x     | x       | x         | x      |
+| new      | x     | x       | x         | x      |
+| create   | x     | x       | x         | x      |
+| destroy  | x     | x       | x         | x      |
+| complete | x     | x       | x         | x      |
 
 ## Third party services
 
-Include a list of all third party services that you envisage using in your project. For each one, indicate what they will be used for. These include:
+These include:
 
 * Ruby gems or JavaScript libraries outside of those bundled with Ruby on Rails by default.
   - [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) for user avatars;
   - [Kaminari](https://github.com/kaminari/kaminari) for pagination;
   - [Faker](https://github.com/faker-ruby/faker) to generate realistic seed data;
   - [Figaro](https://rubygems.org/gems/figaro), Heroku-friendly Rails app configuration;
-  - [Fog-aws](https://rubygems.org/gems/fog-aws), module for fog or as standalone provider to use the Amazon S3;
-  - [PG](https://rubygems.org/gems/pg), ruby interface for PostgreSQL;
-  - [Redcarpet](https://rubygems.org/gems/redcarpet), for richer texts (parses markdown to html).
-* CSS frameworks
-  - [Tailwind CSS](https://tailwindcss.com) for all my front-end needs.
+  - ~~[Fog-aws](https://rubygems.org/gems/fog-aws), module for fog or as standalone provider to use the Amazon S3;~~
+  - [Carrierwave](https://rubygems.org/gems/carrierwave-aws), officially supported AWS-SDK library for S3 storage;
+  - [PG](https://rubygems.org/gems/pg), ruby interface for PostgreSQL.
 * Third party APIs
   - [tel.search](https://tel.search.ch/api/help.fr.html), in order to retrieve real user data.
 * Deployment services
