@@ -28,31 +28,35 @@ _**Note 2:** Ruby of Rails style prescriptions (mostly) based on [this Ruby Styl
 ```shell
 ruby -v
 ```
-2. Make sure Rails 5.1.7 is installed
+2. Make sure Rails 5.1.7 is installed:
 ```shell
 rails -v
 ```
-If you see Ruby and Rails version then you are good to start, otherwise [you will need to install it](https://guides.rubyonrails.org/v5.1.7/getting_started.html)
+If you see Ruby and Rails version then you are good to start, otherwise [you will need to install what's missing](https://guides.rubyonrails.org/v5.1.7/getting_started.html) (again, making sure you have ruby 2.6.6 and rails 5.1.7).
 
-3. Once done, clone this repository and move into it
+3. Once done, clone this repository and move into it:
 ```shell
 git clone https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047.git
 cd capstone-proposal-wad-c5-s1-2995-2047
 ```
-4. Install all dependencies
+4. Install all dependencies:
 ```shell
 bundle install
 ```
-5. Create db and migrate schema
+5. Create db and migrate schema:
 ```shell
 rails db:create
 rails db:migrate
 ```
-5. Now run your application
+6. [optional] Seed some fake data:
+```shell
+rails db:seed
+```
+7. Now run your application:
 ```shell
 rails s
 ```
-6. If all went well, you should be able to access it under `http://localhost:3000`
+8. If all went well, you should be able to access it under [`http://localhost:3000`](http://localhost:3000).
 
 ## Application purpose
 
