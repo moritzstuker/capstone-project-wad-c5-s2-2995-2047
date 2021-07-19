@@ -14,13 +14,17 @@
     flex-direction: column;
     text-align: center;
   }
-
+  
   .title {
     margin-right: -.4em; // to counter letter-spacing of last letter
-    font-size: 10rem;
+    font-size: 6rem;
     font-weight: 600;
     letter-spacing: .4em;
     line-height: 1.2;
+
+    @include media (m) {
+      font-size: 10rem;
+    }
   }
 
   .subtitle {
