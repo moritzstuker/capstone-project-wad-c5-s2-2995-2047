@@ -26,15 +26,16 @@ class ActivitiesController < ApplicationController
   end
 
   private
-    def set_project
-      @project = Project.find(params[:project_id])
-    end
 
-    def activity_params
-      params.require(:activity).permit(:label, :category, :date, :duration, :fee, :project_id, :user)
-    end
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
 
-    def can_delete?(activity)
-      current_user == activity.project.owner || current_user == activity.user || is_admin?(user)
-    end
+  def activity_params
+    params.require(:activity).permit(:label, :category, :date, :duration, :fee, :project_id, :user)
+  end
+
+  def can_delete?(activity)
+    current_user == activity.project.owner || current_user == activity.user || is_admin?(user)
+  end
 end

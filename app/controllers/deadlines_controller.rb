@@ -57,11 +57,12 @@ class DeadlinesController < ApplicationController
   end
 
   private
-    def set_deadline
-      @deadline = Deadline.find(params[:id])
-    end
 
-    def deadline_params
-      params.require(:deadline).permit(:label, :category, :date, :completed_at, :project_id, :user_id)
-    end
+  def set_deadline
+    @deadline = Deadline.find(params[:id])
+  end
+
+  def deadline_params
+    params.require(:deadline).permit(:label, :category, :date, :completed_at, :project_id, :user_id)
+  end
 end

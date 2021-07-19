@@ -24,6 +24,12 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    if can_edit?(@project, current_user)
+      true
+    else
+      flash[:alert] = "#{ t('users.restricted_access') }."
+      redirect_back fallback_location: dashboard_url
+    end
   end
 
   def create
@@ -39,36 +45,47 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to @project, notice: "#{ t('.success') }." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
+    if can_edit?(@project, current_user)
+      respond_to do |format|
+        if @project.update(project_params)
+          format.html { redirect_to @project, notice: "#{ t('.success') }." }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:alert] = "#{ t('users.restricted_access') }."
+      redirect_back fallback_location: dashboard_url
     end
   end
 
   def destroy
-    @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: "#{ t('.success') }." }
+    if can_delete?(@project, current_user)
+      @project.destroy
+      respond_to do |format|
+        format.html { redirect_to projects_url, notice: "#{ t('.success') }." }
+      end
+    else
+      flash[:alert] = "#{ t('users.restricted_access') }."
+      redirect_back fallback_location: dashboard_url
     end
   end
 
   private
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    def project_params
-      params.require(:project).permit(:label, :reference, :status, :description, :owner_id, :project_category_id, contact_ids: [])
-    end
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    def can_edit?(project = @project, user = current_user)
-      can_delete?(project, user) || is_partner?(user) || is_associate?(user)
-    end
+  def project_params
+    params.require(:project).permit(:label, :reference, :status, :description, :owner_id, :project_category_id, contact_ids: [])
+  end
 
-    def can_delete?(project = @project, user = current_user)
-      user == project.owner || is_admin?(user)
-    end
+  def can_edit?(project = @project, user = current_user)
+    can_delete?(project, user) || is_partner?(user) || is_associate?(user)
+  end
+
+  def can_delete?(project = @project, user = current_user)
+    user == project.owner || is_admin?(user)
+  end
 end

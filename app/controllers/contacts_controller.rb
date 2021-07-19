@@ -48,9 +48,14 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    @contact.destroy
-    respond_to do |format|
-      format.html { redirect_to contacts_url, notice: "#{ t('.success') }." }
+    if can_delete?(@contact, current_user)
+      @contact.destroy
+      respond_to do |format|
+        format.html { redirect_to contacts_url, notice: "#{ t('.success') }." }
+      end
+    else
+      flash[:alert] = "#{ t('users.restricted_access') }."
+      redirect_back fallback_location: dashboard_url
     end
   end
 
@@ -70,6 +75,15 @@ class ContactsController < ApplicationController
     params.require(:contact).permit(:name, :activity, :email, :street, :city, :country, :category, :notes, :contact_role_id, :import_uid)
   end
 
+  def can_edit?(contact = @contact, user = current_user)
+    # everyone can edit. Method is only kept for consistency with other models
+    true
+  end
+
+  def can_delete?(contact = @contact, user = current_user)
+    is_admin?(user)
+  end
+
   def query_tel_search(query)
     query = URI.parse(URI.escape(query))
     response = HTTParty.get(
@@ -84,13 +98,5 @@ class ContactsController < ApplicationController
     }
 
     response.code == 200 ? results : nil
-  end
-
-  def can_edit?(contact = @contact, user = current_user)
-    is_associate?(user) || can_delete?(contact, user)
-  end
-
-  def can_delete?(contact = @contact, user = current_user)
-    is_admin?(user)
   end
 end
