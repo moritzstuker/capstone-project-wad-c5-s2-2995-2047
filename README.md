@@ -1,8 +1,6 @@
 # Codex
 
-The intuitive toolkit for lawyers.
-
-View live demo: [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com)
+The intuitive toolkit for lawyers. Live demo available under: [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com)
 
 ## Table of contents
 
@@ -67,7 +65,7 @@ rails s
 | Associate | associate@test.dev | `password` |
 | Intern    | intern@test.dev    | `password` |
 
-If you do not have any seed data, you will first need to [create an account](http://localhost:3000/signup), then bump it to admin level:
+If you did not seed any data, you will first need to [create an account](http://localhost:3000/signup), then bump it to admin level:
 ```shell
 rails console
 User.last.update_attribute(:role, :admin)
