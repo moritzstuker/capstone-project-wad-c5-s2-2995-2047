@@ -58,6 +58,21 @@ rails s
 ```
 8. If all went well, you should be able to access it under [`http://localhost:3000`](http://localhost:3000).
 
+9. If you seeded data (step 6 above), you may now login with either of the following accounts:
+
+| Role      | Login              | Password   |
+|-----------|--------------------|------------|
+| Admin     | admin@test.dev     | `password` |
+| Partner   | partner@test.dev   | `password` |
+| Associate | associate@test.dev | `password` |
+| Intern    | intern@test.dev    | `password` |
+
+If you do not have any seed data, you will first need to [create an account](http://localhost:3000/signup), then bump it to admin level:
+```shell
+rails console
+User.last.update_attribute(:role, :admin)
+```
+
 ## Application purpose
 
 Codex is a toolkit for lawyers that allows them to have an overview of their activity. Special care has been given to the intuitiveness of the application.
