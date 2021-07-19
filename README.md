@@ -2,9 +2,12 @@
 
 The intuitive toolkit for lawyers.
 
+View live demo: [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com)
+
 ## Table of contents
 
 - [Project overview](#project-overview)
+- [Local installation](#local-installation)
 - [Application purpose](#application-purpose)
 - [Front end](#front-end)
 - [Data structures and models](#data-structures-and-models)
@@ -18,6 +21,38 @@ Working as a lawyer, we are constantly questioning our software and looking for 
 _**Note:** For the purpose of this project, the terms "User" and "Employee" will be synonymous, as well as "Project" and "Case". The correct term for a lawyer's "project" is a "case". But this is a reserved word by Rails and a risky word in Ruby, so I will avoid using it to name this model. Accordingly, cases will be labeled as "Project"s. Employee is also the correct word for the intended users of the application, but the term "User" is more appropriate in the context of a rails application. Accordingly, the terms "User" and "Employee" will also be synonymous._
 
 _**Note 2:** Ruby of Rails style prescriptions (mostly) based on [this Ruby Style Guide](https://rails.rubystyle.guide)._
+
+## Local installation
+
+1. Make sure Ruby 2.6.6 is installed on your system. Fire command prompt and run:
+```shell
+ruby -v
+```
+2. Make sure Rails 5.1.7 is installed
+```shell
+rails -v
+```
+If you see Ruby and Rails version then you are good to start, otherwise [you will need to install it](https://guides.rubyonrails.org/v5.1.7/getting_started.html)
+
+3. Once done, clone this repository and move into it
+```shell
+git clone https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047.git
+cd capstone-proposal-wad-c5-s1-2995-2047
+```
+4. Install all dependencies
+```shell
+bundle install
+```
+5. Create db and migrate schema
+```shell
+rails db:create
+rails db:migrate
+```
+5. Now run your application
+```shell
+rails s
+```
+6. If all went well, you should be able to access it under `http://localhost:3000`
 
 ## Application purpose
 
