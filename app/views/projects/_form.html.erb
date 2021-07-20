@@ -8,12 +8,12 @@
       </div>
       <div class="form-field">
         <%= form.label :label, "#{ t('projects.attributes.label') }*" %>
-        <%= form.text_field :label, required: true, id: :project_label %>
+        <%= form.text_field :label, id: :project_label %>
       </div>
 
       <div class="form-field">
         <%= form.label :owner_id, "#{ t('projects.attributes.owner') }*" %>
-        <%= form.select :owner_id, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, required: true, id: :project_owner_id %>
+        <%= form.select :owner_id, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, id: :project_owner_id %>
       </div>
 
       <div class="form-field">
@@ -23,7 +23,7 @@
 
       <div class="form-field">
         <%= form.label :project_category_id, "#{ t('projects.attributes.category') }*" %>
-        <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, required: true, id: :project_project_category_id) %>
+        <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, id: :project_project_category_id) %>
       </div>
 
       <div class="form-field">
