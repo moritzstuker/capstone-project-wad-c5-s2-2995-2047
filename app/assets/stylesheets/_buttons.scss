@@ -128,6 +128,7 @@ input[type='submit'] {
 .button-group {
   flex: 0 1 auto;
   padding-left: $box-padding-y;
+  overflow-x: scroll;
   white-space: nowrap;
 
   & > *:not(:first-child) {
