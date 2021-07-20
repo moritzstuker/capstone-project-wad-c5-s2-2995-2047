@@ -52,6 +52,10 @@
 
   .title {
     flex: 1 1 auto;
+
+    & + .button-group {
+      margin-left: .25em;
+    }
   }
 
   .icon-group {
