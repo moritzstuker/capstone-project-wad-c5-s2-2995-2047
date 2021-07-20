@@ -32,7 +32,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:label, :category, :date, :duration, :fee, :project_id, :user)
+    params.require(:activity).permit(:label, :category, :date, :duration, :fee)
   end
 
   def can_delete?(activity)
