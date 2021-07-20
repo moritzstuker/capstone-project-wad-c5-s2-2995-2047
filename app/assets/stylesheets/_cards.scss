@@ -3,7 +3,7 @@
 
 .card {
   padding: ($box-padding-y * 0.65) ($box-padding-x * 0.65);
-    overflow-x: scroll;
+  overflow-x: scroll;
   font-size: $small-font-size;
 
   &-header {
@@ -70,6 +70,7 @@
 a.card {
   color: inherit;
   text-decoration: none !important;
+
   &:active,
   &:hover {
     background-color: $background-color-secondary;
