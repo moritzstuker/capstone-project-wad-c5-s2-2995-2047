@@ -10,7 +10,7 @@
     </div>
     <div class="card-content">
       <%= t('deadlines.card.assigned_to') %>
-      <%= current_user == deadline.assignee ? t('application.deadlines.you') : avatar_tag_for(deadline.assignee) %>
+      <%= current_user == deadline.user ? t('application.deadlines.you') : avatar_tag_for(deadline.user) %>
       <%= ", #{ t('deadlines.card.completed_ago', time_ago: time_ago_in_words(deadline.completed_at)) }." if deadline.completed_at.present? %>
     </div>
   </div>

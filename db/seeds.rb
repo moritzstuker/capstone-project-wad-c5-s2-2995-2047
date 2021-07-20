@@ -67,7 +67,7 @@ def build_deadline
     date:         Faker::Date.forward(days: 120),
     completed_at: [Faker::Time.backward(days: 14), nil][weighted_random(0.8)],
     project:      Project.all.sample,
-    assignee:     User.lawyers.sample
+    user:     User.lawyers.sample
   )
 end
 

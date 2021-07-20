@@ -23,13 +23,13 @@
     <div class="col">
       <div class="box">
         <div class="form-field">
-          <%= form.label :project, "#{ t('deadlines.attributes.project') }*", id: :deadline_project %>
-          <%= form.select :project, Project.all.order(:label).collect {|p| [ p.label.capitalize, p.id ] }, { include_blank: true }, id: :deadline_project %>
+          <%= form.label :project_id, "#{ t('deadlines.attributes.project') }*", id: :deadline_project %>
+          <%= form.select :project_id, Project.all.order(:label).collect {|p| [ p.label.capitalize, p.id ] }, id: :deadline_project %>
         </div>
 
         <div class="form-field">
-          <%= form.label :assignee, "#{ t('deadlines.attributes.assigned_to') }*", id: :deadline_assignee %>
-          <%= form.select :assignee, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, id: :deadline_assignee %>
+          <%= form.label :user_id, "#{ t('deadlines.attributes.assigned_to') }*", id: :deadline_user %>
+          <%= form.select :user_id, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, id: :deadline_user %>
         </div>
     </div>
   </div>

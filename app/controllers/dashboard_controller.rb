@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   def index
     @news = get_news
-    @deadlines = current_user.deadlines.includes(:assignee)
+    @deadlines = current_user.deadlines.includes(:user)
   end
 
   private

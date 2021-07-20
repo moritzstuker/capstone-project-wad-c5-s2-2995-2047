@@ -4,19 +4,18 @@ class Deadline < ApplicationRecord
   CATEGORIES = %w(internal external court-ordered legal)
 
   belongs_to :project, optional: true
-  belongs_to :assignee, class_name: 'User', foreign_key: :user_id
+  belongs_to :user
 
   validates :label, length: { in: 2..50 }
   validates :category, inclusion: { in: CATEGORIES }
   validates :date, presence: true
-  validates :assignee, presence: true
 
   scope :due_immediately, -> { where('date <= ?', Date.tomorrow) }
   scope :due_soon,        -> { where(date: (Date.tomorrow + 1..Date.today + 10)) }
   scope :due_later,       -> { where('date >= ?', Date.today + 11) }
 
   scope :filter_by_category, -> (str) { where(category: str) }
-  scope :filter_by_user,     -> (str) { where(assignee: str) }
+  scope :filter_by_user,     -> (str) { where(user: str) }
   scope :filter_by_query,    -> (str) { where('label LIKE ?', "%#{str}%") }
 
   def self.filter_by_urgency(str)

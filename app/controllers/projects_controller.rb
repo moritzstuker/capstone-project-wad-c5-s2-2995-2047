@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @deadlines = @project.deadlines.includes(:assignee)
+    @deadlines = @project.deadlines.includes(:user)
     @deadlines_by_dates = @deadlines.group_by(&:date).sort
   end
 
