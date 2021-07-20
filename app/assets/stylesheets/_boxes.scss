@@ -33,7 +33,9 @@
     padding: $box-padding;
 
     .col:not(:first-of-type) {
-      border-left: $border-base;
+      @include media (m) {
+        border-left: $border-base;
+      }
     }
   }
 
