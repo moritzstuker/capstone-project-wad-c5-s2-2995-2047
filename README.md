@@ -4,6 +4,7 @@ The intuitive toolkit for lawyers. Live demo available under: [https://young-scr
 
 ## Table of contents
 
+- [Instructions](#instructions)
 - [Project overview](#project-overview)
 - [Local installation](#local-installation)
 - [Application purpose](#application-purpose)
@@ -11,6 +12,15 @@ The intuitive toolkit for lawyers. Live demo available under: [https://young-scr
 - [Data structures and models](#data-structures-and-models)
 - [User access levels](#user-access-levels)
 - [Third party services](#third-party-services)
+
+## Instructions
+
+> Once you have completed your capstone project as outlined in your project proposal, you will need to submit the project in the form of a git repository saved on GitHub
+Before submitting, make sure that there is adequate documentation to explain what the project has achieved and any changes you had to make or difficulties that you faced. Put all such comments in a README.md file in the root of your project folder.
+Also include the public URL for your deployed application in the README.md file, e.g. the URL to access the deployed application on Heroku
+Once you have done these things, follow the instructions for the submission process after this unit.
+
+Project proposal available under: [https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047).
 
 ## Project overview
 
