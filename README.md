@@ -32,20 +32,20 @@ _**Note 2:** Ruby of Rails style prescriptions (mostly) based on [this Ruby Styl
 
 ## Local installation
 
-1. Make sure Ruby 2.6.6 is installed on your system. Fire command prompt and run:
+1. Make sure Ruby 2.6.6 is installed on your system. To check this, fire up a command prompt and run:
 ```shell
 ruby -v
 ```
-2. Make sure Rails 5.1.7 is installed:
+2. Still in the command prompt, make sure Ruby on Rails 5.1.7 is installed:
 ```shell
 rails -v
 ```
-If you see Ruby and Rails version then you are good to start, otherwise [you will need to install what's missing](https://guides.rubyonrails.org/v5.1.7/getting_started.html) (again, making sure you have ruby 2.6.6 and rails 5.1.7).
+If you see the correct versions for both Ruby and Ruby on Rails then you are good to start, otherwise [you will need to install what's missing](https://guides.rubyonrails.org/v5.1.7/getting_started.html).
 
 3. Once done, clone this repository and move into it:
 ```shell
-git clone https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047.git
-cd capstone-proposal-wad-c5-s1-2995-2047
+git clone https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047
+cd capstone-project-wad-c5-s2-2995-2047
 ```
 4. Install all dependencies:
 ```shell
@@ -80,6 +80,14 @@ If you did not seed any data, you will first need to [create an account](http://
 rails console
 User.last.update_attribute(:role, :admin)
 ```
+
+## Access online demo
+
+1. Head over to [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com).
+
+2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) (not advised since you will then have the permissions of an intern until someone else bumps your role to something fancier) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see point 9 of the [Local installation](#local-installation) above; they're identical.
+
+3. Have fun.
 
 ## Application purpose
 
