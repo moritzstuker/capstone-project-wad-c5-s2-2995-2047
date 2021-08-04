@@ -124,7 +124,7 @@ I also intend to implement:
 - some sort of conflict-check verification:
   - no contact can (ever) be simultaneously client in one case and adversary in another. This can be easily implemented by adding their role as an attribute. When opening a new case, only "clients" will show up as selectable clients and adversaries as such.
 - ideally, query for addresses (via the tel.search.ch API).
-- the project will support french and english localization
+- the project will support french and english localization.
 
 ## Front end
 
