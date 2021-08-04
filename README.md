@@ -4,7 +4,12 @@ The intuitive toolkit for lawyers. Live demo available under: [https://young-scr
 
 ## Table of contents
 
-- [Instructions](#instructions)
+- [Project instructions](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#project-instructions)
+- [Overview](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#overview)
+- [Local installation](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#local-installation)
+- [Access online demo](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#access-online-demo)
+- [What the project has achieved](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#what-the-project-has-achieved)
+- [Changes I had to make or difficulties that I have faced](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#changes-i-had-to-make-or-difficulties-that-i-have-faced)
 
 ## Project instructions
 
@@ -13,9 +18,9 @@ Before submitting, make sure that there is adequate documentation to explain wha
 Also include the public URL for your deployed application in the README.md file, e.g. the URL to access the deployed application on Heroku.  
 Once you have done these things, follow the instructions for the submission process after this unit.
 
-Project proposal available under: [https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047).
+Project proposal available under [this dedicated repository](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047).
 
-## Project overview
+## Overview
 
 Working as a lawyer, we are constantly questioning our software and looking for the unicorn CRM which is both complete enough yet intuitive enough. [There](https://www.coradis.ch) [are](https://www.winjur.com/features.php) [many](https://fr.timesensor.ch) [options](https://www.clio.com/uk/) [on](https://www.microsoft.com/fr-ch/microsoft-365/sharepoint/collaboration) [the](https://www.vertec.com/ch/) [market](https://www.sergroup.com/de/ecm-software.html), though none that satisfied me. So I decided to build my own, which could serve as a template for a full-fledged tool for lawfirms.
 
@@ -78,7 +83,7 @@ User.last.update_attribute(:role, :admin)
 
 1. Head over to [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com).
 
-2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) (not advised since you will then have the permissions of an intern until someone else bumps your role to something fancier) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see point 9 of the [Local installation](#local-installation) above; they're identical.
+2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see point 9 of the [Local installation](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#local-installation) above; they're identical.
 
 3. Have fun.
 
