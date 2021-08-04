@@ -4,12 +4,12 @@ The intuitive toolkit for lawyers. Live demo available under: [https://young-scr
 
 ## Table of contents
 
-- [Project instructions](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#project-instructions)
-- [Overview](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#overview)
-- [Local installation](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#local-installation)
-- [Access online demo](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#access-online-demo)
-- [What the project has achieved](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#what-the-project-has-achieved)
-- [Changes I had to make or difficulties that I have faced](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#changes-i-had-to-make-or-difficulties-that-i-have-faced)
+- [Project instructions](#project-instructions)
+- [Overview](#overview)
+- [Local installation](#local-installation)
+- [Access online demo](#access-online-demo)
+- [What the project has achieved](#what-the-project-has-achieved)
+- [Changes I had to make or difficulties that I have faced](#changes-i-had-to-make-or-difficulties-that-i-have-faced)
 
 ## Project instructions
 
@@ -64,7 +64,7 @@ rails s
 ```
 8. If all went well, you should be able to access it under [`http://localhost:3000`](http://localhost:3000).
 
-9. If you seeded data (step 6 above), you may now login with either of the following accounts:
+9. If you seeded data (step 6 above), you may now login with either of the <span id="account-credentials">following accounts</span>:
 
 | Role      | Login              | Password   |
 |-----------|--------------------|------------|
@@ -83,7 +83,7 @@ User.last.update_attribute(:role, :admin)
 
 1. Head over to [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com).
 
-2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see point 9 of the [Local installation](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047#local-installation) above; they're identical.
+2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see [point 9 of the Local installation](#account-credentials) above; they're identical.
 
 3. Have fun.
 
