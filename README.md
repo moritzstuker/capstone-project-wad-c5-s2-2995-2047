@@ -3,7 +3,7 @@
 The intuitive toolkit for lawyers.
 
 - View live demo: [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com);
-- Vire project proposal: [https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047).
+- View project proposal: [https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047).
 
 ## Table of contents
 
