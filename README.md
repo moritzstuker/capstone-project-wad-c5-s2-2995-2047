@@ -25,10 +25,6 @@ Once you have done these things, follow the instructions for the submission proc
 
 Working as a lawyer, we are constantly questioning our software and looking for the unicorn CRM which is both complete enough yet intuitive enough. [There](https://www.coradis.ch) [are](https://www.winjur.com/features.php) [many](https://fr.timesensor.ch) [options](https://www.clio.com/uk/) [on](https://www.microsoft.com/fr-ch/microsoft-365/sharepoint/collaboration) [the](https://www.vertec.com/ch/) [market](https://www.sergroup.com/de/ecm-software.html), though none that satisfied me. So I decided to build my own, which could serve as a template for a full-fledged tool for lawfirms.
 
-_**Note:** For the purpose of this project, the terms "User" and "Employee" will be synonymous, as well as "Project" and "Case". The correct term for a lawyer's "project" is a "case". But this is a reserved word by Rails and a risky word in Ruby, so I will avoid using it to name this model. Accordingly, cases will be labeled as "Project"s. Employee is also the correct word for the intended users of the application, but the term "User" is more appropriate in the context of a rails application. Accordingly, the terms "User" and "Employee" will also be synonymous._
-
-_**Note 2:** Ruby of Rails style prescriptions (mostly) based on [this Ruby Style Guide](https://rails.rubystyle.guide)._
-
 ## Local installation
 
 1. Make sure Ruby 2.6.6 is installed on your system. To check this, fire up a command prompt and run:
