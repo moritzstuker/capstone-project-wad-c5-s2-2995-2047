@@ -1,6 +1,9 @@
 # Codex
 
-The intuitive toolkit for lawyers. Live demo available under: [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com)
+The intuitive toolkit for lawyers.
+
+- View live demo: [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com);
+- Vire project proposal: [https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047).
 
 ## Table of contents
 
@@ -17,8 +20,6 @@ The intuitive toolkit for lawyers. Live demo available under: [https://young-scr
 Before submitting, make sure that there is adequate documentation to explain what the project has achieved and any changes you had to make or difficulties that you faced. Put all such comments in a README.md file in the root of your project folder.  
 Also include the public URL for your deployed application in the README.md file, e.g. the URL to access the deployed application on Heroku.  
 Once you have done these things, follow the instructions for the submission process after this unit.
-
-Project proposal available under [this dedicated repository](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047).
 
 ## Overview
 
