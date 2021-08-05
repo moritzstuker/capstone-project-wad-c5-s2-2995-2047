@@ -13,7 +13,7 @@ fr:
         inactive: Inactif
       updated_at: "Dernière mise à jour"
     card:
-      last_activity: "Dernière activité"
+      last_activity: "Dernière activité il y a"
     create:
       success: "Dossier ouvert correctement"
     destroy:

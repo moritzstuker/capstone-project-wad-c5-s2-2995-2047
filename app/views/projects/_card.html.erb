@@ -14,7 +14,7 @@
       <span class="keys disambiguate"><%= highlight(simple_format(project.reference), params[:query]) %></span>
     <% end %>
     <% if project.activities.count > 0 && project.status == 'active' %>
-      <span class="keys"><%= t('.last_activity') %> <%= time_ago_in_words(project.activities.last.date) %> ago.</span>
+      <span class="keys"><%= t('.last_activity') %> <%= time_ago_in_words(project.activities.last.date) %>.</span>
     <% end %>
     <span class="keys"><%= avatar_tag_for(project.owner) %></span>
   </footer>
