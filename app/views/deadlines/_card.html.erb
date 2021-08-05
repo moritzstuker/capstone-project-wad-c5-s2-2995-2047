@@ -5,7 +5,7 @@
   </div>
   <div class="card-main">
     <div class="card-header">
-      <%= deadline.label %>
+      <%= highlight(deadline.label, params[:query]) %>
       <span class="tag"><%= t("deadlines.attributes.categories.#{ deadline.category }") %></span>
     </div>
     <div class="card-content">

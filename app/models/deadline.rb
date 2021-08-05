@@ -27,6 +27,6 @@ class Deadline < ApplicationRecord
   end
 
   def self.with_urgency(urgency, query = nil)
-    filter_by_query(query).filter_by_urgency(urgency)
+    filter_by_query(query).filter_by_urgency(urgency).where(completed_at: nil)
   end
 end
