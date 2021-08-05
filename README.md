@@ -178,7 +178,7 @@ Scopes are simple in appearance. It gets much more tricky when you are dealing w
 
 **Outcome:** Robust scopes, which are (as) kind (as possible) to the database.
 
-### `has_many :through` relationships
+### An unnecessary `has_many :through` relationship
 
 The link between users and projects was initially supposed to be set up like this:
 
