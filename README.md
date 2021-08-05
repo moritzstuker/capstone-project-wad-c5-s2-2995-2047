@@ -80,7 +80,7 @@ User.last.update_attribute(:role, :admin)
 
 1. Head over to [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com).
 
-2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see [point 9 of the Local installation](#account-credentials) above; they're identical. Beware however: the admin account is not intended to be a 'lawyer' account, but rather an account reserved for the IT-provider. Thus, this account will not be linked with any project and his past activity and projects will seem very dull. If you just want to look around, you should rather choose the `partner@test.dev` account.
+2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see [point 9 of the Local installation](#account-credentials) above; they're identical. Please note however that the `admin@test.dev` account is not intended to be a 'lawyer' account, but rather an account reserved for the IT-provider. No project/activity/deadline data was seeded in relation to this account. If you log into this account, your dashboard will thus be empty by default. If you want to look around, you should rather choose the `partner@test.dev` account.
 
 3. Have fun.
 
@@ -88,7 +88,9 @@ User.last.update_attribute(:role, :admin)
 
 On a subjective level, I have managed to set up a web app such as I would like to use on a daily basis. It's feature-rich yet intuitive enough so that a user could find his/her way around [without needing a manual](https://www.brainyquote.com/quotes/elon_musk_567244).
 
-On an objective level, I believe that the project meets the requirements. All [project features](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047#application-purpose) are there and work as expected and the UI/UX is satisfactory. One could of course always improve such a project, and if I had the time I would probably update it to Rails 6, tweak the controllers so that they only output JSON and plug something like [react.js](https://github.com/reactjs/react-rails) on the front-end. This was however never the scope if this exercise.
+On an objective level, I believe that the project meets the requirements. All [project features](https://github.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047#application-purpose) are there and work as expected and the UI/UX is satisfactory. One could of course always improve such a project, and if I had the time I would probably update it to Rails 6, tweak the controllers so that they only output JSON and plug something like [react.js](https://github.com/reactjs/react-rails) on the front-end. This was however never the scope of this exercise.
+
+The layout of the pages is somewhat different than that suggested in the mockups. For example, the home page was to include a right column with the login form, whereas now this form is located in a separate page. These are minor tweaks that only affect presentation but not function; as such I don't view them as failures.
 
 ## Changes I had to make or difficulties that I have faced
 
@@ -105,6 +107,8 @@ I have faced a great amount of unexpected difficulties, some of which I was able
 Providing for multiple addresses per contact was way beyond the specifications and provided no additional value: the scope of my project was such that you needed only a single address and by no means multiple ones. I realized that I actually fell into the trap that I was precisely trying to avoid: providing overly complex features which are not needed.
 
 - **The 'street' and 'city' fields.** So I took the decision to remove this model entirely and stick to a simple 'street' and 'city' field for my contacts. This is enough and not more than what's needed. It's simple and leaves enough liberty for the user to specify whatever's needed. Besides, there's no justification to normalize the data up to the street number, so I might as well just include it in the 'street' field and not have a dedicated field.
+
+**Outcome:** I stored the data in a dedicated field of the Contact model.
 
 ### User access levels
 
@@ -144,10 +148,40 @@ The problem however, is that in order to check if a certain action may be perfor
 
 A much simpler way would have been to use a gem, such as [CanCan](https://github.com/ryanb/cancan). In a "real-world" situation, I would probably have used this. In this context however, I chose to go the 'long way' and set these permissions manually, be it at least to learn something along the way.
 
+**Outcome:** In the end, I settled for the approach that was followed in the courses up until now, which is to write dedicated methods in each controller. This provided ample flexibility to tweak particular scenarios and was manageable within the scope of this project. The solution is however not very scalable, so in a bigger project I would have opted for the [CanCan](https://github.com/ryanb/cancan) gem approach.
+
+### Associating the User and the Contact models
+
+The original intent was to associate the User and the Contact model in such a way that each User has a dedicated Contact entry; this is what's presented [in the mockups](https://raw.githubusercontent.com/epfl-extension-school/capstone-proposal-wad-c5-s1-2995-2047/master/_mockup/account%23show.png?token=AAHMOMC7PRKT3RNG4PXSN63BCUOSK). The reasoning was the following: a user is an employee. This employee has an address, an email address, a phone number, a birthday, etc. These are all attributes that are found in the Contact model as well, so why not just use this model to store this data and link it with the relevant User.
+
+So I associated the two models like this:
+
+```ruby
+# app/models/user.rb
+class User < ApplicationRecord
+  belongs_to :contact
+end
+```
+
+```ruby
+# app/models/contact.rb
+class Contact < ApplicationRecord
+  has_one :user
+end
+```
+
+At this stage, I wasn't entirely sure which way the association was supposed to go; in other words: who belongs to who? Besides, how to qualify the `role` of the contact (essentially 'client' or 'adversary')? And how to restrict access to data? Because other users should not by default have access to their colleague's personal info, even less be able to edit it. None of these questions were particularly hard to solve, but they nonetheless added complexity. And this complexity was not justified, because the purpose of the project was to create a CRM - where the "C" stands for "Customer" - not a tool for the HR department. So I decided to back off from associating the User and the Contact models and basically not include the user's personal data.
+
+**Outcome:** User data attributes are now limited to what's directly useful in the application (language, fee, password, etc.). Personal data are removed.
+
 ### Scopes and their consequences
 
 Scopes are simple in appearance. It gets much more tricky when you are dealing with scopes on associated models, especially when these models do not have an obvious name. For example, the Contact model has a `get_role` scope ([contact.rb:22](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047/blob/7bca1b8ad85ec53adc451111335fbdc3e83e4cc1/app/models/contact.rb#L22)). The roles are defined in a separate model, called `ContactRole`. But the attribute is `role`, not `ContactRole`. Besides, such code was prone to the dreaded [N+1 query issue](https://medium.com/@bretdoucette/n-1-queries-and-how-to-avoid-them-a12f02345be5), which generates a horrendous amount of SQL queries. Thus, I slowly came to satisfactory piece code: [`scope :get_role, -> (str) { includes(:role).where("contact_roles.label = '#{str}'").references(:contact_roles) }`](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047/blob/7bca1b8ad85ec53adc451111335fbdc3e83e4cc1/app/models/contact.rb#L22).
 
+**Outcome:** Robust scopes, which are (as) kind (as possible) to the database.
+
 ### Keeping rails-ujs in sync with views
 
 Views are coded in ruby-peppered HTML (ERB). But it's essentially HTML with placeholders for content. Dynamic JavaScript interactions require to code the HTML tags in, well, JavaScript. But both languages are completely different. As an example, the [_activity.html.erb](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047/blob/master/app/views/application/_activity.html.erb) partial and the [create.js.erb](https://github.com/epfl-extension-school/capstone-project-wad-c5-s2-2995-2047/blob/master/app/views/activities/create.js.erb) view render essentially the same tags. But I've edited the .html file many times and realized much later that the .js file had to be kept in sync. This proved to be tedious and demonstrated the need for careful element construction.
+
+**Outcome:** Learned a lesson: keep .js for the very end, once the HTML is settled.
