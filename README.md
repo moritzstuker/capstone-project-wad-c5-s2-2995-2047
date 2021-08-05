@@ -83,7 +83,7 @@ User.last.update_attribute(:role, :admin)
 
 1. Head over to [https://young-scrubland-22306.herokuapp.com](https://young-scrubland-22306.herokuapp.com).
 
-2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see [point 9 of the Local installation](#account-credentials) above; they're identical.
+2. You may then either [create a new account](https://young-scrubland-22306.herokuapp.com/signup) or [log into](https://young-scrubland-22306.herokuapp.com/login) one of the existing accounts. For their respective credentials, see [point 9 of the Local installation](#account-credentials) above; they're identical. Beware however: the admin account is not intended to be a 'lawyer' account, but rather an account reserved for the IT-provider. Thus, this account will not be linked with any project and his past activity and projects will seem very dull. If you just want to look around, you should rather choose the `partner@test.dev` account.
 
 3. Have fun.
 
