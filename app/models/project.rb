@@ -18,8 +18,8 @@ class Project < ApplicationRecord
   validates :reference, presence: false, length: { maximum: 50 }
   validates :owner, presence: true
 
-  scope :search_in_label,     -> (str) { where('label LIKE ?', "%#{str}%") }
-  scope :search_in_reference, -> (str) { where('reference LIKE ?', "%#{str}%") }
+  scope :search_in_label,     -> (str) { where('lower(label) LIKE ?', "%#{str}%") }
+  scope :search_in_reference, -> (str) { where('lower(reference) LIKE ?', "%#{str}%") }
 
   scope :filter_by_category, -> (str) { where(category: str).distinct }
   scope :filter_by_status,   -> (str) { where(status: str) }

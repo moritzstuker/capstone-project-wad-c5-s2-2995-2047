@@ -24,10 +24,10 @@ class Contact < ApplicationRecord
   scope :adversaries, ->       { get_role('adversary') }
   scope :other,       ->       { get_role('other') }
 
-  scope :search_in_name,    -> (str) { where('name LIKE ?', "%#{str}%") }
-  scope :search_in_street,  -> (str) { where('street LIKE ?', "%#{str}%") }
-  scope :search_in_city,    -> (str) { where('city LIKE ?', "%#{str}%") }
-  scope :search_in_country, -> (str) { where('country LIKE ?', "%#{str}%") }
+  scope :search_in_name,    -> (str) { where('lower(name) LIKE ?', "%#{str}%") }
+  scope :search_in_street,  -> (str) { where('lower(street) LIKE ?', "%#{str}%") }
+  scope :search_in_city,    -> (str) { where('lower(city) LIKE ?', "%#{str}%") }
+  scope :search_in_country, -> (str) { where('lower(country) LIKE ?', "%#{str}%") }
 
   scope :filter_by_role,     -> (str) { where(role: str.to_i) }
   scope :filter_by_category, -> (str) { where(category: str.to_i) }

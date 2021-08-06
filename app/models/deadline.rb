@@ -16,7 +16,7 @@ class Deadline < ApplicationRecord
 
   scope :filter_by_category, -> (str) { where(category: str) }
   scope :filter_by_user,     -> (str) { where(user: str) }
-  scope :filter_by_query,    -> (str) { where('label LIKE ?', "%#{str}%") }
+  scope :filter_by_query,    -> (str) { where('lower(label) LIKE ?', "%#{str}%") }
 
   def self.filter_by_urgency(str)
     case str.to_i
