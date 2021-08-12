@@ -23,7 +23,7 @@
     <li role="menuitem" class="box-row"><span class="menu-header"><%= t('.signed_in_as') %><br /><strong><%= current_user.name %></strong></span></li>
     <li role="menuitem" class="box-row"><%= link_to t('.dashboard'), dashboard_path, class: 'menu-item' %></li>
     <li role="menuitem" class="box-row"><%= link_to t('.account'), account_path, class: 'menu-item' %></li>
-    <% if is_admin? || is_partner? %>
+    <% if is_admin? %>
     <li role="menuitem" class="box-row"><%= link_to t('.users'), users_path, class: 'menu-item' %></li>
     <% end %>
     <li role="menuitem" class="box-row"><%= link_to t('.log_out'), logout_path, method: :delete, class: 'menu-item' %></li>

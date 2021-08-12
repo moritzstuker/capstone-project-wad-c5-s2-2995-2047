@@ -6,7 +6,7 @@
     <li class="box-row">
       <%= link_to t('.account'), account_path, class: "menu-item big#{ ' is-active' if current_page?(account_path) }"  %>
     </li>
-    <% if is_partner?(current_user) || is_admin?(current_user) %>
+    <% if is_admin?(current_user) %>
     <li class="box-row">
       <%= link_to t('.users'), users_path, class: "menu-item big#{ ' is-active' if current_page?(users_path) }"  %>
     </li>
