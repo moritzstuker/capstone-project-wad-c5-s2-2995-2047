@@ -46,15 +46,19 @@
 
 .page-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
   margin-top: $gutter;
 
   .title {
     flex: 1 1 auto;
+    margin-right: .25em;
 
     & + .button-group {
-      margin-left: .25em;
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0;
     }
   }
 

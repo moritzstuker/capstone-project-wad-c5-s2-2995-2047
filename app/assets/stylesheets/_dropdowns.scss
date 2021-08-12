@@ -20,6 +20,7 @@ summary {
     z-index: 20;
     position: absolute;
     width: auto;
+    max-width: 250px;
     max-height: 60vh;
     margin-top: $box-padding-x;
     overflow-x: hidden;
