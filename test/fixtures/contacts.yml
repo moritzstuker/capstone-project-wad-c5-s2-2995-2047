@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+john:
+  name: John Doe
+  activity: Health, Wellness and Fitness
+  email: trula@yost.name
+  street: Despina Ports
+  city: 15418-9478 Runolfssonmouth
+  country: Uruguay
+  category: 1
+  role: client

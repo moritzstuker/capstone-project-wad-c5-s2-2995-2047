@@ -5,6 +5,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:registered)
   end
 
+  test "should get index" do
+    log_in_as users(:admin)
+    get users_url
+    assert_response :success
+  end
+
   test "should get new" do
     get new_user_url
     assert_response :success

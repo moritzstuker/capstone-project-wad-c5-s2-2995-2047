@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+foo:
+  label: Brand impactful paradigms
+  category: external
+  date: '2021-09-28'
+  project: first
+  user: registered

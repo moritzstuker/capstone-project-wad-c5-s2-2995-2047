@@ -1,0 +1,36 @@
+require 'test_helper'
+
+class ContactsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @contact = contacts(:john)
+    log_in_as users(:admin)
+  end
+
+  test "should get index" do
+    get contacts_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get new_contact_url
+    assert_response :success
+  end
+
+  test "should show contact" do
+    get contact_url(@contact)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_contact_url(@contact)
+    assert_response :success
+  end
+
+  test "should destroy contact" do
+    assert_difference('Contact.count', -1) do
+      delete contact_url(@contact)
+    end
+
+    assert_redirected_to contacts_url
+  end
+end

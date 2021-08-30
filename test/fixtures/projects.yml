@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first:
+  id: 1
+  label: First project
+  reference: YS21.361982-WYX
+  status: 1
+  description: Seitan master pitchfork.
+  owner: registered
+  category: civil
+
+second:
+  id: 2
+  label: Second project
+  reference: DY19.235601-XQA
+  status: 0
+  description: Pitchfork seitan master.
+  owner: registered
+  category: civil
