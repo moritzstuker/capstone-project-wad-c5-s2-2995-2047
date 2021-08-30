@@ -10,7 +10,7 @@ class ActiveSupport::TestCase
   def log_in_as(user)
     post sessions_url, params: {
       session: {
-        login: @user.login,
+        login: user.login,
         password: 'password'
       }
     }
