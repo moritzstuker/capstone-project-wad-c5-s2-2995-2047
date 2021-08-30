@@ -14,31 +14,3 @@
 //= require turbolinks
 //= require particles
 //= require_tree .
-
-document.addEventListener("turbolinks:load", function () {
-  // flash notification
-  document.querySelectorAll(".flash-close").forEach(function (e) {
-    e.addEventListener("click", function () {
-      e.parentNode.remove();
-    });
-  }); // search form
-
-  var searchForm = document.getElementById('search-form');
-
-  if (document.body.contains(searchForm)) {
-    var searchInput = document.getElementById('query');
-    var expandedSearch = document.getElementById('expanded-search');
-    searchInput.addEventListener("keyup", function () {
-      if (searchInput.value) {
-        searchForm.classList.add("expanded");
-        expandedSearch.style.maxHeight = expandedSearch.scrollHeight + 'px';
-        document.querySelectorAll(".search-value").forEach(function (e) {
-          e.innerText = searchInput.value;
-        });
-      } else {
-        searchForm.classList.remove("expanded");
-        expandedSearch.style.maxHeight = '';
-      }
-    });
-  }
-});
