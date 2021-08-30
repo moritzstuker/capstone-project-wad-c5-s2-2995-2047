@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class ContactTest < ActiveSupport::TestCase
-  test "should trigger name validation error (name missing)" do
+  test "should trigger default name (when name is not provided)" do
     first_role = ContactRole.first
     contact = Contact.new email: 'jack@test.dev', street: 'Some street', city: 'Lausanne', country: 'Switzerland', category: :person, role: first_role
-    refute contact.valid?
+    assert_equal(contact.name, 'John Doe')
   end
 
   test "should trigger name validation error (name too long)" do
@@ -21,7 +21,7 @@ class ContactTest < ActiveSupport::TestCase
 
   test "should trigger role validation error (missing role)" do
     first_role = ContactRole.first
-    contact = Contact.new name: 'John', email: 'jack@test.dev', street: 'Some street', city: 'Lausanne', country: 'Switzerland', category: :person, role: first_role
+    contact = Contact.new name: 'John', email: 'jack@test.dev', street: 'Some street', city: 'Lausanne', country: 'Switzerland', category: :person
     refute contact.valid?
   end
 end
