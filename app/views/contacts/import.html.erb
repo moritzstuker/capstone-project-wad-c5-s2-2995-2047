@@ -26,15 +26,15 @@
       <% if @results[:total] > @search_limit %>
         <p><%= t('.too_many_results', limit: @search_limit) %>.</p>
       <% end %>
-      <ul class="row">
-        <% @results[:items].each do |person| %>
-        <li class="col-4">
-          <%= render 'card_for_import', person: person %>
-        </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <%= image_tag('void.svg', class: 'void') %>
+      <% if @results[:total] > 0 %>
+        <ul class="row">
+          <% @results[:items].each do |person| %>
+            <li class="col-4">
+              <%= render 'card_for_import', person: person %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
   </div>
 </div>
