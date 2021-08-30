@@ -8,13 +8,13 @@ fr:
         email_letter: Email/lettre
         meeting: Conférence
         phone_call: "Appel téléphonique"
+    create:
+      failure: "Activité non sauvegardée: merci de remplir tous les champs"
+      success: "Activité enregistrée"
+    destroy:
+      success: "Activité effacée"
     hour: "heure"
     hours:
       one: "%{count} heure"
       other: "%{count} heures"
     worked_on_it_for: "y a contribué durant"
-  create:
-    failure: "Activité non sauvegardée: merci de remplir tous les champs"
-    success: "Activité enregistrée"
-  destroy:
-    success: "Activité effacée"
