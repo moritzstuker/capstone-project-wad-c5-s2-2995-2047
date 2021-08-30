@@ -42,7 +42,7 @@ fr:
         other: "%{count} résultats trouvés pour '%{query}'"
       too_many_results: "Premiers %{limit} résultats affichés; merci d'être plus précis"
     index:
-      no_results: "No such contact found…"
+      no_results: "Aucun contact trouvé…"
       title: Contacts
     new:
       import_tel_search: "Importer depuis tel.search.ch"
