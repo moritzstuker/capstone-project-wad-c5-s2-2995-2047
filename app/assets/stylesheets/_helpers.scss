@@ -3,4 +3,8 @@
 
 .push {
   margin-left: auto;
+
+  & + & {
+    margin-left: 1em;
+  }
 }
