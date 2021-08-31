@@ -1,5 +1,4 @@
 document.addEventListener("turbolinks:load", function () {
-
   // Closes all other 'detail' tags when clicking on one
   const details = document.querySelectorAll("details");
   details.forEach((targetDetail) => {
@@ -37,5 +36,4 @@ document.addEventListener("turbolinks:load", function () {
       }
     });
   }
-
 });
