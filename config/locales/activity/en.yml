@@ -9,7 +9,7 @@ en:
         meeting: Meeting
         phone_call: "Phone call"
     create:
-      failure: "Activity could not be logged: please fill out all inputs"
+      failure: "Activity could not be logged: %{errors}"
       success: "Activity was successfully logged"
     destroy:
       success: "Activity was successfully deleted"

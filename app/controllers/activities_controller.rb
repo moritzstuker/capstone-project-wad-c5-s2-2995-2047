@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to @project, notice: "#{ t('.success') }." }
         format.js
       else
-        format.html { redirect_to @project, alert: "#{ t('activity.create.failure') }.", status: :unprocessable_entity }
+        format.html { redirect_to @project, alert: "#{ t('activity.create.failure', errors: @activity.errors.full_messages.join('; ').downcase) }.", status: :unprocessable_entity }
       end
     end
   end
@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to @project, notice: "#{ t('.success') }." }
+      format.html { redirect_to @project, notice: "#{ t('activity.destroy.success') }." }
     end
   end
 

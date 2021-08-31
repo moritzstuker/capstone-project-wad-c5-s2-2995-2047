@@ -9,7 +9,7 @@ fr:
         meeting: Conférence
         phone_call: "Appel téléphonique"
     create:
-      failure: "Activité non sauvegardée: merci de remplir tous les champs"
+      failure: "Activité non sauvegardée: %{errors}"
       success: "Activité enregistrée"
     destroy:
       success: "Activité effacée"
