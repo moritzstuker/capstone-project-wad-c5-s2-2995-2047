@@ -12,7 +12,7 @@ module ProjectsHelper
     sanitize([clients, clients_suffix, versus, adversaries, adversaries_suffix].reject(&:blank?).join(' '))
   end
 
-  def build_deadline_text(str)
-    "PLUT #{str.inspect}"
+  def isProjectsShow()
+    "#{controller.controller_name}##{controller.action_name}" == "projects#show"
   end
 end

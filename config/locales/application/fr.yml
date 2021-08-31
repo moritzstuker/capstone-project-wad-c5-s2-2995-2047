@@ -3,6 +3,7 @@ fr:
     dashboard_sidebar:
       account: Compte
       dashboard: "Vue d'ensemble"
+      favourites: "Dossiers favoris"
       users: Utilisateurs
     deadlines:
       deadlines: "Délais attribués"
@@ -15,6 +16,7 @@ fr:
       add_deadline: "Ajouter délai"
       add_user: "Ajouter utilisateur"
       dashboard: "Vue d'ensemble"
+      favourites: "Dossiers favoris"
       log_out: "Déconnexion"
       signed_in_as: "Connecté en tant que"
       users: Utilisateurs

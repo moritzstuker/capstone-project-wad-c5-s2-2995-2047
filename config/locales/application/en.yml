@@ -3,6 +3,7 @@ en:
     dashboard_sidebar:
       account: Account
       dashboard: Dashboard
+      favourites: "Favourite cases"
       users: Users
     deadlines:
       deadlines: "Assigned deadlines"
@@ -15,6 +16,7 @@ en:
       add_deadline: "Add deadline"
       add_user: "Add user"
       dashboard: Dashboard
+      favourites: "Favourite cases"
       log_out: "Log out"
       signed_in_as: "Signed in as"
       users: Users

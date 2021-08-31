@@ -17,6 +17,10 @@ class ProjectsController < ApplicationController
   def show
     @deadlines = @project.deadlines.includes(:user)
     @deadlines_by_dates = @deadlines.group_by(&:date).sort
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @project }
+    end
   end
 
   def new

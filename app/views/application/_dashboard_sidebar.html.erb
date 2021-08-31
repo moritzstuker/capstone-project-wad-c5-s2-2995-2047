@@ -6,6 +6,9 @@
     <li class="box-row">
       <%= link_to t('.account'), account_path, class: "menu-item big#{ ' is-active' if current_page?(account_path) }"  %>
     </li>
+    <li class="box-row">
+      <%= link_to t('.favourites'), favourites_path, class: "menu-item big#{ ' is-active' if current_page?(favourites_path) }"  %>
+    </li>
     <% if is_admin?(current_user) %>
     <li class="box-row">
       <%= link_to t('.users'), users_path, class: "menu-item big#{ ' is-active' if current_page?(users_path) }"  %>

@@ -60,6 +60,22 @@ path {
     fill: currentColor;
   }
 
+  &.star {
+    cursor: pointer;
+
+    &:active,
+    &:hover,
+    &:focus {
+      fill: $yellow-200;
+    }
+  }
+
+  &.star.filled {
+    fill: $yellow-200;
+  }
+
+
+
   &.check-circle {
     fill: $green-200;
   }
@@ -96,7 +112,7 @@ path {
 }
 
 .dot-label {
-padding-left: 1.4em;
+  padding-left: 1.4em;
 }
 
 a,
@@ -122,14 +138,6 @@ a,
 
       &.trash {
         fill: $red;
-      }
-
-      &.star {
-        fill: $yellow;
-      }
-
-      &.star-fill {
-        fill: currentColor;
       }
     }
   }

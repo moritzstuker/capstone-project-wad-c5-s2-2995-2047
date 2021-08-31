@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get    '/contacts/import',  to: 'contacts#import'
 
   resources :contacts
+  resources :favourites, only: [:index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
 

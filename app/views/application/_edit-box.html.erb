@@ -1,4 +1,4 @@
-<span class="icon-group push">
+<span class="icon-group push"<%= " id=js-project-editbox" if isProjectsShow() %>>
   <%= link_to icon_tag('pencil'), edit_polymorphic_path(target) if can_edit?(target) %>
   <%= link_to icon_tag('trash'), target, method: :delete, data: { confirm: t('helpers.link_to.confirm') } if can_delete?(target) %>
 </span>
