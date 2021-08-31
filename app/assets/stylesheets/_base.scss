@@ -25,6 +25,7 @@ body {
   -webkit-font-kerning: normal;
   -ms-font-feature-settings: $default-font-features;
   -o-font-feature-settings: $default-font-features;
+  -ms-overflow-style: none; // hides horizontal scrollbar in Edge
   margin:0;
   padding:0;
   padding-bottom: ($gutter * 2);
