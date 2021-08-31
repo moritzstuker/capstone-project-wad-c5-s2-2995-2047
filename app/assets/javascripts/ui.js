@@ -1,9 +1,9 @@
 document.addEventListener("turbolinks:load", function () {
   // Closes all other 'detail' tags when clicking on one
-  const details = document.querySelectorAll("details");
-  details.forEach((targetDetail) => {
-    targetDetail.addEventListener("click", () => {
-      details.forEach((detail) => {
+  var details = document.querySelectorAll("details");
+  details.forEach(function (targetDetail) {
+    targetDetail.addEventListener("click", function () {
+      details.forEach(function (detail) {
         if (detail !== targetDetail) {
           detail.removeAttribute("open");
         }
