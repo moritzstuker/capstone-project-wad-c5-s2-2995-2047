@@ -27,7 +27,7 @@
     </header>
     <ul class="box">
       <% date.last.sort_by(&:created_at).reverse.each do |activity| %>
-        <li class="box-row"><%= render 'activity', activity: activity %></li>
+        <li class="box-row activity"><%= render 'activity', activity: activity %></li>
       <% end %>
     </ul>
   </li>

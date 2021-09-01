@@ -22,7 +22,7 @@ nodeIconText.classList.add('icon-text');
 var nodeAvatar = document.createElement('img');
 nodeAvatar.classList.add('avatar');
 nodeAvatar.classList.add('icon');
-nodeAvatar.setAttribute('alt', "<%= j @activity.user.name %>");
+nodeAvatar.setAttribute('alt', "<%= j sanitize(@activity.user.name) %>");
 nodeAvatar.setAttribute('src', "<%= j image_path(@activity.user.avatar).html_safe %>");
 
 var nodeMute1 = document.createElement('span');
@@ -35,7 +35,7 @@ var nodeMute3 = document.createElement('span');
 nodeMute3.classList.add('mute');
 
 var textLabel = document.createTextNode("<%= j @activity.label %>");
-var textAuthor = document.createTextNode("<%= j @activity.user.name %>");
+var textAuthor = document.createTextNode(decodeURI("<%= j sanitize(@activity.user.name) %>"));
 var textTag = document.createTextNode('<%= j t("activity.attributes.categories.#{ @activity.category }") %>');
 var textMute1 = document.createTextNode("<%= j t('activity.worked_on_it_for') %>");
 var textMute2 = document.createTextNode("<%= j t('activity.and_billed') %>");

@@ -22,6 +22,7 @@ class ActivitiesController < ApplicationController
     @activity.destroy
     respond_to do |format|
       format.html { redirect_to @project, notice: "#{ t('activity.destroy.success') }." }
+      format.js
     end
   end
 
