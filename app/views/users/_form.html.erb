@@ -7,27 +7,27 @@
         <%= t('.profile') %>
       </div>
       <div class="form-field">
-        <%= form.label :login, "#{ t('users.attributes.login') }*" %>
+        <%= form.label :login, "#{ t('users.attributes.login') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.text_field :login, id: :user_login %>
       </div>
 
       <div class="form-field">
-        <%= form.label :password, "#{ t('users.attributes.password') }*" %>
+        <%= form.label :password, "#{ t('users.attributes.password') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.password_field :password, value: user.password_digest, id: :user_password %>
       </div>
 
       <div class="form-field">
-        <%= form.label :password_confirmation, "#{ t('users.attributes.password_confirmation') }*" %>
+        <%= form.label :password_confirmation, "#{ t('users.attributes.password_confirmation') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.password_field :password_confirmation, value: user.password_digest, id: :user_password_confirmation %>
       </div>
 
       <div class="form-field">
-        <%= form.label :name, "#{ t('users.attributes.name') }*" %>
+        <%= form.label :name, "#{ t('users.attributes.name') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.text_field :name, id: :user_name %>
       </div>
 
       <div class="form-field">
-        <%= form.label :email, "#{ t('users.attributes.email') }*" %>
+        <%= form.label :email, "#{ t('users.attributes.email') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.text_field :email, id: :user_email %>
       </div>
     </div>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :locale, "#{ t('users.attributes.locale') }*" %>
+        <%= form.label :locale, "#{ t('users.attributes.locale') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.select :locale, I18n.available_locales.collect { |locale| [t('language', locale: locale), locale] }, id: :user_locale %>
       </div>
 
@@ -74,7 +74,7 @@
   <div class="col">
     <div class="box">
       <div class="form-action">
-        <span class="mute small">* <%= t('helpers.form.required_fields') %>.</span>
+        <span class="mute small"><span class="mandatory-field">*</span> <%= t('helpers.form.required_fields') %>.</span>
         <span class="push button-group">
           <%= link_to t('helpers.form.back'), user, class: 'button outline' %>
           <%= form.submit t('helpers.form.submit'), class: 'button blue push' %>

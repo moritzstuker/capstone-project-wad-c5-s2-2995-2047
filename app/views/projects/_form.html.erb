@@ -7,12 +7,12 @@
         <%= t('.properties') %>
       </div>
       <div class="form-field">
-        <%= form.label :label, "#{ t('projects.attributes.label') }*" %>
+        <%= form.label :label, "#{ t('projects.attributes.label') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.text_field :label, id: :project_label %>
       </div>
 
       <div class="form-field">
-        <%= form.label :owner_id, "#{ t('projects.attributes.owner') }*" %>
+        <%= form.label :owner_id, "#{ t('projects.attributes.owner') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.select :owner_id, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, id: :project_owner_id %>
       </div>
 
@@ -22,7 +22,7 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :project_category_id, "#{ t('projects.attributes.category') }*" %>
+        <%= form.label :project_category_id, "#{ t('projects.attributes.category') }<span class=mandatory-field>*</span>".html_safe %>
         <%= form.collection_select(:project_category_id, ProjectCategory.all, :id, :friendly_name, id: :project_project_category_id) %>
       </div>
 
@@ -66,7 +66,7 @@
   <div class="col">
     <div class="box">
       <div class="form-action">
-        <span class="mute small">* <%= t('helpers.form.required_fields') %>.</span>
+        <span class="mute small"><span class="mandatory-field">*</span> <%= t('helpers.form.required_fields') %>.</span>
         <span class="push button-group">
           <%= link_to t('helpers.form.back'), project, class: 'button outline' %>
           <%= form.submit t('helpers.form.submit'), class: 'button blue push' %>

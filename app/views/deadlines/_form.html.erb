@@ -5,17 +5,17 @@
   <div class="col">
     <div class="box">
       <div class="form-field">
-        <%= form.label :label, "#{ t('deadlines.attributes.label') }*", id: :deadline_label %>
+        <%= form.label :label, "#{ t('deadlines.attributes.label') }<span class=mandatory-field>*</span>".html_safe, id: :deadline_label %>
         <%= form.text_field :label, id: :deadline_label %>
       </div>
 
       <div class="form-field">
-        <%= form.label :date, "#{ t('deadlines.attributes.date') }*", id: :deadline_date %>
+        <%= form.label :date, "#{ t('deadlines.attributes.date') }<span class=mandatory-field>*</span>".html_safe, id: :deadline_date %>
         <%= form.date_field :date, id: :deadline_date %>
       </div>
 
       <div class="form-field">
-        <%= form.label :category, "#{ t('deadlines.attributes.category') }*", id: :deadline_category %>
+        <%= form.label :category, "#{ t('deadlines.attributes.category') }<span class=mandatory-field>*</span>".html_safe, id: :deadline_category %>
         <%= form.select :category, Deadline::CATEGORIES, id: :deadline_category %>
       </div>
     </div>
@@ -23,12 +23,12 @@
     <div class="col">
       <div class="box">
         <div class="form-field">
-          <%= form.label :project_id, "#{ t('deadlines.attributes.project') }*", id: :deadline_project %>
+          <%= form.label :project_id, "#{ t('deadlines.attributes.project') }<span class=mandatory-field>*</span>".html_safe, id: :deadline_project %>
           <%= form.select :project_id, Project.all.order(:label).collect {|p| [ p.label.capitalize, p.id ] }, id: :deadline_project %>
         </div>
 
         <div class="form-field">
-          <%= form.label :user_id, "#{ t('deadlines.attributes.assigned_to') }*", id: :deadline_user %>
+          <%= form.label :user_id, "#{ t('deadlines.attributes.assigned_to') }<span class=mandatory-field>*</span>".html_safe, id: :deadline_user %>
           <%= form.select :user_id, User.lawyers.order(role: :desc, name: :asc).collect { |user| ["#{ user.name } (#{ user.role.capitalize })", user.id] }, id: :deadline_user %>
         </div>
     </div>
@@ -39,7 +39,7 @@
   <div class="col">
     <div class="box">
       <div class="form-action">
-        <span class="mute small">* <%= t('helpers.form.required_fields') %>.</span>
+        <span class="mute small"><span class="mandatory-field">*</span> <%= t('helpers.form.required_fields') %>.</span>
         <span class="push button-group">
           <%= link_to t('helpers.form.back'), deadline, class: 'button outline' %>
           <%= form.submit t('helpers.form.submit'), class: 'button blue push' %>

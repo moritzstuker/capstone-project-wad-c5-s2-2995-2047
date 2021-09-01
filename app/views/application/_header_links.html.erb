@@ -8,7 +8,7 @@
     <li role="menuitem" class="box-row"><%= link_to t('.add_case'), new_project_path, class: 'menu-item' %></li>
     <li role="menuitem" class="box-row"><%= link_to t('.add_contact'), new_contact_path, class: 'menu-item' %></li>
     <li role="menuitem" class="box-row"><%= link_to t('.add_deadline'), new_deadline_path, class: 'menu-item' %></li>
-    <% if is_admin? || is_partner? %>
+    <% if is_admin? %>
     <li role="menuitem" class="box-row"><%= link_to t('.add_user'), new_user_path, class: 'menu-item' %></li>
     <% end %>
   </ul>
