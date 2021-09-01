@@ -337,10 +337,9 @@ optgroup {
   }
 }
 
-.field_with_errors {
-  * {
-    border-color: $red-500 !important;
-  }
+.field_with_errors *,
+input.field_with_errors {
+  border-color: $red-500 !important;
 }
 
 .mandatory-field {

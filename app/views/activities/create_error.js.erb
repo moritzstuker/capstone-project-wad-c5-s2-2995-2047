@@ -1,0 +1,48 @@
+var oldFlashAlerts = document.querySelectorAll("main.container .flash.alert");
+for (var i = 0; i < oldFlashAlerts.length; i++) {
+  oldFlashAlerts[i].remove();
+}
+
+var oldErrorMessages = document.querySelectorAll("input.field_with_errors");
+for (var i = 0; i < oldErrorMessages.length; i++) {
+  oldErrorMessages[i].classList.remove("field_with_errors");
+}
+
+<% @activity.errors.details.keys.each do |error| %>
+  var inputFieldName = 'activity[<%= error %>]';
+  var inputFieldTag = document.querySelector("input[name='" + inputFieldName + "']");
+  inputFieldTag.classList.add("field_with_errors");
+<% end %>
+
+var errorMessage = "<%= j t('activity.create.failure', errors: @activity.errors.full_messages.join('; ').downcase) %>."
+
+var flashAlertContainer = document.querySelector("main.container");
+
+var flashAlertWrapper = document.createElement("div");
+flashAlertWrapper.classList.add("flash");
+flashAlertWrapper.classList.add("alert");
+
+var flashAlertText = document.createTextNode(errorMessage);
+
+var flashAlertButton = document.createElement("button");
+flashAlertButton.setAttribute("type", "button");
+flashAlertButton.classList.add("ghost");
+flashAlertButton.classList.add("flash-close");
+flashAlertButton.addEventListener("click", function () {
+  flashAlertButton.parentNode.remove();
+});
+
+var flashAlertButtonIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+flashAlertButtonIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+flashAlertButtonIcon.setAttribute("viewBox", "0 0 16 16");
+flashAlertButtonIcon.classList.add("icon");
+flashAlertButtonIcon.classList.add("x-circle");
+
+var flashAlertButtonIconPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+flashAlertButtonIconPath.setAttribute("d", "M3.404 12.596a6.5 6.5 0 119.192-9.192 6.5 6.5 0 01-9.192 9.192zM2.344 2.343a8 8 0 1011.313 11.314A8 8 0 002.343 2.343zM6.03 4.97a.75.75 0 00-1.06 1.06L6.94 8 4.97 9.97a.75.75 0 101.06 1.06L8 9.06l1.97 1.97a.75.75 0 101.06-1.06L9.06 8l1.97-1.97a.75.75 0 10-1.06-1.06L8 6.94 6.03 4.97z");
+
+flashAlertWrapper.appendChild(flashAlertText);
+flashAlertWrapper.appendChild(flashAlertButton);
+flashAlertButton.appendChild(flashAlertButtonIcon);
+flashAlertButtonIcon.appendChild(flashAlertButtonIconPath);
+flashAlertContainer.insertBefore(flashAlertWrapper, flashAlertContainer.firstChild);

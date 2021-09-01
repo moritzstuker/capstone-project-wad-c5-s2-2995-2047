@@ -13,6 +13,7 @@ class ActivitiesController < ApplicationController
         format.js
       else
         format.html { redirect_to @project, alert: "#{ t('activity.create.failure', errors: @activity.errors.full_messages.join('; ').downcase) }.", status: :unprocessable_entity }
+        format.js { render 'create_error.js.erb', status: :unprocessable_entity }
       end
     end
   end

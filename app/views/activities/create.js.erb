@@ -1,3 +1,14 @@
+// Clear previous error messages
+var oldFlashAlerts = document.querySelectorAll("main.container .flash.alert");
+for (var i = 0; i < oldFlashAlerts.length; i++) {
+  oldFlashAlerts[i].remove();
+}
+
+var oldErrorMessages = document.querySelectorAll("input.field_with_errors");
+for (var i = 0; i < oldErrorMessages.length; i++) {
+  oldErrorMessages[i].classList.remove("field_with_errors");
+}
+
 // Create Activity node
 var nodeLi = document.createElement('li');
 nodeLi.classList.add('box-row');
